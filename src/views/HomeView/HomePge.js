@@ -1,5 +1,6 @@
+import Test from '../../components/Test';
 function HomeView() {
-  return <h1>Home page</h1>;
+  return <Test />;
 }
 
 export default HomeView;
