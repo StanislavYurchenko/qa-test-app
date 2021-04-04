@@ -25,6 +25,7 @@ function App() {
             <MainPage />
           </PrivateRoute>
 
+          {/* ЗАМЕНИТЬ НА ПРИВАТНЫЙ! */}
           <PublicRoute exact path="/results">
             <ResultsPage />
           </PublicRoute>
