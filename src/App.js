@@ -5,7 +5,7 @@ import PreLoader from './components/PreLoader';
 
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import PublicRoute from 'components/PublicRoute/PublicRoute';
-
+import Header from './components/Header';
 const MainPage = lazy(() => import('pages/MainPage/MainPage' /* webpackChunkName: "MainPage" */));
 
 const AuthPage = lazy(() => import('pages/AuthPage/AuthPage' /* webpackChunkName: "AuthPage" */));
@@ -14,6 +14,7 @@ function App() {
   return (
     <>
       <Suspense fallback={<PreLoader sizePreloader="200px" />}>
+        <Header />
         <Switch>
           <PublicRoute exact path="/auth">
             <AuthPage />
