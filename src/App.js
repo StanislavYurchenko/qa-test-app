@@ -3,42 +3,26 @@ import { Switch } from 'react-router-dom';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
+import PreLoader from './components/PreLoader';
+
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import PublicRoute from 'components/PublicRoute/PublicRoute';
 
-const HomeView = lazy(() => import('views/HomeView/HomePge' /* webpackChunkName: "HomePge" */));
+const MainPage = lazy(() => import('pages/MainPage/MainPage' /* webpackChunkName: "MainPage" */));
 
-const LoginView = lazy(() =>
-  import('views/LoginView/LoginView' /* webpackChunkName: "LoginView" */),
-);
-
-const LogoutView = lazy(() =>
-  import('views/LogoutView/LogoutView' /* webpackChunkName: "LogoutView" */),
-);
-
-const SignupView = lazy(() =>
-  import('views/SignupView/SignupView' /* webpackChunkName: "SignupView" */),
-);
+const AuthPage = lazy(() => import('pages/AuthPage/AuthPage' /* webpackChunkName: "AuthPage" */));
 
 function App() {
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<PreLoader sizePreloader="200px" />}>
         <Switch>
-          <PublicRoute exact path="/">
-            <HomeView />
+          <PublicRoute exact path="/auth">
+            <AuthPage />
           </PublicRoute>
 
-          <PublicRoute path="/login" redirectTo="/phone-book" restricted>
-            <LoginView />
-          </PublicRoute>
-
-          <PublicRoute path="/signup" redirectTo="/phone-book" restricted>
-            <SignupView />
-          </PublicRoute>
-
-          <PrivateRoute path="/logout" redirectTo="/login">
-            <LogoutView />
+          <PrivateRoute path="/" redirectTo="/auth">
+            <MainPage />
           </PrivateRoute>
 
           <PublicRoute>
