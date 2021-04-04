@@ -3,24 +3,34 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 
 export default function RadioButtonsGroup({ answers, handleAnswer, id }) {
   const [value, setValue] = React.useState('');
 
-  const handleChange = event => {
-    console.log(`event.target.value`, event.target.value);
-    setValue(event.target.value);
+  const handleChange = (_, value) => {
+    console.log(`value`, value);
+    setValue(value);
     handleAnswer({ [id]: value });
   };
 
   return (
     <FormControl component="fieldset">
-      <RadioGroup aria-label="test" name="test" value={value} onChange={handleChange}>
+      <RadioGroup aria-label="gender" name="question" value={value} onChange={handleChange}>
         {answers.map((answer, i) => (
-          <FormControlLabel key={i} value={answer} control={<Radio />} label={answer} />
+          <label key={String(i)}>
+            <Radio value={answer} /> {answer}
+          </label>
         ))}
       </RadioGroup>
     </FormControl>
   );
+}
+
+{
+  /* <FormControlLabel
+            key={String(id + i)}
+            value={answer}
+            control={<Radio />}
+            label={answer}
+          /> */
 }

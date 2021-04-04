@@ -9,11 +9,9 @@ export default class PreviousNextMethods extends Component {
   constructor(props) {
     super(props);
   }
-
   next = () => {
     this.slider.slickNext();
   };
-
   previous = () => {
     this.slider.slickPrev();
   };
@@ -22,11 +20,14 @@ export default class PreviousNextMethods extends Component {
     const settings = {
       dots: false,
       fade: true,
+      lazyLoad: true,
       infinite: false,
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
       //   adaptiveHeight: true,
+      // arrows: false,
+      swipe: false,
     };
     return (
       <div>
