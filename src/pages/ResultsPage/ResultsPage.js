@@ -1,6 +1,6 @@
 import { ReactSVG } from 'react-svg';
-import { MainContainer, Header1, Header2 } from './ResultsView.SC';
-import ChartView from '../ChartView/ChartView';
+import { MainContainer, Header1, Header2 } from './ResultsPage.SC';
+import ChartView from '../../components/Chart/Chart';
 
 export default function ResultsView() {
   return (

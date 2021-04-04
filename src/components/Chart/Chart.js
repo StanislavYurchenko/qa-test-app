@@ -1,5 +1,6 @@
 import { Pie } from 'react-chartjs-2';
-import { PieContainer, AnswersContainer } from './ChartView.SC';
+import { PieContainer, AnswersContainer } from './Chart.SC';
+import { ACCENT_COLOUR, BAD_RESULT_COLOUR } from '../../themes/colors';
 
 const correctAnswers = 10;
 const incorrectAnswers = 2;
@@ -14,7 +15,7 @@ const data = {
     {
       label: 'Correct answers',
       data: [correctAnswers, incorrectAnswers],
-      backgroundColor: ['rgba(255, 107, 9, 1)', 'rgba(215, 215, 215, 1)'],
+      backgroundColor: [ACCENT_COLOUR, BAD_RESULT_COLOUR],
     },
   ],
 };
