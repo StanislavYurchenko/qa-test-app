@@ -20,6 +20,11 @@
   margin-bottom: 20px;
 }
 
+.page {
+  font-weight: bold;
+  color: orange;
+}
+
 .question {
   font-family: Montserrat;
   font-style: normal;
@@ -73,6 +78,7 @@
 
     margin-bottom: 5px;
   }
+
   .question {
     font-size: 22px;
     line-height: 30px;
@@ -84,7 +90,7 @@
     margin-top: 30px;
   }
   .answer {
-    font-size: 1git 6px;
+    font-size: 16px;
     line-height: 20px;
   }
   .answer:not(:last-child) {

@@ -68,17 +68,32 @@ body {
   font-size: 12px;
   line-height: 15px;
   letter-spacing: 0.02em;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.btn:hover,
-.btn:focus {
+.btn:disabled svg {
+  fill: rgba(2, 23, 42, 0.1);
+}
+
+.btn:not(:disabled):hover {
   background-color: #ff6b09;
   cursor: pointer;
   box-shadow: 0px 4px 15px rgba(2, 23, 42, 0.1);
 }
 
-.btn:hover .iconBtn {
+.btn:not(:disabled):hover svg {
   fill: #fff;
+}
+
+.btn:not(:disabled):hover span {
+  color: #fff;
+}
+
+.btn span {
+  display: none;
 }
 
 @media (min-width: 768px) {
@@ -103,6 +118,11 @@ body {
   .btn {
     width: 210px;
     height: 34px;
+  }
+
+  .btn span {
+    padding: 0 11px;
+    display: block;
   }
 }
 

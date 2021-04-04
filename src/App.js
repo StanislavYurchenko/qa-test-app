@@ -1,7 +1,5 @@
 import React, { useEffect, Suspense, lazy } from 'react';
 import { Switch } from 'react-router-dom';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
 import PreLoader from './components/PreLoader';
 
@@ -9,6 +7,7 @@ import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import PublicRoute from 'components/PublicRoute/PublicRoute';
 
 const MainPage = lazy(() => import('pages/MainPage/MainPage' /* webpackChunkName: "MainPage" */));
+const Test = lazy(() => import('./components/Test' /* webpackChunkName: "MainPage" */));
 
 const AuthPage = lazy(() => import('pages/AuthPage/AuthPage' /* webpackChunkName: "AuthPage" */));
 
@@ -19,6 +18,10 @@ function App() {
         <Switch>
           <PublicRoute exact path="/auth">
             <AuthPage />
+          </PublicRoute>
+
+          <PublicRoute path="/test">
+            <Test />
           </PublicRoute>
 
           <PrivateRoute path="/" redirectTo="/auth">

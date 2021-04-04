@@ -3,6 +3,32 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import s from './Card.module.css';
+import styled from 'styled-components';
+
+const StyledFormControlLabel = styled(FormControlLabel)`
+  span + span {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: 0.02em;
+    color: #000000;
+    @media (min-width: 768px) {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+  @media (min-width: 768px) {
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+  }
+`;
+const StyledRG = styled(RadioGroup)`
+  font-size: 30px;
+  color: #121212;
+`;
 
 export default function Card({ questions, activeCard, handleAnswer, answered }) {
   const [value, setValue] = useState('');
@@ -18,21 +44,16 @@ export default function Card({ questions, activeCard, handleAnswer, answered }) 
   return (
     <div className={s.card}>
       <p className={s.counter}>
-        Вопрос {activeCard + 1} / {questions.length}
+        Вопрос <span className={s.page}>{activeCard + 1}</span>/
+        <span className={s.pages}>{questions.length}</span>
       </p>
       <h2 className={s.question}>{question}</h2>
 
-      <RadioGroup name="question" value={answered[questionId] || ''} onChange={handleChange}>
+      <StyledRG name="question" value={answered[questionId] || ''} onChange={handleChange}>
         {answers.map((answer, i) => (
-          <FormControlLabel
-            className={s.answer}
-            key={i}
-            value={answer}
-            control={<Radio />}
-            label={answer}
-          />
+          <StyledFormControlLabel key={i} value={answer} control={<Radio />} label={answer} />
         ))}
-      </RadioGroup>
+      </StyledRG>
     </div>
   );
 }
