@@ -18,6 +18,10 @@ const SignupView = lazy(() =>
   import('views/SignupView/SignupView' /* webpackChunkName: "SignupView" */),
 );
 
+const ResultsView = lazy(() =>
+  import('views/ResultsView/ResultsView' /* webpackChunkName: "ResultsView" */),
+);
+
 function App() {
   return (
     <>
@@ -25,6 +29,7 @@ function App() {
         <Switch>
           <PublicRoute exact path="/">
             <HomeView />
+            <ResultsView />
           </PublicRoute>
 
           <PublicRoute path="/login" redirectTo="/phone-book" restricted>
