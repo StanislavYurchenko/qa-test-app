@@ -35,8 +35,12 @@ export default function ChartView() {
         <Pie data={data} options={options} />
       </PieContainer>
       <AnswersContainer>
-        <p style={{ marginRight: '40px' }}>{`Correct answers - ${correctAnswers}`}</p>
-        <p>{`Total questions - ${totalAnswers}`}</p>
+        <p style={{ marginRight: '40px' }}>
+          Correct answers - <span style={{ fontWeight: 'bold' }}>{`${correctAnswers}`}</span>
+        </p>
+        <p>
+          Total questions - <span style={{ fontWeight: 'bold' }}>{`${totalAnswers}`}</span>
+        </p>
       </AnswersContainer>
     </div>
   );

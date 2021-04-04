@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import { makeStyles } from '@material-ui/core/styles';
+
+import { ACCENT_COLOUR } from '../../themes/colors';
 
 const MainContainer = styled.div`
   display: flex;
@@ -14,14 +17,21 @@ const Header2 = styled.h2`
   margin: 0px 0px 70px;
 `;
 
-const PieContainer = styled.div`
-  width: 510px;
-  height: 290px;
-  margin-bottom: 30px;
-`;
+const useStyles = makeStyles({
+  tryAgain: {
+    background: ACCENT_COLOUR,
+    '&:hover': {
+      background: ACCENT_COLOUR,
+    },
+    color: 'white',
+    height: 48,
+    padding: '17px 56px',
+    fontFamily: 'Montserrat',
+    fontStyle: 'normal',
+    fontWeight: 500,
+    fontSize: '14px',
+    lineHeight: '17px',
+  },
+});
 
-const AnswersContainer = styled.div`
-  margin-bottom: 30px;
-`;
-
-export { MainContainer, Header1, Header2, PieContainer, AnswersContainer };
+export { MainContainer, Header1, Header2, useStyles };
