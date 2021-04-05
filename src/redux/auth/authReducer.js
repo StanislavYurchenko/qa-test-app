@@ -1,68 +1,81 @@
 import { createReducer, combineReducers } from '@reduxjs/toolkit';
-import { signup, login, logout, getUser } from './authOperations';
+import authActions from './authAction';
 
-const iniUserState = { name: 'Anonymous', email: null };
+const initialUserState = { name: null, email: null };
 
-const userReducer = createReducer(iniUserState, {
-  [signup.fulfilled]: (_, { payload }) => payload.user,
-  [login.fulfilled]: (_, { payload }) => payload.user,
-  [logout.fulfilled]: () => iniUserState,
-  [getUser.fulfilled]: (_, { payload }) => payload,
-  [getUser.rejected]: () => iniUserState,
+const userName = createReducer(initialUserState, {
+  [authActions.loginUserSuccess]: (_, { payload }) => payload.name,
+  [authActions.logoutUserSuccess]: () => initialUserState,
+  // [authActions.regUserSuccess]: (_, { payload }) => payload.user,
+  // [authActions.getCurrentUserSuccess]: (_, { payload }) => payload,
 });
 
-const tokenReducer = createReducer(null, {
-  [signup.fulfilled]: (_, { payload }) => payload.token,
-  [login.fulfilled]: (_, { payload }) => payload.token,
-  [logout.fulfilled]: () => null,
-  [getUser.rejected]: () => null,
+const successfulReg = createReducer(false, {
+  [authActions.regUserSuccess]: () => true,
+  [authActions.regUserError]: () => false,
+  [authActions.loginUserSuccess]: () => false,
 });
 
-const isLoggedInReducer = createReducer(false, {
-  [signup.fulfilled]: () => true,
-  [login.fulfilled]: () => true,
-  [logout.fulfilled]: () => false,
-  [getUser.fulfilled]: () => true,
-  [getUser.rejected]: () => false,
+const token = createReducer(null, {
+  [authActions.loginUserSuccess]: (_, { payload }) => payload.token,
+  [authActions.logoutUserSuccess]: () => null,
+  // [authActions.regUserSuccess]: (_, { payload }) => payload.token,
 });
 
-const loadingReducer = createReducer(false, {
-  [signup.pending]: () => true,
-  [signup.fulfilled]: () => false,
-  [signup.rejected]: () => false,
-  [login.pending]: () => true,
-  [login.fulfilled]: () => false,
-  [login.rejected]: () => false,
-  [logout.pending]: () => true,
-  [logout.fulfilled]: () => false,
-  [logout.rejected]: () => false,
-  [getUser.pending]: () => true,
-  [getUser.fulfilled]: () => false,
-  [getUser.rejected]: () => false,
+const isLoggedIn = createReducer(false, {
+  [authActions.loginUserSuccess]: () => true,
+  // [authActions.regUserSuccess]: () => true,
+  // [authActions.getCurrentUserSuccess]: () => true,
+
+  [authActions.loginUserError]: () => false,
+  [authActions.logoutUserSuccess]: () => false,
+  // [authActions.regUserError]: () => false,
+  // [authActions.getCurrentUserError]: () => false,
 });
 
-const errorReducer = createReducer(null, {
-  [signup.rejected]: (_, { payload }) => payload,
-  [signup.pending]: () => null,
-  [login.rejected]: (_, { payload }) => payload,
-  [login.pending]: () => null,
-  [logout.rejected]: (_, { payload }) => payload,
-  [logout.pending]: () => null,
-  [getUser.rejected]: (_, { payload }) => payload,
-  [getUser.pending]: () => null,
+const loading = createReducer(false, {
+  [authActions.regUserRequest]: () => true,
+  [authActions.regUserSuccess]: () => false,
+  [authActions.regUserError]: () => false,
+
+  [authActions.loginUserRequest]: () => true,
+  [authActions.loginUserSuccess]: () => false,
+  [authActions.loginUserError]: () => false,
+
+  [authActions.logoutUserRequest]: () => true,
+  [authActions.logoutUserSuccess]: () => false,
+  [authActions.logoutUserError]: () => false,
+
+  // [authActions.getCurrentUserRequest]: () => true,
+  // [authActions.getCurrentUserSuccess]: () => false,
+  // [authActions.getCurrentUserError]: () => false,
 });
 
-const isRefreshingUserReducer = createReducer(false, {
-  [getUser.pending]: () => true,
-  [getUser.rejected]: () => false,
-  [getUser.fulfilled]: () => false,
+const error = createReducer('', {
+  [authActions.regUserRequest]: () => '',
+  [authActions.regUserSuccess]: () => '',
+  [authActions.regUserError]: (_, { payload }) => payload,
+
+  [authActions.loginUserRequest]: () => '',
+  [authActions.loginUserSuccess]: () => '',
+  [authActions.loginUserError]: (_, { payload }) => payload,
+
+  [authActions.logoutUserRequest]: () => '',
+  [authActions.logoutUserSuccess]: () => '',
+  [authActions.logoutUserError]: (_, { payload }) => payload,
+
+  // [authActions.getCurrentUserRequest]: () => '',
+  // [authActions.getCurrentUserSuccess]: () => '',
+  // [authActions.getCurrentUserError]: (_, { payload }) => payload,
 });
 
-export default combineReducers({
-  user: userReducer,
-  token: tokenReducer,
-  isLoggedIn: isLoggedInReducer,
-  loading: loadingReducer,
-  error: errorReducer,
-  isRefreshingUser: isRefreshingUserReducer,
+const authUsersReducer = combineReducers({
+  userName,
+  successfulReg,
+  token,
+  isLoggedIn,
+  loading,
+  error,
 });
+
+export default authUsersReducer;

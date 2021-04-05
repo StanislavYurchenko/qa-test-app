@@ -1,8 +1,17 @@
+import { useSelector, useDispatch } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 import { TextField, Button } from '@material-ui/core';
+
+import PreLoader from '../PreLoader';
+import { loginUser } from '../../redux/auth/authOperations';
+import { loading, error } from '../../redux/auth/authSelectors';
+
 import { useStyles } from './LoginForm.style';
 
 const LoginForm = ({ handleToggleButton }) => {
+  const dispatch = useDispatch();
+  const loadingAuth = useSelector(loading);
+  const errorAuth = useSelector(error);
   const { handleSubmit, control, reset } = useForm();
   const classes = useStyles();
 
@@ -20,6 +29,7 @@ const LoginForm = ({ handleToggleButton }) => {
 
   const onSubmit = data => {
     if (!validateEmail(data.email)) return;
+    dispatch(loginUser(data));
     console.log(data);
     reset();
   };
@@ -53,6 +63,7 @@ const LoginForm = ({ handleToggleButton }) => {
           render={({ onChange, value }) => (
             <TextField
               className={classes.inputText}
+              type="password"
               onChange={onChange}
               value={value}
               label="Password"
@@ -71,12 +82,13 @@ const LoginForm = ({ handleToggleButton }) => {
         />
 
         <Button type="submit" variant="contained">
-          SIGN IN
+          {loadingAuth ? <PreLoader sizePreloader="16px" /> : 'SIGN IN'}
         </Button>
         <Button type="button" onClick={handleToggleButton}>
           SIGN UP
         </Button>
       </form>
+      {!!errorAuth && <p>Invalid email or password! Try again!</p>}
     </div>
   );
 };
