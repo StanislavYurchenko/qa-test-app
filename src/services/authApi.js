@@ -2,7 +2,7 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://qa-test-api-hakaton2021goit.herokuapp.com';
 
-const userToken = {
+export const userToken = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
