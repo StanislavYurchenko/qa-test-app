@@ -22,3 +22,7 @@ export const login = ({ email, password }) => {
 export const logout = () => {
   return axios.post('auth/logout').then(data => data);
 };
+
+export const getUserInfo = () => {
+  return axios.get('/users/current').then(data => data);
+};
