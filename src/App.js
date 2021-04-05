@@ -18,6 +18,10 @@ const SignupView = lazy(() =>
   import('views/SignupView/SignupView' /* webpackChunkName: "SignupView" */),
 );
 
+const ContactsListView = lazy(() =>
+  import('views/ContactsListView/ContactsListView' /* webpackChunkName: "ContactsListView" */),
+);
+
 function App() {
   return (
     <>
@@ -38,6 +42,10 @@ function App() {
           <PrivateRoute path="/logout" redirectTo="/login">
             <LogoutView />
           </PrivateRoute>
+
+          <PublicRoute path="/contacts">
+            <ContactsListView />
+          </PublicRoute>
 
           <PublicRoute>
             <div>not found</div>
