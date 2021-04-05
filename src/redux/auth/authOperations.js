@@ -41,16 +41,13 @@ const getCurrentUser = () => async (dispatch, getState) => {
   const {
     auth: { token: persistedToken },
   } = getState();
-  console.log(persistedToken);
   if (!persistedToken) return;
   userToken.set(persistedToken);
   dispatch(authActions.getCurrentUserRequest());
-  console.log('fjhh');
 
   try {
     const { data } = await getUserInfo();
     const { result } = data;
-    console.log(result.name);
     dispatch(authActions.getCurrentUserSuccess(result.name));
   } catch (err) {
     dispatch(authActions.getCurrentUserError(err.message));

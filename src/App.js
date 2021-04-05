@@ -18,7 +18,6 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('k');
     dispatch(getCurrentUser());
   }, [dispatch]);
 
