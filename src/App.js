@@ -12,6 +12,10 @@ const ResultsPage = lazy(() =>
   import('pages/ResultsPage/ResultsPage' /* webpackChunkName: "ResultsPage" */),
 );
 
+const ContactsPage = lazy(() =>
+  import('pages/ContactsPage/ContactsPage' /* webpackChunkName: "ContactsPage" */),
+);
+
 function App() {
   return (
     <>
@@ -31,7 +35,7 @@ function App() {
           </PrivateRoute>
 
           <PublicRoute path="/contacts">
-            <div>Contacts</div>
+            <ContactsPage />
           </PublicRoute>
 
           <PrivateRoute path="/results" redirectTo="/auth">
