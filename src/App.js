@@ -1,9 +1,8 @@
 import React, { useEffect, Suspense, lazy } from 'react';
 import { Switch } from 'react-router-dom';
-import Navigation from './components/Navigation';
+import Header from './components/Header';
 
 import PreLoader from './components/PreLoader';
-
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import PublicRoute from 'components/PublicRoute/PublicRoute';
 
@@ -20,7 +19,7 @@ const ContactsPage = lazy(() =>
 function App() {
   return (
     <>
-      <Navigation />
+      <Header />
       <Suspense fallback={<PreLoader sizePreloader="200px" />}>
         <Switch>
           <PublicRoute path="/auth" redirectTo="/" restricted>
