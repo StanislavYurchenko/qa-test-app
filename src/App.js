@@ -10,15 +10,18 @@ const MainPage = lazy(() => import('pages/MainPage/MainPage' /* webpackChunkName
 
 const AuthPage = lazy(() => import('pages/AuthPage/AuthPage' /* webpackChunkName: "AuthPage" */));
 
-const ContactsListView = lazy(() =>
-  import('views/ContactsListView/ContactsListView' /* webpackChunkName: "ContactsListView" */),
+const ContactsPage = lazy(() =>
+  import('pages/ContactsPage/ContactsPage' /* webpackChunkName: "ContactsPage" */),
 );
 
 function App() {
   return (
     <>
       <Suspense fallback={<PreLoader sizePreloader="200px" />}>
-        <Switch>
+        <PublicRoute path="/contacts">
+          <ContactsPage />
+        </PublicRoute>
+        {/* <Switch>
           <PublicRoute exact path="/auth">
             <AuthPage />
           </PublicRoute>
@@ -28,13 +31,13 @@ function App() {
           </PrivateRoute>
 
           <PublicRoute path="/contacts">
-            <ContactsListView />
+            <ContactsPage />
           </PublicRoute>
 
           <PublicRoute>
             <div>not found</div>
           </PublicRoute>
-        </Switch>
+        </Switch> */}
       </Suspense>
     </>
   );

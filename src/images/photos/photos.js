@@ -19,11 +19,3 @@ export const images = {
   Yurchenko_Stanislav: Stanislav,
   Andriy_Krichkivskiy: Andriy,
 };
-
-import ContactsList from '../../components/ContactsList';
-
-function ContactListView() {
-  return <ContactsList />;
-}
-
-export default ContactListView;
