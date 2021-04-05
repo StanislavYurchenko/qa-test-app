@@ -1,5 +1,6 @@
 import React, { useEffect, Suspense, lazy } from 'react';
 import { Switch } from 'react-router-dom';
+import Navigation from './components/Navigation';
 
 import PreLoader from './components/PreLoader';
 
@@ -15,9 +16,10 @@ const ResultsPage = lazy(() =>
 function App() {
   return (
     <>
+      <Navigation />
       <Suspense fallback={<PreLoader sizePreloader="200px" />}>
         <Switch>
-          <PublicRoute exact path="/auth">
+          <PublicRoute path="/auth" redirectTo="/" restricted>
             <AuthPage />
           </PublicRoute>
 
@@ -25,10 +27,18 @@ function App() {
             <MainPage />
           </PrivateRoute>
 
-          {/* ЗАМЕНИТЬ НА ПРИВАТНЫЙ! */}
-          <PublicRoute exact path="/results">
-            <ResultsPage />
+
+          <PrivateRoute path="/materials" redirectTo="/auth">
+            <div>Страница доп материалов</div>
+          </PrivateRoute>
+
+          <PublicRoute path="/contacts">
+            <div>Contacts</div>
           </PublicRoute>
+          
+          <PrivateRoute path="/results" redirectTo="/auth">
+            <ResultsPage />
+          </PrivateRoute>
 
           <PublicRoute>
             <div>not found</div>
