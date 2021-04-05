@@ -86,7 +86,7 @@ export default function ButtonAppBar() {
           {/* <TestNav className={classes.TestNav}>Contacts</TestNav> */}
           {isLogin && <span className={classes.spanStyles}>D</span>}
           {isLogin ? (
-            <div className={classes.buttonWrapStyles}>
+            <div className={classes.buttonWrapStylesClose}>
               <Button className={classes.buttonStyles} onClick={e => dispatch(logoutUser())}>
                 <LogOut />
               </Button>

@@ -51,6 +51,17 @@ const useStyles = makeStyles(theme => ({
       display: 'flex',
     },
   },
+  buttonWrapStylesClose: {
+    display: 'none',
+    alignItems: 'center',
+    justifyContent: 'center',
+    minWidth: '55px',
+    minHeight: '70px',
+    borderLeft: `1px solid ${HEADER_BORDER_COLOUR}`,
+    [theme.breakpoints.up('xs')]: {
+      display: 'flex',
+    },
+  },
   buttonStyles: {
     width: '15px',
     height: '15px',
