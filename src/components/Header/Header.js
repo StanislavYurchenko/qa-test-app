@@ -11,6 +11,7 @@ import { ReactComponent as OpenMenuSvg } from '../../images1/openMenu.svg';
 import { ReactComponent as CloseMenuSvg } from '../../images1/closeMenu.svg';
 import { ReactComponent as LogOut } from '../../images1/signOut.svg';
 import { StylesModal } from './Header.style';
+import Navigation from 'components/Navigation';
 
 import styled from 'styled-components';
 import { useState } from 'react';
@@ -81,7 +82,8 @@ export default function ButtonAppBar() {
           <Link to="/" exact="true" className={classes.logoStyles}>
             <LogoSvg />
           </Link>
-          <TestNav className={classes.TestNav}>Contacts</TestNav>
+          <Navigation className={classes.TestNav} />
+          {/* <TestNav className={classes.TestNav}>Contacts</TestNav> */}
           {isLogin && <span className={classes.spanStyles}>D</span>}
           {isLogin ? (
             <div className={classes.buttonWrapStyles}>
