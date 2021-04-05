@@ -1,6 +1,8 @@
 import React, { useEffect, Suspense, lazy } from 'react';
+import { useDispatch } from 'react-redux';
 import { Switch } from 'react-router-dom';
 import Header from './components/Header';
+import { getCurrentUser } from './redux/auth/authOperations';
 
 import PreLoader from './components/PreLoader';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
@@ -13,6 +15,13 @@ const ResultsPage = lazy(() =>
 );
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log('k');
+    dispatch(getCurrentUser());
+  }, [dispatch]);
+
   return (
     <>
       <Header />

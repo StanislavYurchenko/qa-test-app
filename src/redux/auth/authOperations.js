@@ -1,14 +1,13 @@
 import authActions from './authAction';
-import { registration, login, logout, userToken } from '../../services/authApi';
+import { registration, login, logout, getUserInfo, userToken } from '../../services/authApi';
 
 const registrationUser = ({ name, email, password }) => async dispatch => {
   dispatch(authActions.regUserRequest());
 
   try {
-    const data = await registration({ name, email, password });
+    await registration({ name, email, password });
     dispatch(authActions.regUserSuccess());
   } catch (err) {
-    console.log(err);
     dispatch(authActions.regUserError(err.message));
   }
 };
@@ -38,18 +37,24 @@ const logoutUser = () => async dispatch => {
   }
 };
 
-// const getCurrentUser = () => (dispatch, getState) => {
-//   const {
-//     auth: { token: persistedToken },
-//   } = getState();
-//   if (!persistedToken) return;
-//   userToken.set(persistedToken);
-//   dispatch(authActions.getCurrentUserRequest());
+const getCurrentUser = () => async (dispatch, getState) => {
+  const {
+    auth: { token: persistedToken },
+  } = getState();
+  console.log(persistedToken);
+  if (!persistedToken) return;
+  userToken.set(persistedToken);
+  dispatch(authActions.getCurrentUserRequest());
+  console.log('fjhh');
 
-//   axios
-//     .get('/users/current')
-//     .then(({ data }) => dispatch(authActions.getCurrentUserSuccess(data)))
-//     .catch(error => dispatch(authActions.getCurrentUserError()));
-// };
+  try {
+    const { data } = await getUserInfo();
+    const { result } = data;
+    console.log(result.name);
+    dispatch(authActions.getCurrentUserSuccess(result.name));
+  } catch (err) {
+    dispatch(authActions.getCurrentUserError(err.message));
+  }
+};
 
-export { registrationUser, loginUser, logoutUser };
+export { registrationUser, loginUser, logoutUser, getCurrentUser };
