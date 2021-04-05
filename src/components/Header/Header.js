@@ -101,7 +101,7 @@ export default function ButtonAppBar() {
         </Toolbar>
       </AppBar>
       <StylesModal open={isModalOpen}>
-        <TestNav>Contacts</TestNav>
+        <Navigation className={classes.TestNav} />
         {isLogin ? (
           <div className={classes.buttonWrapStyles}>
             <Button
