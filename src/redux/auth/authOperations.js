@@ -1,12 +1,11 @@
 import authActions from './authAction';
-import { registration, login, logout } from '../../services/authApi';
+import { registration, login, logout, userToken } from '../../services/authApi';
 
 const registrationUser = ({ name, email, password }) => async dispatch => {
   dispatch(authActions.regUserRequest());
 
   try {
     const data = await registration({ name, email, password });
-    console.log(data);
     dispatch(authActions.regUserSuccess());
   } catch (err) {
     console.log(err);
@@ -20,6 +19,7 @@ const loginUser = ({ email, password }) => async dispatch => {
   try {
     const { data } = await login({ email, password });
     const { name, token } = data.result;
+    userToken.set(token);
     dispatch(authActions.loginUserSuccess({ name, token }));
   } catch (err) {
     dispatch(authActions.loginUserError(err.message));
@@ -30,8 +30,7 @@ const logoutUser = () => async dispatch => {
   dispatch(authActions.logoutUserRequest());
 
   try {
-    const data = await logout();
-    console.log(data);
+    await logout();
     userToken.unset();
     dispatch(authActions.logoutUserSuccess());
   } catch (err) {
