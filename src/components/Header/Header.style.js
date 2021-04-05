@@ -1,5 +1,19 @@
 import { makeStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
+import styled from 'styled-components';
 import { PAGE_BACKGROUND_COLOUR, HEADER_BORDER_COLOUR } from '../../themes/colors';
+
+export const StylesModal = styled(Box)`
+  right: ${props => (props.open ? 0 : '-100%')};
+  /* top: ${props => (props.open ? '71px' : '-100%')}; */
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f5f6fb;
+  padding: 26px 0;
+  text-align: center;
+  transition: all 0.5s linear;
+`;
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -43,9 +57,21 @@ const useStyles = makeStyles(theme => ({
     padding: 0,
     minWidth: 0,
   },
-  modalStyles: {
-    right: `${props => (props.open ? 0 : '-100%')}`,
-  },
+  //   modalStyles: {
+  //     position: 'absolute',
+  //     width: '100vw',
+  //     height: '100vh',
+  //     backgroundColor: '#f5f6fb',
+  //     padding: `26px 0px`,
+  //     textAlign: 'center',
+  //     transition: 'all 0.5s linear',
+  //   },
+  //   modalStylesOpen: {
+  //     right: "-100%",
+  //   },
+  //   modalStylesClose: {
+  //     right: 0,
+  //   },
 
   TestNav: {
     display: 'none',
@@ -55,7 +81,7 @@ const useStyles = makeStyles(theme => ({
       paddingRight: '20px',
     },
   },
-  Span: {
+  spanStyles: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',

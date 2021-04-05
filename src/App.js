@@ -2,7 +2,6 @@ import React, { useEffect, Suspense, lazy } from 'react';
 import { Switch } from 'react-router-dom';
 
 import PreLoader from './components/PreLoader';
-
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import PublicRoute from 'components/PublicRoute/PublicRoute';
 

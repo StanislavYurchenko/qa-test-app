@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -10,9 +9,14 @@ import { PAGE_BACKGROUND_COLOUR, HEADER_BORDER_COLOUR } from '../../themes/color
 import { ReactComponent as LogoSvg } from '../../images1/logo.svg';
 import { ReactComponent as OpenMenuSvg } from '../../images1/openMenu.svg';
 import { ReactComponent as CloseMenuSvg } from '../../images1/closeMenu.svg';
-// import { red } from '@material-ui/core/colors';
+import { ReactComponent as LogOut } from '../../images1/signOut.svg';
+import { StylesModal } from './Header.style';
+
 import styled from 'styled-components';
 import { useState } from 'react';
+import { getIsLoggedIn } from '../../redux/auth/authSelectors';
+import { logoutUser } from '../../redux/auth/authOperations';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { useStyles } from './Header.style';
 
@@ -55,73 +59,15 @@ import { useStyles } from './Header.style';
 //   min-width: 0px;
 // `;
 
-const StylesModal = styled(Box)`
-  right: ${props => (props.open ? 0 : '-100%')};
-  /* top: ${props => (props.open ? '71px' : '-100%')}; */
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  background-color: #f5f6fb;
-  padding: 26px 0;
-  text-align: center;
-  transition: all 0.5s linear;
-`;
-
 const TestNav = styled.p`
   color: black;
   font-size: 14px;
 `;
 
-// const useStyles = makeStyles(theme => ({
-//   root: {
-//     flexGrow: 1,
-//     position: 'fixed',
-//     width: '100%',
-//     zIndex: 100,
-//   },
-//   StylesBox: {
-//     display: 'none',
-//     [theme.breakpoints.down('xs')]: {
-//       // backgroundColor: '#f5f5f5',
-//       display: 'flex',
-//     },
-//   },
-//   TestNav: {
-//     display: 'none',
-//     [theme.breakpoints.up('sm')]: {
-//       // backgroundColor: '#f5f5f5',
-//       display: 'block',
-//       paddingRight: '20px',
-//     },
-//   },
-//   Span: {
-//     display: 'flex',
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     width: '30px',
-//     height: '30px',
-//     borderRadius: '50%',
-//     backgroundColor: '#fff',
-//     color: '#555555',
-//     fontFamily: 'Montserrat',
-//     fontWeight: 600,
-//     fontSize: '12px',
-//     lineHeight: '16px',
-//     marginRight: '20px',
-//   },
-//   // menuButton: {
-//   //   // marginRight: theme.spacing(2),
-//   //   [theme.breakpoints.down('xs')]: {
-//   //     display: 'flex',
-//   // }},
-//   title: {
-//     flexGrow: 1,
-//   },
-// }));
-
 export default function ButtonAppBar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const isLogin = true;
+  const isLogin = useSelector(getIsLoggedIn);
+  const dispatch = useDispatch();
   const classes = useStyles();
 
   const onButtonClick = () => {
@@ -136,7 +82,15 @@ export default function ButtonAppBar() {
             <LogoSvg />
           </Link>
           <TestNav className={classes.TestNav}>Contacts</TestNav>
-          <span className={classes.Span}>D</span>
+          {isLogin && <span className={classes.spanStyles}>D</span>}
+          {isLogin ? (
+            <div className={classes.buttonWrapStyles}>
+              <Button className={classes.buttonStyles} onClick={e => dispatch(logoutUser())}>
+                <LogOut />
+              </Button>
+            </div>
+          ) : null}
+
           <div className={classes.buttonWrapStyles}>
             <Button className={classes.buttonStyles} onClick={onButtonClick}>
               {isModalOpen ? <CloseMenuSvg /> : <OpenMenuSvg />}
@@ -144,10 +98,19 @@ export default function ButtonAppBar() {
           </div>
         </Toolbar>
       </AppBar>
-      <Box className={classes.modalStyles} open={isModalOpen}>
+      <StylesModal open={isModalOpen}>
         <TestNav>Contacts</TestNav>
-      </Box>
-      //{' '}
+        {isLogin ? (
+          <div className={classes.buttonWrapStyles}>
+            <Button
+              className={classes.buttonStyles}
+              //  onClick={dispatch(logoutUser())}
+            >
+              <LogOut />
+            </Button>
+          </div>
+        ) : null}
+      </StylesModal>
     </div>
   );
 }
