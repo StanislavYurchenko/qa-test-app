@@ -1,8 +1,18 @@
+import { useSelector, useDispatch } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 import { TextField, Button } from '@material-ui/core';
+
+import PreLoader from '../PreLoader';
+import { registrationUser } from '../../redux/auth/authOperations';
+import { isSuccessfulReg, loading, error } from '../../redux/auth/authSelectors';
+
 import { useStyles } from './RegisterForm.style';
 
 const RegisterForm = ({ handleToggleButton }) => {
+  const dispatch = useDispatch();
+  const loadingAuth = useSelector(loading);
+  const successfulReg = useSelector(isSuccessfulReg);
+  const errorAuth = useSelector(error);
   const { handleSubmit, control, reset } = useForm();
   const classes = useStyles();
 
@@ -20,6 +30,7 @@ const RegisterForm = ({ handleToggleButton }) => {
 
   const onSubmit = data => {
     if (!validateEmail(data.email)) return;
+    dispatch(registrationUser(data));
     console.log(data);
     reset();
   };
@@ -76,6 +87,7 @@ const RegisterForm = ({ handleToggleButton }) => {
           render={({ onChange, value }) => (
             <TextField
               className={classes.inputText}
+              type="password"
               onChange={onChange}
               value={value}
               label="Password"
@@ -97,9 +109,13 @@ const RegisterForm = ({ handleToggleButton }) => {
           SIGN IN
         </Button>
         <Button type="submit" variant="contained">
-          SIGN UP
+          {loadingAuth ? <PreLoader sizePreloader="16px" /> : 'SIGN UP'}
         </Button>
       </form>
+      {successfulReg && (
+        <p>An email has been sent to your mail with confirmation of registration.</p>
+      )}
+      {!!errorAuth === true && <p>Invalid email or password! Try again!</p>}
     </div>
   );
 };

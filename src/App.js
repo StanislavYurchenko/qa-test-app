@@ -1,5 +1,6 @@
 import React, { useEffect, Suspense, lazy } from 'react';
 import { Switch } from 'react-router-dom';
+import Navigation from './components/Navigation';
 
 import PreLoader from './components/PreLoader';
 
@@ -7,8 +8,10 @@ import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import PublicRoute from 'components/PublicRoute/PublicRoute';
 
 const MainPage = lazy(() => import('pages/MainPage/MainPage' /* webpackChunkName: "MainPage" */));
-
 const AuthPage = lazy(() => import('pages/AuthPage/AuthPage' /* webpackChunkName: "AuthPage" */));
+const ResultsPage = lazy(() =>
+  import('pages/ResultsPage/ResultsPage' /* webpackChunkName: "ResultsPage" */),
+);
 
 const ContactsPage = lazy(() =>
   import('pages/ContactsPage/ContactsPage' /* webpackChunkName: "ContactsPage" */),
@@ -17,27 +20,33 @@ const ContactsPage = lazy(() =>
 function App() {
   return (
     <>
+      <Navigation />
       <Suspense fallback={<PreLoader sizePreloader="200px" />}>
-        <PublicRoute path="/contacts">
-          <ContactsPage />
-        </PublicRoute>
-        {/* <Switch>
-          <PublicRoute exact path="/auth">
+        <Switch>
+          <PublicRoute path="/auth" redirectTo="/" restricted>
             <AuthPage />
           </PublicRoute>
 
-          <PrivateRoute path="/" redirectTo="/auth">
+          <PrivateRoute exact path="/" redirectTo="/auth">
             <MainPage />
+          </PrivateRoute>
+
+          <PrivateRoute path="/materials" redirectTo="/auth">
+            <div>Страница доп материалов</div>
           </PrivateRoute>
 
           <PublicRoute path="/contacts">
             <ContactsPage />
           </PublicRoute>
 
+          <PrivateRoute path="/results" redirectTo="/auth">
+            <ResultsPage />
+          </PrivateRoute>
+
           <PublicRoute>
             <div>not found</div>
           </PublicRoute>
-        </Switch> */}
+        </Switch>
       </Suspense>
     </>
   );
