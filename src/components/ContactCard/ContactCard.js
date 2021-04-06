@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { StylesProvider } from '@material-ui/core/styles';
+import LinkList from '../LinkList';
 
 import {
   StyledCard,
@@ -11,51 +12,28 @@ import {
   StyledAbout,
   StyledWrapper,
   Overlay,
-  SocialList,
   Wrapper,
 } from './ContactCard.styled.js';
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    // width: 280,
-    // margin: `${theme.spacing(2.5)}px auto`,
-  },
   paper: {
-    // width: 240,
     margin: `${theme.spacing(1)}px auto`,
     padding: theme.spacing(2),
   },
 }));
 
-const ContactCard = ({ photo, name, position, about }) => {
+const ContactCard = ({ photo, name, position, about, hubLink, linLink }) => {
   const classes = useStyles();
 
   return (
     <StylesProvider injectFirst>
       <Wrapper>
         <Overlay className="overlay">
-          <SocialList>
-            <li>
-              <a href="#">
-                <svg>
-                  <use href="./images/icons/sprite.svg#icon-facebook"></use>
-                </svg>
-                <span class="visually-hidden">facebook link</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="social-list__item-link social-list__item-link--twitter">
-                <svg class="social-list__item-svg">
-                  <use href="./images/icons/sprite.svg#icon-twitter"></use>
-                </svg>
-                <span class="visually-hidden">twitter link</span>
-              </a>
-            </li>
-          </SocialList>
+          <LinkList hubLink={hubLink} linLink={linLink} />
         </Overlay>
-        <StyledCard className={classes.root}>
+        <StyledCard>
           <StyledWrapper>
-            <StyledCardMedia component="img" alt={name} height="244" image={photo} title={name} />
+            <StyledCardMedia width="280" height="244" alt={name} src={photo} title={name} />
             <StyledCardContent>
               <StyledTypography color="textPrimary" component="p">
                 {name}
@@ -75,9 +53,12 @@ const ContactCard = ({ photo, name, position, about }) => {
 };
 
 ContactCard.propTypes = {
-  name: PropTypes.string.isRequired,
-  position: PropTypes.string.isRequired,
-  about: PropTypes.string.isRequired,
+  photo: PropTypes.string,
+  name: PropTypes.string,
+  position: PropTypes.string,
+  about: PropTypes.string,
+  hubLink: PropTypes.string,
+  linLink: PropTypes.string,
 };
 
 export default ContactCard;
