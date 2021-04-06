@@ -1,6 +1,8 @@
 import React, { useEffect, Suspense, lazy } from 'react';
+import { useDispatch } from 'react-redux';
 import { Switch } from 'react-router-dom';
 import Header from './components/Header';
+import { getCurrentUser } from './redux/auth/authOperations';
 
 import PreLoader from './components/PreLoader';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
@@ -12,7 +14,17 @@ const ResultsPage = lazy(() =>
   import('pages/ResultsPage/ResultsPage' /* webpackChunkName: "ResultsPage" */),
 );
 
+const ContactsPage = lazy(() =>
+  import('pages/ContactsPage/ContactsPage' /* webpackChunkName: "ContactsPage" */),
+);
+
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch]);
+
   return (
     <>
       <Header />
@@ -31,7 +43,7 @@ function App() {
           </PrivateRoute>
 
           <PublicRoute path="/contacts">
-            <div>Contacts</div>
+            <ContactsPage />
           </PublicRoute>
 
           <PrivateRoute path="/results" redirectTo="/auth">
