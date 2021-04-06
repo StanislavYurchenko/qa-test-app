@@ -11,7 +11,7 @@ export const SectionStyle = styled.section`
   background-color: ${PAGE_BACKGROUND_COLOUR};
   padding: 40px 20px 56px;
 
-  @media screen and (min-width: 720px) {
+  @media screen and (min-width: 768px) {
     padding: 41px 22px 76px;
   }
 
@@ -34,7 +34,7 @@ export const Title = styled.h2`
   padding-bottom: 10px;
   margin-bottom: 20px;
 
-  @media screen and (min-width: 720px) {
+  @media screen and (min-width: 768px) {
     font-size: 22px;
     width: 322px;
     padding-bottom: 22px;
