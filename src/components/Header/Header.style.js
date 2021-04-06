@@ -5,7 +5,6 @@ import { PAGE_BACKGROUND_COLOUR, HEADER_BORDER_COLOUR } from '../../themes/color
 
 export const StylesModal = styled(Box)`
   right: ${props => (props.open ? 0 : '-100%')};
-  /* top: ${props => (props.open ? '71px' : '-100%')}; */
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -19,6 +18,8 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     position: 'fixed',
+    top: 0,
+    maxWidth: '1280px',
     width: '100%',
     zIndex: 100,
   },
@@ -68,21 +69,11 @@ const useStyles = makeStyles(theme => ({
     padding: 0,
     minWidth: 0,
   },
-  //   modalStyles: {
-  //     position: 'absolute',
-  //     width: '100vw',
-  //     height: '100vh',
-  //     backgroundColor: '#f5f6fb',
-  //     padding: `26px 0px`,
-  //     textAlign: 'center',
-  //     transition: 'all 0.5s linear',
-  //   },
-  //   modalStylesOpen: {
-  //     right: "-100%",
-  //   },
-  //   modalStylesClose: {
-  //     right: 0,
-  //   },
+  modalStyles: {
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
+    },
+  },
 
   TestNav: {
     display: 'none',
