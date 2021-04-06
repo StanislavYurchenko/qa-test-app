@@ -1,0 +1,144 @@
+body {
+  background-color: #e5e5e5;
+}
+
+.section {
+  padding: 24px 20px 20px;
+}
+
+.above {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  width: 130px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.02em;
+  color: #000000;
+}
+
+.aboveButton {
+  width: 130px;
+  height: 48px;
+  outline: none;
+  border: none;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0.02em;
+
+  background-color: #fff;
+  transition: all 0.3s linear;
+}
+
+.aboveButton:hover,
+.aboveButton:focus {
+  color: #fff;
+  background-color: #ff6b09;
+  cursor: pointer;
+  box-shadow: 0px 4px 15px rgba(2, 23, 42, 0.1);
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  width: 55px;
+  height: 34px;
+  outline: none;
+  border: none;
+  background-color: #fff;
+  transition: all 0.3s linear;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.02em;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn:disabled svg {
+  fill: rgba(2, 23, 42, 0.1);
+}
+
+.btn:not(:disabled):hover {
+  background-color: #ff6b09;
+  cursor: pointer;
+  box-shadow: 0px 4px 15px rgba(2, 23, 42, 0.1);
+}
+
+.btn:not(:disabled):hover svg {
+  fill: #fff;
+}
+
+.btn:not(:disabled):hover span {
+  color: #fff;
+}
+
+.btn span {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 42px calc(50% - 326px);
+  }
+
+  .title {
+    width: 210px;
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .aboveButton {
+    width: 190px;
+    height: 48px;
+
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .btn {
+    width: 210px;
+    height: 34px;
+  }
+
+  .btn span {
+    padding: 0 11px;
+    display: block;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section {
+    padding: 42px calc(50% - 410px);
+  }
+
+  .title {
+    width: 210px;
+    font-size: 22px;
+    line-height: 27px;
+  }
+
+  .btn {
+    width: 210px;
+    height: 34px;
+  }
+}
