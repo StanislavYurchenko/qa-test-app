@@ -85,22 +85,38 @@ export default function ButtonAppBar() {
           <Navigation className={classes.TestNav} />
           {/* <TestNav className={classes.TestNav}>Contacts</TestNav> */}
           {isLogin && <span className={classes.spanStyles}>D</span>}
-          {isLogin ? (
-            <div className={classes.buttonWrapStylesClose}>
-              <Button className={classes.buttonStyles} onClick={e => dispatch(logoutUser())}>
-                <LogOut />
-              </Button>
-            </div>
-          ) : null}
+          {/* {isLogin && (
+          //   <div className={classes.buttonWrapStylesClose}>
+          //     <Button className={classes.buttonStyles} onClick={e => dispatch(logoutUser())}>
+          //       <LogOut />
+          //     </Button>
+          //   </div>
+          )} */}
+          <Box className={classes.buttonWrapStyles} display={{ xs: 'none', sm: 'flex' }}>
+            <Button className={classes.buttonStyles} onClick={e => dispatch(logoutUser())}>
+              <LogOut />
+            </Button>
+          </Box>
 
-          <div className={classes.buttonWrapStyles}>
+          <Box className={classes.buttonWrapStyles} display={{ xs: 'flex', sm: 'none' }}>
             <Button className={classes.buttonStyles} onClick={onButtonClick}>
               {isModalOpen ? <CloseMenuSvg /> : <OpenMenuSvg />}
             </Button>
-          </div>
+          </Box>
+
+          {/* <div className={classes.buttonWrapStyles}>
+            <Button className={classes.buttonStyles} onClick={onButtonClick}>
+              {isModalOpen ? <CloseMenuSvg /> : <OpenMenuSvg />}
+            </Button>
+          </div> */}
         </Toolbar>
       </AppBar>
-      <StylesModal open={isModalOpen}>
+      {/* <Box p={3} display={{ xs: "block", sm: "none", md: "block" }}
+       bgcolor="background.paper"
+       >
+Ghbjjhhhhb <Button/>
+      </Box> */}
+      <StylesModal className={classes.modalStyles} open={isModalOpen}>
         <Navigation className={classes.TestNav} />
         {isLogin ? (
           <div className={classes.buttonWrapStyles}>
