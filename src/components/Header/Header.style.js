@@ -8,7 +8,7 @@ export const StylesModal = styled(Box)`
   position: absolute;
   width: 100vw;
   height: 100vh;
-  background-color: #f5f6fb;
+  background-color: ${PAGE_BACKGROUND_COLOUR};
   padding: 26px 0;
   text-align: center;
   transition: all 0.5s linear;
@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
   },
   headerStyles: {
     boxShadow: 'none',
-    backgroundColor: '#f5f6fb',
+    backgroundColor: `${PAGE_BACKGROUND_COLOUR}`,
     borderBottom: `1px solid ${HEADER_BORDER_COLOUR}`,
     zIndex: 11,
   },
@@ -42,15 +42,15 @@ const useStyles = makeStyles(theme => ({
     paddingRight: 0,
   },
   buttonWrapStyles: {
-    display: 'none',
+    // display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     minWidth: '55px',
     minHeight: '70px',
     borderLeft: `1px solid ${HEADER_BORDER_COLOUR}`,
-    [theme.breakpoints.down('xs')]: {
-      display: 'flex',
-    },
+    // [theme.breakpoints.down('xs')]: {
+    //   display: 'flex',
+    // },
   },
   buttonWrapStylesClose: {
     display: 'none',
