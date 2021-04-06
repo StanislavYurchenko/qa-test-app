@@ -1,47 +1,57 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-// import * as phoneBookApi from 'api/phoneBookApi';
+import authActions from './authAction';
+import { registration, login, logout, getUserInfo, userToken } from '../../services/authApi';
 
-export const signup = createAsyncThunk('auth/signup', async (contact, { rejectWithValue }) => {
-  // try {
-  //   const response = await phoneBookApi.signup(contact);
-  //   phoneBookApi.authToken.set(response.token);
-  //   return response;
-  // } catch (error) {
-  //   return rejectWithValue(error);
-  // }
-});
+const registrationUser = ({ name, email, password }) => async dispatch => {
+  dispatch(authActions.regUserRequest());
 
-export const login = createAsyncThunk('auth/login', async (contact, { rejectWithValue }) => {
-  // try {
-  //   const response = await phoneBookApi.login(contact);
-  //   phoneBookApi.authToken.set(response.token);
-  //   return response;
-  // } catch (error) {
-  //   return rejectWithValue(error);
-  // }
-});
+  try {
+    await registration({ name, email, password });
+    dispatch(authActions.regUserSuccess());
+  } catch (err) {
+    dispatch(authActions.regUserError(err.message));
+  }
+};
 
-export const logout = createAsyncThunk('auth/logout', async (_, { rejectWithValue }) => {
-  // try {
-  //   const response = await phoneBookApi.logout();
-  //   phoneBookApi.authToken.unset();
-  //   return response;
-  // } catch (error) {
-  //   return rejectWithValue(error);
-  // }
-});
+const loginUser = ({ email, password }) => async dispatch => {
+  dispatch(authActions.loginUserRequest());
 
-export const getUser = createAsyncThunk(
-  'auth/getUser',
-  async (_, { rejectWithValue, getState }) => {
-    // const state = getState();
-    // const persistedToken = state.auth.token;
-    // if (!Boolean(persistedToken)) return rejectWithValue();
-    // phoneBookApi.authToken.set(persistedToken);
-    // try {
-    //   return await phoneBookApi.getUser();
-    // } catch (error) {
-    //   return rejectWithValue(error);
-    // }
-  },
-);
+  try {
+    const { data } = await login({ email, password });
+    const { name, token } = data.result;
+    userToken.set(token);
+    dispatch(authActions.loginUserSuccess({ name, token }));
+  } catch (err) {
+    dispatch(authActions.loginUserError(err.message));
+  }
+};
+
+const logoutUser = () => async dispatch => {
+  dispatch(authActions.logoutUserRequest());
+
+  try {
+    await logout();
+    userToken.unset();
+    dispatch(authActions.logoutUserSuccess());
+  } catch (err) {
+    dispatch(authActions.logoutUserError(err.message));
+  }
+};
+
+const getCurrentUser = () => async (dispatch, getState) => {
+  const {
+    auth: { token: persistedToken },
+  } = getState();
+  if (!persistedToken) return;
+  userToken.set(persistedToken);
+  dispatch(authActions.getCurrentUserRequest());
+
+  try {
+    const { data } = await getUserInfo();
+    const { result } = data;
+    dispatch(authActions.getCurrentUserSuccess(result.name));
+  } catch (err) {
+    dispatch(authActions.getCurrentUserError(err.message));
+  }
+};
+
+export { registrationUser, loginUser, logoutUser, getCurrentUser };
