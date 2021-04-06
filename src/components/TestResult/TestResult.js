@@ -1,4 +1,4 @@
-import { HeadingParagraph, DescriptionParagraph } from './TestResult.SC';
+import { HeadingParagraph, DescriptionParagraph } from './TestResult.style';
 
 export default function TestResult() {
   const correctAnswers = 10;

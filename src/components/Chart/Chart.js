@@ -1,5 +1,5 @@
 import { Pie } from 'react-chartjs-2';
-import { PieContainer, AnswersContainer } from './Chart.SC';
+import { PieContainer, AnswersContainer } from './Chart.style';
 import { ACCENT_COLOUR, BAD_RESULT_COLOUR } from '../../themes/colors';
 
 const correctAnswers = 10;
@@ -28,7 +28,7 @@ const options = {
   maintainAspectRatio: false,
 };
 
-export default function ChartView() {
+export default function Chart() {
   return (
     <div style={{ marginBottom: '30px' }}>
       <PieContainer>
