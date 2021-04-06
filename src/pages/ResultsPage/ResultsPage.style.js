@@ -4,6 +4,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import { ACCENT_COLOUR } from '../../themes/colors';
 
 const MainContainer = styled.div`
+  position: absolute;
+  top: 110px;
+  right: calc((100vw - 510px) / 2);
+
   display: flex;
   flex-direction: column;
   align-items: center;
