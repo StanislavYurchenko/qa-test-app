@@ -41,10 +41,11 @@ export const StyledCard = styled(Card)`
 
 export const StyledWrapper = styled(CardActionArea)`
   padding: 0 0 22px 0;
-  width: 240;
+  width: 280;
 `;
 
 export const StyledCardMedia = styled(CardMedia)`
+  width: 280;
   height: 244px;
   margin-bottom: 20px;
   object-fit: cover;
