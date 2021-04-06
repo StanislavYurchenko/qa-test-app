@@ -18,6 +18,9 @@ const ResultsPage = lazy(() =>
 const ContactsPage = lazy(() =>
   import('pages/ContactsPage/ContactsPage' /* webpackChunkName: "ContactsPage" */),
 );
+const NotFoundPage = lazy(() =>
+  import('pages/NotFoundPage' /* webpackChunkName: "NotFoundPage" */),
+);
 
 function App() {
   const dispatch = useDispatch();
@@ -53,7 +56,7 @@ function App() {
             </PrivateRoute>
 
             <PublicRoute>
-              <div>not found</div>
+              <NotFoundPage />
             </PublicRoute>
           </Switch>
         </Suspense>
