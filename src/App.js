@@ -34,25 +34,29 @@ function App() {
         <Header />
         <Suspense fallback={<PreLoader sizePreloader="200px" />}>
           <Switch>
-            <PublicRoute path="/auth" redirectTo="/" restricted>
-              <AuthPage />
-            </PublicRoute>
-
             <PrivateRoute exact path="/" redirectTo="/auth">
               <MainPage />
             </PrivateRoute>
 
-            <PrivateRoute path="/materials" redirectTo="/auth">
-              <MaterialsPage />
+            <PrivateRoute path="/useful-info" redirectTo="/auth">
+              <div>Страница доп материалов</div>
             </PrivateRoute>
 
             <PublicRoute path="/contacts">
               <ContactsPage />
             </PublicRoute>
 
+            <PrivateRoute path="/test" redirectTo="/auth">
+              <div>Страница тестов</div>
+            </PrivateRoute>
+
             <PrivateRoute path="/results" redirectTo="/auth">
               <ResultsPage />
             </PrivateRoute>
+
+            <PublicRoute path="/auth" redirectTo="/" restricted>
+              <AuthPage />
+            </PublicRoute>
 
             <PublicRoute>
               <div>not found</div>
