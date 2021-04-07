@@ -1,39 +1,92 @@
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
-import { PAGE_BACKGROUND_COLOUR, HEADER_BORDER_COLOUR } from '../../themes/colors';
+import {
+  PAGE_BACKGROUND_COLOUR,
+  HEADER_BORDER_COLOUR,
+  SECONDARY_TEXT_COLOUR,
+  DARK_GREY_TEXT_COLOUR,
+} from '../../themes/colors';
+import BREAKPOINT from '../../utils/breakpoints';
 
-export const StylesModal = styled(Box)`
+export const Modal = styled(Box)`
   right: ${props => (props.open ? 0 : '-100%')};
   position: absolute;
   width: 100vw;
   height: 100vh;
   background-color: ${PAGE_BACKGROUND_COLOUR};
-  padding: 26px 0;
+  padding: 2.6rem 0;
   text-align: center;
-  transition: all 0.5s linear;
+  transition: right 0.5s linear;
+  @media screen and (min-width: ${BREAKPOINT.MOBILE_MAX}) {
+    display: none;
+  } ;
+`;
+
+export const HeaderWrap = styled(Box)`
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  @media screen and (min-width: ${BREAKPOINT.MOBILE_BREAKPOINT}) {
+    max-width: ${BREAKPOINT.TABLET};
+  }
+  @media screen and (min-width: ${BREAKPOINT.TABLET_BREAKPOINT}) {
+    max-width: ${BREAKPOINT.DESKTOP};
+  }
+`;
+
+export const Logo = styled(Link)`
+  display: block;
+  width: 129px;
+  height: 28px;
+  margin-right: auto;
+`;
+
+export const ButtonWrap = styled(Box)`
+  display: ${props => (props.toggle ? 'flex' : 'none')};
+  align-items: center;
+  justify-content: center;
+  min-width: 55px;
+  min-height: 70px;
+  border-left: 1px solid ${HEADER_BORDER_COLOUR};
+
+  @media screen and (min-width: ${BREAKPOINT.MOBILE_MAX}) {
+    display: ${props => (props.toggle ? 'none' : 'flex')};
+  } ;
+`;
+
+export const ButtonStyles = styled(Button)`
+  width: 15px;
+  height: 15px;
+  padding: 0px;
+  min-width: 0px;
+`;
+
+export const Span = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: ${SECONDARY_TEXT_COLOUR};
+  color: ${DARK_GREY_TEXT_COLOUR};
+  font-family: Montserrat, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  margin-right: 20px;
 `;
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-    position: 'fixed',
-    top: 0,
-    maxWidth: '1280px',
-    width: '100%',
-    zIndex: 100,
-  },
   headerStyles: {
     boxShadow: 'none',
     backgroundColor: `${PAGE_BACKGROUND_COLOUR}`,
     borderBottom: `1px solid ${HEADER_BORDER_COLOUR}`,
     zIndex: 11,
-  },
-  logoStyles: {
-    display: 'block',
-    width: '129px',
-    height: '28px',
-    marginRight: 'auto',
   },
   toolBarStyles: {
     minHeight: '70px',
@@ -41,70 +94,13 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: '20px',
     paddingRight: 0,
   },
-  buttonWrapStyles: {
-    // display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    minWidth: '55px',
-    minHeight: '70px',
-    borderLeft: `1px solid ${HEADER_BORDER_COLOUR}`,
-    // [theme.breakpoints.down('xs')]: {
-    //   display: 'flex',
-    // },
-  },
-  buttonWrapStylesClose: {
-    display: 'none',
-    alignItems: 'center',
-    justifyContent: 'center',
-    minWidth: '55px',
-    minHeight: '70px',
-    borderLeft: `1px solid ${HEADER_BORDER_COLOUR}`,
-    [theme.breakpoints.up('xs')]: {
-      display: 'flex',
-    },
-  },
-  buttonStyles: {
-    width: '15px',
-    height: '15px',
-    padding: 0,
-    minWidth: 0,
-  },
-  modalStyles: {
-    [theme.breakpoints.up('sm')]: {
-      display: 'none',
-    },
-  },
 
   TestNav: {
     display: 'none',
     [theme.breakpoints.up('sm')]: {
-      // backgroundColor: '#f5f5f5',
       display: 'block',
       paddingRight: '20px',
     },
-  },
-  spanStyles: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '30px',
-    height: '30px',
-    borderRadius: '50%',
-    backgroundColor: '#fff',
-    color: '#555555',
-    fontFamily: 'Montserrat',
-    fontWeight: 600,
-    fontSize: '12px',
-    lineHeight: '16px',
-    marginRight: '20px',
-  },
-  // menuButton: {
-  //   // marginRight: theme.spacing(2),
-  //   [theme.breakpoints.down('xs')]: {
-  //     display: 'flex',
-  // }},
-  title: {
-    flexGrow: 1,
   },
 }));
 
