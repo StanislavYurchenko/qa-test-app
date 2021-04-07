@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { logoutUser } from '../../redux/auth/authOperations';
-import { Paper, Container, Typography } from '@material-ui/core';
+import { Section, Title } from './MainPageComponents.style';
 
 function MainPageComponents() {
   const dispatch = useDispatch();
@@ -10,10 +10,12 @@ function MainPageComponents() {
   };
   return (
     <main className="main">
-      <h1>
-        “Regression testing. What is it? If the system compiles, that's good, if it boots, that's
-        great!”
-      </h1>
+      <Section>
+        <Title>
+          “Regression testing. What is it? If the system compiles, that's good, if it boots, that's
+          great!”
+        </Title>
+      </Section>
     </main>
   );
 }
