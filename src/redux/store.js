@@ -17,6 +17,7 @@ const testPersistConfig = {
   key: 'test',
   storage,
   whitelist: ['questions', 'answers'],
+  blacklist: ['_persist'],
 };
 
 const rootReducer = combineReducers({

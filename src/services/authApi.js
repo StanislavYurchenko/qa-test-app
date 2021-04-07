@@ -26,3 +26,7 @@ export const logout = () => {
 export const getUserInfo = () => {
   return axios.get('/users/current').then(data => data);
 };
+
+export const fetchQuestions = () => {
+  return axios.get('/api/test-theory').then(data => data.data.data);
+};

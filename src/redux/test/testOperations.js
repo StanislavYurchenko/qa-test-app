@@ -1,17 +1,21 @@
-import axios from 'axios';
-import { getTestTheory } from '../../services/testApi';
-import testActions from './testActions';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { fetchQuestions } from '../../services/authApi';
+import { getAnswers } from './testSelectors';
 
-axios.defaults.baseURL = 'http://qa-test-api-hakaton2021goit.herokuapp.com';
-
-export const fetchQuestions = () => async dispatch => {
-  dispatch(testActions.fetchTestsRequest());
-
+export const fetchTest = createAsyncThunk('test/fetchTest', async (_, rejectWithValue) => {
   try {
-    const response = await testServices.getTestTheory();
-    console.log(`response`, response);
-    dispatch(testActions.fetchTestsSuccess(response.data));
+    const res = await fetchQuestions();
+    return res;
   } catch (error) {
-    dispatch(testActions.fetchTestsError(error));
+    return rejectWithValue(error);
   }
-};
+});
+
+export const sendAnswers = createAsyncThunk('test/sendAnswers', async (_, rejectWithValue) => {
+  try {
+    const res = await sendAnswers(getAnswers);
+    return res;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});

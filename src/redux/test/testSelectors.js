@@ -1,0 +1,5 @@
+export const getCategory = state => state.test.category;
+export const getQuestions = state => state.test.questions;
+export const getAnswers = state => state.test.answers;
+export const loading = state => state.test.loading;
+export const error = state => state.test.error;

@@ -1,32 +1,28 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Card from './Card';
-import { techTestQA, teoryTest } from './data';
 import s from './Test.module.css';
 import styled from 'styled-components';
 import { ReactComponent as PrevSvg } from '../../images/prev.svg';
 import { ReactComponent as NextSvg } from '../../images/next.svg';
 import testActions from '../../redux/test/testActions';
-import { fetchQuestions } from 'redux/test/testOperations';
+import { fetchTest, sendAnswers } from 'redux/test/testOperations';
+import * as selectors from '../../redux/test/testSelectors';
 
 export default function Test({ title }) {
-  // const [answers, setAnswers] = useState({});
   const [activeCard, setActiveCard] = useState(0);
 
-  const answers = useSelector(state => state.test.answers);
-  const questions = useSelector(state => state.test.questions);
-  console.log(`answers`, answers);
+  const answers = useSelector(selectors.getAnswers);
+  const questions = useSelector(selectors.getQuestions);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    fetchQuestions();
-  }, []);
+  const isRender = questions.length;
 
   useEffect(() => {
-    if (questions.length === Object.keys(answers).length) {
-      handleMainButton(answers);
-    }
-  }, [answers]);
+    dispatch(fetchTest());
+  }, []);
+
+  useEffect(() => {}, [answers]);
 
   const handlePrev = () => {
     setActiveCard(activeCard - 1);
@@ -40,11 +36,14 @@ export default function Test({ title }) {
     dispatch(testActions.addAnswer(targerAnswer));
   };
 
-  const handleMainButton = (value = null) => {
-    if (value === null) {
-      dispatch(testActions.resetAnswers({}));
+  const handleMainButton = () => {
+    if (questions.length === Object.keys(answers).length) {
+      console.log(`questions.length`, questions.length);
+      console.log(`Object.keys(answers).length`, Object.keys(answers).length);
+      console.log(`не на всі відповіли`);
+      return;
     }
-    // testOperations.sendAnswers();
+    dispatch(sendAnswers(answers));
   };
 
   return (
@@ -56,12 +55,14 @@ export default function Test({ title }) {
             Завершить тест
           </button>
         </div>
-        <Card
-          questions={questions}
-          activeCard={activeCard}
-          handleAnswer={handleAnswer}
-          answered={answers}
-        />
+        {isRender && (
+          <Card
+            questions={questions}
+            activeCard={activeCard}
+            handleAnswer={handleAnswer}
+            answered={answers}
+          />
+        )}
         <div className={s.buttons}>
           <button
             className={s.btn}
