@@ -1,21 +1,18 @@
-import { Link } from 'react-router-dom';
-import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
-import { Container, Oops } from './NotFound.style';
+import { Container, Oops, Icon, ErrorCode, Message, Return, StyledLink } from './NotFound.style';
 
 const NotFound = () => {
   return (
     <Container>
-      <RemoveCircleIcon />
-      <Oops>OOPS!!</Oops>
-      <div>We can't seems to find the page you're looking for</div>
-      <div>
+      <Icon />
+      <Oops>OOPS!!!</Oops>
+      <Message>We can't seems to find the page you're looking for</Message>
+      <ErrorCode>
         ERROR code: <span>404</span>
-      </div>
-      <div>
-        <span>return to </span>
-        <Link to="/">main</Link>
-        <span> page</span>
-      </div>
+      </ErrorCode>
+      <Return>
+        <span>Return to </span>
+        <StyledLink to="/">home page</StyledLink>.
+      </Return>
     </Container>
   );
 };
