@@ -14,9 +14,11 @@ const AuthPage = lazy(() => import('pages/AuthPage/AuthPage' /* webpackChunkName
 const ResultsPage = lazy(() =>
   import('pages/ResultsPage/ResultsPage' /* webpackChunkName: "ResultsPage" */),
 );
-
 const ContactsPage = lazy(() =>
   import('pages/ContactsPage/ContactsPage' /* webpackChunkName: "ContactsPage" */),
+);
+const MaterialsPage = lazy(() =>
+  import('pages/MaterialsPage/MaterialsPage' /* webpackChunkName: "MaterialsPage" */),
 );
 
 function App() {
@@ -32,15 +34,11 @@ function App() {
       <Container>
         <Suspense fallback={<PreLoader sizePreloader="200px" />}>
           <Switch>
-            <PublicRoute path="/auth" redirectTo="/" restricted>
-              <AuthPage />
-            </PublicRoute>
-
             <PrivateRoute exact path="/" redirectTo="/auth">
               <MainPage />
             </PrivateRoute>
 
-            <PrivateRoute path="/materials" redirectTo="/auth">
+            <PrivateRoute path="/useful-info" redirectTo="/auth">
               <div>Страница доп материалов</div>
             </PrivateRoute>
 
@@ -48,9 +46,17 @@ function App() {
               <ContactsPage />
             </PublicRoute>
 
+            <PrivateRoute path="/test" redirectTo="/auth">
+              <div>Страница тестов</div>
+            </PrivateRoute>
+
             <PrivateRoute path="/results" redirectTo="/auth">
               <ResultsPage />
             </PrivateRoute>
+
+            <PublicRoute path="/auth" redirectTo="/" restricted>
+              <AuthPage />
+            </PublicRoute>
 
             <PublicRoute>
               <div>not found</div>
