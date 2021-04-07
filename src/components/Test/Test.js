@@ -1,16 +1,32 @@
 import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Card from './Card';
 import { techTestQA, teoryTest } from './data';
 import s from './Test.module.css';
 import styled from 'styled-components';
 import { ReactComponent as PrevSvg } from '../../images/prev.svg';
 import { ReactComponent as NextSvg } from '../../images/next.svg';
+import testActions from '../../redux/test/testActions';
+import { fetchQuestions } from 'redux/test/testOperations';
 
 export default function Test({ title }) {
-  const [answers, setAnswers] = useState({});
+  // const [answers, setAnswers] = useState({});
   const [activeCard, setActiveCard] = useState(0);
 
-  useEffect(() => {}, []);
+  const answers = useSelector(state => state.test.answers);
+  const questions = useSelector(state => state.test.questions);
+  console.log(`answers`, answers);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    fetchQuestions();
+  }, []);
+
+  useEffect(() => {
+    if (questions.length === Object.keys(answers).length) {
+      handleMainButton(answers);
+    }
+  }, [answers]);
 
   const handlePrev = () => {
     setActiveCard(activeCard - 1);
@@ -21,10 +37,15 @@ export default function Test({ title }) {
   };
 
   const handleAnswer = targerAnswer => {
-    setAnswers({ ...answers, ...targerAnswer });
+    dispatch(testActions.addAnswer(targerAnswer));
   };
 
-  const handleMainButton = () => {};
+  const handleMainButton = (value = null) => {
+    if (value === null) {
+      dispatch(testActions.resetAnswers({}));
+    }
+    // testOperations.sendAnswers();
+  };
 
   return (
     <>
@@ -36,7 +57,7 @@ export default function Test({ title }) {
           </button>
         </div>
         <Card
-          questions={techTestQA}
+          questions={questions}
           activeCard={activeCard}
           handleAnswer={handleAnswer}
           answered={answers}
@@ -55,7 +76,7 @@ export default function Test({ title }) {
             className={s.btn}
             type="button"
             onClick={handleNext}
-            disabled={activeCard + 1 === techTestQA.length}
+            disabled={activeCard + 1 >= questions.length}
           >
             <span>Следующий вопрос</span>
             <NextSvg />
