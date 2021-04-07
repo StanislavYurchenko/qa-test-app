@@ -4,10 +4,11 @@ import styled from 'styled-components';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Navigation from 'components/Navigation';
-import { ReactComponent as LogoSvg } from '../../images1/logo.svg';
-import { ReactComponent as OpenMenuSvg } from '../../images1/openMenu.svg';
-import { ReactComponent as CloseMenuSvg } from '../../images1/closeMenu.svg';
-import { ReactComponent as LogOut } from '../../images1/signOut.svg';
+import { MainContainer } from 'components/Container/Container.style';
+import { ReactComponent as LogoSvg } from '../../images/header_icons/logo.svg';
+import { ReactComponent as OpenMenuSvg } from '../../images/header_icons/openMenu.svg';
+import { ReactComponent as CloseMenuSvg } from '../../images/header_icons/closeMenu.svg';
+import { ReactComponent as LogOut } from '../../images/header_icons/signOut.svg';
 import { Modal, HeaderWrap, ButtonWrap, Logo, ButtonStyles, Span } from './Header.style';
 import { useStyles } from './Header.style';
 import { getIsLoggedIn } from '../../redux/auth/authSelectors';
@@ -29,6 +30,7 @@ export default function Header() {
   };
 
   return (
+    // <MainContainer>
     <HeaderWrap>
       <AppBar position="static" className={classes.headerStyles}>
         <Toolbar className={classes.toolBarStyles}>
@@ -64,5 +66,6 @@ export default function Header() {
         )}
       </Modal>
     </HeaderWrap>
+    //  </MainContainer>
   );
 }

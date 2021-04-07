@@ -28,8 +28,8 @@ function App() {
 
   return (
     <>
+      <Header />
       <Container>
-        <Header />
         <Suspense fallback={<PreLoader sizePreloader="200px" />}>
           <Switch>
             <PublicRoute path="/auth" redirectTo="/" restricted>

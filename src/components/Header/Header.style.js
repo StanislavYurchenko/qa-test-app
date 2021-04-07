@@ -28,6 +28,8 @@ export const Modal = styled(Box)`
 export const HeaderWrap = styled(Box)`
   position: fixed;
   top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
   z-index: 100;
   @media screen and (min-width: ${BREAKPOINT.MOBILE_BREAKPOINT}) {
