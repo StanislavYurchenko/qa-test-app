@@ -16,6 +16,7 @@ const successfulReg = createReducer(false, {
 const token = createReducer(null, {
   [authActions.loginUserSuccess]: (_, { payload }) => payload.token,
   [authActions.logoutUserSuccess]: () => null,
+  [authActions.getCurrentUserError]: () => null,
 });
 
 const isLoggedIn = createReducer(false, {
