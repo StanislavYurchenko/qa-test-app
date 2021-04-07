@@ -1,6 +1,6 @@
-import React, { useEffect, Suspense, lazy } from 'react';
+import React, { useEffect, Suspense, lazy, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { Switch } from 'react-router-dom';
+import { Switch, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Container from './components/Container';
 import { getCurrentUser } from './redux/auth/authOperations';
@@ -23,6 +23,9 @@ const MaterialsPage = lazy(() =>
 
 function App() {
   const dispatch = useDispatch();
+  const location = useLocation();
+
+  const currentRoute = useRef(location);
 
   useEffect(() => {
     dispatch(getCurrentUser());
@@ -54,7 +57,7 @@ function App() {
               <ResultsPage />
             </PrivateRoute>
 
-            <PublicRoute path="/auth" redirectTo="/" restricted>
+            <PublicRoute path="/auth" redirectTo={currentRoute} restricted>
               <AuthPage />
             </PublicRoute>
 
