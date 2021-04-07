@@ -92,12 +92,13 @@ export default function ButtonAppBar() {
           //     </Button>
           //   </div>
           )} */}
-          <Box className={classes.buttonWrapStyles} display={{ xs: 'none', sm: 'flex' }}>
-            <Button className={classes.buttonStyles} onClick={e => dispatch(logoutUser())}>
-              <LogOut />
-            </Button>
-          </Box>
-
+          {isLogin && (
+            <Box className={classes.buttonWrapStyles} display={{ xs: 'none', sm: 'flex' }}>
+              <Button className={classes.buttonStyles} onClick={e => dispatch(logoutUser())}>
+                <LogOut />
+              </Button>
+            </Box>
+          )}
           <Box className={classes.buttonWrapStyles} display={{ xs: 'flex', sm: 'none' }}>
             <Button className={classes.buttonStyles} onClick={onButtonClick}>
               {isModalOpen ? <CloseMenuSvg /> : <OpenMenuSvg />}
