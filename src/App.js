@@ -17,6 +17,9 @@ const ResultsPage = lazy(() =>
 const ContactsPage = lazy(() =>
   import('pages/ContactsPage/ContactsPage' /* webpackChunkName: "ContactsPage" */),
 );
+const MaterialsPage = lazy(() =>
+  import('pages/MaterialsPage/MaterialsPage' /* webpackChunkName: "MaterialsPage" */),
+);
 
 function App() {
   const dispatch = useDispatch();
