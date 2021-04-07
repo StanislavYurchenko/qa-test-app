@@ -14,9 +14,11 @@ const AuthPage = lazy(() => import('pages/AuthPage/AuthPage' /* webpackChunkName
 const ResultsPage = lazy(() =>
   import('pages/ResultsPage/ResultsPage' /* webpackChunkName: "ResultsPage" */),
 );
-
 const ContactsPage = lazy(() =>
   import('pages/ContactsPage/ContactsPage' /* webpackChunkName: "ContactsPage" */),
+);
+const MaterialsPage = lazy(() =>
+  import('pages/MaterialsPage/MaterialsPage' /* webpackChunkName: "MaterialsPage" */),
 );
 
 function App() {
@@ -41,7 +43,7 @@ function App() {
             </PrivateRoute>
 
             <PrivateRoute path="/materials" redirectTo="/auth">
-              <div>Страница доп материалов</div>
+              <MaterialsPage />
             </PrivateRoute>
 
             <PublicRoute path="/contacts">
