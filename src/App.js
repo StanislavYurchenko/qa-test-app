@@ -30,8 +30,8 @@ function App() {
 
   return (
     <>
+      <Header />
       <Container>
-        <Header />
         <Suspense fallback={<PreLoader sizePreloader="200px" />}>
           <Switch>
             <PrivateRoute exact path="/" redirectTo="/auth">
