@@ -48,9 +48,9 @@ function App() {
               <div>Страница тестов</div>
             </PrivateRoute>
 
-            <PublicRoute path="/results" redirectTo="/auth">
+            <PrivateRoute path="/results" redirectTo="/auth">
               <ResultsPage />
-            </PublicRoute>
+            </PrivateRoute>
 
             <PublicRoute path="/auth" redirectTo="/" restricted>
               <AuthPage />
