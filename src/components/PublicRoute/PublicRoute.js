@@ -8,7 +8,7 @@ function PublicRoute({ children, redirectTo, restricted, ...routeProps }) {
 
   return (
     <Route {...routeProps}>
-      {isLoggedIn && restricted ? <Redirect to={redirectTo} /> : children}
+      {isLoggedIn && restricted ? <Redirect to={redirectTo?.current?.pathname} /> : children}
     </Route>
   );
 }
