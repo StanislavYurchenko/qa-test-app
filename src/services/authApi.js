@@ -27,6 +27,12 @@ export const getUserInfo = () => {
   return axios.get('/users/current').then(data => data);
 };
 
-export const fetchQuestions = () => {
-  return axios.get('/api/test-theory').then(data => data.data.data);
+export const fetchQuestions = path => {
+  console.log(`path`, path);
+  return axios.get(`/api${path}`).then(data => data.data.data);
+};
+
+export const sendAnswers = answers => {
+  console.log(`answers`, answers);
+  return axios.post('/api/test-theory/result', answers).then(data => data.data.data);
 };

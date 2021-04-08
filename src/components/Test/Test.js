@@ -16,11 +16,10 @@ export default function Test({ title }) {
 
   const answers = useSelector(selectors.getAnswers);
   const questions = useSelector(selectors.getQuestions);
+  const category = useSelector(selectors.getCategory);
   const dispatch = useDispatch();
 
   const match = useRouteMatch();
-  console.log(`match`, match.url);
-
   const isRender = questions.length;
 
   useEffect(() => {
@@ -30,7 +29,7 @@ export default function Test({ title }) {
     }
     if (match.url === '/test-tech') {
       dispatch(testActions.addCategory('[Техническое тестирования_]'));
-      dispatch(fetchTest());
+      dispatch(fetchTest(match.url));
     }
   }, []);
 
@@ -49,17 +48,18 @@ export default function Test({ title }) {
   };
 
   const handleMainButton = () => {
-    if (questions.length === Object.keys(answers).length) {
+    if (questions.length === answers.length) {
       dispatch(sendAnswers(answers));
       return;
     }
+    console.log('open modal');
   };
 
   return (
     <>
       <section className={s.section}>
         <div className={s.above}>
-          <h2 className={s.title}>{title ? title : '[Теория тестирования_]'}</h2>
+          <h2 className={s.title}>{title ? title : category}</h2>
           <button className={s.aboveButton} type="button" onClick={handleMainButton}>
             Завершить тест
           </button>

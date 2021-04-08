@@ -38,7 +38,7 @@ export default function Card({ questions, activeCard, handleAnswer, answered }) 
 
   const handleChange = e => {
     setValue(e.target.value);
-    handleAnswer({ [questionId]: e.target.value });
+    handleAnswer({ questionId, answer: e.target.value });
   };
 
   return (

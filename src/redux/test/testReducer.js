@@ -14,10 +14,22 @@ const questions = createReducer([], {
 });
 
 const answers = createReducer([], {
-  [testActions.addAnswer]: (state, { payload }) => ({ ...state, ...payload }),
+  [fetchTest.pending]: () => [],
+
+  [testActions.addAnswer]: (state, { payload }) => [
+    ...state.filter(item => item.questionId !== payload.questionId),
+    payload,
+  ],
 
   [sendAnswers.fulfilled]: () => [],
 });
+
+const result = createReducer(
+  {},
+  {
+    [sendAnswers.fulfilled]: (_, { payload }) => payload,
+  },
+);
 
 const loading = createReducer(false, {
   [fetchTest.pending]: () => true,
@@ -41,6 +53,7 @@ const testReducer = combineReducers({
   category,
   questions,
   answers,
+  result,
   loading,
   error,
 });
