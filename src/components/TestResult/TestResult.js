@@ -1,4 +1,4 @@
-import { HeadingParagraph, DescriptionParagraph } from './TestResult.style';
+import { ResultContainer, HeadingParagraph, DescriptionParagraph } from './TestResult.style';
 
 export default function TestResult() {
   const correctAnswers = 10;
@@ -26,9 +26,9 @@ export default function TestResult() {
   const result = calculateTestResult(correctAnswers, totalAnswers);
 
   return (
-    <div>
+    <ResultContainer>
       <HeadingParagraph>{result.heading}</HeadingParagraph>
       <DescriptionParagraph> {result.description}</DescriptionParagraph>
-    </div>
+    </ResultContainer>
   );
 }
