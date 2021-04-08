@@ -9,13 +9,11 @@ import PreLoader from './components/PreLoader';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import PublicRoute from 'components/PublicRoute/PublicRoute';
 
-const MainPage = lazy(() => import('pages/MainPage/MainPage' /* webpackChunkName: "MainPage" */));
-const AuthPage = lazy(() => import('pages/AuthPage/AuthPage' /* webpackChunkName: "AuthPage" */));
-const ResultsPage = lazy(() =>
-  import('pages/ResultsPage/ResultsPage' /* webpackChunkName: "ResultsPage" */),
-);
+const MainPage = lazy(() => import('pages/MainPage' /* webpackChunkName: "MainPage" */));
+const AuthPage = lazy(() => import('pages/AuthPage' /* webpackChunkName: "AuthPage" */));
+const ResultsPage = lazy(() => import('pages/ResultsPage' /* webpackChunkName: "ResultsPage" */));
 const ContactsPage = lazy(() =>
-  import('pages/ContactsPage/ContactsPage' /* webpackChunkName: "ContactsPage" */),
+  import('pages/ContactsPage' /* webpackChunkName: "ContactsPage" */),
 );
 const MaterialsPage = lazy(() =>
   import('pages/MaterialsPage/MaterialsPage' /* webpackChunkName: "MaterialsPage" */),
