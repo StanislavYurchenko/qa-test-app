@@ -38,12 +38,9 @@ export default function Test({ title }) {
 
   const handleMainButton = () => {
     if (questions.length === Object.keys(answers).length) {
-      console.log(`questions.length`, questions.length);
-      console.log(`Object.keys(answers).length`, Object.keys(answers).length);
-      console.log(`не на всі відповіли`);
+      dispatch(sendAnswers(answers));
       return;
     }
-    dispatch(sendAnswers(answers));
   };
 
   return (
