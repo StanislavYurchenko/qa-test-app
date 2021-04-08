@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Switch, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Container from './components/Container';
+import MainContainer from './components/MainContainer';
 import { getCurrentUser } from './redux/auth/authOperations';
 
 import PreLoader from './components/PreLoader';
@@ -16,7 +17,7 @@ const ContactsPage = lazy(() =>
   import('pages/ContactsPage' /* webpackChunkName: "ContactsPage" */),
 );
 const MaterialsPage = lazy(() =>
-  import('pages/MaterialsPage/MaterialsPage' /* webpackChunkName: "MaterialsPage" */),
+  import('pages/MaterialsPage' /* webpackChunkName: "MaterialsPage" */),
 );
 const NotFoundPage = lazy(() =>
   import('pages/NotFoundPage' /* webpackChunkName: "NotFoundPage" */),
@@ -35,39 +36,51 @@ function App() {
   return (
     <>
       <Header />
-      <Container>
+      <MainContainer>
         <Suspense fallback={<PreLoader sizePreloader="200px" />}>
           <Switch>
             <PrivateRoute exact path="/" redirectTo="/auth">
-              <MainPage />
+              <Container>
+                <MainPage />
+              </Container>
             </PrivateRoute>
 
             <PrivateRoute path="/useful-info" redirectTo="/auth">
-              <div>Страница доп материалов</div>
+              <MaterialsPage />
             </PrivateRoute>
 
             <PublicRoute path="/contacts">
-              <ContactsPage />
+              <Container>
+                <ContactsPage />
+              </Container>
             </PublicRoute>
 
             <PrivateRoute path="/test" redirectTo="/auth">
-              <div>Страница тестов</div>
+              <Container>
+                <div>Страница тестов</div>
+              </Container>
             </PrivateRoute>
 
             <PrivateRoute path="/results" redirectTo="/auth">
-              <ResultsPage />
+              <Container>
+                <ResultsPage />
+              </Container>
             </PrivateRoute>
 
             <PublicRoute path="/auth" redirectTo={currentRoute} restricted>
-              <AuthPage />
+              <Container>
+                <AuthPage />
+              </Container>
             </PublicRoute>
 
             <PublicRoute>
-              <NotFoundPage />
+              <Container>
+                <NotFoundPage />
+              </Container>
             </PublicRoute>
           </Switch>
         </Suspense>
-      </Container>
+      </MainContainer>
     </>
   );
 }
