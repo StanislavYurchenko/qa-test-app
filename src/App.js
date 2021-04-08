@@ -42,7 +42,11 @@ function App() {
               <MainPage />
             </PrivateRoute>
 
-            <PublicRoute path="/test">
+            <PublicRoute path="/test-theory">
+              <Test />
+            </PublicRoute>
+
+            <PublicRoute path="/test-tech">
               <Test />
             </PublicRoute>
 
@@ -54,9 +58,9 @@ function App() {
               <ContactsPage />
             </PublicRoute>
 
-            <PrivateRoute path="/test" redirectTo="/auth">
+            {/* <PrivateRoute path="/test" redirectTo="/auth">
               <div>Страница тестов</div>
-            </PrivateRoute>
+            </PrivateRoute> */}
 
             <PrivateRoute path="/results" redirectTo="/auth">
               <ResultsPage />

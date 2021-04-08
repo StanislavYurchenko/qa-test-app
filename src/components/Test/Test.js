@@ -1,3 +1,5 @@
+import { useRouteMatch } from 'react-router-dom';
+
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Card from './Card';
@@ -16,10 +18,20 @@ export default function Test({ title }) {
   const questions = useSelector(selectors.getQuestions);
   const dispatch = useDispatch();
 
+  const match = useRouteMatch();
+  console.log(`match`, match.url);
+
   const isRender = questions.length;
 
   useEffect(() => {
-    dispatch(fetchTest());
+    if (match.url === '/test-theory') {
+      dispatch(testActions.addCategory('[Теория тестирования_]'));
+      dispatch(fetchTest(match.url));
+    }
+    if (match.url === '/test-tech') {
+      dispatch(testActions.addCategory('[Техническое тестирования_]'));
+      dispatch(fetchTest());
+    }
   }, []);
 
   useEffect(() => {}, [answers]);

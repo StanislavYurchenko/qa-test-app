@@ -2,7 +2,9 @@ import { createReducer, combineReducers } from '@reduxjs/toolkit';
 import testActions from './testActions';
 import { fetchTest, sendAnswers } from './testOperations';
 
-const category = createReducer('', {});
+const category = createReducer('', {
+  [testActions.addCategory]: (_, { payload }) => payload,
+});
 
 const questions = createReducer([], {
   [fetchTest.pending]: () => [],
