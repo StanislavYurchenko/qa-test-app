@@ -4,7 +4,7 @@ const colours = {
   colour3: '#FF6B09',
   colour4: '#121D2E',
   colour5: '#E2E3E5',
-  colour6: '#E5E5E5',
+  colour6: '#F5F6FB',
   colour7: '#D7D7D7',
   colour8: '#555555',
   colour9: '#02172A',

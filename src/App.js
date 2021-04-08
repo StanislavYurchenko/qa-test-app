@@ -2,6 +2,7 @@ import React, { useEffect, Suspense, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Switch } from 'react-router-dom';
 import Header from './components/Header';
+import Container from './components/Container';
 import { getCurrentUser } from './redux/auth/authOperations';
 
 import PreLoader from './components/PreLoader';
@@ -14,6 +15,9 @@ const ResultsPage = lazy(() => import('pages/ResultsPage' /* webpackChunkName: "
 const ContactsPage = lazy(() =>
   import('pages/ContactsPage' /* webpackChunkName: "ContactsPage" */),
 );
+const MaterialsPage = lazy(() =>
+  import('pages/MaterialsPage/MaterialsPage' /* webpackChunkName: "MaterialsPage" */),
+);
 
 function App() {
   const dispatch = useDispatch();
@@ -25,33 +29,39 @@ function App() {
   return (
     <>
       <Header />
-      <Suspense fallback={<PreLoader sizePreloader="200px" />}>
-        <Switch>
-          <PublicRoute path="/auth" redirectTo="/" restricted>
-            <AuthPage />
-          </PublicRoute>
+      <Container>
+        <Suspense fallback={<PreLoader sizePreloader="200px" />}>
+          <Switch>
+            <PrivateRoute exact path="/" redirectTo="/auth">
+              <MainPage />
+            </PrivateRoute>
 
-          <PrivateRoute exact path="/" redirectTo="/auth">
-            <MainPage />
-          </PrivateRoute>
+            <PrivateRoute path="/useful-info" redirectTo="/auth">
+              <div>Страница доп материалов</div>
+            </PrivateRoute>
 
-          <PrivateRoute path="/materials" redirectTo="/auth">
-            <div>Страница доп материалов</div>
-          </PrivateRoute>
+            <PublicRoute path="/contacts">
+              <ContactsPage />
+            </PublicRoute>
 
-          <PublicRoute path="/contacts">
-            <ContactsPage />
-          </PublicRoute>
+            <PrivateRoute path="/test" redirectTo="/auth">
+              <div>Страница тестов</div>
+            </PrivateRoute>
 
-          <PublicRoute path="/results" redirectTo="/auth">
-            <ResultsPage />
-          </PublicRoute>
+            <PublicRoute path="/results" redirectTo="/auth">
+              <ResultsPage />
+            </PublicRoute>
 
-          <PublicRoute>
-            <div>not found</div>
-          </PublicRoute>
-        </Switch>
-      </Suspense>
+            <PublicRoute path="/auth" redirectTo="/" restricted>
+              <AuthPage />
+            </PublicRoute>
+
+            <PublicRoute>
+              <div>not found</div>
+            </PublicRoute>
+          </Switch>
+        </Suspense>
+      </Container>
     </>
   );
 }

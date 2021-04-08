@@ -6,7 +6,7 @@ import Valentin from './Valentin_Yakubovskiy-min.jpg';
 import Volodymyr from './Volodymyr_Babych-min.jpg';
 import Yulia from './Yulia_Labutkina-min.jpg';
 import Stanislav from './Yurchenko_Stanislav-min.jpg';
-import Andriy from './Андрій_Кричківський-min.jpg';
+import Andriy from './Andriy_Krichkivskiy-min.jpg';
 
 export const images = {
   Artur_Stakhov: Artur,

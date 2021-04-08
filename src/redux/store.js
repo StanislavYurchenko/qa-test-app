@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage';
 import { persistStore, persistReducer } from 'redux-persist';
 
 import authUsersReducer from './auth/authReducer';
+import testReducer from './test/testReducer';
 
 const authPersistConfig = {
   key: 'auth',
@@ -12,8 +13,15 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
+const testPersistConfig = {
+  key: 'test',
+  storage,
+  whitelist: ['questions', 'answers'],
+};
+
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authUsersReducer),
+  test: persistReducer(testPersistConfig, testReducer),
 });
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
