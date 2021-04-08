@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import BREAKPOINTS from '../../utils/breakpoints';
 
 const ResultContainer = styled.div`
   margin-bottom: 22px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
     margin-bottom: 47px;
   }
 `;
@@ -19,7 +20,7 @@ const HeadingParagraph = styled.p`
   text-align: center;
   letter-spacing: 0.02em;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
     font-size: 22px;
     line-height: 1.36;
   }
@@ -34,7 +35,7 @@ const DescriptionParagraph = styled.p`
   text-align: center;
   letter-spacing: 0.02em;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
     font-size: 20px;
   }
 `;
