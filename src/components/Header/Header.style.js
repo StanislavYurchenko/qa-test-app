@@ -21,7 +21,7 @@ export const Modal = styled(Box)`
   padding: 2.6rem 0;
   text-align: center;
   transition: right 0.5s linear;
-  @media screen and (min-width: ${BREAKPOINT.MOBILE_MAX}) {
+  @media screen and (min-width: ${BREAKPOINT.TABLET}) {
     display: none;
   } ;
 `;
@@ -33,11 +33,11 @@ export const HeaderWrap = styled(Box)`
   transform: translateX(-50%);
   width: 100%;
   z-index: 100;
-  @media screen and (min-width: ${BREAKPOINT.MOBILE_BREAKPOINT}) {
-    max-width: ${BREAKPOINT.TABLET};
+  @media screen and (min-width: ${BREAKPOINT.TABLET}) {
+    /* max-width: ${BREAKPOINT.TABLET_CONTAINER}; */
   }
-  @media screen and (min-width: ${BREAKPOINT.TABLET_BREAKPOINT}) {
-    max-width: ${BREAKPOINT.DESKTOP};
+  @media screen and (min-width: ${BREAKPOINT.TABLET}) {
+    /* max-width: ${BREAKPOINT.TABLET_CONTAINER}; */
   }
 `;
 
@@ -56,7 +56,7 @@ export const ButtonWrap = styled(Box)`
   min-height: 70px;
   border-left: 1px solid ${HEADER_BORDER_COLOUR};
 
-  @media screen and (min-width: ${BREAKPOINT.MOBILE_MAX}) {
+  @media screen and (min-width: ${BREAKPOINT.TABLET}) {
     display: ${props => (props.toggle ? 'none' : 'flex')};
   } ;
 `;
@@ -94,7 +94,7 @@ export const UserName = styled.p`
   letter-spacing: 0.02em;
   color: ${PRIMARY_TEXT_COLOUR};
 
-  @media screen and (min-width: ${BREAKPOINT.MOBILE_MAX}) {
+  @media screen and (min-width: ${BREAKPOINT.TABLET}) {
     display: block;
   } ;
 `;
