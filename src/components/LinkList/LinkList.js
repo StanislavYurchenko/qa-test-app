@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import LinkItem from '../LinkItem';
-import { List } from './LinkList.styles';
+import { List } from './LinkList.style.js';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import { indigo } from '@material-ui/core/colors';

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Link, LinkHref, Svg, Span } from './LinkItem.styles.js';
+import { Link, LinkHref, Svg, Span } from './LinkItem.style.js';
 
 const LinkItem = ({ link, linkName, children, icon }) => {
   return (
