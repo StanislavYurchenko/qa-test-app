@@ -19,12 +19,12 @@ export const Icon = styled(RemoveCircleIcon)`
   height: 8rem;
   margin-bottom: 1.5rem;
   color: ${ACCENT_COLOUR};
-  @media screen and (min-width: ${BREAKPOINT.MOBILE_BREAKPOINT}) {
+  @media screen and (min-width: ${BREAKPOINT.TABLET}) {
     width: 10rem;
     height: 10rem;
     margin-bottom: 2rem;
   }
-  @media screen and (min-width: ${BREAKPOINT.TABLET_BREAKPOINT}) {
+  @media screen and (min-width: ${BREAKPOINT.DESKTOP}) {
     width: 12rem;
     height: 12rem;
   }
@@ -33,11 +33,11 @@ export const Icon = styled(RemoveCircleIcon)`
 export const Oops = styled.div`
   font-size: 6rem;
   margin-bottom: 3rem;
-  @media screen and (min-width: ${BREAKPOINT.MOBILE_BREAKPOINT}) {
+  @media screen and (min-width: ${BREAKPOINT.TABLET}) {
     font-size: 8rem;
     margin-bottom: 4rem;
   }
-  @media screen and (min-width: ${BREAKPOINT.TABLET_BREAKPOINT}) {
+  @media screen and (min-width: ${BREAKPOINT.DESKTOP}) {
     font-size: 10rem;
   }
 `;
@@ -46,10 +46,10 @@ export const Message = styled.div`
   text-align: center;
   font-size: 2rem;
   margin-bottom: 2rem;
-  @media screen and (min-width: ${BREAKPOINT.MOBILE_BREAKPOINT}) {
+  @media screen and (min-width: ${BREAKPOINT.TABLET}) {
     font-size: 2.5rem;
   }
-  @media screen and (min-width: ${BREAKPOINT.TABLET_BREAKPOINT}) {
+  @media screen and (min-width: ${BREAKPOINT.DESKTOP}) {
     font-size: 3rem;
   }
 `;
