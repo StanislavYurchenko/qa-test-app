@@ -1,4 +1,4 @@
-export const getUserName = state => state.auth.name;
+export const getUserName = state => state.auth.userName;
 export const getIsLoggedIn = state => state.auth.isLoggedIn;
 export const isSuccessfulReg = state => state.auth.successfulReg;
 export const loading = state => state.auth.loading;
