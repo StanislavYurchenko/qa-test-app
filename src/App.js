@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Switch, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Container from './components/Container';
+import Google from './components/GooglePage';
 import MainContainer from './components/MainContainer';
 import { getCurrentUser } from './redux/auth/authOperations';
 
@@ -71,6 +72,10 @@ function App() {
               <Container>
                 <AuthPage />
               </Container>
+            </PublicRoute>
+
+            <PublicRoute path="/google">
+              <Google />
             </PublicRoute>
 
             <PublicRoute>

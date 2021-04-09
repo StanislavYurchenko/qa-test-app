@@ -26,3 +26,7 @@ export const logout = () => {
 export const getUserInfo = () => {
   return axios.get('/users/current').then(data => data);
 };
+
+export const googleRequest = () => {
+  return axios.get('/auth/google').then(data => data);
+};
