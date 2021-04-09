@@ -1,4 +1,5 @@
 import { useRouteMatch } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -17,12 +18,17 @@ export default function Test({ title }) {
   const answers = useSelector(selectors.getAnswers);
   const questions = useSelector(selectors.getQuestions);
   const category = useSelector(selectors.getCategory);
+  const result = useSelector(selectors.getResult);
+  const card = useSelector(selectors.getActiveCard);
   const dispatch = useDispatch();
 
   const match = useRouteMatch();
+  const history = useHistory();
+  const location = useLocation();
   const isRender = questions.length;
 
   useEffect(() => {
+    if (questions.length) return;
     if (match.url === '/test-theory') {
       dispatch(testActions.addCategory('[Теория тестирования_]'));
       dispatch(fetchTest(match.url));
@@ -33,25 +39,36 @@ export default function Test({ title }) {
     }
   }, []);
 
-  useEffect(() => {}, [answers]);
+  useEffect(() => {
+    history.push({ ...location, search: `${card}` });
+    const cardParams = new URLSearchParams(location.search).get('card') ?? '1';
+    dispatch(testActions.addActiveCard(cardParams));
+  }, [card]);
 
   const handlePrev = () => {
-    setActiveCard(activeCard - 1);
+    // setActiveCard(activeCard - 1);
+    // history.push({ ...location, search: `card=${activeCard + 2}` });
+    dispatch(testActions.addActiveCard(card - 1));
+    history.push({ ...location, search: `${card - 1}` });
+    // location.search = `q=${activeCard}`;
   };
-
   const handleNext = () => {
-    setActiveCard(activeCard + 1);
+    // setActiveCard(activeCard + 1);
+    dispatch(testActions.addActiveCard(card + 1));
+    // history.push({ ...location, search: `card=${activeCard + 2}` });
+    history.push({ ...location, search: `${Number(card) + 1}` });
   };
-
   const handleAnswer = targerAnswer => {
     dispatch(testActions.addAnswer(targerAnswer));
   };
 
   const handleMainButton = () => {
-    if (questions.length === answers.length) {
-      dispatch(sendAnswers(answers));
-      return;
-    }
+    const entries = Object.entries(answers);
+    const transformAnswers = entries.map(([id, answer]) => {
+      return { questionId: Number(id), answer };
+    });
+    dispatch(sendAnswers(transformAnswers));
+    // history.push('/useful-info');
     console.log('open modal');
   };
 
@@ -67,7 +84,7 @@ export default function Test({ title }) {
         {isRender && (
           <Card
             questions={questions}
-            activeCard={activeCard}
+            activeCard={card}
             handleAnswer={handleAnswer}
             answered={answers}
           />

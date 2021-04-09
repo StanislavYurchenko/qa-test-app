@@ -33,18 +33,18 @@ const StyledRG = styled(RadioGroup)`
 export default function Card({ questions, activeCard, handleAnswer, answered }) {
   const [value, setValue] = useState('');
 
-  const { question, answers, questionId } = questions[activeCard];
-  useEffect(() => {}, []);
+  const { question, answers, questionId } = questions[activeCard - 1];
+  // useEffect(() => {}, []);
 
   const handleChange = e => {
     setValue(e.target.value);
-    handleAnswer({ questionId, answer: e.target.value });
+    handleAnswer({ [questionId]: e.target.value });
   };
 
   return (
     <div className={s.card}>
       <p className={s.counter}>
-        Вопрос <span className={s.page}>{activeCard + 1}</span>/
+        Вопрос <span className={s.page}>{activeCard}</span>/
         <span className={s.pages}>{questions.length}</span>
       </p>
       <h2 className={s.question}>{question}</h2>

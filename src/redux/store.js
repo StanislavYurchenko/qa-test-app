@@ -16,7 +16,7 @@ const authPersistConfig = {
 const testPersistConfig = {
   key: 'test',
   storage,
-  whitelist: ['questions', 'answers'],
+  whitelist: ['questions', 'answers', 'card'],
   blacklist: ['_persist'],
 };
 

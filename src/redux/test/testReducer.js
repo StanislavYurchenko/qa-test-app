@@ -16,20 +16,22 @@ const questions = createReducer([], {
 const answers = createReducer([], {
   [fetchTest.pending]: () => [],
 
-  [testActions.addAnswer]: (state, { payload }) => [
-    ...state.filter(item => item.questionId !== payload.questionId),
-    payload,
-  ],
+  [testActions.addAnswer]: (state, { payload }) => ({ ...state, ...payload }),
+  // [testActions.addAnswer]: (state, { payload }) => [
+  //   ...state.filter(item => item.questionId !== payload.questionId),
+  //   payload,
+  // ],
 
   [sendAnswers.fulfilled]: () => [],
 });
 
-const result = createReducer(
-  {},
-  {
-    [sendAnswers.fulfilled]: (_, { payload }) => payload,
-  },
-);
+const result = createReducer(null, {
+  [fetchTest.pending]: () => null,
+  [sendAnswers.fulfilled]: (_, { payload }) => payload,
+});
+const card = createReducer(1, {
+  [testActions.addActiveCard]: (_, { payload }) => payload,
+});
 
 const loading = createReducer(false, {
   [fetchTest.pending]: () => true,
@@ -56,6 +58,7 @@ const testReducer = combineReducers({
   result,
   loading,
   error,
+  card,
 });
 
 export default testReducer;

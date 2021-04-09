@@ -42,13 +42,13 @@ function App() {
               <MainPage />
             </PrivateRoute>
 
-            <PublicRoute path="/test-theory">
+            <PrivateRoute path="/test-theory" redirectTo="/auth">
               <Test />
-            </PublicRoute>
+            </PrivateRoute>
 
-            <PublicRoute path="/test-tech">
+            <PrivateRoute path="/test-tech" redirectTo="/auth">
               <Test />
-            </PublicRoute>
+            </PrivateRoute>
 
             <PrivateRoute path="/useful-info" redirectTo="/auth">
               <div>Страница доп материалов</div>
