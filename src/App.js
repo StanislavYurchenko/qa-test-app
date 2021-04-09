@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { Switch, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Container from './components/Container';
+import Google from './components/GooglePage';
+// import googleHandler from './utils/googleHandler';
 import { getCurrentUser } from './redux/auth/authOperations';
 
 import PreLoader from './components/PreLoader';
@@ -57,6 +59,10 @@ function App() {
 
             <PublicRoute path="/auth" redirectTo={currentRoute} restricted>
               <AuthPage />
+            </PublicRoute>
+
+            <PublicRoute path="/google">
+              <Google />
             </PublicRoute>
 
             <PublicRoute>

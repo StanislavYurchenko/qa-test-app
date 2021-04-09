@@ -1,5 +1,12 @@
 import authActions from './authAction';
-import { registration, login, logout, getUserInfo, userToken } from '../../services/authApi';
+import {
+  registration,
+  login,
+  logout,
+  getUserInfo,
+  userToken,
+  googleRequest,
+} from '../../services/authApi';
 
 const registrationUser = ({ name, email, password }) => async dispatch => {
   dispatch(authActions.regUserRequest());
@@ -54,4 +61,13 @@ const getCurrentUser = () => async (dispatch, getState) => {
   }
 };
 
-export { registrationUser, loginUser, logoutUser, getCurrentUser };
+const googleLogin = ({ name, token }) => dispatch => {
+  try {
+    userToken.set(token);
+    dispatch(authActions.googleUserSuccess({ name, token }));
+  } catch (err) {
+    dispatch(authActions.googleUserError(err.message));
+  }
+};
+
+export { registrationUser, loginUser, logoutUser, getCurrentUser, googleLogin };
