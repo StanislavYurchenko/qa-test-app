@@ -8,7 +8,7 @@ const colours = {
   colour7: '#D7D7D7',
   colour8: '#555555',
   colour9: '#02172A',
-  colour10: '#00122F',
+  colour10: '#2600122F',
   colour11: '#BBBBBB',
   colour12: '#CED2D1',
   colour13: '#FAFAFA',
