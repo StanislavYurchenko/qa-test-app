@@ -1,19 +1,7 @@
-import { useDispatch } from 'react-redux';
-import { logoutUser } from '../../redux/auth/authOperations';
+import MainPageComponents from '../../components/MainPageComponents';
 
-const MainPage = () => {
-  const dispatch = useDispatch();
-
-  const logOut = () => {
-    dispatch(logoutUser());
-  };
-
-  return (
-    <>
-      <h1>Home page</h1>
-      <button onClick={logOut}>Logout</button>
-    </>
-  );
-};
+function MainPage() {
+  return <MainPageComponents />;
+}
 
 export default MainPage;

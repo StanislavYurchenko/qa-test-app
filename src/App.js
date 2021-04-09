@@ -1,50 +1,86 @@
-import React, { useEffect, Suspense, lazy } from 'react';
-import { Switch } from 'react-router-dom';
-import Navigation from './components/Navigation';
+import React, { useEffect, Suspense, lazy, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { Switch, useLocation } from 'react-router-dom';
+import Header from './components/Header';
+import Container from './components/Container';
+import MainContainer from './components/MainContainer';
+import { getCurrentUser } from './redux/auth/authOperations';
 
 import PreLoader from './components/PreLoader';
-
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import PublicRoute from 'components/PublicRoute/PublicRoute';
 
-const MainPage = lazy(() => import('pages/MainPage/MainPage' /* webpackChunkName: "MainPage" */));
-const AuthPage = lazy(() => import('pages/AuthPage/AuthPage' /* webpackChunkName: "AuthPage" */));
-const ResultsPage = lazy(() =>
-  import('pages/ResultsPage/ResultsPage' /* webpackChunkName: "ResultsPage" */),
+const MainPage = lazy(() => import('pages/MainPage' /* webpackChunkName: "MainPage" */));
+const AuthPage = lazy(() => import('pages/AuthPage' /* webpackChunkName: "AuthPage" */));
+const ResultsPage = lazy(() => import('pages/ResultsPage' /* webpackChunkName: "ResultsPage" */));
+const ContactsPage = lazy(() =>
+  import('pages/ContactsPage' /* webpackChunkName: "ContactsPage" */),
+);
+const MaterialsPage = lazy(() =>
+  import('pages/MaterialsPage' /* webpackChunkName: "MaterialsPage" */),
+);
+const NotFoundPage = lazy(() =>
+  import('pages/NotFoundPage' /* webpackChunkName: "NotFoundPage" */),
 );
 
 function App() {
+  const dispatch = useDispatch();
+  const location = useLocation();
+
+  const currentRoute = useRef(location);
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch]);
+
   return (
     <>
-      <Navigation />
-      <Suspense fallback={<PreLoader sizePreloader="200px" />}>
-        <Switch>
-          <PublicRoute path="/auth" redirectTo="/" restricted>
-            <AuthPage />
-          </PublicRoute>
+      <Header />
+      <MainContainer>
+        <Suspense fallback={<PreLoader sizePreloader="200px" />}>
+          <Switch>
+            <PrivateRoute exact path="/" redirectTo="/auth">
+              <Container>
+                <MainPage />
+              </Container>
+            </PrivateRoute>
 
-          <PrivateRoute exact path="/" redirectTo="/auth">
-            <MainPage />
-          </PrivateRoute>
+            <PrivateRoute path="/useful-info" redirectTo="/auth">
+              <MaterialsPage />
+            </PrivateRoute>
 
+            <PublicRoute path="/contacts">
+              <Container>
+                <ContactsPage />
+              </Container>
+            </PublicRoute>
 
-          <PrivateRoute path="/materials" redirectTo="/auth">
-            <div>Страница доп материалов</div>
-          </PrivateRoute>
+            <PrivateRoute path="/test" redirectTo="/auth">
+              <Container>
+                <div>Страница тестов</div>
+              </Container>
+            </PrivateRoute>
 
-          <PublicRoute path="/contacts">
-            <div>Contacts</div>
-          </PublicRoute>
-          
-          <PrivateRoute path="/results" redirectTo="/auth">
-            <ResultsPage />
-          </PrivateRoute>
+            <PrivateRoute path="/results" redirectTo="/auth">
+              <Container>
+                <ResultsPage />
+              </Container>
+            </PrivateRoute>
 
-          <PublicRoute>
-            <div>not found</div>
-          </PublicRoute>
-        </Switch>
-      </Suspense>
+            <PublicRoute path="/auth" redirectTo={currentRoute} restricted>
+              <Container>
+                <AuthPage />
+              </Container>
+            </PublicRoute>
+
+            <PublicRoute>
+              <Container>
+                <NotFoundPage />
+              </Container>
+            </PublicRoute>
+          </Switch>
+        </Suspense>
+      </MainContainer>
     </>
   );
 }
