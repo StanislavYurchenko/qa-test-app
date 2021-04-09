@@ -1,4 +1,4 @@
-import { StyledContainer } from './Container.style';
+import { StyledContainer } from './MainContainer.style';
 
 export default function Container({ children }) {
   return <StyledContainer>{children}</StyledContainer>;

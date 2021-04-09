@@ -9,14 +9,14 @@ export const SectionStyle = styled.section`
   margin: 0 auto;
   text-align: center;
   background-color: ${PAGE_BACKGROUND_COLOUR};
-  padding: 40px 20px 56px;
+  padding: 40px 0 56px;
 
   @media screen and (min-width: 768px) {
-    padding: 41px 22px 76px;
+    padding: 41px 2px 76px;
   }
 
   @media screen and (min-width: 1290px) {
-    padding: 40px 20px 65px;
+    padding: 40px 0 65px;
   }
 `;
 
