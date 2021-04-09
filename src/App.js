@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Container from './components/Container';
 import Google from './components/GooglePage';
 import MainContainer from './components/MainContainer';
+import Footer from './components/Footer';
 import { getCurrentUser } from './redux/auth/authOperations';
 
 import PreLoader from './components/PreLoader';
@@ -86,6 +87,7 @@ function App() {
           </Switch>
         </Suspense>
       </MainContainer>
+      <Footer />
     </>
   );
 }
