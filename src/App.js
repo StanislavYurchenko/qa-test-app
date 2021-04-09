@@ -4,6 +4,7 @@ import { Switch, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Container from './components/Container';
 import MainContainer from './components/MainContainer';
+import Footer from './components/Footer';
 import { getCurrentUser } from './redux/auth/authOperations';
 
 import PreLoader from './components/PreLoader';
@@ -81,6 +82,7 @@ function App() {
           </Switch>
         </Suspense>
       </MainContainer>
+      <Footer />
     </>
   );
 }
