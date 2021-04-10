@@ -5,27 +5,43 @@ import { ACCENT_COLOUR } from '../../themes/colors';
 import BREAKPOINTS from '../../utils/breakpoints';
 
 const MainContainer = styled.div`
-  position: relative;
-  top: 100px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 30px;
 
   @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
-    top: 110px;
+    margin-top: 40px;
   }
 `;
 
 const Header1 = styled.h1`
   margin: 0px 0px 10px;
+
+  font-size: 12px;
+  line-height: 2.5;
+  letter-spacing: 0.02em;
+
+  @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
+    font-size: 22px;
+    line-height: 1.36;
+  }
 `;
 
 const Header2 = styled.h2`
-  margin: 0px 0px 30px;
+  margin-bottom: 30px;
+
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 
   @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
-    margin: 0px 0px 70px;
+    margin-bottom: 70px;
+
+    font-size: 14px;
+    line-height: 1.21;
   }
 `;
 
@@ -46,14 +62,16 @@ const useStyles = makeStyles({
       background: ACCENT_COLOUR,
     },
     color: 'white',
+    width: 190,
     height: 48,
     marginBottom: '40px',
     padding: '17px 56px',
     fontFamily: 'Montserrat',
-    fontStyle: 'normal',
     fontWeight: 500,
     fontSize: '14px',
-    lineHeight: '17px',
+    lineHeight: '1.21',
+    letterSpacing: '0.02em',
+    textTransform: 'inherit',
 
     [`@media screen and (min-width: ${BREAKPOINTS.TABLET})`]: {
       marginBottom: '107px',

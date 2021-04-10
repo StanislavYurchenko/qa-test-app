@@ -1,8 +1,11 @@
+import { useSelector } from 'react-redux';
 import { ResultContainer, HeadingParagraph, DescriptionParagraph } from './TestResult.style';
 
 export default function TestResult() {
   const correctAnswers = 10;
   const incorrectAnswers = 2;
+  // const correctAnswers = useSelector(state => state.test.result.correct);
+  // const incorrectAnswers = useSelector(state => state.test.result.wrong);
   const totalAnswers = correctAnswers + incorrectAnswers;
 
   const RESULTS = [
