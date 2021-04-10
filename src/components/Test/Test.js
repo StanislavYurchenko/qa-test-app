@@ -1,18 +1,18 @@
-import { useRouteMatch } from 'react-router-dom';
-import { useHistory, useLocation } from 'react-router-dom';
-
 import { useState, useEffect } from 'react';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import Card from './Card';
-import s from './Test.module.css';
-import styled from 'styled-components';
-import { ReactComponent as PrevSvg } from '../../images/prev.svg';
-import { ReactComponent as NextSvg } from '../../images/next.svg';
+
 import testActions from '../../redux/test/testActions';
 import { fetchTest, sendAnswers } from 'redux/test/testOperations';
 import * as selectors from '../../redux/test/testSelectors';
 
+import Card from './Card';
 import Modal from './Modal';
+import { ReactComponent as PrevSvg } from '../../images/prev.svg';
+import { ReactComponent as NextSvg } from '../../images/next.svg';
+
+import s from './Test.module.css';
+import styled from 'styled-components';
 
 export default function Test({ title }) {
   const [open, setOpen] = useState(false);
@@ -26,18 +26,22 @@ export default function Test({ title }) {
 
   const match = useRouteMatch();
   const history = useHistory();
-  const location = useLocation();
   const isRender = questions.length;
+  const categories = { theory: '[Теория тестирования_]', tech: '[Техническое тестирования_]' };
 
   useEffect(() => {
-    if (questions.length) return;
-    // console.log(`match.url`, match.url);
+    if (
+      (match.url === '/test-theory' && category === categories.theory) ||
+      (match.url === '/test-tech' && category === categories.tech)
+    )
+      return;
+
     if (match.url === '/test-theory') {
-      dispatch(testActions.addCategory('[Теория тестирования_]'));
+      dispatch(testActions.addCategory(categories.theory));
       dispatch(fetchTest(match.url));
     }
     if (match.url === '/test-tech') {
-      dispatch(testActions.addCategory('[Техническое тестирования_]'));
+      dispatch(testActions.addCategory(categories.tech));
       dispatch(fetchTest(match.url));
     }
   }, []);
@@ -45,33 +49,20 @@ export default function Test({ title }) {
   function openModal() {
     setOpen(true);
   }
-  const handleClickCancel = () => {
+  function handleClickCancel() {
     setOpen(false);
     dispatch(testActions.testRefresh());
     history.push('/');
-  };
-  const handleClickContinue = () => {
+  }
+  function handleClickContinue() {
     setOpen(false);
-  };
-
-  // useEffect(() => {
-  // history.push({ ...location, search: `${activeCard}` });
-  // const cardParams = new URLSearchParams(location.search).get('activeCard') ?? '1';
-  // dispatch(testActions.addActiveCard(cardParams));
-  // }, [activeCard]);
+  }
 
   const handlePrev = () => {
-    // setActiveCard(activeCard - 1);
-    // history.push({ ...location, search: `card=${activeCard + 2}` });
     dispatch(testActions.addActiveCard(activeCard - 1));
-    // history.push({ ...location, search: `${Number(activeCard) - 1}` });
-    // location.search = `q=${activeCard}`;
   };
   const handleNext = () => {
-    // setActiveCard(activeCard + 1);
     dispatch(testActions.addActiveCard(activeCard + 1));
-    // history.push({ ...location, search: `card=${activeCard + 2}` });
-    // history.push({ ...location, search: `${Number(activeCard) + 1}` });
   };
   const handleAnswer = targerAnswer => {
     dispatch(testActions.addAnswer(targerAnswer));
@@ -91,10 +82,19 @@ export default function Test({ title }) {
     openModal();
   };
 
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <>
       <section className={s.section}>
-        <Modal open={open} onCancel={handleClickCancel} onContinue={handleClickContinue} />
+        <Modal
+          open={open}
+          onClose={handleClose}
+          onCancel={handleClickCancel}
+          onContinue={handleClickContinue}
+        />
         <div className={s.above}>
           <h2 className={s.title}>{title ? title : category}</h2>
           <button className={s.aboveButton} type="button" onClick={handleFinishTest}>

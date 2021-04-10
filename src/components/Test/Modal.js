@@ -9,8 +9,8 @@ import {
 
 export default function Modal({ open, onCancel, onContinue }) {
   return (
-    <Dialog open={open} aria-labelledby="modal">
-      <DialogTitle id="modal">Предупреждение!!!</DialogTitle>
+    <Dialog open={open} aria-labelledby="responsive-dialog-title" fullWidth={true} maxWidth="xs">
+      <DialogTitle id="responsive-dialog-title">Предупреждение!!!</DialogTitle>
       <DialogContent>
         <DialogContentText>Тест не закончен</DialogContentText>
       </DialogContent>
