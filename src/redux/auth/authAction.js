@@ -16,6 +16,10 @@ const getCurrentUserRequest = createAction('auth/getCurrentUserRequest');
 const getCurrentUserSuccess = createAction('auth/getCurrentUserSuccess');
 const getCurrentUserError = createAction('auth/getCurrentUserError');
 
+const googleUserRequest = createAction('auth/googleUserRequest');
+const googleUserSuccess = createAction('auth/googleUserSuccess');
+const googleUserError = createAction('auth/googleUserError');
+
 export default {
   regUserRequest,
   regUserSuccess,
@@ -29,4 +33,7 @@ export default {
   getCurrentUserRequest,
   getCurrentUserSuccess,
   getCurrentUserError,
+  googleUserRequest,
+  googleUserSuccess,
+  googleUserError,
 };

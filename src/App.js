@@ -3,7 +3,9 @@ import { useDispatch } from 'react-redux';
 import { Switch, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Container from './components/Container';
+import Google from './components/GooglePage';
 import MainContainer from './components/MainContainer';
+import Footer from './components/Footer';
 import { getCurrentUser } from './redux/auth/authOperations';
 
 import PreLoader from './components/PreLoader';
@@ -73,6 +75,10 @@ function App() {
               </Container>
             </PublicRoute>
 
+            <PublicRoute path="/google">
+              <Google />
+            </PublicRoute>
+
             <PublicRoute>
               <Container>
                 <NotFoundPage />
@@ -81,6 +87,7 @@ function App() {
           </Switch>
         </Suspense>
       </MainContainer>
+      <Footer />
     </>
   );
 }

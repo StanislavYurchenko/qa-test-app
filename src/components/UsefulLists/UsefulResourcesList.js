@@ -1,33 +1,33 @@
 //import { Heading1, Heading2 } from './MaterialsPage.style.js';
-import { Title, List } from './UsefulLists.style';
+import { Title, List, Link } from './UsefulLists.style';
 export default function UsefulResourcesList() {
   return (
     <>
+      <Title>Useful resources</Title>
       <List>
-        <Title>Useful resources</Title>
         <li>
           1.&nbsp;
-          <a href="https://dou.ua/" target="_blank">
+          <Link href="https://dou.ua/" target="_blank">
             dou.ua
-          </a>
+          </Link>
         </li>
         <li>
           2.&nbsp;
-          <a href="https://habr.com/" target="_blank">
+          <Link href="https://habr.com/" target="_blank">
             Habr.com
-          </a>
+          </Link>
         </li>
         <li>
           3.&nbsp;
-          <a href="https://goit.ua/" target="_blank">
+          <Link href="https://goit.ua/" target="_blank">
             goit.ua
-          </a>
+          </Link>
         </li>
         <li>
           4.&nbsp;
-          <a href="https://www.softwaretestinghelp.com/" target="_blank">
+          <Link href="https://www.softwaretestinghelp.com/" target="_blank">
             Software Testing Help
-          </a>
+          </Link>
         </li>
       </List>
     </>
