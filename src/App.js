@@ -55,9 +55,9 @@ function App() {
             </PrivateRoute>
 
             <PrivateRoute path="/test-tech" redirectTo="/auth">
-              <Container>
-                <Test />
-              </Container>
+              {/* <Container> */}
+              <Test />
+              {/* </Container> */}
             </PrivateRoute>
 
             <PrivateRoute path="/useful-info" redirectTo="/auth">
@@ -65,9 +65,9 @@ function App() {
             </PrivateRoute>
 
             <PublicRoute path="/contacts">
-              <Container>
-                <ContactsPage />
-              </Container>
+              {/* <Container> */}
+              <ContactsPage />
+              {/* </Container> */}
             </PublicRoute>
 
             <PrivateRoute path="/test" redirectTo="/auth">

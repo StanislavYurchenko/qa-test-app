@@ -12,7 +12,7 @@ import { ReactComponent as PrevSvg } from '../../images/prev.svg';
 import { ReactComponent as NextSvg } from '../../images/next.svg';
 
 import s from './Test.module.css';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 export default function Test({ title }) {
   const [open, setOpen] = useState(false);
@@ -20,7 +20,7 @@ export default function Test({ title }) {
   const answers = useSelector(selectors.getAnswers);
   const questions = useSelector(selectors.getQuestions);
   const category = useSelector(selectors.getCategory);
-  const result = useSelector(selectors.getResult);
+  // const result = useSelector(selectors.getResult);
   const activeCard = useSelector(selectors.getActiveCard);
   const dispatch = useDispatch();
 
@@ -49,13 +49,16 @@ export default function Test({ title }) {
   function openModal() {
     setOpen(true);
   }
-  function handleClickCancel() {
+  function closeModal() {
     setOpen(false);
+  }
+  function handleClickCancel() {
+    closeModal();
     dispatch(testActions.testRefresh());
     history.push('/');
   }
   function handleClickContinue() {
-    setOpen(false);
+    closeModal();
   }
 
   const handlePrev = () => {
@@ -76,14 +79,10 @@ export default function Test({ title }) {
     const readyAnswers = transformAnswers(answers);
     if (questions.length === readyAnswers.length) {
       dispatch(sendAnswers(readyAnswers));
-      history.push('/useful-info');
+      history.push('/results');
       return;
     }
     openModal();
-  };
-
-  const handleClose = () => {
-    setOpen(false);
   };
 
   return (
@@ -91,7 +90,7 @@ export default function Test({ title }) {
       <section className={s.section}>
         <Modal
           open={open}
-          onClose={handleClose}
+          onClose={closeModal}
           onCancel={handleClickCancel}
           onContinue={handleClickContinue}
         />
