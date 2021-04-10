@@ -52,7 +52,7 @@ function App() {
         <GlobalStyles />
         {/* <Header /> */}
         {/* <Container> */}
-        <Toggle theme={theme} toggleTheme={toggleTheme} />
+        <Toggle />
         {/* </Container> */}
 
         <MainContainer>

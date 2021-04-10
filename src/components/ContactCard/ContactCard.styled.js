@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
 import { PRIMARY_TEXT_COLOUR, DARK_GREY_TEXT_COLOUR } from '../../themes/colors';
+import { ReportSharp } from '@material-ui/icons';
 
 export const Wrapper = styled.div`
   margin: 0 auto;
@@ -47,35 +48,38 @@ export const Wrapper = styled.div`
 `;
 
 export const StyledCard = styled.li`
-  border-radius: 0;
-  box-shadow: 0px 4px 15px rgba(2, 23, 42, 0.1);
-  width: 280px;
-  padding: 0;
+  ${({ theme }) => `
+    background-color: ${theme.colour6};
+    border-radius: 0;
+    box-shadow: 0px 4px 15px rgba(2, 23, 42, 0.1);
+    width: 280px;
+    padding: 0;
 
-  @media screen and (min-width: 768px) {
-    width: 352px;
+    @media screen and (min-width: 768px) {
+      width: 352px;
 
-    &:nth-child(odd) {
+      &:nth-child(odd) {
+        margin-right: 20px;
+      }
+
+      &:nth-last-child(-n + 2) {
+        margin-bottom: 0px;
+      }
+    }
+
+    @media screen and (min-width: 1290px) {
+      width: 295px;
       margin-right: 20px;
-    }
 
-    &:nth-last-child(-n + 2) {
-      margin-bottom: 0px;
-    }
-  }
+      &:nth-child(4n) {
+        margin-right: 0px;
+      }
 
-  @media screen and (min-width: 1290px) {
-    width: 295px;
-    margin-right: 20px;
-
-    &:nth-child(4n) {
-      margin-right: 0px;
+      &:nth-last-child(-n + 2) {
+        margin-right: 20px;
+      }
     }
-
-    &:nth-last-child(-n + 2) {
-      margin-right: 20px;
-    }
-  }
+  `}
 `;
 
 export const StyledWrapper = styled.div`
@@ -105,7 +109,6 @@ export const StyledCardContent = styled.ul`
 `;
 
 export const StyledTypography = styled(Typography)`
-  color: ${PRIMARY_TEXT_COLOUR};
   text-transform: uppercase;
   font-family: Montserrat, sans-serif;
   font-weight: 700;
@@ -116,13 +119,15 @@ export const StyledTypography = styled(Typography)`
 `;
 
 export const StyledParagraph = styled(Typography)`
-  color: ${DARK_GREY_TEXT_COLOUR};
-  font-family: Montserrat, sans-serif;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 12px;
-  letter-spacing: 0.02em;
-  margin-bottom: 10px;
+  ${({ theme }) => `
+    color: ${theme.colour1};
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0.02em;
+    margin-bottom: 10px;
+  `}
 `;
 
 export const StyledAbout = styled(Typography)`

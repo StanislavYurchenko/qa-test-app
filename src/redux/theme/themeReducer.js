@@ -1,9 +1,12 @@
 import { createReducer, combineReducers } from '@reduxjs/toolkit';
+import themeActions from './themeAction';
 
-const category = createReducer('', {});
+const theme = createReducer(null, {
+  [themeActions.setThemeSuccess]: (_, { payload }) => payload,
+});
 
-const questions = createReducer([], {});
-
-const themeReducer = combineReducers({});
+const themeReducer = combineReducers({
+  theme,
+});
 
 export default themeReducer;

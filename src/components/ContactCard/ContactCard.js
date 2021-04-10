@@ -1,7 +1,13 @@
 import PropTypes from 'prop-types';
+
 import { makeStyles } from '@material-ui/core/styles';
 import { StylesProvider } from '@material-ui/core/styles';
 import LinkList from '../LinkList';
+
+import { useSelector } from 'react-redux';
+import { getTheme } from '../../redux/theme/themeSelectors';
+
+import { createMuiTheme } from '@material-ui/core/styles';
 
 import {
   StyledCard,
@@ -24,6 +30,8 @@ const useStyles = makeStyles(theme => ({
 
 const ContactCard = ({ photo, name, position, about, hubLink, linLink }) => {
   const classes = useStyles();
+  const theme = useSelector(getTheme);
+  const customTheme = createMuiTheme(theme);
 
   return (
     <StylesProvider injectFirst>
@@ -31,14 +39,12 @@ const ContactCard = ({ photo, name, position, about, hubLink, linLink }) => {
         <Overlay className="overlay">
           <LinkList hubLink={hubLink} linLink={linLink} />
         </Overlay>
-        <StyledCard>
+        <StyledCard theme={customTheme}>
           <StyledWrapper>
             <StyledCardMedia width="280" height="244" alt={name} src={photo} title={name} />
             <StyledCardContent>
-              <StyledTypography color="textPrimary" component="p">
-                {name}
-              </StyledTypography>
-              <StyledParagraph color="textPrimary" component="p">
+              <StyledTypography theme={customTheme}>{name}</StyledTypography>
+              <StyledParagraph color="textPrimary" component="p" theme={customTheme}>
                 {position}
               </StyledParagraph>
               <StyledAbout color="textPrimary" component="p">
