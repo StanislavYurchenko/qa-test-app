@@ -105,12 +105,14 @@ const RegisterForm = ({ handleToggleButton }) => {
           )}
         />
 
-        <Button type="button" onClick={handleToggleButton}>
-          SIGN IN
-        </Button>
-        <Button type="submit" variant="contained">
-          {loadingAuth ? <PreLoader sizePreloader="16px" /> : 'SIGN UP'}
-        </Button>
+        <div>
+          <Button type="button" onClick={handleToggleButton}>
+            SIGN IN
+          </Button>
+          <Button type="submit" variant="contained">
+            {loadingAuth ? <PreLoader sizePreloader="16px" /> : 'SIGN UP'}
+          </Button>
+        </div>
       </form>
       {successfulReg && (
         <p>An email has been sent to your mail with confirmation of registration.</p>

@@ -80,12 +80,14 @@ const LoginForm = ({ handleToggleButton }) => {
           )}
         />
 
-        <Button type="submit" variant="contained">
-          {loadingAuth ? <PreLoader sizePreloader="16px" /> : 'SIGN IN'}
-        </Button>
-        <Button type="button" onClick={handleToggleButton}>
-          SIGN UP
-        </Button>
+        <div>
+          <Button type="submit" variant="contained">
+            {loadingAuth ? <PreLoader sizePreloader="16px" /> : 'SIGN IN'}
+          </Button>
+          <Button type="button" onClick={handleToggleButton}>
+            SIGN UP
+          </Button>
+        </div>
       </form>
       {!!errorAuth && <p>Invalid email or password! Try again!</p>}
     </div>
