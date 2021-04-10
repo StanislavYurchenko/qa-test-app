@@ -1,14 +1,13 @@
 import { Pie } from 'react-chartjs-2';
-import { useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 
 import { ChartContainer, PieContainer, AnswersContainer } from './Chart.style';
 import { ACCENT_COLOUR, BAD_RESULT_COLOUR } from '../../themes/colors';
+import { getResult } from '../../redux/test/testSelectors';
 
-export default function Chart() {
-  const correctAnswers = 10;
-  const incorrectAnswers = 2;
-  // const correctAnswers = useSelector(state => state.test.result.correct);
-  // const incorrectAnswers = useSelector(state => state.test.result.wrong);
+function Chart({ correctAnswers, incorrectAnswers }) {
+  // const correctAnswers = 0;
+  // const incorrectAnswers = 10;
   const totalAnswers = correctAnswers + incorrectAnswers;
 
   const generateChartData = (correct, incorrect, total) => {
@@ -61,3 +60,10 @@ export default function Chart() {
     </ChartContainer>
   );
 }
+
+const mapStateToProps = state => ({
+  correctAnswers: getResult(state).correct,
+  incorrectAnswers: getResult(state).wrong,
+});
+
+export default connect(mapStateToProps, null)(Chart);

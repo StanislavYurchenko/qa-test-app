@@ -5,7 +5,7 @@ import { fetchTest, sendAnswers } from './testOperations';
 const category = createReducer('', {
   [testActions.addCategory]: (_, { payload }) => payload,
   [testActions.testRefresh]: () => '',
-  [sendAnswers.fulfilled]: () => '',
+  // [sendAnswers.fulfilled]: () => '',
 });
 
 const questions = createReducer([], {
@@ -28,10 +28,13 @@ const answers = createReducer([], {
   [testActions.testRefresh]: () => [],
 });
 
-const result = createReducer(null, {
-  [fetchTest.pending]: () => null,
-  [sendAnswers.fulfilled]: (_, { payload }) => payload,
-});
+const result = createReducer(
+  {},
+  {
+    [fetchTest.pending]: () => {},
+    [sendAnswers.fulfilled]: (_, { payload }) => payload,
+  },
+);
 
 const activeCard = createReducer(1, {
   [fetchTest.pending]: () => 1,
