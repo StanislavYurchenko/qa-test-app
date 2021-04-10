@@ -4,6 +4,7 @@ import { fetchTest, sendAnswers } from './testOperations';
 
 const category = createReducer('', {
   [testActions.addCategory]: (_, { payload }) => payload,
+  [testActions.testRefresh]: () => 'опа',
 });
 
 const questions = createReducer([], {
@@ -11,6 +12,7 @@ const questions = createReducer([], {
   [fetchTest.fulfilled]: (_, { payload }) => payload,
 
   [sendAnswers.fulfilled]: () => [],
+  [testActions.testRefresh]: () => [],
 });
 
 const answers = createReducer([], {
@@ -21,16 +23,19 @@ const answers = createReducer([], {
   //   ...state.filter(item => item.questionId !== payload.questionId),
   //   payload,
   // ],
-
   [sendAnswers.fulfilled]: () => [],
+  [testActions.testRefresh]: () => [],
 });
 
 const result = createReducer(null, {
   [fetchTest.pending]: () => null,
   [sendAnswers.fulfilled]: (_, { payload }) => payload,
 });
-const card = createReducer(1, {
+
+const activeCard = createReducer(1, {
   [testActions.addActiveCard]: (_, { payload }) => payload,
+  [sendAnswers.fulfilled]: () => 1,
+  [testActions.testRefresh]: () => 1,
 });
 
 const loading = createReducer(false, {
@@ -58,7 +63,7 @@ const testReducer = combineReducers({
   result,
   loading,
   error,
-  card,
+  activeCard,
 });
 
 export default testReducer;

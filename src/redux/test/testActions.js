@@ -4,10 +4,12 @@ const addAnswer = createAction('test/addAnswer');
 const resetAnswers = createAction('test/resetAnswer');
 const addCategory = createAction('test/addCategory');
 const addActiveCard = createAction('test/addActiveCard');
+const testRefresh = createAction('test/refresh');
 
 export default {
   addAnswer,
   resetAnswers,
   addCategory,
   addActiveCard,
+  testRefresh,
 };

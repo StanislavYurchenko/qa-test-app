@@ -12,14 +12,16 @@ import testActions from '../../redux/test/testActions';
 import { fetchTest, sendAnswers } from 'redux/test/testOperations';
 import * as selectors from '../../redux/test/testSelectors';
 
+import Modal from './Modal';
+
 export default function Test({ title }) {
-  const [activeCard, setActiveCard] = useState(0);
+  const [open, setOpen] = useState(false);
 
   const answers = useSelector(selectors.getAnswers);
   const questions = useSelector(selectors.getQuestions);
   const category = useSelector(selectors.getCategory);
   const result = useSelector(selectors.getResult);
-  const card = useSelector(selectors.getActiveCard);
+  const activeCard = useSelector(selectors.getActiveCard);
   const dispatch = useDispatch();
 
   const match = useRouteMatch();
@@ -29,6 +31,7 @@ export default function Test({ title }) {
 
   useEffect(() => {
     if (questions.length) return;
+    // console.log(`match.url`, match.url);
     if (match.url === '/test-theory') {
       dispatch(testActions.addCategory('[Теория тестирования_]'));
       dispatch(fetchTest(match.url));
@@ -39,52 +42,69 @@ export default function Test({ title }) {
     }
   }, []);
 
-  useEffect(() => {
-    history.push({ ...location, search: `${card}` });
-    const cardParams = new URLSearchParams(location.search).get('card') ?? '1';
-    dispatch(testActions.addActiveCard(cardParams));
-  }, [card]);
+  function openModal() {
+    setOpen(true);
+  }
+  const handleClickCancel = () => {
+    setOpen(false);
+    dispatch(testActions.testRefresh());
+    history.push('/');
+  };
+  const handleClickContinue = () => {
+    setOpen(false);
+  };
+
+  // useEffect(() => {
+  // history.push({ ...location, search: `${activeCard}` });
+  // const cardParams = new URLSearchParams(location.search).get('activeCard') ?? '1';
+  // dispatch(testActions.addActiveCard(cardParams));
+  // }, [activeCard]);
 
   const handlePrev = () => {
     // setActiveCard(activeCard - 1);
     // history.push({ ...location, search: `card=${activeCard + 2}` });
-    dispatch(testActions.addActiveCard(card - 1));
-    history.push({ ...location, search: `${card - 1}` });
+    dispatch(testActions.addActiveCard(activeCard - 1));
+    // history.push({ ...location, search: `${Number(activeCard) - 1}` });
     // location.search = `q=${activeCard}`;
   };
   const handleNext = () => {
     // setActiveCard(activeCard + 1);
-    dispatch(testActions.addActiveCard(card + 1));
+    dispatch(testActions.addActiveCard(activeCard + 1));
     // history.push({ ...location, search: `card=${activeCard + 2}` });
-    history.push({ ...location, search: `${Number(card) + 1}` });
+    // history.push({ ...location, search: `${Number(activeCard) + 1}` });
   };
   const handleAnswer = targerAnswer => {
     dispatch(testActions.addAnswer(targerAnswer));
   };
 
-  const handleMainButton = () => {
+  function transformAnswers(answers) {
     const entries = Object.entries(answers);
-    const transformAnswers = entries.map(([id, answer]) => {
-      return { questionId: Number(id), answer };
-    });
-    dispatch(sendAnswers(transformAnswers));
-    // history.push('/useful-info');
-    console.log('open modal');
+    return entries.map(([id, answer]) => ({ questionId: Number(id), answer }));
+  }
+  const handleFinishTest = () => {
+    const readyAnswers = transformAnswers(answers);
+    if (questions.length === readyAnswers.length) {
+      dispatch(sendAnswers(readyAnswers));
+      history.push('/useful-info');
+      return;
+    }
+    openModal();
   };
 
   return (
     <>
       <section className={s.section}>
+        <Modal open={open} onCancel={handleClickCancel} onContinue={handleClickContinue} />
         <div className={s.above}>
           <h2 className={s.title}>{title ? title : category}</h2>
-          <button className={s.aboveButton} type="button" onClick={handleMainButton}>
+          <button className={s.aboveButton} type="button" onClick={handleFinishTest}>
             Завершить тест
           </button>
         </div>
         {isRender && (
           <Card
             questions={questions}
-            activeCard={card}
+            activeCard={activeCard}
             handleAnswer={handleAnswer}
             answered={answers}
           />
@@ -94,7 +114,7 @@ export default function Test({ title }) {
             className={s.btn}
             type="button"
             onClick={handlePrev}
-            disabled={activeCard - 1 < 0}
+            disabled={activeCard - 1 === 0}
           >
             <PrevSvg />
             <span>Предыдущий вопрос</span>
@@ -103,7 +123,7 @@ export default function Test({ title }) {
             className={s.btn}
             type="button"
             onClick={handleNext}
-            disabled={activeCard + 1 >= questions.length}
+            disabled={activeCard + 1 > questions.length}
           >
             <span>Следующий вопрос</span>
             <NextSvg />

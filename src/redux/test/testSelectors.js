@@ -4,4 +4,4 @@ export const getAnswers = state => state.test.answers;
 export const getResult = state => state.test.result;
 export const loading = state => state.test.loading;
 export const error = state => state.test.error;
-export const getActiveCard = state => state.test.card;
+export const getActiveCard = state => state.test.activeCard;
