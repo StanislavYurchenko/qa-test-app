@@ -5,6 +5,7 @@ const userName = createReducer(null, {
   [authActions.loginUserSuccess]: (_, { payload }) => payload.name,
   [authActions.logoutUserSuccess]: () => null,
   [authActions.getCurrentUserSuccess]: (_, { payload }) => payload,
+  [authActions.googleUserSuccess]: (_, { payload }) => payload.name,
 });
 
 const successfulReg = createReducer(false, {
@@ -17,16 +18,19 @@ const token = createReducer(null, {
   [authActions.loginUserSuccess]: (_, { payload }) => payload.token,
   [authActions.logoutUserSuccess]: () => null,
   [authActions.getCurrentUserError]: () => null,
+  [authActions.googleUserSuccess]: (_, { payload }) => payload.token,
 });
 
 const isLoggedIn = createReducer(false, {
   [authActions.loginUserSuccess]: () => true,
   [authActions.getCurrentUserSuccess]: () => true,
   [authActions.getCurrentUserRequest]: () => true,
+  [authActions.googleUserSuccess]: () => true,
 
   [authActions.loginUserError]: () => false,
   [authActions.logoutUserSuccess]: () => false,
   [authActions.getCurrentUserError]: () => false,
+  [authActions.googleUserError]: () => false,
 });
 
 const loading = createReducer(false, {
@@ -45,6 +49,10 @@ const loading = createReducer(false, {
   [authActions.getCurrentUserRequest]: () => true,
   [authActions.getCurrentUserSuccess]: () => false,
   [authActions.getCurrentUserError]: () => false,
+
+  [authActions.googleUserRequest]: () => true,
+  [authActions.googleUserSuccess]: () => false,
+  [authActions.googleUserError]: () => false,
 });
 
 const error = createReducer('', {
@@ -63,6 +71,14 @@ const error = createReducer('', {
   [authActions.getCurrentUserRequest]: () => '',
   [authActions.getCurrentUserSuccess]: () => '',
   [authActions.getCurrentUserError]: (_, { payload }) => payload,
+
+  [authActions.loginUserRequest]: () => '',
+  [authActions.loginUserSuccess]: () => '',
+  [authActions.loginUserError]: (_, { payload }) => payload,
+
+  [authActions.googleUserRequest]: () => '',
+  [authActions.googleUserSuccess]: () => '',
+  [authActions.googleUserError]: (_, { payload }) => payload,
 });
 
 const authUsersReducer = combineReducers({

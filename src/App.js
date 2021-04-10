@@ -3,23 +3,27 @@ import { useDispatch } from 'react-redux';
 import { Switch, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Container from './components/Container';
+import Google from './components/GooglePage';
+import MainContainer from './components/MainContainer';
+import Footer from './components/Footer';
 import { getCurrentUser } from './redux/auth/authOperations';
 
 import PreLoader from './components/PreLoader';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import PublicRoute from 'components/PublicRoute/PublicRoute';
 
-const MainPage = lazy(() => import('pages/MainPage/MainPage' /* webpackChunkName: "MainPage" */));
-const AuthPage = lazy(() => import('pages/AuthPage/AuthPage' /* webpackChunkName: "AuthPage" */));
-const ResultsPage = lazy(() =>
-  import('pages/ResultsPage/ResultsPage' /* webpackChunkName: "ResultsPage" */),
-);
+const MainPage = lazy(() => import('pages/MainPage' /* webpackChunkName: "MainPage" */));
+const AuthPage = lazy(() => import('pages/AuthPage' /* webpackChunkName: "AuthPage" */));
+const ResultsPage = lazy(() => import('pages/ResultsPage' /* webpackChunkName: "ResultsPage" */));
 const ContactsPage = lazy(() =>
-  import('pages/ContactsPage/ContactsPage' /* webpackChunkName: "ContactsPage" */),
+  import('pages/ContactsPage' /* webpackChunkName: "ContactsPage" */),
 );
 const Test = lazy(() => import('./components/Test' /* webpackChunkName: "Test" */));
 const MaterialsPage = lazy(() =>
-  import('pages/MaterialsPage/MaterialsPage' /* webpackChunkName: "MaterialsPage" */),
+  import('pages/MaterialsPage' /* webpackChunkName: "MaterialsPage" */),
+);
+const NotFoundPage = lazy(() =>
+  import('pages/NotFoundPage' /* webpackChunkName: "NotFoundPage" */),
 );
 
 function App() {
@@ -35,47 +39,68 @@ function App() {
   return (
     <>
       <Header />
-      <Container>
+      <MainContainer>
         <Suspense fallback={<PreLoader sizePreloader="200px" />}>
           <Switch>
             <PrivateRoute exact path="/" redirectTo="/auth">
-              <MainPage />
+              <Container>
+                <MainPage />
+              </Container>
             </PrivateRoute>
 
             <PrivateRoute path="/test-theory" redirectTo="/auth">
-              <Test />
+              <Container>
+                <Test />
+              </Container>
             </PrivateRoute>
 
             <PrivateRoute path="/test-tech" redirectTo="/auth">
-              <Test />
+              <Container>
+                <Test />
+              </Container>
             </PrivateRoute>
 
             <PrivateRoute path="/useful-info" redirectTo="/auth">
-              <div>Страница доп материалов</div>
+              <MaterialsPage />
             </PrivateRoute>
 
             <PublicRoute path="/contacts">
-              <ContactsPage />
+              <Container>
+                <ContactsPage />
+              </Container>
             </PublicRoute>
 
-            {/* <PrivateRoute path="/test" redirectTo="/auth">
-              <div>Страница тестов</div>
-            </PrivateRoute> */}
+            <PrivateRoute path="/test" redirectTo="/auth">
+              <Container>
+                <div>Страница тестов</div>
+              </Container>
+            </PrivateRoute>
 
             <PrivateRoute path="/results" redirectTo="/auth">
-              <ResultsPage />
+              <Container>
+                <ResultsPage />
+              </Container>
             </PrivateRoute>
 
             <PublicRoute path="/auth" redirectTo={currentRoute} restricted>
-              <AuthPage />
+              <Container>
+                <AuthPage />
+              </Container>
+            </PublicRoute>
+
+            <PublicRoute path="/google">
+              <Google />
             </PublicRoute>
 
             <PublicRoute>
-              <div>not found</div>
+              <Container>
+                <NotFoundPage />
+              </Container>
             </PublicRoute>
           </Switch>
         </Suspense>
-      </Container>
+      </MainContainer>
+      <Footer />
     </>
   );
 }

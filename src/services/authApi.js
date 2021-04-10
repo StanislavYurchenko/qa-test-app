@@ -34,3 +34,7 @@ export const fetchQuestions = path => {
 export const sendAnswers = answers => {
   return axios.post('/api/test-theory/result', answers).then(data => data.data.data);
 };
+
+export const googleRequest = () => {
+  return axios.get('/auth/google').then(data => data);
+};

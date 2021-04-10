@@ -30,7 +30,6 @@ const LoginForm = ({ handleToggleButton }) => {
   const onSubmit = data => {
     if (!validateEmail(data.email)) return;
     dispatch(loginUser(data));
-    console.log(data);
     reset();
   };
 
