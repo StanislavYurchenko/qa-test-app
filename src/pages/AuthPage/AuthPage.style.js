@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 import BREAKPOINTS from '../../utils/breakpoints';
-import { WHITE, PRIMARY_TEXT_COLOUR } from '../../themes/colors';
+import { WHITE, PRIMARY_TEXT_COLOUR, LOGIN_BUTTON_BACKGROUND_COLOUR } from '../../themes/colors';
+
+import { ReactComponent as Svg } from '../../images/icons/google.svg';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -45,7 +47,6 @@ export const FormСontainer = styled.div`
 export const Text = styled.p`
   font-size: 1rem;
   line-height: 1.2rem;
-  letter-spacing: 0.02em;
   font-weight: 500;
   font-family: Montserrat, sans-serif;
   color: ${PRIMARY_TEXT_COLOUR};
@@ -55,4 +56,30 @@ export const Text = styled.p`
   } ;
 `;
 
-export const GoogleButton = styled.button``;
+// export const GoogleLink =
+
+export const GoogleButton = styled.a`
+  position: relative;
+  width: 16rem;
+  padding: 1.7rem 0 1.8rem 6.6rem;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  display: block;
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.1));
+  background: ${LOGIN_BUTTON_BACKGROUND_COLOUR};
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+  font-weight: 700;
+  font-family: Montserrat, sans-serif;
+  color: ${PRIMARY_TEXT_COLOUR};
+  @media screen and (max-width: ${BREAKPOINTS.MOBILE_MAX}) {
+    margin-right: auto;
+    margin-left: auto;
+  }
+`;
+
+export const GoogleSvg = styled(Svg)`
+  position: absolute;
+  top: 1.7rem;
+  left: 3.8rem;
+`;

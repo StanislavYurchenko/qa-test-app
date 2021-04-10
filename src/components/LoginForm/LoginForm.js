@@ -1,12 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
-import { TextField, Button } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 
 import PreLoader from '../PreLoader';
 import { loginUser } from '../../redux/auth/authOperations';
 import { loading, error } from '../../redux/auth/authSelectors';
 
-import { useStyles } from './LoginForm.style';
+import { useStyles, ButtonContainer, ActiveButton, NotActiveButton } from './LoginForm.style';
 
 const LoginForm = ({ handleToggleButton }) => {
   const dispatch = useDispatch();
@@ -80,14 +80,14 @@ const LoginForm = ({ handleToggleButton }) => {
           )}
         />
 
-        <div>
-          <Button type="submit" variant="contained">
+        <ButtonContainer>
+          <ActiveButton type="submit" variant="contained">
             {loadingAuth ? <PreLoader sizePreloader="16px" /> : 'SIGN IN'}
-          </Button>
-          <Button type="button" onClick={handleToggleButton}>
+          </ActiveButton>
+          <NotActiveButton type="button" onClick={handleToggleButton}>
             SIGN UP
-          </Button>
-        </div>
+          </NotActiveButton>
+        </ButtonContainer>
       </form>
       {!!errorAuth && <p>Invalid email or password! Try again!</p>}
     </div>

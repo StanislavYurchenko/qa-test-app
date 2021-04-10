@@ -6,7 +6,12 @@ import PreLoader from '../PreLoader';
 import { registrationUser } from '../../redux/auth/authOperations';
 import { isSuccessfulReg, loading, error } from '../../redux/auth/authSelectors';
 
-import { useStyles } from './RegisterForm.style';
+import {
+  useStyles,
+  ButtonContainer,
+  ActiveButton,
+  NotActiveButton,
+} from '../LoginForm/LoginForm.style';
 
 const RegisterForm = ({ handleToggleButton }) => {
   const dispatch = useDispatch();
@@ -105,14 +110,14 @@ const RegisterForm = ({ handleToggleButton }) => {
           )}
         />
 
-        <div>
-          <Button type="button" onClick={handleToggleButton}>
+        <ButtonContainer>
+          <NotActiveButton type="button" onClick={handleToggleButton}>
             SIGN IN
-          </Button>
-          <Button type="submit" variant="contained">
+          </NotActiveButton>
+          <ActiveButton type="submit" variant="contained">
             {loadingAuth ? <PreLoader sizePreloader="16px" /> : 'SIGN UP'}
-          </Button>
-        </div>
+          </ActiveButton>
+        </ButtonContainer>
       </form>
       {successfulReg && (
         <p>An email has been sent to your mail with confirmation of registration.</p>
