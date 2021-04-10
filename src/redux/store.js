@@ -16,7 +16,8 @@ const authPersistConfig = {
 const testPersistConfig = {
   key: 'test',
   storage,
-  whitelist: ['questions', 'answers'],
+  whitelist: ['questions', 'answers', 'activeCard', 'category', 'result'],
+  blacklist: ['_persist'],
 };
 
 const rootReducer = combineReducers({

@@ -18,6 +18,7 @@ const ResultsPage = lazy(() => import('pages/ResultsPage' /* webpackChunkName: "
 const ContactsPage = lazy(() =>
   import('pages/ContactsPage' /* webpackChunkName: "ContactsPage" */),
 );
+const Test = lazy(() => import('./components/Test' /* webpackChunkName: "Test" */));
 const MaterialsPage = lazy(() =>
   import('pages/MaterialsPage' /* webpackChunkName: "MaterialsPage" */),
 );
@@ -47,14 +48,26 @@ function App() {
               </Container>
             </PrivateRoute>
 
+            <PrivateRoute path="/test-theory" redirectTo="/auth">
+              {/* <Container> */}
+              <Test />
+              {/* </Container> */}
+            </PrivateRoute>
+
+            <PrivateRoute path="/test-tech" redirectTo="/auth">
+              {/* <Container> */}
+              <Test />
+              {/* </Container> */}
+            </PrivateRoute>
+
             <PrivateRoute path="/useful-info" redirectTo="/auth">
               <MaterialsPage />
             </PrivateRoute>
 
             <PublicRoute path="/contacts">
-              <Container>
-                <ContactsPage />
-              </Container>
+              {/* <Container> */}
+              <ContactsPage />
+              {/* </Container> */}
             </PublicRoute>
 
             <PrivateRoute path="/test" redirectTo="/auth">
