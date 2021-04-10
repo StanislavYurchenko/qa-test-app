@@ -26,3 +26,15 @@ export const logout = () => {
 export const getUserInfo = () => {
   return axios.get('/users/current').then(data => data);
 };
+
+export const fetchQuestions = path => {
+  return axios.get(`/api${path}`).then(data => data.data.data);
+};
+
+export const sendAnswers = answers => {
+  return axios.post('/api/test-theory/result', answers).then(data => data.data.data);
+};
+
+export const googleRequest = () => {
+  return axios.get('/auth/google').then(data => data);
+};

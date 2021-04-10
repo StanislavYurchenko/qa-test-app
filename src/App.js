@@ -3,7 +3,9 @@ import { useDispatch } from 'react-redux';
 import { Switch, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Container from './components/Container';
+import Google from './components/GooglePage';
 import MainContainer from './components/MainContainer';
+import Footer from './components/Footer';
 import { getCurrentUser } from './redux/auth/authOperations';
 
 import PreLoader from './components/PreLoader';
@@ -16,6 +18,7 @@ const ResultsPage = lazy(() => import('pages/ResultsPage' /* webpackChunkName: "
 const ContactsPage = lazy(() =>
   import('pages/ContactsPage' /* webpackChunkName: "ContactsPage" */),
 );
+const Test = lazy(() => import('./components/Test' /* webpackChunkName: "Test" */));
 const MaterialsPage = lazy(() =>
   import('pages/MaterialsPage' /* webpackChunkName: "MaterialsPage" */),
 );
@@ -45,14 +48,26 @@ function App() {
               </Container>
             </PrivateRoute>
 
+            <PrivateRoute path="/test-theory" redirectTo="/auth">
+              {/* <Container> */}
+              <Test />
+              {/* </Container> */}
+            </PrivateRoute>
+
+            <PrivateRoute path="/test-tech" redirectTo="/auth">
+              {/* <Container> */}
+              <Test />
+              {/* </Container> */}
+            </PrivateRoute>
+
             <PrivateRoute path="/useful-info" redirectTo="/auth">
               <MaterialsPage />
             </PrivateRoute>
 
             <PublicRoute path="/contacts">
-              <Container>
-                <ContactsPage />
-              </Container>
+              {/* <Container> */}
+              <ContactsPage />
+              {/* </Container> */}
             </PublicRoute>
 
             <PrivateRoute path="/test" redirectTo="/auth">
@@ -73,6 +88,10 @@ function App() {
               </Container>
             </PublicRoute>
 
+            <PublicRoute path="/google">
+              <Google />
+            </PublicRoute>
+
             <PublicRoute>
               <Container>
                 <NotFoundPage />
@@ -81,6 +100,7 @@ function App() {
           </Switch>
         </Suspense>
       </MainContainer>
+      <Footer />
     </>
   );
 }
