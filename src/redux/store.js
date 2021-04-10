@@ -6,6 +6,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 
 import authUsersReducer from './auth/authReducer';
 import testReducer from './test/testReducer';
+// import themeReducer from './theme/themeReducer';
 
 const authPersistConfig = {
   key: 'auth',
@@ -19,9 +20,16 @@ const testPersistConfig = {
   whitelist: ['questions', 'answers'],
 };
 
+// const themePersistConfig = {
+//   key: 'theme',
+//   storage,
+//   // whitelist: ['questions', 'answers'],
+// };
+
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authUsersReducer),
   test: persistReducer(testPersistConfig, testReducer),
+  // theme: persistReducer(themePersistConfig, themeReducer),
 });
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
