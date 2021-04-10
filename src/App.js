@@ -49,9 +49,9 @@ function App() {
             </PrivateRoute>
 
             <PrivateRoute path="/test-theory" redirectTo="/auth">
-              <Container>
-                <Test />
-              </Container>
+              {/* <Container> */}
+              <Test />
+              {/* </Container> */}
             </PrivateRoute>
 
             <PrivateRoute path="/test-tech" redirectTo="/auth">
