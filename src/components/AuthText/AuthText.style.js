@@ -31,7 +31,7 @@ export const PageHeader = styled.h2`
 export const Text = styled.p`
   margin-top: 1rem;
   font-size: 1.2rem;
-  font-weight: bold;
+  font-weight: 500;
   line-height: 2rem;
   letter-spacing: 0.02em;
   color: ${DARK_GREY_TEXT_COLOUR};
@@ -50,4 +50,5 @@ export const Text = styled.p`
 
 export const Accent = styled.span`
   color: ${PRIMARY_TEXT_COLOUR};
+  font-weight: bold;
 `;
