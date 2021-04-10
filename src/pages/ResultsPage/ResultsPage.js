@@ -13,7 +13,7 @@ export default function ResultsView() {
   return (
     <MainContainer>
       <Header1>Results</Header1>
-      <Header2>{testCategory}qqwe</Header2>
+      <Header2>{testCategory}</Header2>
       <Chart />
       <StyledImage src={resultIMG} alt="cat result" />
       <TestResult />
