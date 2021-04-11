@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
-import { PRIMARY_TEXT_COLOUR, DARK_GREY_TEXT_COLOUR } from '../../themes/colors';
-import { ReportSharp } from '@material-ui/icons';
+// import { ReportSharp } from '@material-ui/icons';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.li`
   margin: 0 auto;
   position: relative;
   width: 280px;
@@ -47,9 +46,9 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const StyledCard = styled.li`
+export const StyledCard = styled.div`
   ${({ theme }) => `
-    background-color: ${theme.colour6};
+    background-color: ${theme.SECONDARY_TEXT_COLOR};
     border-radius: 0;
     box-shadow: 0px 4px 15px rgba(2, 23, 42, 0.1);
     width: 280px;
@@ -109,6 +108,8 @@ export const StyledCardContent = styled.ul`
 `;
 
 export const StyledTypography = styled(Typography)`
+  ${({ theme }) => `
+  color: ${theme.PRIMARY_TEXT_COLOR};
   text-transform: uppercase;
   font-family: Montserrat, sans-serif;
   font-weight: 700;
@@ -116,11 +117,12 @@ export const StyledTypography = styled(Typography)`
   line-height: 12px;
   letter-spacing: 0.12em;
   margin-bottom: 6px;
+  `}
 `;
 
 export const StyledParagraph = styled(Typography)`
   ${({ theme }) => `
-    color: ${theme.colour1};
+    color: ${theme.DARK_GREY_TEXT_COLOR};
     font-family: Montserrat, sans-serif;
     font-weight: 400;
     font-size: 12px;
@@ -131,16 +133,18 @@ export const StyledParagraph = styled(Typography)`
 `;
 
 export const StyledAbout = styled(Typography)`
-  color: ${PRIMARY_TEXT_COLOUR};
-  font-family: Montserrat, sans-serif;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
-  letter-spacing: 0.02em;
+  ${({ theme }) => `
+    color: ${theme.PRIMARY_TEXT_COLOR};
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
 
-  @media screen and (min-width: 768px) {
+    @media screen and (min-width: 768px) {
     font-size: 14px;
-  }
+    }
+ `}
 `;
 
 export const Overlay = styled.div`

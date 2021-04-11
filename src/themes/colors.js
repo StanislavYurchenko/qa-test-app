@@ -1,40 +1,33 @@
-// import { useSelector } from 'react-redux';
-// import { getTheme } from '../redux/theme/themeSelectors';
-
-// const theme = useSelector(getTheme);
-
-let selectedColors;
-
 export const colorsLight = {
-  colour1: '#000000',
-  colour2: '#FFFFFF',
-  colour3: '#FF6B09',
-  colour4: '#121D2E',
-  colour5: '#E2E3E5',
-  colour6: '#F5F6FB',
-  colour7: '#D7D7D7',
-  colour8: '#555555',
-  colour9: '#02172A',
-  colour10: '#00122F',
-  colour11: '#BBBBBB',
-  colour12: '#CED2D1',
-  colour13: '#FAFAFA',
+  PRIMARY_TEXT_COLOR: '#000000',
+  SECONDARY_TEXT_COLOR: '#FFFFFF',
+  ACCENT_COLOR: '#FF6B09',
+  LOGO_COLOR: '#121D2E',
+  HEADER_BORDER_COLOR: '#E2E3E5',
+  PAGE_BACKGROUND_COLOR: '#F5F6FB',
+  BAD_RESULT_COLOR: '#D7D7D7',
+  DARK_GREY_TEXT_COLOR: '#555555',
+  ACCENT_BACKGROUND_COLOR: '#02172A',
+  PAGE_BORDER_COLOR: '#00122F',
+  LOGIN_TEXT_COLOR: '#BBBBBB',
+  LOGIN_BORDER_COLOR: '#CED2D1',
+  LOGIN_BUTTON_BACKGROUND_COLOR: '#FAFAFA',
 };
 
 export const colorsDark = {
-  colour1: '#808080',
-  colour2: '#A65353',
-  colour3: '#FF6B09',
-  colour4: '#526C97',
-  colour5: '#E2E3E5',
-  colour6: '#496395',
-  colour7: '#818181',
-  colour8: '#AAAAAA',
-  colour9: '#477094',
-  colour10: '#265297',
-  colour11: '#707070',
-  colour12: '#436289',
-  colour13: '#A35151',
+  PRIMARY_TEXT_COLOR: '#FFFFFF',
+  SECONDARY_TEXT_COLOR: '#1E1E1F',
+  ACCENT_COLOR: '#FF6B09',
+  LOGO_COLOR: '#526C97',
+  HEADER_BORDER_COLOR: '#E2E3E5',
+  PAGE_BACKGROUND_COLOR: '#606061',
+  BAD_RESULT_COLOR: '#818181',
+  DARK_GREY_TEXT_COLOR: '#AAAAAA',
+  ACCENT_BACKGROUND_COLOR: '#477094',
+  PAGE_BORDER_COLOR: '#439595',
+  LOGIN_TEXT_COLOR: '#707070',
+  LOGIN_BORDER_COLOR: '#436289',
+  LOGIN_BUTTON_BACKGROUND_COLOR: '#A35151',
 };
 
 const getColors = colors => {
@@ -56,19 +49,6 @@ const getColors = colors => {
     LOGIN_BUTTON_BACKGROUND_COLOUR: colors.colour13,
   };
 };
-
-// switch (theme) {
-//   case 'light':
-//     selectedColors = colorsLight;
-//     break;
-
-//   case 'dark':
-//     selectedColors = colorsDark;
-//     break;
-
-//   default:
-//     selectedColors = colorsLight;
-// }
 
 const {
   PRIMARY_TEXT_COLOUR,
@@ -105,17 +85,3 @@ export {
   LOGIN_BORDER_COLOUR,
   LOGIN_BUTTON_BACKGROUND_COLOUR,
 };
-
-// let isDarkTheme = {
-//   a: '',
-// };
-
-// export const changeTheme = theme => {
-//   console.log('scasc', theme);
-//   if (theme === 'dark') {
-//     isDarkTheme.a = theme;
-//   }
-//   isDarkTheme.a = '';
-//   // console.log('dark', isDarkTheme);
-// };
-// console.log('dark', isDarkTheme);

@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import ContactCard from '../ContactCard';
 import { images } from '../../images/photos/photos';
 import { List } from './ContactsList.styled';
@@ -91,11 +90,5 @@ const ContactsList = () => {
     </>
   );
 };
-
-// ContactCard.propTypes = {
-//   name: PropTypes.string.isRequired,
-//   position: PropTypes.string.isRequired,
-//   about: PropTypes.string.isRequired,
-// };
 
 export default ContactsList;

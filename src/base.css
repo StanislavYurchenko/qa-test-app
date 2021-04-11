@@ -22,6 +22,7 @@ img {
 body {
   background-color: #fff;
   font-family: 'Montserrat', sans-serif;
+  transition: all 1s linear;
 }
 
 a {
