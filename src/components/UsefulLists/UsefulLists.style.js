@@ -1,9 +1,5 @@
 import styled from 'styled-components';
-import {
-  PRIMARY_TEXT_COLOUR,
-  PAGE_BORDER_COLOUR,
-  PAGE_BACKGROUND_COLOUR,
-} from '../../themes/colors';
+import { PRIMARY_TEXT_COLOUR, PAGE_BORDER_COLOUR } from '../../themes/colors';
 
 import BREAKPOINT from '../../utils/breakpoints';
 
@@ -40,10 +36,11 @@ export const List = styled.ul`
   line-height: 1.6;
   letter-spacing: 0.02em;
   text-align: left;
+  width: 207px;
 
   @media screen and (min-width: ${BREAKPOINT.TABLET}) {
     font-size: 14px;
-    width: 322px;
+    width: 295px;
     padding-left: 60px;
     margin-bottom: 35px;
   }

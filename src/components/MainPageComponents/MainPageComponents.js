@@ -1,14 +1,27 @@
 import { useDispatch } from 'react-redux';
 import { logoutUser } from '../../redux/auth/authOperations';
+import testActions from '../../redux/test/testActions';
 import { Section, Title, SecondTitle, Text, Button, List } from './MainPageComponents.style';
 import { ReactComponent as ArrowSvg } from '../../images/icons/arrow.svg';
+import { useHistory } from 'react-router-dom';
 
 function MainPageComponents() {
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const logOut = () => {
     dispatch(logoutUser());
   };
+
+  const handleClickTech = () => {
+    dispatch(testActions.addCategory('[Техническое тестирования_]'));
+    history.push('/test');
+  };
+  const handleClickTheory = () => {
+    dispatch(testActions.addCategory('[Теория тестирования_]'));
+    history.push('/test');
+  };
+
   return (
     <main>
       <Section>
@@ -20,13 +33,13 @@ function MainPageComponents() {
         <Text>Linux kernel creator, hacker, 1969</Text>
         <List>
           <li>
-            <Button>
+            <Button onClick={handleClickTech}>
               QA technical training
               <ArrowSvg />
             </Button>
           </li>
           <li>
-            <Button second>
+            <Button onClick={handleClickTheory} second>
               Testing theory
               <ArrowSvg />
             </Button>

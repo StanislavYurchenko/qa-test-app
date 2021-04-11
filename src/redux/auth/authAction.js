@@ -24,6 +24,10 @@ const addAvatarRequest = createAction('auth/addAvatarRequest');
 const addAvatarSuccess = createAction('auth/addAvatarSuccess');
 const addAvatarError = createAction('auth/addAvatarError');
 
+const refreshTokenRequest = createAction('auth/refreshTokenRequest');
+const refreshTokenSuccess = createAction('auth/refreshTokenSuccess');
+const refreshTokenError = createAction('auth/refreshTokenError');
+
 export default {
   regUserRequest,
   regUserSuccess,
@@ -43,4 +47,7 @@ export default {
   addAvatarRequest,
   addAvatarSuccess,
   addAvatarError,
+  refreshTokenRequest,
+  refreshTokenSuccess,
+  refreshTokenError,
 };

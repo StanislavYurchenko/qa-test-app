@@ -1,6 +1,6 @@
 import React, { useEffect, Suspense, lazy, useRef } from 'react';
-import { useDispatch } from 'react-redux';
-import { Switch, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Switch, useLocation, useHistory } from 'react-router-dom';
 import Header from './components/Header';
 import Container from './components/Container';
 import Google from './components/GooglePage';
@@ -18,6 +18,7 @@ const ResultsPage = lazy(() => import('pages/ResultsPage' /* webpackChunkName: "
 const ContactsPage = lazy(() =>
   import('pages/ContactsPage' /* webpackChunkName: "ContactsPage" */),
 );
+const Test = lazy(() => import('./components/Test' /* webpackChunkName: "Test" */));
 const MaterialsPage = lazy(() =>
   import('pages/MaterialsPage' /* webpackChunkName: "MaterialsPage" */),
 );
@@ -46,39 +47,32 @@ function App() {
                 <MainPage />
               </Container>
             </PrivateRoute>
-
             <PrivateRoute path="/useful-info" redirectTo="/auth">
               <MaterialsPage />
             </PrivateRoute>
-
             <PublicRoute path="/contacts">
-              <Container>
-                <ContactsPage />
-              </Container>
+              {/* <Container> */}
+              <ContactsPage />
+              {/* </Container> */}
             </PublicRoute>
-
             <PrivateRoute path="/test" redirectTo="/auth">
               <Container>
-                <div>Страница тестов</div>
+                <Test />
               </Container>
             </PrivateRoute>
-
             <PrivateRoute path="/results" redirectTo="/auth">
               <Container>
                 <ResultsPage />
               </Container>
             </PrivateRoute>
-
             <PublicRoute path="/auth" redirectTo={currentRoute} restricted>
               <Container>
                 <AuthPage />
               </Container>
             </PublicRoute>
-
             <PublicRoute path="/google">
               <Google />
             </PublicRoute>
-
             <PublicRoute>
               <Container>
                 <NotFoundPage />

@@ -1,9 +1,11 @@
 body {
-  background-color: #e5e5e5;
+  /* background-color: #e5e5e5; */
 }
 
 .section {
-  padding: 24px 20px 20px;
+  padding: 90px 20px 80px;
+  max-width: 652px;
+  margin: 0 auto;
 }
 
 .above {
@@ -98,7 +100,8 @@ body {
 
 @media (min-width: 768px) {
   .section {
-    padding: 42px calc(50% - 326px);
+    /* padding: 42px calc(50% - 326px); */
+    /* max-width: 820px; */
   }
 
   .title {
@@ -128,7 +131,8 @@ body {
 
 @media (min-width: 1280px) {
   .section {
-    padding: 42px calc(50% - 410px);
+    /* padding: 42px calc(50% - 410px); */
+    max-width: 820px;
   }
 
   .title {
