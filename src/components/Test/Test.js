@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import testActions from '../../redux/test/testActions';
 import { fetchTest, sendAnswers } from 'redux/test/testOperations';
 import * as selectors from '../../redux/test/testSelectors';
+import categories from '../../utils/test-categories';
 
 import Card from './Card';
 import Modal from './Modal';
@@ -27,7 +28,6 @@ export default function Test({ title }) {
   const match = useRouteMatch();
   const history = useHistory();
   const isRender = questions.length;
-  const categories = { theory: '[Теория тестирования_]', tech: '[Техническое тестирования_]' };
 
   useEffect(() => {
     if (

@@ -24,13 +24,14 @@ const answers = createReducer([], {
   //   ...state.filter(item => item.questionId !== payload.questionId),
   //   payload,
   // ],
-  [sendAnswers.fulfilled]: () => [],
+  [testActions.resetAnswers]: () => [],
   [testActions.testRefresh]: () => [],
 });
 
 const result = createReducer(
   {},
   {
+    [testActions.resetResults]: () => {},
     [fetchTest.pending]: () => {},
     [sendAnswers.fulfilled]: (_, { payload }) => payload,
   },

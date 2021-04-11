@@ -1,14 +1,33 @@
 import Button from '@material-ui/core/Button';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import { MainContainer, Header1, Header2, StyledImage, useStyles } from './ResultsPage.style';
 import Chart from '../../components/Chart';
 import TestResult from '../../components/TestResult';
 import resultIMG from '../../images/results.svg';
+import testActions from '../../redux/test/testActions';
+import { fetchTest } from '../../redux/test/testOperations';
+import categories from '../../utils/test-categories';
 
 export default function ResultsView() {
   const classes = useStyles();
   const testCategory = useSelector(state => state.test.category);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const handleButtonClick = () => {
+    dispatch(testActions.resetAnswers());
+    dispatch(testActions.resetResults());
+
+    if (testCategory === categories.theory) {
+      history.push('/test-theory');
+      dispatch(fetchTest('/test-theory'));
+    } else {
+      history.push('/test-tech');
+      dispatch(fetchTest('/test-tech'));
+    }
+  };
 
   return (
     <MainContainer>
@@ -17,7 +36,9 @@ export default function ResultsView() {
       <Chart />
       <StyledImage src={resultIMG} alt="cat result" />
       <TestResult />
-      <Button className={classes.tryAgain}>Try again</Button>
+      <Button className={classes.tryAgain} onClick={handleButtonClick}>
+        Try again
+      </Button>
     </MainContainer>
   );
 }
