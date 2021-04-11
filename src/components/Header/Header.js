@@ -55,7 +55,11 @@ export default function Header() {
         </Toolbar>
       </AppBar>
       <Modal open={isModalOpen}>
-        <Navigation className={classes.TestNav} />
+        <Navigation
+          className={classes.TestNav}
+          isModalOpen={isModalOpen}
+          onButtonClick={onButtonClick}
+        />
         {isLogin && (
           <ButtonWrap toggle="true">
             <ButtonStyles onClick={e => dispatch(logoutUser())}>
