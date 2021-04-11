@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import testActions from '../../redux/test/testActions';
 import { fetchTest, sendAnswers } from 'redux/test/testOperations';
 import * as selectors from '../../redux/test/testSelectors';
+import categories from '../../utils/test-categories';
 
 import Card from './Card';
 import Modal from './Modal';
@@ -26,7 +27,6 @@ export default function Test({ title }) {
 
   const location = useLocation();
   const history = useHistory();
-  const categories = { theory: '[Теория тестирования_]', tech: '[Техническое тестирования_]' };
 
   useEffect(() => {
     if (location.pathname !== '/test' && location.pathname !== '/auth') {

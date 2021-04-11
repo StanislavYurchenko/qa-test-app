@@ -12,8 +12,6 @@ const ResultContainer = styled.div`
 const HeadingParagraph = styled.p`
   margin-bottom: 10px;
 
-  font-family: Montserrat;
-  font-style: normal;
   font-weight: bold;
   font-size: 16px;
   line-height: 1.87;
@@ -27,12 +25,9 @@ const HeadingParagraph = styled.p`
 `;
 
 const DescriptionParagraph = styled.p`
-  font-family: Montserrat;
-  font-style: normal;
   font-weight: 500;
   font-size: 10px;
   line-height: 1.2;
-  text-align: center;
   letter-spacing: 0.02em;
 
   @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
