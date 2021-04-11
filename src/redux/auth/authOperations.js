@@ -24,6 +24,7 @@ const loginUser = ({ email, password }) => async dispatch => {
 
   try {
     const { data } = await login({ email, password });
+    console.log(data);
     const { name, token } = data.result;
     userToken.set(token);
     dispatch(authActions.loginUserSuccess({ name, token }));
