@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { ToggleContainer } from './Toggle.style.js';
@@ -10,6 +10,10 @@ import { setThemeHandler } from '../../redux/theme/themeOperations';
 const Toggle = () => {
   const [theme, setTheme] = useState(true);
   const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(setThemeHandler('light'));
+  // }, []);
 
   const changeTheme = () => {
     setTheme(!theme);

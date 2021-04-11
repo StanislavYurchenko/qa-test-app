@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import { StylesProvider } from '@material-ui/core/styles';
-import { createMuiTheme } from '@material-ui/core/styles';
 import LinkList from '../LinkList';
 
 import { useSelector } from 'react-redux';
 import { getTheme } from '../../redux/theme/themeSelectors';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 import {
   StyledCard,

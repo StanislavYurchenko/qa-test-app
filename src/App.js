@@ -36,7 +36,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Toggle />
       <MainContainer>
         <Suspense fallback={<PreLoader sizePreloader="200px" />}>
