@@ -43,35 +43,15 @@ export const StyledNavLink = styled(NavLink).attrs({ activeClassName })`
 
 export const StyledNav = styled.nav`
   @media screen and (max-width: 767px) {
-    // display: none;
-    display: ${props => (props.mobile ? 'flex' : 'none')};
-    flex-direction: ${props => (props.mobile ? 'column' : null)};
-    // position: absolute;
-    // top: 100%;
-    // left: 0;
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    // z-index: 100;
-
-    // padding-top: 60px;
-    // padding-bottom: 60px;
-
-    // background-color: $primaryBackgroundColor;
-
-    // align-items: center;
-    // border-top: 1px solid #ececec;
   }
   @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
+    flex-direction: row;
     margin-right: 30px;
   }
   @media screen and (min-width: ${BREAKPOINTS.DESKTOP}) {
     margin-right: 75px;
   }
 `;
-
-// const activeClassName = 'nav-item-active';
-
-// const StyledNavLink = styled(NavLink).attrs({ activeClassName })`
-//   &.${activeClassName} {
-//     color: red;
-//   }
-// `;
