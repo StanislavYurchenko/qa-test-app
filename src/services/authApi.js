@@ -30,3 +30,7 @@ export const getUserInfo = () => {
 export const googleRequest = () => {
   return axios.get('/auth/google').then(data => data);
 };
+
+export const setUserAvatar = file => {
+  return axios.patch('/images', file);
+};

@@ -6,6 +6,7 @@ import {
   getUserInfo,
   userToken,
   googleRequest,
+  setUserAvatar,
 } from '../../services/authApi';
 
 const registrationUser = ({ name, email, password }) => async dispatch => {
@@ -24,9 +25,9 @@ const loginUser = ({ email, password }) => async dispatch => {
 
   try {
     const { data } = await login({ email, password });
-    const { name, token } = data.result;
+    const { name, token, avatar } = data.result;
     userToken.set(token);
-    dispatch(authActions.loginUserSuccess({ name, token }));
+    dispatch(authActions.loginUserSuccess({ name, token, avatar }));
   } catch (err) {
     dispatch(authActions.loginUserError(err.message));
   }
@@ -55,7 +56,7 @@ const getCurrentUser = () => async (dispatch, getState) => {
   try {
     const { data } = await getUserInfo();
     const { result } = data;
-    dispatch(authActions.getCurrentUserSuccess(result.name));
+    dispatch(authActions.getCurrentUserSuccess(result));
   } catch (err) {
     dispatch(authActions.getCurrentUserError(err.message));
   }
@@ -70,4 +71,15 @@ const googleLogin = ({ name, token }) => dispatch => {
   }
 };
 
-export { registrationUser, loginUser, logoutUser, getCurrentUser, googleLogin };
+const addAvatar = file => async dispatch => {
+  dispatch(authActions.addAvatarRequest());
+
+  try {
+    await setUserAvatar(file);
+    dispatch(authActions.addAvatarSuccess());
+  } catch (err) {
+    dispatch(authActions.addAvatarError(err.message));
+  }
+};
+
+export { registrationUser, loginUser, logoutUser, getCurrentUser, googleLogin, addAvatar };
