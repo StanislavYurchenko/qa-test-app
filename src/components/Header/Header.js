@@ -12,15 +12,17 @@ import { Modal, HeaderWrap, ButtonWrap, Logo, ButtonStyles, Span, UserName } fro
 import { useStyles } from './Header.style';
 import { getIsLoggedIn, getUserName } from '../../redux/auth/authSelectors';
 import { logoutUser } from '../../redux/auth/authOperations';
+import UserAvatar from '../UserAvatar';
 
 export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const isLogin = useSelector(getIsLoggedIn);
+
   const userName = useSelector(getUserName);
   const dispatch = useDispatch();
   const classes = useStyles();
 
-  const avatarLetter = userName?.slice(0, 1).toUpperCase();
+  // const avatarLetter = userName?.slice(0, 1).toUpperCase();
 
   const onButtonClick = () => {
     setIsModalOpen(!isModalOpen);
@@ -36,7 +38,8 @@ export default function Header() {
           <Navigation className={classes.TestNav} />
           {isLogin && (
             <>
-              <Span>{avatarLetter}</Span> <UserName>{userName}</UserName>
+              {/* <UserAvatar /> */}
+              <UserName>{userName}</UserName>
             </>
           )}
 

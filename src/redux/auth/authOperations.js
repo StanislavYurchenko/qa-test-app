@@ -5,6 +5,8 @@ import {
   logout,
   getUserInfo,
   userToken,
+  googleRequest,
+  setUserAvatar,
   refreshAccessToken,
 } from '../../services/authApi';
 
@@ -24,9 +26,9 @@ const loginUser = ({ email, password }) => async dispatch => {
 
   try {
     const { data } = await login({ email, password });
-    const { name, token } = data.result;
+    const { name, token, avatar } = data.result;
     userToken.set(token);
-    dispatch(authActions.loginUserSuccess({ name, token }));
+    dispatch(authActions.loginUserSuccess({ name, token, avatar }));
   } catch (err) {
     dispatch(authActions.loginUserError(err.message));
   }
@@ -55,7 +57,7 @@ const getCurrentUser = () => async (dispatch, getState) => {
   try {
     const { data } = await getUserInfo();
     const { result } = data;
-    dispatch(authActions.getCurrentUserSuccess(result.name));
+    dispatch(authActions.getCurrentUserSuccess(result));
   } catch (err) {
     dispatch(authActions.getCurrentUserError(err.message));
   }
@@ -69,6 +71,17 @@ const googleLogin = queryParams => dispatch => {
     dispatch(authActions.googleUserSuccess({ name, role, accessToken, refreshToken, expires_on }));
   } catch (err) {
     dispatch(authActions.googleUserError(err.message));
+  }
+};
+
+const addAvatar = file => async dispatch => {
+  dispatch(authActions.addAvatarRequest());
+
+  try {
+    await setUserAvatar(file);
+    dispatch(authActions.addAvatarSuccess());
+  } catch (err) {
+    dispatch(authActions.addAvatarError(err.message));
   }
 };
 
@@ -89,8 +102,6 @@ const refreshToken = refreshToken => async dispatch => {
   }
 };
 
-export { registrationUser, loginUser, logoutUser, getCurrentUser, googleLogin, refreshToken };
-
 // Функция обертка над запросами с токенами
 const wrapperFunction = async token => {
   //Можно добавить проверку в локале - есть ли Токен в стейт, если нет - //Go to AuthPage
@@ -104,4 +115,14 @@ const wrapperFunction = async token => {
       return; //Go to AuthPage
     }
   }
+};
+
+export {
+  registrationUser,
+  loginUser,
+  logoutUser,
+  getCurrentUser,
+  googleLogin,
+  addAvatar,
+  refreshToken,
 };
