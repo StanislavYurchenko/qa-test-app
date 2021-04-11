@@ -38,3 +38,7 @@ export const sendAnswers = answers => {
 export const refreshAccessToken = refreshToken => {
   return axios.post('/auth/refresh-token', refreshToken).then(data => data);
 };
+
+export const setUserAvatar = file => {
+  return axios.patch('/images', file);
+};

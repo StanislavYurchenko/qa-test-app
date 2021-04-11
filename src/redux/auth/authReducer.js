@@ -4,7 +4,7 @@ import authActions from './authAction';
 const userName = createReducer(null, {
   [authActions.loginUserSuccess]: (_, { payload }) => payload.name,
   [authActions.logoutUserSuccess]: () => null,
-  [authActions.getCurrentUserSuccess]: (_, { payload }) => payload,
+  [authActions.getCurrentUserSuccess]: (_, { payload }) => payload.name,
   [authActions.googleUserSuccess]: (_, { payload }) => payload.name,
 });
 
@@ -79,6 +79,16 @@ const error = createReducer('', {
   [authActions.googleUserRequest]: () => '',
   [authActions.googleUserSuccess]: () => '',
   [authActions.googleUserError]: (_, { payload }) => payload,
+
+  [authActions.addAvatarRequest]: () => '',
+  [authActions.addAvatarSuccess]: () => '',
+  [authActions.addAvatarError]: (_, { payload }) => payload,
+});
+
+const userAvatar = createReducer(null, {
+  [authActions.loginUserSuccess]: (_, { payload }) => payload.avatar,
+  [authActions.getCurrentUserSuccess]: (_, { payload }) => payload.avatar,
+  [authActions.logoutUserSuccess]: () => null,
 });
 
 const authUsersReducer = combineReducers({
@@ -88,6 +98,7 @@ const authUsersReducer = combineReducers({
   isLoggedIn,
   loading,
   error,
+  userAvatar,
 });
 
 export default authUsersReducer;
