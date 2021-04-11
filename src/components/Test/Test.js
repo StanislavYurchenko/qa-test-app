@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useHistory, useRouteMatch } from 'react-router-dom';
+import { useHistory, useRouteMatch, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import testActions from '../../redux/test/testActions';
 import { fetchTest, sendAnswers } from 'redux/test/testOperations';
 import * as selectors from '../../redux/test/testSelectors';
+import categories from '../../utils/test-categories';
 
 import Card from './Card';
 import Modal from './Modal';
@@ -24,26 +25,27 @@ export default function Test({ title }) {
   const activeCard = useSelector(selectors.getActiveCard);
   const dispatch = useDispatch();
 
-  const match = useRouteMatch();
+  const location = useLocation();
   const history = useHistory();
-  const isRender = questions.length;
-  const categories = { theory: '[Теория тестирования_]', tech: '[Техническое тестирования_]' };
 
   useEffect(() => {
-    if (
-      (match.url === '/test-theory' && category === categories.theory) ||
-      (match.url === '/test-tech' && category === categories.tech)
-    )
-      return;
+    if (location.pathname !== '/test' && location.pathname !== '/auth') {
+      history.push('/test');
+      setOpen(true);
+    }
+  });
 
-    if (match.url === '/test-theory') {
+  useEffect(() => {
+    if (questions.length !== 0) return;
+
+    if (category === '[Теория тестирования_]') {
       dispatch(testActions.addCategory(categories.theory));
-      dispatch(fetchTest(match.url));
+      dispatch(fetchTest('/test-theory'));
+      return;
     }
-    if (match.url === '/test-tech') {
-      dispatch(testActions.addCategory(categories.tech));
-      dispatch(fetchTest(match.url));
-    }
+
+    dispatch(testActions.addCategory(categories.tech));
+    dispatch(fetchTest('/test-tech'));
   }, []);
 
   function openModal() {
@@ -100,7 +102,7 @@ export default function Test({ title }) {
             Завершить тест
           </button>
         </div>
-        {isRender && (
+        {questions.length && (
           <Card
             questions={questions}
             activeCard={activeCard}

@@ -1,14 +1,7 @@
 import AuthForm from '../../components/AuthForm';
 import AuthText from '../../components/AuthText';
 
-import {
-  Wrapper,
-  FormСontainer,
-  Text,
-  GoogleButton,
-  GoogleSvg,
-  GoogleLink,
-} from './AuthPage.style';
+import { Wrapper, FormСontainer, Text, GoogleButton, GoogleSvg } from './AuthPage.style';
 
 const BACK_URL = 'https://qa-test-api-hakaton2021goit.herokuapp.com/auth/google';
 

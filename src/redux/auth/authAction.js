@@ -20,6 +20,10 @@ const googleUserRequest = createAction('auth/googleUserRequest');
 const googleUserSuccess = createAction('auth/googleUserSuccess');
 const googleUserError = createAction('auth/googleUserError');
 
+const refreshTokenRequest = createAction('auth/refreshTokenRequest');
+const refreshTokenSuccess = createAction('auth/refreshTokenSuccess');
+const refreshTokenError = createAction('auth/refreshTokenError');
+
 export default {
   regUserRequest,
   regUserSuccess,
@@ -36,4 +40,7 @@ export default {
   googleUserRequest,
   googleUserSuccess,
   googleUserError,
+  refreshTokenRequest,
+  refreshTokenSuccess,
+  refreshTokenError,
 };

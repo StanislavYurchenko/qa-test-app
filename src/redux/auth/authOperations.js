@@ -5,7 +5,7 @@ import {
   logout,
   getUserInfo,
   userToken,
-  googleRequest,
+  refreshAccessToken,
 } from '../../services/authApi';
 
 const registrationUser = ({ name, email, password }) => async dispatch => {
@@ -61,13 +61,47 @@ const getCurrentUser = () => async (dispatch, getState) => {
   }
 };
 
-const googleLogin = ({ name, token }) => dispatch => {
+const googleLogin = queryParams => dispatch => {
+  const { name, role, accessToken, refreshToken, expires_on } = queryParams;
+
   try {
-    userToken.set(token);
-    dispatch(authActions.googleUserSuccess({ name, token }));
+    userToken.set(accessToken);
+    dispatch(authActions.googleUserSuccess({ name, role, accessToken, refreshToken, expires_on }));
   } catch (err) {
     dispatch(authActions.googleUserError(err.message));
   }
 };
 
-export { registrationUser, loginUser, logoutUser, getCurrentUser, googleLogin };
+const refreshToken = refreshToken => async dispatch => {
+  dispatch(authActions.refreshTokenRequest());
+
+  try {
+    const { data } = await refreshAccessToken({ refreshToken });
+    if (data) {
+      const { accessToken, expires_on } = data.result;
+      userToken.set(accessToken);
+      dispatch(authActions.refreshTokenSuccess({ accessToken, expires_on }));
+    } else {
+      //Go to Login Page
+    }
+  } catch (err) {
+    dispatch(authActions.refreshTokenError(err.message));
+  }
+};
+
+export { registrationUser, loginUser, logoutUser, getCurrentUser, googleLogin, refreshToken };
+
+// Функция обертка над запросами с токенами
+const wrapperFunction = async token => {
+  //Можно добавить проверку в локале - есть ли Токен в стейт, если нет - //Go to AuthPage
+  // Если есть:
+  if (Date.now() >= token.expires_on) {
+    // проверяетм срок Access Token
+    try {
+      await refreshToken(tokenData.refresh_token); // если истек - обновляем токен
+    } catch (error) {
+      // если тут что-то пошло не так, то перенаправляем пользователя на страницу авторизации
+      return; //Go to AuthPage
+    }
+  }
+};
