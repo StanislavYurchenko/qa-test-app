@@ -11,8 +11,6 @@ function PrivateRoute({ children, redirectTo, ...routeProps }) {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const questions = useSelector(getQuestions);
 
-  console.log(questions.length);
-
   const page =
     questions.length > 0 ? (
       <Container>

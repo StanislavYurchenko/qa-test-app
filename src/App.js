@@ -11,7 +11,6 @@ import { getCurrentUser } from './redux/auth/authOperations';
 import PreLoader from './components/PreLoader';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import PublicRoute from 'components/PublicRoute/PublicRoute';
-// import { getQuestions } from './redux/test/testSelectors';
 
 const MainPage = lazy(() => import('pages/MainPage' /* webpackChunkName: "MainPage" */));
 const AuthPage = lazy(() => import('pages/AuthPage' /* webpackChunkName: "AuthPage" */));
@@ -30,24 +29,8 @@ const NotFoundPage = lazy(() =>
 function App() {
   const dispatch = useDispatch();
   const location = useLocation();
-  // const history = useHistory();
-  // const questions = useSelector(getQuestions);
-
-  // const isTest = location.pathname === '/test' && questions.length > 0
-
-  // console.log(location.pathname)
-  // console.log(questions.length > 0)
 
   const currentRoute = useRef(location);
-
-  // useEffect(() => {
-  //   // console.log(questions.length)
-  //   // if(questions.length > 0) {
-  //     console.log('open')
-  //     // history.push('/test');
-  //     return
-  //   }
-  // },[]);
 
   useEffect(() => {
     dispatch(getCurrentUser());

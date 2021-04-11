@@ -25,44 +25,25 @@ export default function Test({ title }) {
   const dispatch = useDispatch();
 
   const location = useLocation();
-  // const match = useRouteMatch();
   const history = useHistory();
-  const isRender = questions.length;
   const categories = { theory: '[Теория тестирования_]', tech: '[Техническое тестирования_]' };
 
-  // useEffect(() => {
-  //   console.log('h');
-  //   if(location?.state?.from !== location.pathname) {
-  //     console.log("false")
-  //     // setOpen(true);
-  //     return;
-  //     // history.push('/test');
-  //     // setOpen(true);
-  //   }
-
-  //   location.state = {from: '/test'};
-  //   // location.state = {from: '/test'};
-  //   // if (location.pathname !== '/test') {
-  //   //   console.log(location.pathname);
-  //   //   setOpen(true);
-  //   // }
-  // });
-
   useEffect(() => {
-    if (location.pathname !== '/test') {
+    if (location.pathname !== '/test' && location.pathname !== '/auth') {
       history.push('/test');
       setOpen(true);
     }
   });
 
   useEffect(() => {
-    // console.log(location)
     if (questions.length !== 0) return;
+
     if (category === '[Теория тестирования_]') {
       dispatch(testActions.addCategory(categories.theory));
       dispatch(fetchTest('/test-theory'));
       return;
     }
+
     dispatch(testActions.addCategory(categories.tech));
     dispatch(fetchTest('/test-tech'));
   }, []);
@@ -121,7 +102,7 @@ export default function Test({ title }) {
             Завершить тест
           </button>
         </div>
-        {isRender && (
+        {questions.length && (
           <Card
             questions={questions}
             activeCard={activeCard}
