@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { logoutUser } from '../../redux/auth/authOperations';
+import testActions from '../../redux/test/testActions';
 import { Section, Title, SecondTitle, Text, Button, List } from './MainPageComponents.style';
 import { ReactComponent as ArrowSvg } from '../../images/icons/arrow.svg';
 import { useHistory } from 'react-router-dom';
@@ -11,11 +12,14 @@ function MainPageComponents() {
   const logOut = () => {
     dispatch(logoutUser());
   };
+
   const handleClickTech = () => {
-    history.push('/test-tech');
+    dispatch(testActions.addCategory('[Техническое тестирования_]'));
+    history.push('/test');
   };
   const handleClickTheory = () => {
-    history.push('/test-theory');
+    dispatch(testActions.addCategory('[Теория тестирования_]'));
+    history.push('/test');
   };
 
   return (

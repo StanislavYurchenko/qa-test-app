@@ -1,6 +1,6 @@
 import React, { useEffect, Suspense, lazy, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { Switch, useLocation } from 'react-router-dom';
+import { Switch, useLocation, useHistory } from 'react-router-dom';
 import Header from './components/Header';
 import Container from './components/Container';
 import Google from './components/GooglePage';
@@ -29,6 +29,10 @@ const NotFoundPage = lazy(() =>
 function App() {
   const dispatch = useDispatch();
   const location = useLocation();
+  const history = useHistory();
+
+  // console.log(location)
+  // console.log(history)
 
   const currentRoute = useRef(location);
 
@@ -47,51 +51,46 @@ function App() {
                 <MainPage />
               </Container>
             </PrivateRoute>
-
+            //{' '}
             <PrivateRoute path="/test-theory" redirectTo="/auth">
-              {/* <Container> */}
-              <Test />
-              {/* </Container> */}
+              // {/* <Container> */}
+              // <Test />
+              // {/* </Container> */}
+              //{' '}
             </PrivateRoute>
-
+            //{' '}
             <PrivateRoute path="/test-tech" redirectTo="/auth">
-              {/* <Container> */}
-              <Test />
-              {/* </Container> */}
+              // {/* <Container> */}
+              // <Test />
+              // {/* </Container> */}
+              //{' '}
             </PrivateRoute>
-
             <PrivateRoute path="/useful-info" redirectTo="/auth">
               <MaterialsPage />
             </PrivateRoute>
-
             <PublicRoute path="/contacts">
               {/* <Container> */}
               <ContactsPage />
               {/* </Container> */}
             </PublicRoute>
-
             <PrivateRoute path="/test" redirectTo="/auth">
               <Container>
-                <div>Страница тестов</div>
+                <Test />
               </Container>
             </PrivateRoute>
-
             <PrivateRoute path="/results" redirectTo="/auth">
               <Container>
                 <ResultsPage />
               </Container>
             </PrivateRoute>
-
             <PublicRoute path="/auth" redirectTo={currentRoute} restricted>
               <Container>
                 <AuthPage />
               </Container>
             </PublicRoute>
-
             <PublicRoute path="/google">
               <Google />
             </PublicRoute>
-
             <PublicRoute>
               <Container>
                 <NotFoundPage />

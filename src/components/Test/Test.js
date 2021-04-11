@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useHistory, useRouteMatch } from 'react-router-dom';
+import { useHistory, useRouteMatch, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import testActions from '../../redux/test/testActions';
@@ -24,26 +24,30 @@ export default function Test({ title }) {
   const activeCard = useSelector(selectors.getActiveCard);
   const dispatch = useDispatch();
 
+  const location = useLocation();
   const match = useRouteMatch();
   const history = useHistory();
   const isRender = questions.length;
   const categories = { theory: '[Теория тестирования_]', tech: '[Техническое тестирования_]' };
 
-  useEffect(() => {
-    if (
-      (match.url === '/test-theory' && category === categories.theory) ||
-      (match.url === '/test-tech' && category === categories.tech)
-    )
-      return;
+  // console.log(location)
 
-    if (match.url === '/test-theory') {
+  useEffect(() => {
+    console.log('h');
+    if (location.pathname !== '/test') {
+      console.log(location.pathname);
+      setOpen(true);
+    }
+  }, [location]);
+
+  useEffect(() => {
+    if (category === '[Теория тестирования_]') {
       dispatch(testActions.addCategory(categories.theory));
-      dispatch(fetchTest(match.url));
+      dispatch(fetchTest('/test-theory'));
+      return;
     }
-    if (match.url === '/test-tech') {
-      dispatch(testActions.addCategory(categories.tech));
-      dispatch(fetchTest(match.url));
-    }
+    dispatch(testActions.addCategory(categories.tech));
+    dispatch(fetchTest('/test-tech'));
   }, []);
 
   function openModal() {
