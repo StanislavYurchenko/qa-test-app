@@ -1,5 +1,5 @@
 import React, { useEffect, Suspense, lazy, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Switch, useLocation, useHistory } from 'react-router-dom';
 import Header from './components/Header';
 import Container from './components/Container';
@@ -11,6 +11,7 @@ import { getCurrentUser } from './redux/auth/authOperations';
 import PreLoader from './components/PreLoader';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import PublicRoute from 'components/PublicRoute/PublicRoute';
+// import { getQuestions } from './redux/test/testSelectors';
 
 const MainPage = lazy(() => import('pages/MainPage' /* webpackChunkName: "MainPage" */));
 const AuthPage = lazy(() => import('pages/AuthPage' /* webpackChunkName: "AuthPage" */));
@@ -29,12 +30,24 @@ const NotFoundPage = lazy(() =>
 function App() {
   const dispatch = useDispatch();
   const location = useLocation();
-  const history = useHistory();
+  // const history = useHistory();
+  // const questions = useSelector(getQuestions);
 
-  // console.log(location)
-  // console.log(history)
+  // const isTest = location.pathname === '/test' && questions.length > 0
+
+  // console.log(location.pathname)
+  // console.log(questions.length > 0)
 
   const currentRoute = useRef(location);
+
+  // useEffect(() => {
+  //   // console.log(questions.length)
+  //   // if(questions.length > 0) {
+  //     console.log('open')
+  //     // history.push('/test');
+  //     return
+  //   }
+  // },[]);
 
   useEffect(() => {
     dispatch(getCurrentUser());
@@ -50,20 +63,6 @@ function App() {
               <Container>
                 <MainPage />
               </Container>
-            </PrivateRoute>
-            //{' '}
-            <PrivateRoute path="/test-theory" redirectTo="/auth">
-              // {/* <Container> */}
-              // <Test />
-              // {/* </Container> */}
-              //{' '}
-            </PrivateRoute>
-            //{' '}
-            <PrivateRoute path="/test-tech" redirectTo="/auth">
-              // {/* <Container> */}
-              // <Test />
-              // {/* </Container> */}
-              //{' '}
             </PrivateRoute>
             <PrivateRoute path="/useful-info" redirectTo="/auth">
               <MaterialsPage />
