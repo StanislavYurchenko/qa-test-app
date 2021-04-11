@@ -21,8 +21,9 @@ const contacts = [
   {
     photo: images.Elena_Panasyuk,
     name: 'Elena Panasyuk',
-    position: 'FullStack Developer',
-    about: 'Lorem',
+    position: 'FullStack Developer (Scrum Master)',
+    about:
+      'Elena was a Scrum master on the project and was responsible for a page with the useful materials.',
     hubLink: 'https://github.com/StanislavYurchenko',
     linLink: 'https://www.linkedin.com/in/elena-panasyuk-09431044/',
   },
@@ -38,7 +39,8 @@ const contacts = [
     photo: images.Roman_Voznyy,
     name: 'Roman Voznyy',
     position: 'FullStack Developer',
-    about: 'Lorem',
+    about:
+      'On the project, Roman was responsible for the development of the backend, the creation of documentation and the implementation of authentication via Google',
     hubLink: 'https://github.com/RomanVoznyy',
     linLink: 'https://www.linkedin.com/in/roman-voznyy/',
   },
@@ -48,7 +50,7 @@ const contacts = [
     position: 'FullStack Developer',
     about: 'Lorem',
     hubLink: 'https://github.com/valentinyak',
-    linLink: 'https://www.linkedin.com/in/stanislav-yurchenko/',
+    linLink: 'https://www.linkedin.com/',
   },
   {
     photo: images.Volodymyr_Babych,
@@ -67,17 +69,18 @@ const contacts = [
     linLink: 'https://www.linkedin.com/in/yulia-labutkina/',
   },
   {
-    photo: images.Artur_Stakhov,
+    photo: images.Grygoriy_Chernish,
     name: 'Grygoriy Chernish ',
     position: 'FullStack Developer',
-    about: 'Lorem',
+    about:
+      'On the project, Grygoriy was responsible for creating site navigation, main page and  the lower part of the site(footer)',
     hubLink: 'https://github.com/GrygoriyChernish',
     linLink: 'https://www.linkedin.com/in/hryhorii-chernysh-47b5111a2/',
   },
   {
     photo: images.Yurchenko_Stanislav,
     name: 'Yurchenko Stanislav',
-    position: 'FullStack Developer',
+    position: 'FullStack Developer (Team Lead)',
     about: 'Lorem',
   },
 ];
