@@ -35,6 +35,6 @@ export const sendAnswers = answers => {
   return axios.post('/api/test-theory/result', answers).then(data => data.data.data);
 };
 
-export const googleRequest = () => {
-  return axios.get('/auth/google').then(data => data);
+export const refreshAccessToken = refreshToken => {
+  return axios.post('/auth/refresh-token', refreshToken).then(data => data);
 };
