@@ -1,6 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
-import styled from 'styled-components';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Navigation from 'components/Navigation';
@@ -8,7 +7,7 @@ import { ReactComponent as LogoSvg } from '../../images/header_icons/logo.svg';
 import { ReactComponent as OpenMenuSvg } from '../../images/header_icons/openMenu.svg';
 import { ReactComponent as CloseMenuSvg } from '../../images/header_icons/closeMenu.svg';
 import { ReactComponent as LogOut } from '../../images/header_icons/signOut.svg';
-import { Modal, HeaderWrap, ButtonWrap, Logo, ButtonStyles, Span, UserName } from './Header.style';
+import { NavWrap, HeaderWrap, ButtonWrap, Logo, ButtonStyles, UserName } from './Header.style';
 import { useStyles } from './Header.style';
 import { getIsLoggedIn, getUserName } from '../../redux/auth/authSelectors';
 import { logoutUser } from '../../redux/auth/authOperations';
@@ -25,6 +24,9 @@ export default function Header() {
 
   // const avatarLetter = userName?.slice(0, 1).toUpperCase();
 
+  // let mql = window.matchMedia('all and (min-width: 767px)');
+  // console.log(mql);
+
   const onButtonClick = () => {
     setIsModalOpen(!isModalOpen);
   };
@@ -37,7 +39,16 @@ export default function Header() {
           <Logo to="/" exact="true">
             <LogoSvg />
           </Logo>
-          <Navigation className={classes.TestNav} />
+          <NavWrap open={isModalOpen}>
+            <Navigation isModalOpen={isModalOpen} onButtonClick={onButtonClick} />
+            {isLogin && (
+              <ButtonWrap toggle="true">
+                <ButtonStyles onClick={e => dispatch(logoutUser())}>
+                  <LogOut />
+                </ButtonStyles>
+              </ButtonWrap>
+            )}
+          </NavWrap>
           {isLogin && (
             <>
               {/* <UserAvatar /> */}
@@ -59,20 +70,6 @@ export default function Header() {
           </ButtonWrap>
         </Toolbar>
       </AppBar>
-      <Modal open={isModalOpen}>
-        <Navigation
-          className={classes.TestNav}
-          isModalOpen={isModalOpen}
-          onButtonClick={onButtonClick}
-        />
-        {isLogin && (
-          <ButtonWrap toggle="true">
-            <ButtonStyles onClick={e => dispatch(logoutUser())}>
-              <LogOut />
-            </ButtonStyles>
-          </ButtonWrap>
-        )}
-      </Modal>
     </HeaderWrap>
   );
 }
