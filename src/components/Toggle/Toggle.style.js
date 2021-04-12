@@ -1,22 +1,24 @@
 import styled from 'styled-components';
 
 export const ToggleContainer = styled.button`
+  position: absolute;
+  bottom: -20px;
+  right: 20px;
   border-radius: 30px;
   cursor: pointer;
   display: flex;
-  font-size: 0.5rem;
+  font-size: 0.2rem;
   justify-content: space-between;
   margin: 0 auto;
   overflow: hidden;
-  padding: 0.5rem;
-  position: relative;
-  width: 8rem;
-  height: 4rem;
+  padding: 0.15rem;
+  width: 4rem;
+  height: 2rem;
   outline: none;
 
   svg {
     height: auto;
-    width: 2.5rem;
+    width: 1.3rem;
     transition: all 0.3s linear;
 
     // sun icon

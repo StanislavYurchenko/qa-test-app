@@ -13,6 +13,7 @@ import { useStyles } from './Header.style';
 import { getIsLoggedIn, getUserName } from '../../redux/auth/authSelectors';
 import { logoutUser } from '../../redux/auth/authOperations';
 import UserAvatar from '../UserAvatar';
+import Toggle from '../Toggle/Toggle';
 
 export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,6 +31,7 @@ export default function Header() {
 
   return (
     <HeaderWrap>
+      <Toggle />
       <AppBar position="static" className={classes.headerStyles}>
         <Toolbar className={classes.toolBarStyles}>
           <Logo to="/" exact="true">

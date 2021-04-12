@@ -14,8 +14,7 @@ import {
   StyledAbout,
   StyledWrapper,
   Overlay,
-  Wrapper,
-} from './ContactCard.styled.js';
+} from './ContactCard.style.js';
 
 const ContactCard = ({ photo, name, position, about, hubLink, linLink }) => {
   const theme = useSelector(getTheme);
@@ -23,21 +22,17 @@ const ContactCard = ({ photo, name, position, about, hubLink, linLink }) => {
 
   return (
     <StylesProvider injectFirst>
-      <Wrapper>
-        <Overlay className="overlay">
-          <LinkList hubLink={hubLink} linLink={linLink} />
-        </Overlay>
-        <StyledCard theme={customTheme}>
-          <StyledWrapper>
-            <StyledCardMedia width="280" height="244" alt={name} src={photo} title={name} />
-            <StyledCardContent>
-              <StyledTypography theme={customTheme}>{name}</StyledTypography>
-              <StyledParagraph theme={customTheme}>{position}</StyledParagraph>
-              <StyledAbout theme={customTheme}>{about}</StyledAbout>
-            </StyledCardContent>
-          </StyledWrapper>
-        </StyledCard>
-      </Wrapper>
+      <Overlay className="overlay">
+        <LinkList hubLink={hubLink} linLink={linLink} />
+      </Overlay>
+      <StyledWrapper>
+        <StyledCardMedia width="280" height="244" alt={name} src={photo} title={name} />
+        <StyledCardContent>
+          <StyledTypography theme={customTheme}>{name}</StyledTypography>
+          <StyledParagraph theme={customTheme}>{position}</StyledParagraph>
+          <StyledAbout theme={customTheme}>{about}</StyledAbout>
+        </StyledCardContent>
+      </StyledWrapper>
     </StylesProvider>
   );
 };
