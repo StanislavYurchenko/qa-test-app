@@ -16,4 +16,8 @@ const setThemeHandler = nameTheme => dispatch => {
   }
 };
 
-export { setThemeHandler };
+const setNameTheme = nameTheme => dispatch => {
+  dispatch(themeActions.setNameTheme(nameTheme));
+};
+
+export { setThemeHandler, setNameTheme };
