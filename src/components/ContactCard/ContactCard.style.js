@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
-import { PRIMARY_TEXT_COLOUR, DARK_GREY_TEXT_COLOUR } from '../../themes/colors';
 
 export const StyledWrapper = styled.div`
   padding: 0 0 22px 0;
@@ -33,7 +32,8 @@ export const StyledCardContent = styled.ul`
 `;
 
 export const StyledTypography = styled(Typography)`
-  color: ${PRIMARY_TEXT_COLOUR};
+  ${({ theme }) => `
+  color: ${theme.PRIMARY_TEXT_COLOR};
   text-transform: uppercase;
   font-family: Montserrat, sans-serif;
   font-weight: 700;
@@ -41,29 +41,34 @@ export const StyledTypography = styled(Typography)`
   line-height: 12px;
   letter-spacing: 0.12em;
   margin-bottom: 6px;
+  `}
 `;
 
 export const StyledParagraph = styled(Typography)`
-  color: ${DARK_GREY_TEXT_COLOUR};
-  font-family: Montserrat, sans-serif;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 12px;
-  letter-spacing: 0.02em;
-  margin-bottom: 10px;
+  ${({ theme }) => `
+    color: ${theme.DARK_GREY_TEXT_COLOR};
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0.02em;
+    margin-bottom: 10px;
+  `}
 `;
 
 export const StyledAbout = styled(Typography)`
-  color: ${PRIMARY_TEXT_COLOUR};
-  font-family: Montserrat, sans-serif;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
-  letter-spacing: 0.02em;
+  ${({ theme }) => `
+    color: ${theme.PRIMARY_TEXT_COLOR};
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
 
-  @media screen and (min-width: 768px) {
+    @media screen and (min-width: 768px) {
     font-size: 14px;
-  }
+    }
+ `}
 `;
 
 export const Overlay = styled.div`
