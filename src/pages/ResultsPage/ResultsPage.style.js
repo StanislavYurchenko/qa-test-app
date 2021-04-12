@@ -9,7 +9,7 @@ const MainContainer = styled.div`
   align-items: center;
   margin-top: 30px;
 
-  background-color: ${theme.SECONDARY_TEXT_COLOR};
+  background-color: ${theme.PAGE_BACKGROUND_COLOR};
   color:  ${theme.PRIMARY_TEXT_COLOR};
 
   @media screen and (min-width: ${BREAKPOINTS.TABLET}) {

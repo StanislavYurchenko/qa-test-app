@@ -27,16 +27,31 @@ function Chart({ correctAnswers, incorrectAnswers }) {
     };
   };
 
-  const generateChartOptions = () => {
-    const calculateLegendPosition = () => {
-      if (document.documentElement.clientWidth < 768) return 'bottom';
-      else return 'right';
+  const generateChartOptions = theme => {
+    const generateLegend = () => {
+      if (document.documentElement.clientWidth < 768) {
+        return {
+          position: 'bottom',
+          labels: {
+            fontColor: theme.PRIMARY_TEXT_COLOR,
+            fontSize: 10,
+            fontWeight: 500,
+          },
+        };
+      } else {
+        return {
+          position: 'right',
+          labels: {
+            fontColor: theme.PRIMARY_TEXT_COLOR,
+            fontSize: 16,
+            fontWeight: 500,
+          },
+        };
+      }
     };
 
     return {
-      legend: {
-        position: calculateLegendPosition(),
-      },
+      legend: generateLegend(),
       responsive: true,
       maintainAspectRatio: false,
     };
@@ -47,7 +62,7 @@ function Chart({ correctAnswers, incorrectAnswers }) {
       <PieContainer>
         <Pie
           data={generateChartData(customTheme, correctAnswers, incorrectAnswers, totalAnswers)}
-          options={generateChartOptions()}
+          options={generateChartOptions(customTheme)}
         />
       </PieContainer>
       <AnswersContainer>
