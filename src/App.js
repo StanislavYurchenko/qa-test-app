@@ -43,7 +43,6 @@ function App() {
   return (
     <>
       <Header />
-      {/* <Toggle /> */}
       <MainContainer>
         {isLoading ? (
           <PreLoader sizePreloader="200px" />
