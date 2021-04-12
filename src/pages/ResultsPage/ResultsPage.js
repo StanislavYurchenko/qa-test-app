@@ -7,8 +7,6 @@ import Chart from '../../components/Chart';
 import TestResult from '../../components/TestResult';
 import resultIMG from '../../images/results.svg';
 import testActions from '../../redux/test/testActions';
-import { fetchTest } from '../../redux/test/testOperations';
-import categories from '../../utils/test-categories';
 
 export default function ResultsView() {
   const classes = useStyles();
@@ -20,9 +18,6 @@ export default function ResultsView() {
     dispatch(testActions.resetAnswers());
     dispatch(testActions.resetResults());
     history.push('/test');
-
-    if (testCategory === categories.theory) dispatch(fetchTest('/test-theory'));
-    else dispatch(fetchTest('/test-tech'));
   };
 
   return (
