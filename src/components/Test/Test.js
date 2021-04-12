@@ -1,11 +1,12 @@
-import { useState, useEffect } from 'react';
-import { useHistory, useRouteMatch, useLocation } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import testActions from '../../redux/test/testActions';
 import { fetchTest, sendAnswers } from 'redux/test/testOperations';
 import * as selectors from '../../redux/test/testSelectors';
 import categories from '../../utils/test-categories';
+import { transformAnswers } from '../../services/transformAnswers';
 
 import Card from './Card';
 import Modal from './Modal';
@@ -28,8 +29,12 @@ export default function Test({ title }) {
   const location = useLocation();
   const history = useHistory();
 
+  let fistRender = useRef(true);
+
   useEffect(() => {
-    if (location.pathname !== '/test' && location.pathname !== '/auth') {
+    fistRender = false;
+
+    if (!fistRender && location.pathname !== '/test' && location.pathname !== '/auth') {
       history.push('/test');
       setOpen(true);
     }
@@ -73,10 +78,6 @@ export default function Test({ title }) {
     dispatch(testActions.addAnswer(targerAnswer));
   };
 
-  function transformAnswers(answers) {
-    const entries = Object.entries(answers);
-    return entries.map(([id, answer]) => ({ questionId: Number(id), answer }));
-  }
   const handleFinishTest = () => {
     const readyAnswers = transformAnswers(answers);
     if (questions.length === readyAnswers.length) {
