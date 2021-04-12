@@ -10,11 +10,11 @@ export const LinkHref = styled.a`
   display: block;
   width: 50px;
   height: 50px;
-  background-color: rgba(109, 143, 183, 1);
+  background-color: rgba(218, 225, 232, 0.5);
   transition: background-color 0.2s linear;
 
   &:hover {
-    background-color: rgba(255, 107, 1, 0.3);
+    background-color: rgba(218, 225, 232, 1);
   }
 `;
 
