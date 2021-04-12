@@ -17,7 +17,7 @@ export const sendAnswers = createAsyncThunk(
       const res = await service.sendAnswers(answers);
       return res;
     } catch (error) {
-      return error;
+      return rejectWithValue(error);
     }
   },
 );

@@ -20,7 +20,7 @@ const ResultsPage = lazy(() => import('pages/ResultsPage' /* webpackChunkName: "
 const ContactsPage = lazy(() =>
   import('pages/ContactsPage' /* webpackChunkName: "ContactsPage" */),
 );
-const Test = lazy(() => import('./components/Test' /* webpackChunkName: "Test" */));
+const TestPage = lazy(() => import('./pages/TestPage' /* webpackChunkName: "TestPage" */));
 const MaterialsPage = lazy(() =>
   import('pages/MaterialsPage' /* webpackChunkName: "MaterialsPage" */),
 );
@@ -63,7 +63,7 @@ function App() {
               </PublicRoute>
               <PrivateRoute path="/test" redirectTo="/auth">
                 <Container>
-                  <Test />
+                  <TestPage />
                 </Container>
               </PrivateRoute>
               <PrivateRoute path="/results" redirectTo="/auth">

@@ -100,8 +100,8 @@ body {
 
 @media (min-width: 768px) {
   .section {
-    /* padding: 42px calc(50% - 326px); */
-    /* max-width: 820px; */
+    padding: 42px calc(50% - 326px);
+    max-width: 820px;
   }
 
   .title {
@@ -131,7 +131,7 @@ body {
 
 @media (min-width: 1280px) {
   .section {
-    /* padding: 42px calc(50% - 410px); */
+    padding: 42px calc(50% - 410px);
     max-width: 820px;
   }
 

@@ -4,6 +4,7 @@ import testActions from '../../redux/test/testActions';
 import { Section, Title, SecondTitle, Text, Button, List } from './MainPageComponents.style';
 import { ReactComponent as ArrowSvg } from '../../images/icons/arrow.svg';
 import { useHistory } from 'react-router-dom';
+import categories from '../../utils/test-categories';
 
 function MainPageComponents() {
   const history = useHistory();
@@ -14,11 +15,11 @@ function MainPageComponents() {
   };
 
   const handleClickTech = () => {
-    dispatch(testActions.addCategory('[Техническое тестирования_]'));
+    dispatch(testActions.addCategory(categories.tech));
     history.push('/test');
   };
   const handleClickTheory = () => {
-    dispatch(testActions.addCategory('[Теория тестирования_]'));
+    dispatch(testActions.addCategory(categories.theory));
     history.push('/test');
   };
 

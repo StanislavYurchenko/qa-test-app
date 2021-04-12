@@ -3,27 +3,21 @@ import testActions from './testActions';
 import { fetchTest, sendAnswers } from './testOperations';
 
 const category = createReducer('', {
-  [testActions.addCategory]: (_, { payload }) => payload,
   [testActions.testRefresh]: () => '',
-  // [sendAnswers.fulfilled]: () => '',
+  [testActions.addCategory]: (_, { payload }) => payload,
+  [sendAnswers.fulfilled]: () => '',
 });
 
 const questions = createReducer([], {
   [fetchTest.pending]: () => [],
   [fetchTest.fulfilled]: (_, { payload }) => payload,
-
   [sendAnswers.fulfilled]: () => [],
   [testActions.testRefresh]: () => [],
 });
 
 const answers = createReducer([], {
   [fetchTest.pending]: () => [],
-
   [testActions.addAnswer]: (state, { payload }) => ({ ...state, ...payload }),
-  // [testActions.addAnswer]: (state, { payload }) => [
-  //   ...state.filter(item => item.questionId !== payload.questionId),
-  //   payload,
-  // ],
   [testActions.resetAnswers]: () => [],
   [testActions.testRefresh]: () => [],
 });
@@ -57,7 +51,6 @@ const loading = createReducer(false, {
 const error = createReducer('', {
   [fetchTest.pending]: () => '',
   [fetchTest.rejected]: (_, { payload }) => payload,
-
   [sendAnswers.pending]: () => '',
   [sendAnswers.rejected]: () => (_, { payload }) => payload,
 });

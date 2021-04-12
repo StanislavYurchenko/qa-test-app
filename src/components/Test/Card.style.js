@@ -20,9 +20,14 @@ export const Counter = styled.p`
   line-height: 12px;
   text-align: center;
   letter-spacing: 0.02em;
-  text-transform: uppercase;
+  //text-transform: uppercase;
   color: #555555;
   margin-bottom: 20px;
+
+  @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
+    font-size: 14px;
+    line-height: 17px;
+  }
 `;
 export const Page = styled.span`
   font-weight: bold;
@@ -50,7 +55,7 @@ export const Question = styled.h2`
     margin-top: 20px;
   }
 
-  @media screen and(min-width: ${BREAKPOINTS.TABLET}) {
+  @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
     font-size: 22px;
     line-height: 30px;
     margin-bottom: 30px;
