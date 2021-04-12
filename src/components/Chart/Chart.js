@@ -1,6 +1,7 @@
 import { Pie } from 'react-chartjs-2';
 import { connect, useSelector } from 'react-redux';
 import { createMuiTheme } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 
 import { ChartContainer, PieContainer, AnswersContainer } from './Chart.style';
 import { getResult } from '../../redux/test/testSelectors';
@@ -81,5 +82,10 @@ const mapStateToProps = state => ({
   correctAnswers: getResult(state).correct,
   incorrectAnswers: getResult(state).wrong,
 });
+
+Chart.propTypes = {
+  correctAnswers: PropTypes.number.isRequired,
+  incorrectAnswers: PropTypes.number.isRequired,
+};
 
 export default connect(mapStateToProps, null)(Chart);
