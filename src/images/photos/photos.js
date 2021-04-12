@@ -7,6 +7,7 @@ import Volodymyr from './Volodymyr_Babych-min.jpg';
 import Yulia from './Yulia_Labutkina-min.jpg';
 import Stanislav from './Yurchenko_Stanislav-min.jpg';
 import Andriy from './Andriy_Krichkivskiy-min.jpg';
+import Grygoriy from './Grygoriy-min.jpg';
 
 export const images = {
   Artur_Stakhov: Artur,
@@ -18,4 +19,5 @@ export const images = {
   Yulia_Labutkina: Yulia,
   Yurchenko_Stanislav: Stanislav,
   Andriy_Krichkivskiy: Andriy,
+  Grygoriy_Chernish: Grygoriy,
 };

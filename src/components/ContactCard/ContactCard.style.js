@@ -2,85 +2,8 @@ import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
 import { PRIMARY_TEXT_COLOUR, DARK_GREY_TEXT_COLOUR } from '../../themes/colors';
 
-export const Wrapper = styled.div`
-  margin: 0 auto;
-  position: relative;
-  width: 280px;
-  padding: 0;
-  &:not(:last-child) {
-    margin-bottom: 20px;
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 352px;
-
-    &:nth-child(odd) {
-      margin-right: 20px;
-    }
-
-    &:nth-last-child(-n + 2) {
-      margin-bottom: 0px;
-    }
-  }
-
-  @media screen and (min-width: 1290px) {
-    width: 295px;
-    margin-right: 20px;
-
-    &:nth-child(4n) {
-      margin-right: 0px;
-    }
-
-    &:nth-last-child(-n + 2) {
-      margin-right: 20px;
-    }
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-
-  &:hover .overlay {
-    opacity: 1;
-    visibility: visible;
-  }
-`;
-
-export const StyledCard = styled.li`
-  border-radius: 0;
-  box-shadow: 0px 4px 15px rgba(2, 23, 42, 0.1);
-  width: 280px;
-  padding: 0;
-
-  @media screen and (min-width: 768px) {
-    width: 352px;
-
-    &:nth-child(odd) {
-      margin-right: 20px;
-    }
-
-    &:nth-last-child(-n + 2) {
-      margin-bottom: 0px;
-    }
-  }
-
-  @media screen and (min-width: 1290px) {
-    width: 295px;
-    margin-right: 20px;
-
-    &:nth-child(4n) {
-      margin-right: 0px;
-    }
-
-    &:nth-last-child(-n + 2) {
-      margin-right: 20px;
-    }
-  }
-`;
-
 export const StyledWrapper = styled.div`
   padding: 0 0 22px 0;
-  width: 280;
 `;
 
 export const StyledCardMedia = styled.img`
@@ -92,10 +15,15 @@ export const StyledCardMedia = styled.img`
   @media screen and (min-width: 768px) {
     width: 352px;
   }
+
+  @media screen and (min-width: 1280px) {
+    width: 295px;
+  }
 `;
 
 export const StyledCardContent = styled.ul`
   display: block;
+  margin: 0 auto;
   text-align: left;
   padding: 0 20px;
 
@@ -139,7 +67,7 @@ export const StyledAbout = styled(Typography)`
 `;
 
 export const Overlay = styled.div`
-  background: rgba(2, 23, 42, 0.5);
+  background: rgba(2, 23, 42, 0.3);
 
   width: 100%;
   height: 100%;
