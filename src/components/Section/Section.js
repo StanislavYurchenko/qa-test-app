@@ -11,7 +11,7 @@ function Section({ title, children }) {
   const customTheme = createMuiTheme(theme);
 
   return (
-    <SectionStyle theme={customTheme}>
+    <SectionStyle>
       <div>
         {title && <Title theme={customTheme}>{title}</Title>}
         {children}
