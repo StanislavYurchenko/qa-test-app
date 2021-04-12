@@ -5,7 +5,8 @@ const contacts = [
     photo: images.Artur_Stakhov,
     name: 'Artur Stakhov',
     position: 'FullStack Developer',
-    about: 'Lorem',
+    about:
+      'On the project, Artur was responsible for the development of the backend, introduced the ability to change the avatar, create an authorization layer and the ability to switch on the night mode',
     hubLink: 'https://github.com/ArturStahov',
     linLink: 'https://www.linkedin.com/in/artur-stakhov',
   },
@@ -13,7 +14,8 @@ const contacts = [
     photo: images.Andriy_Krichkivskiy,
     name: 'Andriy Krichkivskiy',
     position: 'FullStack Developer',
-    about: 'Lorem',
+    about:
+      'On the project, Andriy developed a header, a logo that redirects to the start page and drawing an indicator of a logged in user',
     hubLink: 'https://github.com/Andriy1982',
     linLink:
       'https://www.linkedin.com/in/%D0%B0%D0%BD%D0%B4%D1%80%D1%96%D0%B9-%D0%BA%D1%80%D0%B8%D1%87%D0%BA%D1%96%D0%B2%D1%81%D1%8C%D0%BA%D0%B8%D0%B9-b027171b2/',
@@ -31,7 +33,8 @@ const contacts = [
     photo: images.Inna_Tishchenko,
     name: 'Inna Tishchenko',
     position: 'FullStack Developer',
-    about: 'Lorem',
+    about:
+      'On the project, Inna developed a page that draws information about the developers, develop and was responsible for the ability to switch to night mode',
     hubLink: 'https://github.com/inna91',
     linLink: 'https://www.linkedin.com/in/tishchenko-inna/',
   },
@@ -48,7 +51,8 @@ const contacts = [
     photo: images.Valentin_Yakubovskiy,
     name: 'Valentin Yakubovskiy',
     position: 'FullStack Developer',
-    about: 'Lorem',
+    about:
+      'On the project, Valentin developed a page of results and was engaged in building a diagram based on user responses',
     hubLink: 'https://github.com/valentinyak',
     linLink: 'https://www.linkedin.com/',
   },
@@ -56,7 +60,8 @@ const contacts = [
     photo: images.Volodymyr_Babych,
     name: 'Volodymyr Babych',
     position: 'FullStack Developer',
-    about: 'Lorem',
+    about:
+      'On the project, Volodymyr developed a test page that draws questions and on it there is the ability to switch to the next / previous question',
     hubLink: 'https://github.com/vovababych',
     linLink: 'https://www.linkedin.com/in/volodymyr-b-b1a8051a5/',
   },
@@ -64,7 +69,8 @@ const contacts = [
     photo: images.Yulia_Labutkina,
     name: 'Yulia Labutkina',
     position: 'FullStack Developer',
-    about: 'Lorem',
+    about:
+      'On the project, Yulia developed a login / registration page, a form for entering user data',
     hubLink: 'https://github.com/YuliaLabutkina',
     linLink: 'https://www.linkedin.com/in/yulia-labutkina/',
   },
@@ -81,7 +87,8 @@ const contacts = [
     photo: images.Yurchenko_Stanislav,
     name: 'Yurchenko Stanislav',
     position: 'FullStack Developer (Team Lead)',
-    about: 'Lorem',
+    about:
+      'On the project, Stanislav was a team lead, initialized and deployed back-end and front-end, developed the page, that is not found and the ability to switch on the night mode, helped and coordinated other developers',
   },
 ];
 

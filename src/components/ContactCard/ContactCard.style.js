@@ -2,16 +2,6 @@ import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
 import { PRIMARY_TEXT_COLOUR, DARK_GREY_TEXT_COLOUR } from '../../themes/colors';
 
-export const Wrapper = styled.div`
-  margin: 0 auto;
-  position: relative;
-
-  &:hover .overlay {
-    opacity: 1;
-    visibility: visible;
-  }
-`;
-
 export const StyledWrapper = styled.div`
   padding: 0 0 22px 0;
 `;
@@ -33,6 +23,7 @@ export const StyledCardMedia = styled.img`
 
 export const StyledCardContent = styled.ul`
   display: block;
+  margin: 0 auto;
   text-align: left;
   padding: 0 20px;
 
@@ -76,7 +67,7 @@ export const StyledAbout = styled(Typography)`
 `;
 
 export const Overlay = styled.div`
-  background: rgba(2, 23, 42, 0.5);
+  background: rgba(2, 23, 42, 0.3);
 
   width: 100%;
   height: 100%;

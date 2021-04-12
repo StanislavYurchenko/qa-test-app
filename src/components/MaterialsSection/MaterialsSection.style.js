@@ -3,8 +3,8 @@ import { background } from '../../images/background/background';
 import BREAKPOINT from '../../utils/breakpoints';
 
 export const SectionStyle = styled.section`
-  position: relative;
-  top: 70px;
+  // position: relative;
+  // top: 70px;
   margin: 0 auto;
   text-align: left;
   min-height: 100vh;
