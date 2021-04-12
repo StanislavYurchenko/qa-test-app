@@ -1,4 +1,5 @@
 import Button from '@material-ui/core/Button';
+import { createMuiTheme } from '@material-ui/core/styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -7,9 +8,12 @@ import Chart from '../../components/Chart';
 import TestResult from '../../components/TestResult';
 import resultIMG from '../../images/results.svg';
 import testActions from '../../redux/test/testActions';
+import { getTheme } from '../../redux/theme/themeSelectors';
 
 export default function ResultsView() {
-  const classes = useStyles();
+  const theme = useSelector(getTheme);
+  const customTheme = createMuiTheme(theme);
+  const classes = useStyles(customTheme);
   const testCategory = useSelector(state => state.test.category);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -21,7 +25,7 @@ export default function ResultsView() {
   };
 
   return (
-    <MainContainer>
+    <MainContainer theme={customTheme}>
       <Header1>Results</Header1>
       <Header2>{testCategory}</Header2>
       <Chart />
