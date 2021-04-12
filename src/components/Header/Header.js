@@ -22,6 +22,9 @@ export default function Header() {
 
   const avatarLetter = userName?.slice(0, 1).toUpperCase();
 
+  let mql = window.matchMedia('all and (min-width: 767px)');
+  console.log(mql);
+
   const onButtonClick = () => {
     setIsModalOpen(!isModalOpen);
   };
@@ -33,7 +36,7 @@ export default function Header() {
           <Logo to="/" exact="true">
             <LogoSvg />
           </Logo>
-          <Navigation className={classes.TestNav} />
+          {mql.matches && <Navigation className={classes.TestNav} />}
           {isLogin && (
             <>
               <Span>{avatarLetter}</Span> <UserName>{userName}</UserName>
