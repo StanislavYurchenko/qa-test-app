@@ -20,6 +20,14 @@ const googleUserRequest = createAction('auth/googleUserRequest');
 const googleUserSuccess = createAction('auth/googleUserSuccess');
 const googleUserError = createAction('auth/googleUserError');
 
+const addAvatarRequest = createAction('auth/addAvatarRequest');
+const addAvatarSuccess = createAction('auth/addAvatarSuccess');
+const addAvatarError = createAction('auth/addAvatarError');
+
+const refreshTokenRequest = createAction('auth/refreshTokenRequest');
+const refreshTokenSuccess = createAction('auth/refreshTokenSuccess');
+const refreshTokenError = createAction('auth/refreshTokenError');
+
 export default {
   regUserRequest,
   regUserSuccess,
@@ -36,4 +44,10 @@ export default {
   googleUserRequest,
   googleUserSuccess,
   googleUserError,
+  addAvatarRequest,
+  addAvatarSuccess,
+  addAvatarError,
+  refreshTokenRequest,
+  refreshTokenSuccess,
+  refreshTokenError,
 };

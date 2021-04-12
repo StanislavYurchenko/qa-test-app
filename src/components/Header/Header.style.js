@@ -18,7 +18,6 @@ export const Modal = styled(Box)`
   width: 100vw;
   height: 100vh;
   background-color: ${PAGE_BACKGROUND_COLOUR};
-  padding: 2.6rem 0;
   text-align: center;
   transition: right 0.5s linear;
   @media screen and (min-width: ${BREAKPOINT.TABLET}) {

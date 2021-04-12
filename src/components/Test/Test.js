@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react';
-import { useHistory, useRouteMatch } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import testActions from '../../redux/test/testActions';
 import { fetchTest, sendAnswers } from 'redux/test/testOperations';
 import * as selectors from '../../redux/test/testSelectors';
+import categories from '../../utils/test-categories';
+import { transformAnswers } from '../../services/transformAnswers';
 
 import Card from './Card';
 import Modal from './Modal';
@@ -24,26 +26,31 @@ export default function Test({ title }) {
   const activeCard = useSelector(selectors.getActiveCard);
   const dispatch = useDispatch();
 
-  const match = useRouteMatch();
+  const location = useLocation();
   const history = useHistory();
-  const isRender = questions.length;
-  const categories = { theory: '[Теория тестирования_]', tech: '[Техническое тестирования_]' };
+
+  let fistRender = useRef(true);
 
   useEffect(() => {
-    if (
-      (match.url === '/test-theory' && category === categories.theory) ||
-      (match.url === '/test-tech' && category === categories.tech)
-    )
-      return;
+    fistRender = false;
 
-    if (match.url === '/test-theory') {
+    if (!fistRender && location.pathname !== '/test' && location.pathname !== '/auth') {
+      history.push('/test');
+      setOpen(true);
+    }
+  });
+
+  useEffect(() => {
+    if (questions.length !== 0) return;
+
+    if (category === '[Теория тестирования_]') {
       dispatch(testActions.addCategory(categories.theory));
-      dispatch(fetchTest(match.url));
+      dispatch(fetchTest('/test-theory'));
+      return;
     }
-    if (match.url === '/test-tech') {
-      dispatch(testActions.addCategory(categories.tech));
-      dispatch(fetchTest(match.url));
-    }
+
+    dispatch(testActions.addCategory(categories.tech));
+    dispatch(fetchTest('/test-tech'));
   }, []);
 
   function openModal() {
@@ -71,10 +78,6 @@ export default function Test({ title }) {
     dispatch(testActions.addAnswer(targerAnswer));
   };
 
-  function transformAnswers(answers) {
-    const entries = Object.entries(answers);
-    return entries.map(([id, answer]) => ({ questionId: Number(id), answer }));
-  }
   const handleFinishTest = () => {
     const readyAnswers = transformAnswers(answers);
     if (questions.length === readyAnswers.length) {
@@ -100,7 +103,7 @@ export default function Test({ title }) {
             Завершить тест
           </button>
         </div>
-        {isRender && (
+        {questions.length && (
           <Card
             questions={questions}
             activeCard={activeCard}
