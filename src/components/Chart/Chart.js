@@ -2,12 +2,10 @@ import { Pie } from 'react-chartjs-2';
 import { connect } from 'react-redux';
 
 import { ChartContainer, PieContainer, AnswersContainer } from './Chart.style';
-import { ACCENT_COLOUR, BAD_RESULT_COLOUR } from '../../themes/colors';
+import { colorsLight } from '../../themes/colors';
 import { getResult } from '../../redux/test/testSelectors';
 
 function Chart({ correctAnswers, incorrectAnswers }) {
-  // const correctAnswers = 0;
-  // const incorrectAnswers = 10;
   const totalAnswers = correctAnswers + incorrectAnswers;
 
   const generateChartData = (correct, incorrect, total) => {
@@ -20,7 +18,7 @@ function Chart({ correctAnswers, incorrectAnswers }) {
         {
           label: 'Correct answers',
           data: [correct, incorrect],
-          backgroundColor: [ACCENT_COLOUR, BAD_RESULT_COLOUR],
+          backgroundColor: [colorsLight.ACCENT_COLOR, colorsLight.BAD_RESULT_COLOR],
         },
       ],
     };

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { ACCENT_COLOUR } from '../../themes/colors';
+import { colorsLight } from '../../themes/colors';
 import BREAKPOINTS from '../../utils/breakpoints';
 
 const MainContainer = styled.div`
@@ -57,9 +57,9 @@ const StyledImage = styled.img`
 
 const useStyles = makeStyles({
   tryAgain: {
-    background: ACCENT_COLOUR,
+    background: colorsLight.ACCENT_COLOR,
     '&:hover': {
-      background: ACCENT_COLOUR,
+      background: colorsLight.ACCENT_COLOR,
     },
     color: 'white',
     width: 190,
