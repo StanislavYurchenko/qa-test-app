@@ -1,18 +1,28 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
-// import { authSelectors } from 'redux/auth';
+import { StyledNavLink, StyledNav } from '../Navigation/Navigation.style';
+import { useSelector } from 'react-redux';
+import { authSelectors } from 'redux/auth';
 
-function Navigation() {
-  // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+function Navigation({ isModalOpen, onButtonClick }) {
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+
   return (
-    <nav>
-      <NavLink to="/" exact>
-        Home
-      </NavLink>
-      <NavLink to="/useful-info">Materials</NavLink>
-      <NavLink to="/contacts">Contacts</NavLink>
-    </nav>
+    <StyledNav mobile={isModalOpen}>
+      {isLoggedIn && (
+        <>
+          <StyledNavLink to="/" exact onClick={onButtonClick}>
+            Home
+          </StyledNavLink>
+          <StyledNavLink to="/useful-info" onClick={onButtonClick}>
+            Materials
+          </StyledNavLink>
+        </>
+      )}
+
+      <StyledNavLink to="/contacts" onClick={onButtonClick} lastlink="true">
+        Contacts
+      </StyledNavLink>
+    </StyledNav>
   );
 }
 

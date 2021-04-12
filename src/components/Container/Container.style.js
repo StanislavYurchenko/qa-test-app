@@ -7,7 +7,6 @@ export const StyledContainer = styled(Box)`
   width: ${BREAKPOINT.MOBILE_CONTAINER};
   margin-left: auto;
   margin-right: auto;
-  padding: 71px 0;
   min-height: 100vh;
   background-color: ${PAGE_BACKGROUND_COLOUR};
   @media screen and (min-width: ${BREAKPOINT.TABLET}) {
