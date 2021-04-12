@@ -17,7 +17,7 @@ export const NavWrap = styled(Box)`
   text-align: center;
   transition: right 0.5s linear;
 
-  @media screen and (max-width: ${BREAKPOINT.TABLET}) {
+  @media screen and (max-width: ${BREAKPOINT.MOBILE_MAX}) {
     top: 71px;
     right: ${props => (props.open ? 0 : '-100%')};
     position: absolute;
