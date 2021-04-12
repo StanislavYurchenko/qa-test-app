@@ -12,17 +12,20 @@ export const List = styled.ul`
 `;
 
 export const ListItem = styled.li`
+  ${({ theme }) => `
+    background-color: ${theme.SECONDARY_TEXT_COLOR};
+  position: relative;
   border-radius: 0;
   margin: 0 auto;
   box-shadow: 0px 4px 15px rgba(2, 23, 42, 0.1);
   width: 280px;
   padding: 0;
-  position: relative;
 
   &:hover .overlay {
     opacity: 1;
     visibility: visible;
   }
+
   &:not(:last-child) {
     margin-bottom: 20px;
   }
@@ -57,4 +60,5 @@ export const ListItem = styled.li`
     }
     }
   }
+   `}
 `;
