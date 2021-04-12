@@ -7,7 +7,6 @@ import { getTheme } from '../../redux/theme/themeSelectors';
 import { createMuiTheme } from '@material-ui/core/styles';
 
 import {
-  StyledCard,
   StyledCardMedia,
   StyledTypography,
   StyledCardContent,

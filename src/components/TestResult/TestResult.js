@@ -1,8 +1,10 @@
+import { connect } from 'react-redux';
 import { ResultContainer, HeadingParagraph, DescriptionParagraph } from './TestResult.style';
+import { getResult } from '../../redux/test/testSelectors';
 
-export default function TestResult() {
-  const correctAnswers = 10;
-  const incorrectAnswers = 2;
+function TestResult({ correctAnswers, incorrectAnswers }) {
+  // const correctAnswers = 0;
+  // const incorrectAnswers = 10;
   const totalAnswers = correctAnswers + incorrectAnswers;
 
   const RESULTS = [
@@ -32,3 +34,10 @@ export default function TestResult() {
     </ResultContainer>
   );
 }
+
+const mapStateToProps = state => ({
+  correctAnswers: getResult(state).correct,
+  incorrectAnswers: getResult(state).wrong,
+});
+
+export default connect(mapStateToProps, null)(TestResult);

@@ -83,7 +83,6 @@ export const StyledCard = styled.div`
 
 export const StyledWrapper = styled.div`
   padding: 0 0 22px 0;
-  width: 280;
 `;
 
 export const StyledCardMedia = styled.img`
@@ -95,10 +94,15 @@ export const StyledCardMedia = styled.img`
   @media screen and (min-width: 768px) {
     width: 352px;
   }
+
+  @media screen and (min-width: 1280px) {
+    width: 295px;
+  }
 `;
 
 export const StyledCardContent = styled.ul`
   display: block;
+  margin: 0 auto;
   text-align: left;
   padding: 0 20px;
 
@@ -148,7 +152,7 @@ export const StyledAbout = styled(Typography)`
 `;
 
 export const Overlay = styled.div`
-  background: rgba(2, 23, 42, 0.5);
+  background: rgba(2, 23, 42, 0.3);
 
   width: 100%;
   height: 100%;

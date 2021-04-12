@@ -26,3 +26,19 @@ export const logout = () => {
 export const getUserInfo = () => {
   return axios.get('/users/current').then(data => data);
 };
+
+export const fetchQuestions = path => {
+  return axios.get(`/api${path}`).then(data => data.data.data);
+};
+
+export const sendAnswers = answers => {
+  return axios.post('/api/test-theory/result', answers).then(data => data.data.data);
+};
+
+export const refreshAccessToken = refreshToken => {
+  return axios.post('/auth/refresh-token', refreshToken).then(data => data);
+};
+
+export const setUserAvatar = file => {
+  return axios.patch('/images', file);
+};
