@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const SectionStyle = styled.section`
   ${({ theme }) => `
-     background-color: ${theme.PAGE_BACKGROUND_COLOR};
+    //  background-color: ${theme.PAGE_BACKGROUND_COLOR};
      margin: 0 auto;
      text-align: center;
      padding: 40px 0 56px;
