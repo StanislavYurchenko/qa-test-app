@@ -19,14 +19,10 @@ export default function ResultsView() {
   const handleButtonClick = () => {
     dispatch(testActions.resetAnswers());
     dispatch(testActions.resetResults());
+    history.push('/test');
 
-    if (testCategory === categories.theory) {
-      history.push('/test-theory');
-      dispatch(fetchTest('/test-theory'));
-    } else {
-      history.push('/test-tech');
-      dispatch(fetchTest('/test-tech'));
-    }
+    if (testCategory === categories.theory) dispatch(fetchTest('/test-theory'));
+    else dispatch(fetchTest('/test-tech'));
   };
 
   return (
