@@ -2,29 +2,9 @@ import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
+import AppBar from '@material-ui/core/AppBar';
 import styled from 'styled-components';
-import {
-  PRIMARY_TEXT_COLOUR,
-  PAGE_BACKGROUND_COLOUR,
-  HEADER_BORDER_COLOUR,
-  SECONDARY_TEXT_COLOUR,
-  DARK_GREY_TEXT_COLOUR,
-} from '../../themes/colors';
 import BREAKPOINT from '../../utils/breakpoints';
-
-export const NavWrap = styled(Box)`
-  background-color: ${PAGE_BACKGROUND_COLOUR};
-  text-align: center;
-  transition: right 0.5s linear;
-
-  @media screen and (max-width: ${BREAKPOINT.MOBILE_MAX}) {
-    top: 71px;
-    right: ${props => (props.open ? 0 : '-100%')};
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-  } ;
-`;
 
 export const HeaderWrap = styled(Box)`
   position: fixed;
@@ -33,12 +13,30 @@ export const HeaderWrap = styled(Box)`
   transform: translateX(-50%);
   width: 100%;
   z-index: 100;
-  @media screen and (min-width: ${BREAKPOINT.TABLET}) {
-    /* max-width: ${BREAKPOINT.TABLET_CONTAINER}; */
-  }
-  @media screen and (min-width: ${BREAKPOINT.TABLET}) {
-    /* max-width: ${BREAKPOINT.TABLET_CONTAINER}; */
-  }
+`;
+
+export const HeaderStyle = styled(AppBar)`
+  ${({ theme }) => `
+       background-color: ${theme.PAGE_BACKGROUND_COLOR};
+     border-bottom: 1px solid ${theme.HEADER_BORDER_COLOR};
+  `}
+  box-shadow: none;
+  z-index: 11;
+`;
+
+export const NavWrap = styled(Box)`
+  ${({ theme }) => `
+  background-color: ${theme.PAGE_BACKGROUND_COLOR};
+  `}
+  text-align: center;
+  transition: right 0.5s linear;
+  @media screen and (max-width: ${BREAKPOINT.MOBILE_MAX}) {
+    top: 71px;
+    right: ${props => (props.open ? 0 : '-100%')};
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+  } ;
 `;
 
 export const Logo = styled(Link)`
@@ -49,16 +47,18 @@ export const Logo = styled(Link)`
 `;
 
 export const ButtonWrap = styled(Box)`
+  ${({ theme }) => `
+   border-left: 1px solid ${theme.HEADER_BORDER_COLOR};
+  `}
   display: ${props => (props.toggle ? 'flex' : 'none')};
   align-items: center;
   justify-content: center;
   min-width: 55px;
   min-height: 70px;
-  border-left: 1px solid ${HEADER_BORDER_COLOUR};
 
   @media screen and (min-width: ${BREAKPOINT.TABLET}) {
     display: ${props => (props.toggle ? 'none' : 'flex')};
-  } ;
+  }
 `;
 
 export const ButtonStyles = styled(Button)`
@@ -75,16 +75,20 @@ export const Span = styled.span`
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: ${SECONDARY_TEXT_COLOUR};
-  color: ${DARK_GREY_TEXT_COLOUR};
+
   font-family: Montserrat, sans-serif;
   font-weight: 600;
   font-size: 12px;
   line-height: 16px;
   margin-right: 1rem;
 `;
+/* background-color: ${SECONDARY_TEXT_COLOUR}; */
+/* color: ${DARK_GREY_TEXT_COLOUR}; */
 
 export const UserName = styled.p`
+  ${({ theme }) => `
+   color: ${theme.PRIMARY_TEXT_COLOR};
+  `}
   display: none;
   margin-right: 2rem;
   font-family: Montserrat, sans-serif;
@@ -92,20 +96,12 @@ export const UserName = styled.p`
   font-size: 1.2rem;
   line-height: 1.6rem;
   letter-spacing: 0.02em;
-  color: ${PRIMARY_TEXT_COLOUR};
-
   @media screen and (min-width: ${BREAKPOINT.TABLET}) {
     display: block;
   } ;
 `;
 
 const useStyles = makeStyles(theme => ({
-  headerStyles: {
-    boxShadow: 'none',
-    backgroundColor: `${PAGE_BACKGROUND_COLOUR}`,
-    borderBottom: `1px solid ${HEADER_BORDER_COLOUR}`,
-    zIndex: 11,
-  },
   toolBarStyles: {
     minHeight: '70px',
     justifyContent: 'space-between',

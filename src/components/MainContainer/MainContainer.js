@@ -6,7 +6,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 export default function Container({ children }) {
   const theme = useSelector(getTheme);
-  const customTheme = createMuiTheme(theme);
+  const customTheme = theme && createMuiTheme(theme);
 
   return <StyledContainer theme={customTheme}>{children}</StyledContainer>;
 }
