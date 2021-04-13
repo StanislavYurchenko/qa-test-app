@@ -1,10 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 import { TextField } from '@material-ui/core';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 import PreLoader from '../PreLoader';
 import { loginUser } from '../../redux/auth/authOperations';
 import { loading, error } from '../../redux/auth/authSelectors';
+import { getTheme } from '../../redux/theme/themeSelectors';
 
 import { useStyles, ButtonContainer, ActiveButton, NotActiveButton } from './LoginForm.style';
 
@@ -12,6 +14,8 @@ const LoginForm = ({ handleToggleButton }) => {
   const dispatch = useDispatch();
   const loadingAuth = useSelector(loading);
   const errorAuth = useSelector(error);
+  const theme = useSelector(getTheme);
+  const customTheme = theme && createMuiTheme(theme);
   const { handleSubmit, control, reset } = useForm();
   const classes = useStyles();
 
@@ -81,10 +85,10 @@ const LoginForm = ({ handleToggleButton }) => {
         />
 
         <ButtonContainer>
-          <ActiveButton type="submit" variant="contained">
+          <ActiveButton type="submit" variant="contained" theme={customTheme}>
             {loadingAuth ? <PreLoader sizePreloader="16px" /> : 'SIGN IN'}
           </ActiveButton>
-          <NotActiveButton type="button" onClick={handleToggleButton}>
+          <NotActiveButton type="button" onClick={handleToggleButton} theme={customTheme}>
             SIGN UP
           </NotActiveButton>
         </ButtonContainer>
