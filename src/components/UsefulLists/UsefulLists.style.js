@@ -1,17 +1,16 @@
 import styled from 'styled-components';
-import { PRIMARY_TEXT_COLOUR, PAGE_BORDER_COLOUR } from '../../themes/colors';
-
 import BREAKPOINT from '../../utils/breakpoints';
 
 export const Title = styled.h2`
+  ${({ theme }) => `
   font-family: Montserrat, sans-serif;
   font-weight: 700;
   font-size: 18px;
   line-height: 1.22;
   text-align: left;
   letter-spacing: 0.02em;
-  color: ${PRIMARY_TEXT_COLOUR};
-  border-bottom: 1px solid ${PAGE_BORDER_COLOUR};
+  color: ${theme.PRIMARY_MATERIALS_TEXT_COLOR};
+  border-bottom: 1px solid ${theme.PAGE_BORDER_COLOR};
   width: 130px;
   margin: 0;
   padding-bottom: 10px;
@@ -24,30 +23,45 @@ export const Title = styled.h2`
     padding-bottom: 22px;
     margin-bottom: 25px;
   }
+  `}
 `;
 
 export const List = styled.ul`
   margin-top: 0;
   margin-bottom: 25px;
 
-  font-family: Montserrat, sans-serif;
-  font-weight: 500;
-  font-size: 10px;
-  line-height: 1.6;
-  letter-spacing: 0.02em;
   text-align: left;
   width: 207px;
 
   @media screen and (min-width: ${BREAKPOINT.TABLET}) {
-    font-size: 14px;
     width: 295px;
     padding-left: 60px;
     margin-bottom: 35px;
   }
 `;
-export const Link = styled.a`
-  text-decoration: underline;
-  :visited {
-    color: ${PRIMARY_TEXT_COLOUR};
+
+export const Item = styled.li`
+  ${({ theme }) => `
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  color: ${theme.PRIMARY_MATERIALS_TEXT_COLOR};
+
+  @media screen and (min-width: ${BREAKPOINT.TABLET}) {
+    font-size: 14px;
   }
+  `}
+`;
+export const Link = styled.a`
+  ${({ theme }) => `
+ text-decoration: underline;
+  :link {
+    color: ${theme.PRIMARY_MATERIALS_TEXT_COLOR};
+  }
+  :visited {
+    color: ${theme.PRIMARY_MATERIALS_TEXT_COLOR};
+  }
+  `}
 `;
