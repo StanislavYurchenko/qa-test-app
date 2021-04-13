@@ -1,34 +1,40 @@
-//import { Heading1, Heading2 } from './MaterialsPage.style.js';
-import { Title, List, Link } from './UsefulLists.style';
+import { Title, List, Link, Item } from './UsefulLists.style';
+
+import { useSelector } from 'react-redux';
+import { getTheme } from '../../redux/theme/themeSelectors';
+import { createMuiTheme } from '@material-ui/core/styles';
+
 export default function UsefulResourcesList() {
+  const theme = useSelector(getTheme);
+  const customTheme = createMuiTheme(theme);
   return (
     <>
-      <Title>Useful resources</Title>
+      <Title theme={customTheme}>Useful resources</Title>
       <List>
-        <li>
+        <Item theme={customTheme}>
           1.&nbsp;
-          <Link href="https://dou.ua/" target="_blank">
+          <Link href="https://dou.ua/" target="_blank" theme={customTheme}>
             dou.ua
           </Link>
-        </li>
-        <li>
+        </Item>
+        <Item>
           2.&nbsp;
-          <Link href="https://habr.com/" target="_blank">
+          <Link href="https://habr.com/" target="_blank" theme={customTheme}>
             Habr.com
           </Link>
-        </li>
-        <li>
+        </Item>
+        <Item>
           3.&nbsp;
-          <Link href="https://goit.ua/" target="_blank">
+          <Link href="https://goit.ua/" target="_blank" theme={customTheme}>
             goit.ua
           </Link>
-        </li>
-        <li>
+        </Item>
+        <Item>
           4.&nbsp;
-          <Link href="https://www.softwaretestinghelp.com/" target="_blank">
+          <Link href="https://www.softwaretestinghelp.com/" target="_blank" theme={customTheme}>
             Software Testing Help
           </Link>
-        </li>
+        </Item>
       </List>
     </>
   );
