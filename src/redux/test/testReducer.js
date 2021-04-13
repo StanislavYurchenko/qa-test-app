@@ -34,7 +34,6 @@ const result = createReducer(
     [testActions.resetResults]: () => {
       return { correct: 0, wrong: 0 };
     },
-    // [fetchTest.pending]: () => {},
     [fetchTest.pending]: () => {
       return { correct: 0, wrong: 0 };
     },
