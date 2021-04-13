@@ -3,8 +3,6 @@ import { ResultContainer, HeadingParagraph, DescriptionParagraph } from './TestR
 import { getResult } from '../../redux/test/testSelectors';
 
 function TestResult({ correctAnswers, incorrectAnswers }) {
-  // const correctAnswers = 0;
-  // const incorrectAnswers = 10;
   const totalAnswers = correctAnswers + incorrectAnswers;
 
   const RESULTS = [
