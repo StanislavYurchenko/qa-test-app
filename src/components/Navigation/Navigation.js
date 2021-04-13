@@ -1,5 +1,10 @@
 import React from 'react';
-import { StyledNavLink, StyledNav } from '../Navigation/Navigation.style';
+import {
+  StyledNav,
+  StyledNavList,
+  StyledNavListItem,
+  StyledNavLink,
+} from '../Navigation/Navigation.style';
 import { useSelector } from 'react-redux';
 import { authSelectors } from 'redux/auth';
 
@@ -8,20 +13,27 @@ function Navigation({ isModalOpen, onButtonClick }) {
 
   return (
     <StyledNav mobile={isModalOpen}>
-      {isLoggedIn && (
-        <>
-          <StyledNavLink to="/" exact onClick={onButtonClick}>
-            Home
+      <StyledNavList>
+        <StyledNavListItem>
+          {isLoggedIn && (
+            <StyledNavLink to="/" exact onClick={onButtonClick}>
+              Home
+            </StyledNavLink>
+          )}
+        </StyledNavListItem>
+        <StyledNavListItem>
+          {isLoggedIn && (
+            <StyledNavLink to="/useful-info" onClick={onButtonClick}>
+              Materials
+            </StyledNavLink>
+          )}
+        </StyledNavListItem>
+        <StyledNavListItem lastitem="true">
+          <StyledNavLink to="/contacts" onClick={onButtonClick}>
+            Contacts
           </StyledNavLink>
-          <StyledNavLink to="/useful-info" onClick={onButtonClick}>
-            Materials
-          </StyledNavLink>
-        </>
-      )}
-
-      <StyledNavLink to="/contacts" onClick={onButtonClick} lastlink="true">
-        Contacts
-      </StyledNavLink>
+        </StyledNavListItem>
+      </StyledNavList>
     </StyledNav>
   );
 }
