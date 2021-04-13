@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const ToggleContainer = styled.button`
   position: absolute;
-  bottom: -20px;
-  right: 20px;
+  bottom: -30px;
+  right: 12px;
   border-radius: 30px;
   cursor: pointer;
   display: flex;
