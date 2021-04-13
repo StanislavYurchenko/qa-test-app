@@ -1,12 +1,23 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import thunk from 'redux-thunk';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import authReducer from './auth/authReducer';
+import {
+  persistReducer,
+  persistStore,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { persistStore, persistReducer } from 'redux-persist';
+import logger from 'redux-logger';
 
-import authUsersReducer from './auth/authReducer';
-import testReducer from './test/testReducer';
-import themeReducer from './theme/themeReducer';
+const contactsPersistConfig = {
+  key: 'contacts',
+  storage,
+  whitelist: [],
+};
 
 const authPersistConfig = {
   key: 'auth',
@@ -14,26 +25,39 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
-const testPersistConfig = {
-  key: 'test',
-  storage,
-  whitelist: ['questions', 'answers', 'activeCard', 'category', 'result'],
-  blacklist: ['_persist'],
-};
+const middleware =
+  process.env.NODE_ENV === 'development'
+    ? [
+        ...getDefaultMiddleware({
+          serializableCheck: {
+            ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+          },
+        }),
+        logger,
+      ]
+    : getDefaultMiddleware;
 
-const themePersistConfig = {
-  key: 'theme',
-  storage,
-};
-
-const rootReducer = combineReducers({
-  auth: persistReducer(authPersistConfig, authUsersReducer),
-  test: persistReducer(testPersistConfig, testReducer),
-  theme: persistReducer(themePersistConfig, themeReducer),
+const store = configureStore({
+  reducer: {
+    auth: authReducer,
+  },
+  devTools: process.env.NODE_ENV === 'development',
+  middleware,
 });
 
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
+// const persistor = persistStore(store);
 
-export const persistor = persistStore(store);
+export { store };
 
-export default store;
+// const store = configureStore({
+//   reducer: {
+//     phoneBook: persistReducer(contactsPersistConfig, phoneBookReducer),
+//     auth: persistReducer(authPersistConfig, authReducer),
+//   },
+//   devTools: process.env.NODE_ENV === 'development',
+//   middleware,
+// });
+
+// const persistor = persistStore(store);
+
+// export { store, persistor };
