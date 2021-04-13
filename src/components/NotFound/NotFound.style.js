@@ -6,19 +6,20 @@ import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import BREAKPOINT from '../../utils/breakpoints';
 
 export const Container = styled(Box)`
+  padding-top: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
-  color: ${PRIMARY_TEXT_COLOUR};
+  color: ${({ theme }) => theme.PRIMARY_TEXT_COLOR};
 `;
 
 export const Icon = styled(RemoveCircleIcon)`
   width: 8rem;
   height: 8rem;
   margin-bottom: 1.5rem;
-  color: ${ACCENT_COLOUR};
+  color: ${({ theme }) => theme.ACCENT_COLOR};
   @media screen and (min-width: ${BREAKPOINT.TABLET}) {
     width: 10rem;
     height: 10rem;
@@ -33,6 +34,7 @@ export const Icon = styled(RemoveCircleIcon)`
 export const Oops = styled.div`
   font-size: 6rem;
   margin-bottom: 3rem;
+  color: ${({ theme }) => theme.ACCENT_COLOR};
   @media screen and (min-width: ${BREAKPOINT.TABLET}) {
     font-size: 8rem;
     margin-bottom: 4rem;
@@ -57,16 +59,24 @@ export const Message = styled.div`
 export const ErrorCode = styled.div`
   font-size: 3rem;
   margin-bottom: 3rem;
+  & span {
+    color: ${({ theme }) => theme.ACCENT_COLOR};
+  }
 `;
 
-export const Return = styled.div`
+export const Bask = styled.div`
   text-align: center;
   font-size: 3rem;
-  margin-bottom: 3rem;
+  & span {
+    color: inherit;
+  }
 `;
 
 export const StyledLink = styled(Link)`
   font-size: 3rem;
   margin-bottom: 3rem;
-  color: ${ACCENT_COLOUR};
+  color: ${({ theme }) => theme.PRIMARY_TEXT_COLOR};
+  &:visited {
+    color: 'red';
+  }
 `;

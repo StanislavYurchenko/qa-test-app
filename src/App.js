@@ -44,7 +44,9 @@ function App() {
       <Header />
       <MainContainer>
         {isLoading ? (
-          <PreLoader sizePreloader="200px" />
+          <Container>
+            <PreLoader sizePreloader="200px" />
+          </Container>
         ) : (
           <Suspense fallback={<PreLoader sizePreloader="200px" />}>
             <Switch>
@@ -53,32 +55,39 @@ function App() {
                   <MainPage />
                 </Container>
               </PrivateRoute>
+
               <PrivateRoute path="/useful-info" redirectTo="/auth">
                 <MaterialsPage />
               </PrivateRoute>
+
               <PublicRoute path="/contacts">
                 <Container>
                   <ContactsPage />
                 </Container>
               </PublicRoute>
+
               <PrivateRoute path="/test" redirectTo="/auth">
                 <Container>
                   <Test />
                 </Container>
               </PrivateRoute>
+
               <PrivateRoute path="/results" redirectTo="/auth">
                 <Container>
                   <ResultsPage />
                 </Container>
               </PrivateRoute>
+
               <PublicRoute path="/auth" redirectTo={currentRoute} restricted>
                 <Container>
                   <AuthPage />
                 </Container>
               </PublicRoute>
+
               <PublicRoute path="/google">
                 <Google />
               </PublicRoute>
+
               <PublicRoute>
                 <Container>
                   <NotFoundPage />
