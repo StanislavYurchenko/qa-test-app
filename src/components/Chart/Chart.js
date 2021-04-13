@@ -12,7 +12,9 @@ function Chart({ correctAnswers, incorrectAnswers }) {
   const customTheme = theme && createMuiTheme(theme);
   const totalAnswers = correctAnswers + incorrectAnswers;
 
-  const generateChartData = (theme, correct, incorrect, total) => {
+  const generateChartData = (theme, correct, incorrect) => {
+    const total = correct + incorrect;
+
     return {
       labels: [
         `${Math.round((correct / total) * 100)}% Correct`,
@@ -59,22 +61,26 @@ function Chart({ correctAnswers, incorrectAnswers }) {
   };
 
   return (
-    <ChartContainer>
-      <PieContainer>
-        <Pie
-          data={generateChartData(customTheme, correctAnswers, incorrectAnswers, totalAnswers)}
-          options={generateChartOptions(customTheme)}
-        />
-      </PieContainer>
-      <AnswersContainer>
-        <p>
-          Correct answers - <span style={{ fontWeight: 'bold' }}>{`${correctAnswers}`}</span>
-        </p>
-        <p>
-          Total questions - <span style={{ fontWeight: 'bold' }}>{`${totalAnswers}`}</span>
-        </p>
-      </AnswersContainer>
-    </ChartContainer>
+    <>
+      {totalAnswers > 0 && (
+        <ChartContainer>
+          <PieContainer>
+            <Pie
+              data={generateChartData(customTheme, correctAnswers, incorrectAnswers)}
+              options={generateChartOptions(customTheme)}
+            />
+          </PieContainer>
+          <AnswersContainer>
+            <p>
+              Correct answers - <span style={{ fontWeight: 'bold' }}>{`${correctAnswers}`}</span>
+            </p>
+            <p>
+              Total questions - <span style={{ fontWeight: 'bold' }}>{`${totalAnswers}`}</span>
+            </p>
+          </AnswersContainer>
+        </ChartContainer>
+      )}
+    </>
   );
 }
 
