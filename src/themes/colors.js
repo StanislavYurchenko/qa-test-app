@@ -1,37 +1,91 @@
-const colours = {
-  colour1: '#000000',
-  colour2: '#FFFFFF',
-  colour3: '#FF6B09',
-  colour4: '#121D2E',
-  colour5: '#E2E3E5',
-  colour6: '#F5F6FB',
-  colour7: '#D7D7D7',
-  colour8: '#555555',
-  colour9: '#02172A',
-  colour10: '#2600122F',
-  colour11: '#BBBBBB',
-  colour12: '#CED2D1',
-  colour13: '#FAFAFA',
+export const colorsLight = {
+  PRIMARY_TEXT_COLOR: '#000000',
+  SECONDARY_TEXT_COLOR: '#FFFFFF',
+  ACCENT_COLOR: '#FF6B09',
+  LOGO_COLOR: '#121D2E',
+  HEADER_BORDER_COLOR: '#E2E3E5',
+  PAGE_BACKGROUND_COLOR: '#F5F6FB',
+  BAD_RESULT_COLOR: '#D7D7D7',
+  DARK_GREY_TEXT_COLOR: '#555555',
+  ACCENT_BACKGROUND_COLOR: '#02172A',
+  PAGE_BORDER_COLOR: '#2600122F',
+  LOGIN_TEXT_COLOR: '#BBBBBB',
+  LOGIN_BORDER_COLOR: '#CED2D1',
+  LOGIN_BUTTON_BACKGROUND_COLOR: '#FAFAFA',
+  PRIMARY_MATERIALS_TEXT_COLOR: '#000000',
 };
 
-export const PRIMARY_TEXT_COLOUR = colours.colour1;
-export const SECONDARY_TEXT_COLOUR = colours.colour2;
-export const DARK_GREY_TEXT_COLOUR = colours.colour8;
+export const colorsDark = {
+  PRIMARY_TEXT_COLOR: '#FFFFFF',
+  SECONDARY_TEXT_COLOR: '#1E1E1F',
+  ACCENT_COLOR: '#FF6B09',
+  LOGO_COLOR: '#526C97',
+  HEADER_BORDER_COLOR: '#E2E3E5',
+  PAGE_BACKGROUND_COLOR: '#606061',
+  BAD_RESULT_COLOR: '#818181',
+  DARK_GREY_TEXT_COLOR: '#AAAAAA',
+  ACCENT_BACKGROUND_COLOR: '#477094',
+  PAGE_BORDER_COLOR: '#26439595',
+  LOGIN_TEXT_COLOR: '#707070',
+  LOGIN_BORDER_COLOR: '#436289',
+  LOGIN_BUTTON_BACKGROUND_COLOR: '#A35151',
+  PRIMARY_MATERIALS_TEXT_COLOR: '#000000',
+};
 
-export const BLACK = colours.colour1;
-export const WHITE = colours.colour2;
+const getColors = colors => {
+  return {
+    PRIMARY_TEXT_COLOUR: colors.colour1,
+    SECONDARY_TEXT_COLOUR: colors.colour2,
+    DARK_GREY_TEXT_COLOUR: colors.colour8,
+    BLACK: colors.colour1,
+    WHITE: colors.colour2,
+    ACCENT_COLOUR: colors.colour3,
+    LOGO_COLOUR: colors.colour4,
+    HEADER_BORDER_COLOUR: colors.colour5,
+    PAGE_BORDER_COLOUR: colors.colour10,
+    PAGE_BACKGROUND_COLOUR: colors.colour6,
+    ACCENT_BACKGROUND_COLOUR: colors.colour9,
+    BAD_RESULT_COLOUR: colors.colour7,
+    LOGIN_TEXT_COLOUR: colors.colour11,
+    LOGIN_BORDER_COLOUR: colors.colour12,
+    LOGIN_BUTTON_BACKGROUND_COLOUR: colors.colour13,
+  };
+};
 
-export const ACCENT_COLOUR = colours.colour3;
-export const LOGO_COLOUR = colours.colour4;
+const {
+  PRIMARY_TEXT_COLOUR,
+  SECONDARY_TEXT_COLOUR,
+  DARK_GREY_TEXT_COLOUR,
+  BLACK,
+  WHITE,
+  ACCENT_COLOUR,
+  LOGO_COLOUR,
+  HEADER_BORDER_COLOUR,
+  PAGE_BORDER_COLOUR,
+  PAGE_BACKGROUND_COLOUR,
+  ACCENT_BACKGROUND_COLOUR,
+  BAD_RESULT_COLOUR,
+  LOGIN_TEXT_COLOUR,
+  LOGIN_BORDER_COLOUR,
+  LOGIN_BUTTON_BACKGROUND_COLOUR,
+  PRIMARY_MATERIALS_TEXT_COLOR,
+} = getColors(colorsLight);
 
-export const HEADER_BORDER_COLOUR = colours.colour5;
-export const PAGE_BORDER_COLOUR = colours.colour10;
-
-export const PAGE_BACKGROUND_COLOUR = colours.colour6;
-export const ACCENT_BACKGROUND_COLOUR = colours.colour9;
-
-export const BAD_RESULT_COLOUR = colours.colour7;
-
-export const LOGIN_TEXT_COLOUR = colours.colour11;
-export const LOGIN_BORDER_COLOUR = colours.colour12;
-export const LOGIN_BUTTON_BACKGROUND_COLOUR = colours.colour13;
+export {
+  PRIMARY_TEXT_COLOUR,
+  SECONDARY_TEXT_COLOUR,
+  DARK_GREY_TEXT_COLOUR,
+  BLACK,
+  WHITE,
+  ACCENT_COLOUR,
+  LOGO_COLOUR,
+  HEADER_BORDER_COLOUR,
+  PAGE_BORDER_COLOUR,
+  PAGE_BACKGROUND_COLOUR,
+  ACCENT_BACKGROUND_COLOUR,
+  BAD_RESULT_COLOUR,
+  LOGIN_TEXT_COLOUR,
+  LOGIN_BORDER_COLOUR,
+  LOGIN_BUTTON_BACKGROUND_COLOUR,
+  PRIMARY_MATERIALS_TEXT_COLOR,
+};

@@ -1,12 +1,14 @@
-import { Loader, One, Two, Three } from './PreLoader.style';
+import { Loader, One, Two, Three, Box } from './PreLoader.style';
 
 const PreLoader = ({ sizePreloader }) => {
   return (
-    <Loader sizePreloader={sizePreloader}>
-      <One />
-      <Two />
-      <Three />
-    </Loader>
+    <Box>
+      <Loader sizePreloader={sizePreloader}>
+        <One />
+        <Two />
+        <Three />
+      </Loader>
+    </Box>
   );
 };
 
