@@ -9,7 +9,7 @@ import { getTheme } from '../../redux/theme/themeSelectors';
 
 function Chart({ correctAnswers, incorrectAnswers }) {
   const theme = useSelector(getTheme);
-  const customTheme = createMuiTheme(theme);
+  const customTheme = theme && createMuiTheme(theme);
   const totalAnswers = correctAnswers + incorrectAnswers;
 
   const generateChartData = (theme, correct, incorrect, total) => {

@@ -28,11 +28,19 @@ const answers = createReducer([], {
   [testActions.testRefresh]: () => [],
 });
 
-const result = createReducer([], {
-  [testActions.resetResults]: () => [],
-  // [fetchTest.pending]: () => {},
-  [sendAnswers.fulfilled]: (_, { payload }) => payload,
-});
+const result = createReducer(
+  { correct: 0, wrong: 0 },
+  {
+    [testActions.resetResults]: () => {
+      return { correct: 0, wrong: 0 };
+    },
+    // [fetchTest.pending]: () => {},
+    [fetchTest.pending]: () => {
+      return { correct: 0, wrong: 0 };
+    },
+    [sendAnswers.fulfilled]: (_, { payload }) => payload,
+  },
+);
 
 const activeCard = createReducer(1, {
   [fetchTest.pending]: () => 1,
