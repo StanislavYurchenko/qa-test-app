@@ -12,7 +12,6 @@ import { loading } from './redux/auth/authSelectors';
 import PreLoader from './components/PreLoader';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import PublicRoute from 'components/PublicRoute/PublicRoute';
-import { RemoveFromQueue } from '@material-ui/icons';
 
 const MainPage = lazy(() => import('pages/MainPage' /* webpackChunkName: "MainPage" */));
 const AuthPage = lazy(() => import('pages/AuthPage' /* webpackChunkName: "AuthPage" */));

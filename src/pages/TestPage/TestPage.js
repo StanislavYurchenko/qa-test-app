@@ -9,7 +9,7 @@ export default function TestPage() {
 
   return (
     <>
-      {error && <div> {error.message}</div>}
+      {error && <h1> {error.message}</h1>}
       {isLoading && <PreLoader sizePreloader="200px" />}
       {!isLoading && !error && <Test />}
     </>

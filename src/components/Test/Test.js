@@ -39,12 +39,10 @@ export default function Test({ title }) {
     if (questions.length !== 0) return;
     if (category === categories.theory) {
       dispatch(testActions.addCategory(categories.theory));
-      console.log(`categories.theory`, categories.theory);
       dispatch(fetchTest('/test-theory'));
       return;
     }
     dispatch(testActions.addCategory(categories.tech));
-    console.log(`categories.theory`, categories.tech);
     dispatch(fetchTest('/test-tech'));
   }, []);
 
@@ -106,64 +104,16 @@ export default function Test({ title }) {
         )}
 
         <ButtonsBox>
-          <Button>
+          <Button onClick={handlePrev} disabled={activeCard - 1 === 0}>
             <PrevSvg />
-            <ButtonSpan onClick={handlePrev} disabled={activeCard - 1 === 0}>
-              Previus question
-            </ButtonSpan>
+            <ButtonSpan>Previus question</ButtonSpan>
           </Button>
-          <Button>
-            <ButtonSpan onClick={handleNext} disabled={activeCard + 1 > questions.length}>
-              Next question
-            </ButtonSpan>
+          <Button onClick={handleNext} disabled={activeCard + 1 > questions.length}>
+            <ButtonSpan>Next question</ButtonSpan>
             <NextSvg />
           </Button>
         </ButtonsBox>
       </Section>
     </>
-
-    /*{ <section className={s.section}>
-        <Modal
-          open={open}
-          onClose={closeModal}
-          onCancel={handleClickCancel}
-          onContinue={handleClickContinue}
-        />
-        <div className={s.above}>
-          <h2 className={s.title}>{title ? title : category}</h2>
-          <button className={s.aboveButton} type="button" onClick={handleFinishTest}>
-            Finish test
-          </button>
-        </div>
-        {questions.length && (
-          <Card
-            questions={questions}
-            activeCard={activeCard}
-            handleAnswer={handleAnswer}
-            answered={answers}
-          />
-        )}
-        <div className={s.buttons}>
-          <button
-            className={s.btn}
-            type="button"
-            onClick={handlePrev}
-            disabled={activeCard - 1 === 0}
-          >
-            <PrevSvg />
-            <span>Previus question</span>
-          </button>
-          <button
-            className={s.btn}
-            type="button"
-            onClick={handleNext}
-            disabled={activeCard + 1 > questions.length}
-          >
-            <span>Next question</span>
-            <NextSvg />
-          </button>
-        </div>
-      </section>
-    </Section> }*/
   );
 }

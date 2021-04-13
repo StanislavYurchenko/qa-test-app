@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as service from '../../services/authApi';
 
-export const fetchTest = createAsyncThunk('test/fetchTest', async (path, rejectWithValue) => {
+export const fetchTest = createAsyncThunk('test/fetchTest', async (path, { rejectWithValue }) => {
   try {
     const res = await service.fetchQuestions(path);
     return res;
