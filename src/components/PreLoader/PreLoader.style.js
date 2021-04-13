@@ -1,5 +1,13 @@
 import styled, { keyframes } from 'styled-components';
 
+const Box = styled.div`
+  min-height: calc(100vh - (71px + 56px));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 const Loader = styled.div`
   position: relative;
   width: ${props => props.sizePreloader};
@@ -84,4 +92,4 @@ const Three = styled(Inner)`
   border-top: 3px solid rgb(233, 144, 138);
 `;
 
-export { Loader, One, Two, Three };
+export { Loader, One, Two, Three, Box };
