@@ -1,16 +1,18 @@
 import { Pie } from 'react-chartjs-2';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
+import { createMuiTheme } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 
 import { ChartContainer, PieContainer, AnswersContainer } from './Chart.style';
-import { ACCENT_COLOUR, BAD_RESULT_COLOUR } from '../../themes/colors';
 import { getResult } from '../../redux/test/testSelectors';
+import { getTheme } from '../../redux/theme/themeSelectors';
 
 function Chart({ correctAnswers, incorrectAnswers }) {
-  // const correctAnswers = 0;
-  // const incorrectAnswers = 10;
+  const theme = useSelector(getTheme);
+  const customTheme = createMuiTheme(theme);
   const totalAnswers = correctAnswers + incorrectAnswers;
 
-  const generateChartData = (correct, incorrect, total) => {
+  const generateChartData = (theme, correct, incorrect, total) => {
     return {
       labels: [
         `${Math.round((correct / total) * 100)}% Correct`,
@@ -20,22 +22,37 @@ function Chart({ correctAnswers, incorrectAnswers }) {
         {
           label: 'Correct answers',
           data: [correct, incorrect],
-          backgroundColor: [ACCENT_COLOUR, BAD_RESULT_COLOUR],
+          backgroundColor: [theme.ACCENT_COLOR, theme.BAD_RESULT_COLOR],
         },
       ],
     };
   };
 
-  const generateChartOptions = () => {
-    const calculateLegendPosition = () => {
-      if (document.documentElement.clientWidth < 768) return 'bottom';
-      else return 'right';
+  const generateChartOptions = theme => {
+    const generateLegend = () => {
+      if (document.documentElement.clientWidth < 768) {
+        return {
+          position: 'bottom',
+          labels: {
+            fontColor: theme.PRIMARY_TEXT_COLOR,
+            fontSize: 10,
+            fontWeight: 500,
+          },
+        };
+      } else {
+        return {
+          position: 'right',
+          labels: {
+            fontColor: theme.PRIMARY_TEXT_COLOR,
+            fontSize: 16,
+            fontWeight: 500,
+          },
+        };
+      }
     };
 
     return {
-      legend: {
-        position: calculateLegendPosition(),
-      },
+      legend: generateLegend(),
       responsive: true,
       maintainAspectRatio: false,
     };
@@ -45,8 +62,8 @@ function Chart({ correctAnswers, incorrectAnswers }) {
     <ChartContainer>
       <PieContainer>
         <Pie
-          data={generateChartData(correctAnswers, incorrectAnswers, totalAnswers)}
-          options={generateChartOptions()}
+          data={generateChartData(customTheme, correctAnswers, incorrectAnswers, totalAnswers)}
+          options={generateChartOptions(customTheme)}
         />
       </PieContainer>
       <AnswersContainer>
@@ -65,5 +82,10 @@ const mapStateToProps = state => ({
   correctAnswers: getResult(state).correct,
   incorrectAnswers: getResult(state).wrong,
 });
+
+Chart.propTypes = {
+  correctAnswers: PropTypes.number.isRequired,
+  incorrectAnswers: PropTypes.number.isRequired,
+};
 
 export default connect(mapStateToProps, null)(Chart);

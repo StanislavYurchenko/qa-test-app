@@ -18,7 +18,7 @@ import {
 
 const ContactCard = ({ photo, name, position, about, hubLink, linLink }) => {
   const theme = useSelector(getTheme);
-  const customTheme = createMuiTheme(theme);
+  const customTheme = theme && createMuiTheme(theme);
 
   return (
     <StylesProvider injectFirst>
