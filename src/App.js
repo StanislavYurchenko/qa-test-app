@@ -13,7 +13,6 @@ import { loading } from './redux/auth/authSelectors';
 import PreLoader from './components/PreLoader';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import PublicRoute from 'components/PublicRoute/PublicRoute';
-import { RemoveFromQueue } from '@material-ui/icons';
 
 const MainPage = lazy(() => import('pages/MainPage' /* webpackChunkName: "MainPage" */));
 const AuthPage = lazy(() => import('pages/AuthPage' /* webpackChunkName: "AuthPage" */));
@@ -45,7 +44,9 @@ function App() {
       <Header />
       <MainContainer>
         {isLoading ? (
-          <PreLoader sizePreloader="200px" />
+          <Container>
+            <PreLoader sizePreloader="200px" />
+          </Container>
         ) : (
           <Suspense fallback={<PreLoader sizePreloader="200px" />}>
             <Switch>
@@ -54,32 +55,39 @@ function App() {
                   <MainPage />
                 </Container>
               </PrivateRoute>
+
               <PrivateRoute path="/useful-info" redirectTo="/auth">
                 <MaterialsPage />
               </PrivateRoute>
+
               <PublicRoute path="/contacts">
                 <Container>
                   <ContactsPage />
                 </Container>
               </PublicRoute>
+
               <PrivateRoute path="/test" redirectTo="/auth">
                 <Container>
                   <Test />
                 </Container>
               </PrivateRoute>
+
               <PrivateRoute path="/results" redirectTo="/auth">
                 <Container>
                   <ResultsPage />
                 </Container>
               </PrivateRoute>
+
               <PublicRoute path="/auth" redirectTo={currentRoute} restricted>
                 <Container>
                   <AuthPage />
                 </Container>
               </PublicRoute>
+
               <PublicRoute path="/google">
                 <Google />
               </PublicRoute>
+
               <PublicRoute>
                 <Container>
                   <NotFoundPage />
