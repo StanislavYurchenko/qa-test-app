@@ -9,7 +9,14 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { StyledDialog, StyledDialogTitle, StyledBox, StyledButton } from './Modal.style';
+import {
+  StyledDialog,
+  StyledDialogTitle,
+  StyledBox,
+  StyledButton,
+  StyledButtonBox,
+  StyledText,
+} from './Modal.style';
 
 // const useStyles = makeStyles(theme => ({
 //   root: {},
@@ -19,29 +26,23 @@ import { StyledDialog, StyledDialogTitle, StyledBox, StyledButton } from './Moda
 //   },
 // }));
 
-export default function Modal({ open, onCancel, onContinue }) {
+export default function Modal({ open, onClose, onCancel, onContinue }) {
   // const classes = useStyles();
   return (
     <>
-      <StyledDialog
-        open={open}
-        // aria-labelledby="warning-dialog-title"
-        // aria-labelledby="alert-dialog-title"
-        // aria-describedby="alert-dialog-description"
-      >
+      <StyledDialog open={open}>
         <StyledBox>
           <StyledDialogTitle>Warning!!!</StyledDialogTitle>
-          <DialogContent>
-            <DialogContentText>If you press exit, all progress will be lost</DialogContentText>
-          </DialogContent>
-          <DialogActions>
+          <StyledText>If you press exit, all progress will be lost</StyledText>
+
+          <StyledButtonBox>
             <StyledButton onClick={onCancel} color="primary">
-              Уйти
+              Exit
             </StyledButton>
             <StyledButton onClick={onContinue} color="primary">
-              Продолжить
+              Continue
             </StyledButton>
-          </DialogActions>
+          </StyledButtonBox>
         </StyledBox>
       </StyledDialog>
     </>
