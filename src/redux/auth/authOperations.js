@@ -5,7 +5,6 @@ import {
   logout,
   getUserInfo,
   userToken,
-  googleRequest,
   setUserAvatar,
   refreshAccessToken,
 } from '../../services/authApi';
@@ -53,16 +52,19 @@ const getCurrentUser = () => async (dispatch, getState) => {
   if (!persistedToken) return;
   userToken.set(persistedToken.accessToken);
 
-  wrapperFunction(persistedToken);
+  const isUpdate = await isNeedToUpdateToken(persistedToken)(dispatch);
+  console.log(isUpdate);
+  if (isUpdate) {
+    dispatch(authActions.getCurrentUserRequest());
 
-  dispatch(authActions.getCurrentUserRequest());
-
-  try {
-    const { data } = await getUserInfo();
-    const { result } = data;
-    dispatch(authActions.getCurrentUserSuccess(result));
-  } catch (err) {
-    dispatch(authActions.getCurrentUserError(err.message));
+    try {
+      const { data } = await getUserInfo();
+      const { result } = data;
+      dispatch(authActions.getCurrentUserSuccess(result));
+      console.log('запрос');
+    } catch (err) {
+      dispatch(authActions.getCurrentUserError(err.message));
+    }
   }
 };
 
@@ -95,40 +97,32 @@ const addAvatar = file => async dispatch => {
   }
 };
 
-const refreshToken = refreshToken => async dispatch => {
+const getToken = refreshToken => async dispatch => {
   dispatch(authActions.refreshTokenRequest());
+
+  console.log({ refreshToken });
 
   try {
     const { data } = await refreshAccessToken({ refreshToken });
-    if (data) {
-      const { accessToken, expires_on } = data.result;
-      userToken.set(accessToken);
-      dispatch(authActions.refreshTokenSuccess({ accessToken, expires_on }));
-    } else {
-      dispatch(authActions.refreshTokenError('Error'));
-      //Go to Login Page
-    }
+    console.log(data);
+    const { accessToken, expires_on } = data.result.token;
+    userToken.set(accessToken);
+    dispatch(authActions.refreshTokenSuccess({ accessToken, expires_on }));
+    return true;
   } catch (err) {
+    userToken.unset();
     dispatch(authActions.refreshTokenError(err.message));
+    console.log('gh');
+    return false;
   }
 };
 
-// Функция обертка над запросами с токенами
-const wrapperFunction = async token => {
-  //Можно добавить проверку в локале - есть ли Токен в стейт, если нет - //Go to AuthPage
-  // Если есть:
+const isNeedToUpdateToken = token => async dispatch => {
   if (Date.now() >= token.expires_on) {
-    console.log(Date.now());
-    // проверяетм срок Access Token
-    try {
-      await refreshToken(token.refreshToken);
-      // await refreshToken(tokenData.refresh_token); // если истек - обновляем токен
-    } catch (error) {
-      dispatch(authActions.refreshTokenError('Error'));
-      // если тут что-то пошло не так, то перенаправляем пользователя на страницу авторизации
-      return; //Go to AuthPage
-    }
+    console.log(token.refreshToken);
+    return await getToken(token.refreshToken)(dispatch);
   }
+  return true;
 };
 
 export {
@@ -138,5 +132,5 @@ export {
   getCurrentUser,
   googleLogin,
   addAvatar,
-  refreshToken,
+  getToken,
 };
