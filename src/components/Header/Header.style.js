@@ -12,16 +12,17 @@ import {
 } from '../../themes/colors';
 import BREAKPOINT from '../../utils/breakpoints';
 
-export const Modal = styled(Box)`
-  right: ${props => (props.open ? 0 : '-100%')};
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
+export const NavWrap = styled(Box)`
   background-color: ${PAGE_BACKGROUND_COLOUR};
   text-align: center;
   transition: right 0.5s linear;
-  @media screen and (min-width: ${BREAKPOINT.TABLET}) {
-    display: none;
+
+  @media screen and (max-width: ${BREAKPOINT.MOBILE_MAX}) {
+    top: 71px;
+    right: ${props => (props.open ? 0 : '-100%')};
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
   } ;
 `;
 
@@ -110,14 +111,6 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'space-between',
     paddingLeft: '20px',
     paddingRight: 0,
-  },
-
-  TestNav: {
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-      paddingRight: '20px',
-    },
   },
 }));
 

@@ -1,11 +1,12 @@
 import { StyledContainer } from './MainContainer.style';
-// import Toggle from '../Toggle/Toggle';
+
+import { useSelector } from 'react-redux';
+import { getTheme } from '../../redux/theme/themeSelectors';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 export default function Container({ children }) {
-  return (
-    <StyledContainer>
-      {/* <Toggle /> */}
-      {children}
-    </StyledContainer>
-  );
+  const theme = useSelector(getTheme);
+  const customTheme = createMuiTheme(theme);
+
+  return <StyledContainer theme={customTheme}>{children}</StyledContainer>;
 }
