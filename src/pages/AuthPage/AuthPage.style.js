@@ -30,7 +30,7 @@ export const FormСontainer = styled.div`
     margin: 3rem auto 0;
     padding: 3rem 2rem;
     box-shadow: 0px 4px 15px rgba(2, 23, 42, 0.1);
-    background-color: ${theme.WHITE};
+    background-color: ${theme.SECONDARY_TEXT_COLOR};
     @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
       width: 54rem;
       margin: 3rem auto 0;
@@ -51,7 +51,7 @@ export const Text = styled.p`
     line-height: 1.2rem;
     font-weight: 500;
     font-family: Montserrat, sans-serif;
-    color: ${theme.PRIMARY_TEXT_COLOUR};
+    color: ${theme.PRIMARY_TEXT_COLOR};
     @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
       font-size: 1.4rem;
       line-height: 1.7rem;
@@ -68,12 +68,12 @@ export const GoogleButton = styled.a`
     margin-bottom: 3rem;
     display: block;
     filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.1));
-    background-color: ${theme.LOGIN_BUTTON_BACKGROUND_COLOUR};
+    background-color: ${theme.LOGIN_BUTTON_BACKGROUND_COLOR};
     font-size: 1.4rem;
     line-height: 1.7rem;
     font-weight: 700;
     font-family: Montserrat, sans-serif;
-    color: ${theme.PRIMARY_TEXT_COLOUR};
+    color: ${theme.PRIMARY_TEXT_COLOR};
     @media screen and (max-width: ${BREAKPOINTS.MOBILE_MAX}) {
       margin-right: auto;
       margin-left: auto;
