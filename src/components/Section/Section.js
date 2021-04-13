@@ -8,7 +8,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 function Section({ title, children }) {
   const theme = useSelector(getTheme);
-  const customTheme = createMuiTheme(theme);
+  const customTheme = theme && createMuiTheme(theme);
 
   return (
     <SectionStyle>

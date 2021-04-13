@@ -1,18 +1,21 @@
 import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
-
-import { ACCENT_COLOUR } from '../../themes/colors';
 import BREAKPOINTS from '../../utils/breakpoints';
 
 const MainContainer = styled.div`
+  ${({ theme }) => `
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
 
+  background-color: ${theme.PAGE_BACKGROUND_COLOR};
+  color:  ${theme.PRIMARY_TEXT_COLOR};
+
   @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
     margin-top: 40px;
   }
+   `}
 `;
 
 const Header1 = styled.h1`
@@ -56,12 +59,12 @@ const StyledImage = styled.img`
 `;
 
 const useStyles = makeStyles({
-  tryAgain: {
-    background: ACCENT_COLOUR,
+  tryAgain: theme => ({
+    background: theme.ACCENT_COLOR,
     '&:hover': {
-      background: ACCENT_COLOUR,
+      background: theme.ACCENT_COLOR,
     },
-    color: 'white',
+    color: theme.SECONDARY_TEXT_COLOR,
     width: 190,
     height: 48,
     marginBottom: '40px',
@@ -80,7 +83,7 @@ const useStyles = makeStyles({
     [`@media screen and (min-width: ${BREAKPOINTS.DESKTOP})`]: {
       marginBottom: '60px',
     },
-  },
+  }),
 });
 
 export { MainContainer, Header1, Header2, StyledImage, useStyles };
