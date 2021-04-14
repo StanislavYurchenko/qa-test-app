@@ -11,6 +11,10 @@ const testFetchRequest = createAction('test/testFetchRequest');
 const testFetchSuccess = createAction('test/testFetchSuccess');
 const testFetchError = createAction('test/testFetchError');
 
+const sendAnswersRequest = createAction('test/sendAnswersRequest');
+const sendAnswersSuccess = createAction('test/sendAnswersSuccess');
+const sendAnswersError = createAction('test/sendAnswersError');
+
 export default {
   addAnswer,
   resetAnswers,
@@ -21,4 +25,7 @@ export default {
   testFetchRequest,
   testFetchSuccess,
   testFetchError,
+  sendAnswersRequest,
+  sendAnswersSuccess,
+  sendAnswersError,
 };
