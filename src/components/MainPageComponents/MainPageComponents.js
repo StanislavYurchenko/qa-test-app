@@ -9,6 +9,7 @@ import {
   List,
   StyledSpan,
   StyledArrowSvg,
+  Item,
 } from './MainPageComponents.style';
 
 import { useHistory } from 'react-router-dom';
@@ -42,18 +43,18 @@ function MainPageComponents() {
         <SecondTitle theme={customTheme}>Linus Torvalds</SecondTitle>
         <Text theme={customTheme}>Linux kernel creator, hacker, 1969</Text>
         <List>
-          <li>
+          <Item>
             <Button onClick={handleClickTech} theme={customTheme}>
               QA technical training
               <StyledArrowSvg theme={customTheme} />
             </Button>
-          </li>
-          <li>
+          </Item>
+          <Item>
             <Button onClick={handleClickTheory} theme={customTheme} second>
               Testing theory
               <StyledArrowSvg theme={customTheme} />
             </Button>
-          </li>
+          </Item>
         </List>
       </Section>
     </main>
