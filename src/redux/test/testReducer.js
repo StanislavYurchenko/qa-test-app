@@ -3,6 +3,7 @@ import testActions from './testActions';
 
 const category = createReducer('', {
   [testActions.testRefresh]: () => '',
+  [testActions.addCategory]: (_, { payload }) => payload,
 });
 
 const questions = createReducer([], {

@@ -5,7 +5,7 @@ import BREAKPOINTS from '../../utils/breakpoints';
 
 export const CardBox = styled.div`
   ${({ theme }) => `
-  background: ${theme.SECONDARY_TEXT_COLOR};
+  background: ${theme.FORM_BACKGROUND_COLOR};
   box-shadow: 0px 4px 15px ${theme.BOX_SHADOW_COLOR};
   margin: 0 auto;
   padding: 40px 20px;

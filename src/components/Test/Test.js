@@ -44,13 +44,14 @@ export default function Test({ title }) {
   });
 
   useEffect(() => {
+    console.log(`category`, category);
     if (questions.length !== 0) return;
     // if (category === categories.theory) {
     //   dispatch(testActions.addCategory(categories.theory));
     // } else {
     //   dispatch(testActions.addCategory(categories.tech));
     // }
-
+    console.log(`rout`, rout);
     dispatch(fetchTest(rout));
   }, []);
 
@@ -99,7 +100,7 @@ export default function Test({ title }) {
           theme={customTheme}
         />
         <TopBox theme={customTheme}>
-          <Title theme={customTheme}>{title ? title : category}</Title>
+          <Title theme={customTheme}>{category}</Title>
           <FinishButton onClick={handleFinishTest} theme={customTheme}>
             Finish test
           </FinishButton>
