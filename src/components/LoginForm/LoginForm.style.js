@@ -42,7 +42,7 @@ export const NotActiveButton = styled.button`
     border: 1px solid ${theme.LOGIN_BORDER_COLOR};
     border-radius: 0.4rem;
     color: ${theme.PRIMARY_TEXT_COLOR};
-    background-color: ${theme.SECONDARY_TEXT_COLOR};
+    background-color: ${theme.FORM_BACKGROUND_COLOR};
     font-size: 1rem;
     line-height: 1.2rem;
     font-weight: 700;
