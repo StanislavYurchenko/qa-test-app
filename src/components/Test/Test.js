@@ -28,16 +28,16 @@ export default function Test({ title }) {
   const location = useLocation();
   const history = useHistory();
 
-  let firstRender = useRef(true);
+  // let firstRender = useRef(true);
   let rout = '';
 
   if (category === categories.theory) rout = '/test-theory';
   else rout = '/test-tech';
 
   useEffect(() => {
-    firstRender = false;
+    // firstRender = false;
 
-    if (!firstRender && location.pathname !== '/test' && location.pathname !== '/auth') {
+    if (location.pathname !== '/test' && location.pathname !== '/auth') {
       history.push('/test');
       setOpen(true);
     }
