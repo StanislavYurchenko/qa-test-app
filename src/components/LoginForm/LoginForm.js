@@ -17,7 +17,7 @@ const LoginForm = ({ handleToggleButton }) => {
   const theme = useSelector(getTheme);
   const customTheme = theme && createMuiTheme(theme);
   const { handleSubmit, control, reset } = useForm();
-  const classes = useStyles();
+  const classes = useStyles(customTheme);
 
   const validation = (value, num, text, email) => {
     if (email) {
@@ -47,6 +47,11 @@ const LoginForm = ({ handleToggleButton }) => {
           render={({ onChange, value }) => (
             <TextField
               className={classes.inputText}
+              InputProps={{
+                classes: {
+                  input: classes.resize,
+                },
+              }}
               onChange={onChange}
               value={value}
               label="E-mail"
@@ -66,6 +71,11 @@ const LoginForm = ({ handleToggleButton }) => {
           render={({ onChange, value }) => (
             <TextField
               className={classes.inputText}
+              InputProps={{
+                classes: {
+                  input: classes.resize,
+                },
+              }}
               type="password"
               onChange={onChange}
               value={value}
