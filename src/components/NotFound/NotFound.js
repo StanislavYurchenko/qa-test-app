@@ -1,18 +1,30 @@
-import { Container, Oops, Icon, ErrorCode, Message, Return, StyledLink } from './NotFound.style';
+import { useSelector } from 'react-redux';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { getTheme } from '../../redux/theme/themeSelectors';
+
+import { Container, Oops, Icon, ErrorCode, Message, Bask, StyledLink } from './NotFound.style';
 
 const NotFound = () => {
+  const theme = useSelector(getTheme);
+  const customTheme = theme && createMuiTheme(theme);
+
   return (
-    <Container>
-      <Icon />
-      <Oops>OOPS!!!</Oops>
-      <Message>We can't seems to find the page you're looking for</Message>
-      <ErrorCode>
+    <Container theme={customTheme}>
+      <Icon theme={customTheme} />
+      <Oops theme={customTheme}>OOPS!!!</Oops>
+      <Message theme={customTheme}>
+        It could be you, or it could be us, but there's no page here
+      </Message>
+      <ErrorCode theme={customTheme}>
         ERROR code: <span>404</span>
       </ErrorCode>
-      <Return>
-        <span>Return to </span>
-        <StyledLink to="/">home page</StyledLink>.
-      </Return>
+      <Bask theme={customTheme}>
+        <span>Bask to </span>
+        <StyledLink to="/" theme={customTheme}>
+          home page
+        </StyledLink>
+        .
+      </Bask>
     </Container>
   );
 };

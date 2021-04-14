@@ -12,7 +12,7 @@ import { getTheme } from '../../redux/theme/themeSelectors';
 
 export default function ResultsComponent() {
   const theme = useSelector(getTheme);
-  const customTheme = createMuiTheme(theme);
+  const customTheme = theme && createMuiTheme(theme);
   const classes = useStyles(customTheme);
   const testCategory = useSelector(state => state.test.category);
   const dispatch = useDispatch();
