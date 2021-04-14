@@ -8,6 +8,10 @@ export const useStyles = makeStyles(() => ({
     width: '100%',
     marginBottom: 20,
   },
+  resize: theme => ({
+    fontSize: 14,
+    color: theme.PRIMARY_TEXT_COLOR,
+  }),
 }));
 
 export const ButtonContainer = styled.div`

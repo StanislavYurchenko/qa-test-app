@@ -18,6 +18,29 @@ const MainContainer = styled.div`
    `}
 `;
 
+const HeadersContainer = styled.div`
+  ${({ theme }) => `
+    display: flex;
+    flex-direction: column;
+    justifay-content: center;
+    align-items: center;
+
+    &:after {
+      content: '';
+      width: 130px;
+      height: 1px;
+      margin-bottom: 12px;
+      
+      background-color: ${theme.PAGE_BORDER_COLOR};
+
+      @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
+        width: 322px;
+        margin-bottom: 40px;
+        }
+      }
+   `}
+`;
+
 const Header1 = styled.h1`
   margin: 0px 0px 10px;
 
@@ -32,7 +55,7 @@ const Header1 = styled.h1`
 `;
 
 const Header2 = styled.h2`
-  margin-bottom: 30px;
+  margin-bottom: 18px;
 
   font-weight: 500;
   font-size: 10px;
@@ -41,7 +64,7 @@ const Header2 = styled.h2`
   text-transform: uppercase;
 
   @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
-    margin-bottom: 70px;
+    margin-bottom: 30px;
 
     font-size: 14px;
     line-height: 1.21;
@@ -87,4 +110,4 @@ const useStyles = makeStyles({
   }),
 });
 
-export { MainContainer, Header1, Header2, StyledImage, useStyles };
+export { MainContainer, HeadersContainer, Header1, Header2, StyledImage, useStyles };
