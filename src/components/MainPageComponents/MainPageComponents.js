@@ -1,12 +1,23 @@
 import { useDispatch } from 'react-redux';
-import { logoutUser } from '../../redux/auth/authOperations';
 import testActions from '../../redux/test/testActions';
-import { Section, Title, SecondTitle, Text, Button, List } from './MainPageComponents.style';
-import { ReactComponent as ArrowSvg } from '../../images/icons/arrow.svg';
+import {
+  Section,
+  Title,
+  SecondTitle,
+  Text,
+  Button,
+  List,
+  StyledSpan,
+  StyledArrowSvg,
+} from './MainPageComponents.style';
+
 import { useHistory } from 'react-router-dom';
 
 import { useTranslation } from 'react-i18next';
 import common_ru from '../../lang/en.json';
+import { useSelector } from 'react-redux';
+import { getTheme } from '../../redux/theme/themeSelectors';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 function MainPageComponents() {
   const history = useHistory();
@@ -17,6 +28,8 @@ function MainPageComponents() {
   const logOut = () => {
     dispatch(logoutUser());
   };
+  const theme = useSelector(getTheme);
+  const customTheme = theme && createMuiTheme(theme);
 
   const handleClickTech = () => {
     dispatch(testActions.addCategory('[Техническое тестирования_]'));
@@ -29,25 +42,29 @@ function MainPageComponents() {
 
   return (
     <main>
-      <Section>
-        <Title>
-          {t('quote')}
-          {/* “Regression testing. What is it? If the system compiles, that's good, if it boots, that's
+      {/* <Section> */}
+      {/* <Title> */}
+      {t('quote')}
+      {/* “Regression testing. What is it? If the system compiles, that's good, if it boots, that's
           great!” */}
+      <Section theme={customTheme}>
+        <Title theme={customTheme}>
+          <StyledSpan>“Regression testing. What is it?</StyledSpan> If the system compiles, that's
+          good, if it boots, that's great!”
         </Title>
-        <SecondTitle>Linus Torvalds</SecondTitle>
-        <Text>Linux kernel creator, hacker, 1969</Text>
+        <SecondTitle theme={customTheme}>Linus Torvalds</SecondTitle>
+        <Text theme={customTheme}>Linux kernel creator, hacker, 1969</Text>
         <List>
           <li>
-            <Button onClick={handleClickTech}>
+            <Button onClick={handleClickTech} theme={customTheme}>
               QA technical training
-              <ArrowSvg />
+              <StyledArrowSvg theme={customTheme} />
             </Button>
           </li>
           <li>
-            <Button onClick={handleClickTheory} second>
+            <Button onClick={handleClickTheory} theme={customTheme} second>
               Testing theory
-              <ArrowSvg />
+              <StyledArrowSvg theme={customTheme} />
             </Button>
           </li>
         </List>

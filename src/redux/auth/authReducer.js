@@ -20,21 +20,17 @@ const successfulReg = createReducer(false, {
   [authActions.loginUserSuccess]: () => false,
 });
 
-const token = createReducer(
-  {},
-  {
-    [authActions.loginUserSuccess]: (_, { payload }) => payload.token,
-    [authActions.googleUserSuccess]: (_, { payload }) => payload.token,
-    [authActions.logoutUserSuccess]: () => {},
-    [authActions.getCurrentUserError]: () => {},
-    [authActions.refreshTokenError]: () => {},
-  },
-);
+const token = createReducer(null, {
+  [authActions.loginUserSuccess]: (_, { payload }) => payload.token,
+  [authActions.googleUserSuccess]: (_, { payload }) => payload.token,
+  [authActions.logoutUserSuccess]: () => null,
+  [authActions.getCurrentUserError]: () => null,
+  [authActions.refreshTokenError]: () => null,
+});
 
 const isLoggedIn = createReducer(false, {
   [authActions.loginUserSuccess]: () => true,
   [authActions.getCurrentUserSuccess]: () => true,
-  // [authActions.getCurrentUserRequest]: () => true,
   [authActions.googleUserSuccess]: () => true,
   [authActions.refreshTokenSuccess]: () => true,
 
