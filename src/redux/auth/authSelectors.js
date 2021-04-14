@@ -4,4 +4,4 @@ export const isSuccessfulReg = state => state.auth.successfulReg;
 export const loading = state => state.auth.loading;
 export const error = state => state.auth.error;
 export const getUserAvatar = state => state.auth.user.avatar;
-export const getTokenData = state => state.auth.token;
+export const getTokenData = state => state.auth.user.token;
