@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:5002';
+axios.defaults.baseURL = 'https://qa-test-api-hakaton2021goit.herokuapp.com/';
 
 export const userToken = {
   set(token) {
