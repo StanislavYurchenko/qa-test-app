@@ -7,6 +7,6 @@ export const StyledContainer = styled(Box)`
   background-color: ${theme.PAGE_BACKGROUND_COLOR};
   width: 100%;
   background-color: ${PAGE_BACKGROUND_COLOUR};
-  padding: 70px 0;
+  padding: 71px 0 56px;
   `}
 `;
