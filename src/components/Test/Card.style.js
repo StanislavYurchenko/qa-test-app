@@ -1,4 +1,4 @@
-import { RadioGroup, FormControlLabel } from '@material-ui/core';
+import { Radio, RadioGroup, FormControlLabel } from '@material-ui/core';
 import styled from 'styled-components';
 
 import BREAKPOINTS from '../../utils/breakpoints';
@@ -6,7 +6,7 @@ import BREAKPOINTS from '../../utils/breakpoints';
 export const CardBox = styled.div`
   ${({ theme }) => `
   background: ${theme.SECONDARY_TEXT_COLOR};
-  box-shadow: 0px 4px 15px rgba(2, 23, 42, 0.1);
+  box-shadow: 0px 4px 15px ${theme.BOX_SHADOW_COLOR};
   margin: 0 auto;
   padding: 40px 20px;
   margin-bottom: 20px;
@@ -34,12 +34,18 @@ export const Counter = styled.p`
 `;
 export const Page = styled.span`
   ${({ theme }) => `
+  font-size: 11px;
   font-weight: bold;
   color: ${theme.ACCENT_COLOR};
+
+  @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
+    font-size: 15px;
+  }
   `}
 `;
 
 export const Question = styled.h2`
+  ${({ theme }) => `
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
@@ -47,7 +53,7 @@ export const Question = styled.h2`
   line-height: 18px;
   text-align: center;
   letter-spacing: 0.02em;
-  color: #000000;
+  color: ${theme.PRIMARY_TEXT_COLOR};
   margin-bottom: 28px;
 
   &::after {
@@ -70,9 +76,17 @@ export const Question = styled.h2`
       margin-top: 30px;
     }
   }
+  `}
 `;
 
 export const StyledFormControlLabel = styled(FormControlLabel)`
+  ${({ theme }) => `
+  margin-bottom: 15px;
+
+  span {
+    color: ${theme.ACCENT_COLOR};
+  }
+  
   span + span {
     font-family: Montserrat;
     font-style: normal;
@@ -80,7 +94,8 @@ export const StyledFormControlLabel = styled(FormControlLabel)`
     font-size: 10px;
     line-height: 12px;
     letter-spacing: 0.02em;
-    color: #000000;
+    color: ${theme.PRIMARY_TEXT_COLOR};
+    
     @media (min-width: 768px) {
       font-size: 16px;
       line-height: 20px;
@@ -91,9 +106,18 @@ export const StyledFormControlLabel = styled(FormControlLabel)`
       margin-bottom: 15px;
     }
   }
+  `}
 `;
 
 export const StyledRG = styled(RadioGroup)`
-  font-size: 30px;
-  color: #121212;
+  ${({ theme }) => `
+  ${'' /* font-size: 30px; */}
+  ${'' /* color: ${theme.PRIMARY_TEXT_COLOR}; */}
+  `}
+`;
+
+export const StyledRadio = styled(Radio)`
+  ${({ theme }) => `
+  ${'' /* color: ${theme.ACCENT_COLOR}; */}
+  `}
 `;

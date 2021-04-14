@@ -1,15 +1,4 @@
 import {
-  Dialog,
-  DialogActions,
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  Button,
-  Box,
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-
-import {
   StyledDialog,
   StyledDialogTitle,
   StyledBox,
@@ -18,28 +7,19 @@ import {
   StyledText,
 } from './Modal.style';
 
-// const useStyles = makeStyles(theme => ({
-//   root: {},
-//   title: {
-//     fontSize: '20px',
-//     flexGrow: 1,
-//   },
-// }));
-
-export default function Modal({ open, onClose, onCancel, onContinue }) {
-  // const classes = useStyles();
+export default function Modal({ open, theme, onClose, onCancel, onContinue }) {
   return (
     <>
-      <StyledDialog open={open}>
-        <StyledBox>
-          <StyledDialogTitle>Warning!!!</StyledDialogTitle>
+      <StyledDialog open={open} theme={theme}>
+        <StyledBox theme={theme}>
+          <StyledDialogTitle theme={theme}>Warning!!!</StyledDialogTitle>
           <StyledText>If you press exit, all progress will be lost</StyledText>
 
-          <StyledButtonBox>
-            <StyledButton onClick={onCancel} color="primary">
+          <StyledButtonBox theme={theme}>
+            <StyledButton onClick={onCancel} color="primary" theme={theme}>
               Exit
             </StyledButton>
-            <StyledButton onClick={onContinue} color="primary">
+            <StyledButton onClick={onContinue} color="primary" theme={theme}>
               Continue
             </StyledButton>
           </StyledButtonBox>

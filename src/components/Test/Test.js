@@ -17,8 +17,6 @@ import { ReactComponent as NextSvg } from '../../images/next.svg';
 import { getTheme } from '../../redux/theme/themeSelectors';
 import { createMuiTheme } from '@material-ui/core/styles';
 
-// import s from './Test.module.css';
-
 export default function Test({ title }) {
   const [open, setOpen] = useState(false);
 
@@ -30,17 +28,15 @@ export default function Test({ title }) {
   const location = useLocation();
   const history = useHistory();
   const theme = useSelector(getTheme);
+
   const customTheme = theme && createMuiTheme(theme);
 
-  // let firstRender = useRef(true);
   let rout = '';
 
   if (category === categories.theory) rout = '/test-theory';
   else rout = '/test-tech';
 
   useEffect(() => {
-    // firstRender = false;
-
     if (location.pathname !== '/test' && location.pathname !== '/auth') {
       history.push('/test');
       setOpen(true);
@@ -49,11 +45,11 @@ export default function Test({ title }) {
 
   useEffect(() => {
     if (questions.length !== 0) return;
-    if (category === categories.theory) {
-      dispatch(testActions.addCategory(categories.theory));
-    } else {
-      dispatch(testActions.addCategory(categories.tech));
-    }
+    // if (category === categories.theory) {
+    //   dispatch(testActions.addCategory(categories.theory));
+    // } else {
+    //   dispatch(testActions.addCategory(categories.tech));
+    // }
 
     dispatch(fetchTest(rout));
   }, []);

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import BREAKPOINTS from '../../utils/breakpoints';
 
 export const Section = styled.section`
-  padding: 20px 0;
+  padding: 45px 0;
   margin: 0 auto;
 
   @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
@@ -28,6 +28,7 @@ export const TopBox = styled.div`
 `;
 
 export const Title = styled.h2`
+  ${({ theme }) => `
   width: 130px;
   font-family: Montserrat;
   font-style: normal;
@@ -35,7 +36,7 @@ export const Title = styled.h2`
   font-size: 14px;
   line-height: 17px;
   letter-spacing: 0.02em;
-  color: #000000;
+  color: ${theme.PRIMARY_TEXT_COLOR};
 
   @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
     width: 210px;
@@ -47,13 +48,16 @@ export const Title = styled.h2`
     font-size: 22px;
     line-height: 27px;
   } ;
+  `}
 `;
 
 export const FinishButton = styled.button`
+  ${({ theme }) => `
   width: 130px;
   height: 48px;
   outline: none;
   border: none;
+  box-shadow: 0px 4px 15px  ${theme.BOX_SHADOW_COLOR};
 
   font-family: Montserrat;
   font-style: normal;
@@ -61,15 +65,16 @@ export const FinishButton = styled.button`
   font-size: 10px;
   line-height: 12px;
   letter-spacing: 0.02em;
+  color: #fff;
 
-  background-color: #fff;
+  background-color: ${theme.ACCENT_COLOR};
   transition: all 0.3s linear;
 
   &:hover {
     color: #fff;
-    background-color: #ff6b09;
+    background-color: ${theme.ACCENT_COLOR};
     cursor: pointer;
-    box-shadow: 0px 4px 15px rgba(2, 23, 42, 0.1);
+    box-shadow: 0px 4px 15px  ${theme.BOX_SHADOW_COLOR};
   }
   @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
     width: 190px;
@@ -78,6 +83,7 @@ export const FinishButton = styled.button`
   }
   @media screen and (min-width: ${BREAKPOINTS.DESKTOP}) {
   } ;
+  `}
 `;
 
 export const ButtonsBox = styled.div`
@@ -86,11 +92,13 @@ export const ButtonsBox = styled.div`
 `;
 
 export const Button = styled.button`
+  ${({ theme }) => `
   width: 55px;
   height: 34px;
   outline: none;
   border: none;
-  background-color: #fff;
+  background-color: ${theme.SECONDARY_TEXT_COLOR};
+  box-shadow: 0px 4px 15px  ${theme.BOX_SHADOW_COLOR};
   transition: all 0.3s linear;
 
   font-family: Montserrat;
@@ -99,33 +107,44 @@ export const Button = styled.button`
   font-size: 12px;
   line-height: 15px;
   letter-spacing: 0.02em;
+  color: ${theme.PRIMARY_TEXT_COLOR};
 
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
-  &:disabled svg {
-    fill: rgba(2, 23, 42, 0.1);
-  }
 
   &:not(:disabled):hover {
-    background-color: #ff6b09;
-    cursor: pointer;
-    box-shadow: 0px 4px 15px rgba(2, 23, 42, 0.1);
-  }
+    background-color: ${theme.ACCENT_COLOR};
+    box-shadow: 0px 4px 15px ${theme.BOX_SHADOW_COLOR};
+  };
+    
 
-  &:not(:disabled):hover svg {
-    fill: #fff;
+  &:disabled span {
+    color: ${theme.DARK_GREY_TEXT_COLOR};
   }
-
   &:not(:disabled):hover span {
-    color: #fff;
+    color: ${theme.SECONDARY_TEXT_COLOR};
+  };
+
+
+  & svg {
+    fill: ${theme.PRIMARY_TEXT_COLOR};
+  };
+  &:disabled svg {
+    fill: ${theme.DARK_GREY_TEXT_COLOR};
+  };
+  &:not(:disabled):hover svg {
+    fill: ${theme.SECONDARY_TEXT_COLOR};
   }
+
 
   @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
     width: 210px;
     height: 34px;
-  }
+  };
+  `}
 `;
 
 export const ButtonSpan = styled.span`
