@@ -4,15 +4,17 @@ import styled from 'styled-components';
 import BREAKPOINTS from '../../utils/breakpoints';
 
 export const CardBox = styled.div`
-  /* max-width: 652px; */
-  background: #ffffff;
+  ${({ theme }) => `
+  background: ${theme.SECONDARY_TEXT_COLOR};
   box-shadow: 0px 4px 15px rgba(2, 23, 42, 0.1);
   margin: 0 auto;
   padding: 40px 20px;
   margin-bottom: 20px;
+`}
 `;
 
 export const Counter = styled.p`
+  ${({ theme }) => `
   font-family: Montserrat;
   font-style: normal;
   font-weight: normal;
@@ -21,17 +23,20 @@ export const Counter = styled.p`
   text-align: center;
   letter-spacing: 0.02em;
   //text-transform: uppercase;
-  color: #555555;
+  color: ${theme.DARK_GREY_TEXT_COLOR};
   margin-bottom: 20px;
 
   @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
     font-size: 14px;
     line-height: 17px;
   }
+  `}
 `;
 export const Page = styled.span`
+  ${({ theme }) => `
   font-weight: bold;
-  color: orange;
+  color: ${theme.ACCENT_COLOR};
+  `}
 `;
 
 export const Question = styled.h2`
