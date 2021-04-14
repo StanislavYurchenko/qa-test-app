@@ -29,7 +29,6 @@ export default function Header() {
   const isLogin = useSelector(getIsLoggedIn);
   const theme = useSelector(getTheme);
   const customTheme = theme && createMuiTheme(theme);
-  console.log(customTheme);
 
   const userName = useSelector(getUserName);
   const dispatch = useDispatch();
@@ -52,9 +51,9 @@ export default function Header() {
           <NavWrap theme={customTheme} open={isModalOpen}>
             <Navigation isModalOpen={isModalOpen} onButtonClick={onButtonClick} />
             {isLogin && (
-              <ButtonWrap theme={customTheme} toggle="true">
+              <ButtonWrap theme={customTheme} toggle="true" border>
                 <ButtonStyles onClick={e => dispatch(logoutUser())}>
-                  <LogOut />
+                  <LogOut fill={theme.PRIMARY_TEXT_COLOR} />
                 </ButtonStyles>
               </ButtonWrap>
             )}
@@ -69,13 +68,17 @@ export default function Header() {
           {isLogin && (
             <ButtonWrap theme={customTheme}>
               <ButtonStyles onClick={e => dispatch(logoutUser())}>
-                <LogOut />
+                <LogOut fill={theme.PRIMARY_TEXT_COLOR} />
               </ButtonStyles>
             </ButtonWrap>
           )}
           <ButtonWrap theme={customTheme} toggle="true">
             <ButtonStyles onClick={onButtonClick}>
-              {isModalOpen ? <CloseMenuSvg /> : <OpenMenuSvg />}
+              {isModalOpen ? (
+                <CloseMenuSvg fill={theme.PRIMARY_TEXT_COLOR} />
+              ) : (
+                <OpenMenuSvg fill={theme.PRIMARY_TEXT_COLOR} />
+              )}
             </ButtonStyles>
           </ButtonWrap>
         </Toolbar>
