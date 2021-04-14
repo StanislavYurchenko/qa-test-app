@@ -64,7 +64,7 @@ export const ErrorCode = styled.div`
   }
 `;
 
-export const Bask = styled.div`
+export const Back = styled.div`
   text-align: center;
   font-size: 3rem;
   & span {
@@ -75,6 +75,8 @@ export const Bask = styled.div`
 export const StyledLink = styled(Link)`
   font-size: 3rem;
   margin-bottom: 3rem;
+  text-decoration: underline;
+  cursor: pointer;
   color: ${({ theme }) => theme.PRIMARY_TEXT_COLOR};
   &:visited {
     color: 'red';
