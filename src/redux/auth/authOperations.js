@@ -33,10 +33,15 @@ const loginUser = ({ email, password }) => async dispatch => {
   }
 };
 
-const logoutUser = () => async dispatch => {
-  dispatch(authActions.logoutUserRequest());
-
+const logoutUser = () => async (dispatch, getState) => {
   try {
+    const response = await checkNeedsToUpdate(dispatch, getState);
+    if (!response) {
+      return;
+    }
+
+    dispatch(authActions.logoutUserRequest());
+
     await logout();
     userToken.unset();
     dispatch(authActions.logoutUserSuccess());
@@ -46,25 +51,18 @@ const logoutUser = () => async dispatch => {
 };
 
 const getCurrentUser = () => async (dispatch, getState) => {
-  const {
-    auth: { token: persistedToken },
-  } = getState();
-  if (!persistedToken) return;
-  userToken.set(persistedToken.accessToken);
+  try {
+    const response = await checkNeedsToUpdate(dispatch, getState);
+    if (!response) {
+      return;
+    }
 
-  const isUpdate = await isNeedToUpdateToken(persistedToken)(dispatch);
-  console.log(isUpdate);
-  if (isUpdate) {
     dispatch(authActions.getCurrentUserRequest());
 
-    try {
-      const { data } = await getUserInfo();
-      const { result } = data;
-      dispatch(authActions.getCurrentUserSuccess(result));
-      console.log('запрос');
-    } catch (err) {
-      dispatch(authActions.getCurrentUserError(err.message));
-    }
+    const { data } = await getUserInfo();
+    dispatch(authActions.getCurrentUserSuccess(data));
+  } catch (err) {
+    dispatch(authActions.getCurrentUserError(err.message));
   }
 };
 
@@ -87,9 +85,14 @@ const googleLogin = queryParams => dispatch => {
 };
 
 const addAvatar = file => async dispatch => {
-  dispatch(authActions.addAvatarRequest());
-
   try {
+    const response = await checkNeedsToUpdate(dispatch, getState);
+    if (!response) {
+      return;
+    }
+
+    dispatch(authActions.addAvatarRequest());
+
     await setUserAvatar(file);
     dispatch(authActions.addAvatarSuccess());
   } catch (err) {
@@ -100,11 +103,14 @@ const addAvatar = file => async dispatch => {
 const getToken = refreshToken => async dispatch => {
   dispatch(authActions.refreshTokenRequest());
 
-  console.log({ refreshToken });
-
   try {
-    const { data } = await refreshAccessToken({ refreshToken });
-    console.log(data);
+    const { data } = await refreshAccessToken(refreshToken);
+
+    if (!data) {
+      userToken.unset();
+      dispatch(authActions.refreshTokenError(err.message));
+      return false;
+    }
     const { accessToken, expires_on } = data.result.token;
     userToken.set(accessToken);
     dispatch(authActions.refreshTokenSuccess({ accessToken, expires_on }));
@@ -112,17 +118,31 @@ const getToken = refreshToken => async dispatch => {
   } catch (err) {
     userToken.unset();
     dispatch(authActions.refreshTokenError(err.message));
-    console.log('gh');
     return false;
   }
 };
 
-const isNeedToUpdateToken = token => async dispatch => {
-  if (Date.now() >= token.expires_on) {
-    console.log(token.refreshToken);
-    return await getToken(token.refreshToken)(dispatch);
+const isNeedToUpdateToken = token => (Date.now() >= token.expires_on ? true : false);
+
+const checkNeedsToUpdate = async (dispatch, getState) => {
+  const {
+    auth: {
+      user: { token },
+    },
+  } = getState();
+
+  if (!token) return false;
+
+  try {
+    if (isNeedToUpdateToken(token)) {
+      await getToken(token.refreshToken)(dispatch);
+    } else {
+      userToken.set(token.accessToken);
+    }
+    return true;
+  } catch (error) {
+    return error.message;
   }
-  return true;
 };
 
 export {
@@ -133,4 +153,5 @@ export {
   googleLogin,
   addAvatar,
   getToken,
+  checkNeedsToUpdate,
 };
