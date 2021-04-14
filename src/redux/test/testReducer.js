@@ -1,62 +1,58 @@
 import { createReducer, combineReducers } from '@reduxjs/toolkit';
 import testActions from './testActions';
-import { fetchTest, sendAnswers } from './testOperations';
 
 const category = createReducer('', {
   [testActions.testRefresh]: () => '',
-  [testActions.addCategory]: (_, { payload }) => payload,
-  [sendAnswers.fulfilled]: () => '',
 });
 
 const questions = createReducer([], {
-  [fetchTest.pending]: () => [],
-  [fetchTest.fulfilled]: (_, { payload }) => payload,
-  [sendAnswers.fulfilled]: () => [],
+  [testActions.testFetchRequest]: () => [],
+  [testActions.testFetchSuccess]: (_, { payload }) => payload,
+
+  [testActions.sendAnswersRequest]: () => [],
   [testActions.testRefresh]: () => [],
 });
 
 const answers = createReducer([], {
-  [fetchTest.pending]: () => [],
+  [testActions.testFetchRequest]: () => [],
   [testActions.addAnswer]: (state, { payload }) => ({ ...state, ...payload }),
   [testActions.resetAnswers]: () => [],
   [testActions.testRefresh]: () => [],
 });
 
-const result = createReducer(
-  { correct: 0, wrong: 0 },
-  {
-    [testActions.resetResults]: () => {
-      return { correct: 0, wrong: 0 };
-    },
-    [fetchTest.pending]: () => {
-      return { correct: 0, wrong: 0 };
-    },
-    [sendAnswers.fulfilled]: (_, { payload }) => payload,
-  },
-);
+const initialResult = { correct: 0, wrong: 0 };
+
+const result = createReducer(initialResult, {
+  [testActions.testFetchRequest]: () => initialResult,
+  [testActions.resetResults]: () => initialResult,
+  [testActions.sendAnswersSuccess]: (_, { payload }) => payload,
+});
 
 const activeCard = createReducer(1, {
-  [fetchTest.pending]: () => 1,
-  [sendAnswers.fulfilled]: () => 1,
+  [testActions.testFetchRequest]: () => 1,
+  [testActions.sendAnswersSuccess]: () => 1,
   [testActions.addActiveCard]: (_, { payload }) => payload,
   [testActions.testRefresh]: () => 1,
 });
 
 const loading = createReducer(false, {
-  [fetchTest.pending]: () => true,
-  [fetchTest.fulfilled]: () => false,
-  [fetchTest.rejected]: () => false,
+  [testActions.testFetchRequest]: () => true,
+  [testActions.testFetchSuccess]: () => false,
+  [testActions.testFetchError]: () => false,
 
-  [sendAnswers.pending]: () => true,
-  [sendAnswers.fulfilled]: () => false,
-  [sendAnswers.rejected]: () => false,
+  [testActions.sendAnswersRequest]: () => true,
+  [testActions.sendAnswersSuccess]: () => false,
+  [testActions.sendAnswersError]: () => false,
 });
 
-const error = createReducer('', {
-  [fetchTest.pending]: () => '',
-  [fetchTest.rejected]: (_, { payload }) => payload,
-  [sendAnswers.pending]: () => '',
-  [sendAnswers.rejected]: () => (_, { payload }) => payload,
+const error = createReducer(false, {
+  [testActions.testFetchRequest]: () => false,
+  [testActions.testFetchSuccess]: () => false,
+  [testActions.testFetchError]: (_, { payload }) => payload,
+
+  [testActions.sendAnswersRequest]: () => false,
+  [testActions.sendAnswersSuccess]: () => false,
+  [testActions.sendAnswersError]: (_, { payload }) => payload,
 });
 
 const testReducer = combineReducers({

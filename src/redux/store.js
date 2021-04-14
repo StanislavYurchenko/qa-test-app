@@ -11,7 +11,7 @@ import themeReducer from './theme/themeReducer';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['user'],
 };
 
 const testPersistConfig = {

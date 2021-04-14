@@ -6,26 +6,26 @@ const initialState = { name: null, token: null, avatar: null, role: null };
 const user = createReducer(initialState, {
   [authActions.loginUserSuccess]: (_, { payload }) => payload,
   [authActions.logoutUserSuccess]: () => initialState,
-  [authActions.getCurrentUserSuccess]: (_, { payload }) => payload,
-  [authActions.googleUserSuccess]: (_, { payload }) => payload,
-  [authActions.refreshTokenSuccess]: (state, { payload }) => {
-    return { ...state, token: { ...payload } };
+  [authActions.getCurrentUserSuccess]: (
+    state,
+    { payload: { name, email, avatar, subscription, role } },
+  ) => {
+    return { ...state, name, email, avatar, subscription, role };
   },
+  [authActions.googleUserSuccess]: (_, { payload }) => payload,
+  [authActions.refreshTokenSuccess]: (state, { payload: { accessToken, expires_on } }) => {
+    return { ...state, token: { ...state.token, accessToken, expires_on } };
+  },
+  [authActions.addAvatarSuccess]: (state, { payload: { avatar } }) => {
+    return { ...state, avatar };
+  },
+  [authActions.getCurrentUserError]: () => initialState,
   [authActions.refreshTokenError]: () => initialState,
 });
 
 const successfulReg = createReducer(false, {
   [authActions.regUserSuccess]: () => true,
   [authActions.regUserError]: () => false,
-  [authActions.loginUserSuccess]: () => false,
-});
-
-const token = createReducer(null, {
-  [authActions.loginUserSuccess]: (_, { payload }) => payload.token,
-  [authActions.googleUserSuccess]: (_, { payload }) => payload.token,
-  [authActions.logoutUserSuccess]: () => null,
-  [authActions.getCurrentUserError]: () => null,
-  [authActions.refreshTokenError]: () => null,
 });
 
 const isLoggedIn = createReducer(false, {
@@ -65,56 +65,52 @@ const loading = createReducer(false, {
   [authActions.refreshTokenRequest]: () => true,
   [authActions.refreshTokenSuccess]: () => false,
   [authActions.refreshTokenError]: () => false,
+
+  [authActions.addAvatarRequest]: () => true,
+  [authActions.addAvatarSuccess]: () => false,
+  [authActions.addAvatarError]: () => false,
 });
 
-const error = createReducer('', {
-  [authActions.regUserRequest]: () => '',
-  [authActions.regUserSuccess]: () => '',
+const error = createReducer(false, {
+  [authActions.regUserRequest]: () => false,
+  [authActions.regUserSuccess]: () => false,
   [authActions.regUserError]: (_, { payload }) => payload,
 
-  [authActions.loginUserRequest]: () => '',
-  [authActions.loginUserSuccess]: () => '',
+  [authActions.loginUserRequest]: () => false,
+  [authActions.loginUserSuccess]: () => false,
   [authActions.loginUserError]: (_, { payload }) => payload,
 
-  [authActions.logoutUserRequest]: () => '',
-  [authActions.logoutUserSuccess]: () => '',
+  [authActions.logoutUserRequest]: () => false,
+  [authActions.logoutUserSuccess]: () => false,
   [authActions.logoutUserError]: (_, { payload }) => payload,
 
-  [authActions.getCurrentUserRequest]: () => '',
-  [authActions.getCurrentUserSuccess]: () => '',
+  [authActions.getCurrentUserRequest]: () => false,
+  [authActions.getCurrentUserSuccess]: () => false,
   [authActions.getCurrentUserError]: (_, { payload }) => payload,
 
-  [authActions.loginUserRequest]: () => '',
-  [authActions.loginUserSuccess]: () => '',
+  [authActions.loginUserRequest]: () => false,
+  [authActions.loginUserSuccess]: () => false,
   [authActions.loginUserError]: (_, { payload }) => payload,
 
-  [authActions.googleUserRequest]: () => '',
-  [authActions.googleUserSuccess]: () => '',
+  [authActions.googleUserRequest]: () => false,
+  [authActions.googleUserSuccess]: () => false,
   [authActions.googleUserError]: (_, { payload }) => payload,
 
-  [authActions.refreshTokenRequest]: () => '',
-  [authActions.refreshTokenSuccess]: () => '',
+  [authActions.refreshTokenRequest]: () => false,
+  [authActions.refreshTokenSuccess]: () => false,
   [authActions.refreshTokenError]: (_, { payload }) => payload,
 
-  [authActions.addAvatarRequest]: () => '',
-  [authActions.addAvatarSuccess]: () => '',
+  [authActions.addAvatarRequest]: () => false,
+  [authActions.addAvatarSuccess]: () => false,
   [authActions.addAvatarError]: (_, { payload }) => payload,
 });
-
-// const userAvatar = createReducer(null, {
-//   [authActions.loginUserSuccess]: (_, { payload }) => payload.avatar,
-//   [authActions.getCurrentUserSuccess]: (_, { payload }) => payload.avatar,
-//   [authActions.logoutUserSuccess]: () => null,
-// });
 
 const authUsersReducer = combineReducers({
   user,
   successfulReg,
-  token,
   isLoggedIn,
   loading,
   error,
-  // userAvatar,
 });
 
 export default authUsersReducer;
