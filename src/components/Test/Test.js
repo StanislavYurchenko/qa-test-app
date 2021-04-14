@@ -44,14 +44,7 @@ export default function Test({ title }) {
   });
 
   useEffect(() => {
-    console.log(`category`, category);
     if (questions.length !== 0) return;
-    // if (category === categories.theory) {
-    //   dispatch(testActions.addCategory(categories.theory));
-    // } else {
-    //   dispatch(testActions.addCategory(categories.tech));
-    // }
-    console.log(`rout`, rout);
     dispatch(fetchTest(rout));
   }, []);
 
