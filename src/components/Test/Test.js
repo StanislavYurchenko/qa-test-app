@@ -14,6 +14,8 @@ import { Section, TopBox, Title, FinishButton, ButtonsBox, Button, ButtonSpan } 
 
 import { ReactComponent as PrevSvg } from '../../images/prev.svg';
 import { ReactComponent as NextSvg } from '../../images/next.svg';
+import { getTheme } from '../../redux/theme/themeSelectors';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 // import s from './Test.module.css';
 
@@ -27,17 +29,19 @@ export default function Test({ title }) {
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
+  const theme = useSelector(getTheme);
+  const customTheme = theme && createMuiTheme(theme);
 
-  let firstRender = useRef(true);
+  // let firstRender = useRef(true);
   let rout = '';
 
   if (category === categories.theory) rout = '/test-theory';
   else rout = '/test-tech';
 
   useEffect(() => {
-    firstRender = false;
+    // firstRender = false;
 
-    if (!firstRender && location.pathname !== '/test' && location.pathname !== '/auth') {
+    if (location.pathname !== '/test' && location.pathname !== '/auth') {
       history.push('/test');
       setOpen(true);
     }
@@ -90,16 +94,19 @@ export default function Test({ title }) {
 
   return (
     <>
-      <Section>
+      <Section theme={customTheme}>
         <Modal
           open={open}
           onClose={closeModal}
           onCancel={handleClickCancel}
           onContinue={handleClickContinue}
+          theme={customTheme}
         />
-        <TopBox>
-          <Title>{title ? title : category}</Title>
-          <FinishButton onClick={handleFinishTest}>Finish test</FinishButton>
+        <TopBox theme={customTheme}>
+          <Title theme={customTheme}>{title ? title : category}</Title>
+          <FinishButton onClick={handleFinishTest} theme={customTheme}>
+            Finish test
+          </FinishButton>
         </TopBox>
 
         {questions.length && (
@@ -108,17 +115,22 @@ export default function Test({ title }) {
             activeCard={activeCard}
             handleAnswer={handleAnswer}
             answered={answers}
+            theme={customTheme}
           />
         )}
 
-        <ButtonsBox>
-          <Button onClick={handlePrev} disabled={activeCard - 1 === 0}>
-            <PrevSvg />
-            <ButtonSpan>Previus question</ButtonSpan>
+        <ButtonsBox theme={customTheme}>
+          <Button onClick={handlePrev} disabled={activeCard - 1 === 0} theme={customTheme}>
+            <PrevSvg theme={customTheme} />
+            <ButtonSpan theme={customTheme}>Previus question</ButtonSpan>
           </Button>
-          <Button onClick={handleNext} disabled={activeCard + 1 > questions.length}>
-            <ButtonSpan>Next question</ButtonSpan>
-            <NextSvg />
+          <Button
+            onClick={handleNext}
+            disabled={activeCard + 1 > questions.length}
+            theme={customTheme}
+          >
+            <ButtonSpan theme={customTheme}>Next question</ButtonSpan>
+            <NextSvg theme={customTheme} />
           </Button>
         </ButtonsBox>
       </Section>

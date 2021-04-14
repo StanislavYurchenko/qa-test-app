@@ -3,12 +3,16 @@ import styled from 'styled-components';
 import BREAKPOINTS from '../../utils/breakpoints';
 
 export const Section = styled.section`
-  padding: 90px 20px 80px;
-  max-width: 652px;
+  padding: 20px 0;
   margin: 0 auto;
+
+  @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
+    padding: 45px 40px;
+  }
 
   @media screen and (min-width: ${BREAKPOINTS.DESKTOP}) {
     max-width: 820px;
+    padding: 45px 0 95px 0;
   } ;
 `;
 
