@@ -28,8 +28,16 @@ export default function Test({ title }) {
   const location = useLocation();
   const history = useHistory();
 
+  let firstRender = useRef(true);
+  let rout = '';
+
+  if (category === categories.theory) rout = '/test-theory';
+  else rout = '/test-tech';
+
   useEffect(() => {
-    if (location.pathname !== '/test' && location.pathname !== '/auth') {
+    firstRender = false;
+
+    if (!firstRender && location.pathname !== '/test' && location.pathname !== '/auth') {
       history.push('/test');
       setOpen(true);
     }
@@ -39,11 +47,11 @@ export default function Test({ title }) {
     if (questions.length !== 0) return;
     if (category === categories.theory) {
       dispatch(testActions.addCategory(categories.theory));
-      dispatch(fetchTest('/test-theory'));
-      return;
+    } else {
+      dispatch(testActions.addCategory(categories.tech));
     }
-    dispatch(testActions.addCategory(categories.tech));
-    dispatch(fetchTest('/test-tech'));
+
+    dispatch(fetchTest(rout));
   }, []);
 
   function openModal() {
@@ -73,7 +81,7 @@ export default function Test({ title }) {
   const handleFinishTest = () => {
     const readyAnswers = transformAnswers(answers);
     if (questions.length === readyAnswers.length) {
-      dispatch(sendAnswers(readyAnswers));
+      dispatch(sendAnswers({ rout, readyAnswers }));
       history.push('/results');
       return;
     }
