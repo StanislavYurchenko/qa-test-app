@@ -1,61 +1,54 @@
 {
-  "header": {
-    "menuHome": "Главная",
-    "menuMaterials": "Полезные материалы",
-    "menuContacts": "Контакты"
-  },
-  "login": {
-    "descriptionStart": "Мы поможем найти слабые места в знаниях, чтобы вы смогли их усилить. Покажем что актуально знать для",
-    "descriptionAccent": "QA Engineer",
-    "descriptionEnd": "и постараемся сделать процесс познания более разнообразным",
-    "loginGoogleDescription": "Для авторизации можете использовать Googlt Account:",
-    "loginEmailDescription": "Или войдите в приложение используя e-mail и пароль:",
-    "loginName": "Имя",
-    "loginEmail": "Почта",
-    "loginPassword": "Пароль",
-    "loginSignIn": "Войти",
-    "loginSignUp": "Регистрация"
-  },
+  "header__menuHome": "Главная",
+  "header__menuMaterials": "Полезные материалы",
+  "header__menuContacts": "Контакты",
 
-  "quote": "\"Регрессионное тестирование. Что это? Если система компилируется, то это хорошо, если загружается, то это просто здорово!\"",
+  "login__descriptionAccent": "QA Engineer",
+  "login__descriptionEnd": "и постараемся сделать процесс познания более разнообразным",
+  "login__descriptionStart": "Мы поможем найти слабые места в знаниях, чтобы вы смогли их усилить. Покажем что актуально знать для",
+  "login__loginGoogleDescription": "Для авторизации можете использовать Googlt Account:",
+  "login__loginEmailDescription": "Или войдите в приложение используя e-mail и пароль:",
+  "login__loginName": "Имя",
+  "login__loginEmail": "Почта",
+  "login__loginPassword": "Пароль",
+  "login__loginSignIn": "Войти",
+  "login__loginSignUp": "Регистрация",
+
+  "quote": "\"Регрессионное тестирование. Что это?",
+  "quote-next": "Если система компилируется, то это хорошо, если загружается, то это просто здорово!\"",
   "author": "Линус Торвальдс",
   "authorPosition": "Финский программист, хакер, 1969 г.",
   "qaTechnicalTraining": "Техническая подготовка QA",
   "testingTheory": "Теория тестирования",
 
-  "test": {
-    "titleStart": "Теория",
-    "titleEnd": "тестирования",
-    "buttonFinishTest": "Завершить тест",
-    "question": "Вопрос",
-    "buttonNext": "Следующий вопрос",
-    "buttonPrev": "Предыдущий вопрос"
-  },
-  "results": {
-    "title": "Результаты",
-    "description": "Теория тестирования",
-    "correctPercent": "Верно ",
-    "incorrectPercent": "Неверно ",
-    "totalAnswers": "Верных ответов",
-    "totalQuestions": "Всего вопросов",
-    "resultTitleGood": "",
-    "resultDescriptionGood": "",
-    "resultTitleNormal": "Неплохой результат!",
-    "resultDescriptionNormal": "Но тебе еще нужно доучить материалы.",
-    "resultTitleBed": "",
-    "resultDescriptionBed": "",
-    "button": "Пройти еще раз"
-  },
-  "info": {
-    "titleLiterature": "Полезная литература ",
-    "titleResources": "Полезные ресурсы"
-  },
-  "team": {
-    "title": "Наша команда"
-  },
-  "footer": {
-    "rights": "All Rights Reserved",
-    "devMessageStart": "Developed with",
-    "devMessageEnd": "by"
-  }
+  "test__titleStart": "Теория",
+  "test__titleEnd": "тестирования",
+  "test__buttonFinishTest": "Завершить тест",
+  "test__question": "Вопрос",
+  "test__testingTheory": "Testing theory",
+  "test__buttonNext": "Следующий вопрос",
+  "test__buttonPrev": "Предыдущий вопрос",
+
+  "results__title": "Результаты",
+  "results__description": "Теория тестирования",
+  "results__correctPercent": "Верно ",
+  "results__incorrectPercent": "Неверно ",
+  "results__totalAnswers": "Верных ответов",
+  "results__totalQuestions": "Всего вопросов",
+  "results__resultTitleGood": "",
+  "results__resultDescriptionGood": "",
+  "results__resultTitleNormal": "Неплохой результат!",
+  "results__resultDescriptionNormal": "Но тебе еще нужно доучить материалы.",
+  "results__resultTitleBed": "",
+  "results__resultDescriptionBed": "",
+  "results__button": "Пройти еще раз",
+
+  "info__titleLiterature": "Полезная литература ",
+  "info__titleResources": "Полезные ресурсы",
+
+  "team__title": "Наша команда",
+
+  "footer__rights": "All Rights Reserved",
+  "footer__devMessageStart": "Developed with",
+  "footer__devMessageEnd": "by"
 }

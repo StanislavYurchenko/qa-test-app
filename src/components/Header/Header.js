@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Toolbar from '@material-ui/core/Toolbar';
 import Navigation from 'components/Navigation';
 import { ReactComponent as LogoSvg } from '../../images/header_icons/logo.svg';
@@ -28,6 +28,7 @@ import i18n from '../../i18n';
 
 export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [language, setLanguage] = useState('en');
   const isLogin = useSelector(getIsLoggedIn);
   const theme = useSelector(getTheme);
   const customTheme = theme && createMuiTheme(theme);
@@ -42,21 +43,21 @@ export default function Header() {
     setIsModalOpen(!isModalOpen);
   };
 
-  const changeLanguage = language => {
-    console.log('ww');
-    i18n.changeLanguage(language);
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'ru' : 'en');
   };
+
+  useEffect(() => {
+    i18n.changeLanguage(language);
+  }, [language]);
 
   return (
     <HeaderWrap>
       <button
-        style={{ zIndex: 500, position: 'absolute', left: 24 }}
-        onClick={() => changeLanguage('en')}
+        style={{ zIndex: 500, position: 'absolute', right: 62, bottom: -32, width: 25, height: 25 }}
+        onClick={() => toggleLanguage()}
       >
-        EN
-      </button>
-      <button style={{ zIndex: 500, position: 'absolute' }} onClick={() => changeLanguage('ru')}>
-        RU
+        {language}
       </button>
       <Toggle />
       <HeaderStyle theme={customTheme} position="static">

@@ -1,62 +1,54 @@
 {
-  "header": {
-    "menuHome": "Home",
-    "menuMaterials": "Materials",
-    "menuContacts": "Contacts"
-  },
-  "login": {
-    "descriptionStart": "We will help you find weak points in knowledge so that you can strengthen it. We will show you what is relevant to know for a",
-    "descriptionAccent": "QA Engineer",
-    "descriptionEnd": "and will try to make the learning process more diverse",
-    "loginGoogleDescription": "You can use your Google Account to authorize:",
-    "loginEmailDescription": "Or login to our app using e-mail and password:",
-    "loginName": "Name",
-    "loginEmail": "E-mail",
-    "loginPassword": "Password",
-    "loginSignIn": "SIGN IN",
-    "loginSignUp": "SIGN UP"
-  },
+  "header__menuHome": "Home",
+  "header__menuMaterials": "Materials",
+  "header__menuContacts": "Contacts",
 
-  "quote": "\"Regression testing. What is it? If the system compiles, that's good, if it boots, that's great!\"",
+  "login__descriptionStart": "We will help you find weak points in knowledge so that you can strengthen it. We will show you what is relevant to know for a",
+  "login__descriptionAccent": "QA Engineer",
+  "login__descriptionEnd": "and will try to make the learning process more diverse",
+  "login__loginGoogleDescription": "You can use your Google Account to authorize:",
+  "login__loginEmailDescription": "Or login to our app using e-mail and password:",
+  "login__loginName": "Name",
+  "login__loginEmail": "E-mail",
+  "login__loginPassword": "Password",
+  "login__loginSignIn": "SIGN IN",
+  "login__loginSignUp": "SIGN UP",
+
+  "quote": "\"Regression testing. What is it?",
+  "quote-next": "If the system compiles, that's good, if it boots, that's great!\"",
   "author": "Linus Torvalds",
   "authorPosition": "Linux kernel creator, hacker, 1969",
   "qaTechnicalTraining": "QA technical training",
   "testingTheory": "Testing theory",
 
-  "test": {
-    "titleStart": "Testing",
-    "titleEnd": "theory",
-    "buttonFinishTest": "Finish test",
-    "question": "Question",
-    "testingTheory": "Testing theory",
-    "buttonNext": "Next question",
-    "buttonPrev": "Previous question"
-  },
-  "results": {
-    "title": "Results",
-    "description": "Testing theory",
-    "correctPercent": "Correct",
-    "incorrectPercent": "Incorrect",
-    "totalAnswers": "Correct answers",
-    "totalQuestions": "Total questions",
-    "resultTitleGood": "",
-    "resultDescriptionGood": "",
-    "resultTitleNormal": "Not bad!",
-    "resultDescriptionNormal": "But you still need to learn some materials.",
-    "resultTitleBed": "",
-    "resultDescriptionBed": "",
-    "button": "Try again"
-  },
-  "info": {
-    "titleLiterature": "Useful literature",
-    "titleResources": "Useful resources"
-  },
-  "team": {
-    "title": "Our team"
-  },
-  "footer": {
-    "rights": "All Rights Reserved",
-    "devMessageStart": "Developed with",
-    "devMessageEnd": "by"
-  }
+  "test__titleStart": "Testing",
+  "test__titleEnd": "theory",
+  "test__buttonFinishTest": "Finish test",
+  "test__question": "Question",
+  "test__testingTheory": "Testing theory",
+  "test__buttonNext": "Next question",
+  "test__buttonPrev": "Previous question",
+
+  "results__description": "Testing theory",
+  "results__correctPercent": "Correct",
+  "results__title": "Results",
+  "results__incorrectPercent": "Incorrect",
+  "results__totalAnswers": "Correct answers",
+  "results__totalQuestions": "Total questions",
+  "results__resultTitleGood": "",
+  "results__resultDescriptionGood": "",
+  "results__resultTitleNormal": "Not bad!",
+  "results__resultDescriptionNormal": "But you still need to learn some materials.",
+  "results__resultTitleBed": "",
+  "results__resultDescriptionBed": "",
+  "results__button": "Try again",
+
+  "info__titleLiterature": "Useful literature",
+  "info__titleResources": "Useful resources",
+
+  "team__title": "Our team",
+
+  "footer__rights": "All Rights Reserved",
+  "footer__devMessageStart": "Developed with",
+  "footer__devMessageEnd": "by"
 }

@@ -4,8 +4,6 @@ import { initReactI18next } from 'react-i18next';
 import common_ru from './lang/ru.json';
 import common_en from './lang/en.json';
 
-// the translations
-// (tip move them in a JSON file and import them)
 const resources = {
   en: {
     translation: common_en,

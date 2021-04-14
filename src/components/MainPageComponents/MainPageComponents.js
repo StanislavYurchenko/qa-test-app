@@ -14,7 +14,7 @@ import {
 import { useHistory } from 'react-router-dom';
 
 import { useTranslation } from 'react-i18next';
-import common_ru from '../../lang/en.json';
+
 import { useSelector } from 'react-redux';
 import { getTheme } from '../../redux/theme/themeSelectors';
 import { createMuiTheme } from '@material-ui/core/styles';
@@ -23,7 +23,7 @@ function MainPageComponents() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const { t } = useTranslation(['translation', 'common_ru']);
+  const { t, i18n } = useTranslation();
 
   const logOut = () => {
     dispatch(logoutUser());
@@ -39,31 +39,26 @@ function MainPageComponents() {
     dispatch(testActions.addCategory('[Теория тестирования_]'));
     history.push('/test');
   };
-
+  const text = 'menuHome';
   return (
     <main>
-      {/* <Section> */}
-      {/* <Title> */}
-      {t('quote')}
-      {/* “Regression testing. What is it? If the system compiles, that's good, if it boots, that's
-          great!” */}
       <Section theme={customTheme}>
         <Title theme={customTheme}>
-          <StyledSpan>“Regression testing. What is it?</StyledSpan> If the system compiles, that's
-          good, if it boots, that's great!”
+          <StyledSpan>{t('quote')}</StyledSpan>
+          {t('quote-next')}
         </Title>
-        <SecondTitle theme={customTheme}>Linus Torvalds</SecondTitle>
-        <Text theme={customTheme}>Linux kernel creator, hacker, 1969</Text>
+        <SecondTitle theme={customTheme}>{t('author')}</SecondTitle>
+        <Text theme={customTheme}>{t('authorPosition')}</Text>
         <List>
           <li>
             <Button onClick={handleClickTech} theme={customTheme}>
-              QA technical training
+              {t('qaTechnicalTraining')}
               <StyledArrowSvg theme={customTheme} />
             </Button>
           </li>
           <li>
             <Button onClick={handleClickTheory} theme={customTheme} second>
-              Testing theory
+              {t('testingTheory')}
               <StyledArrowSvg theme={customTheme} />
             </Button>
           </li>
