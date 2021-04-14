@@ -31,7 +31,7 @@ function MainPageComponents() {
     <main>
       <Section>
         <Title>
-          {t('main.quote')}
+          {t('quote')}
           {/* “Regression testing. What is it? If the system compiles, that's good, if it boots, that's
           great!” */}
         </Title>

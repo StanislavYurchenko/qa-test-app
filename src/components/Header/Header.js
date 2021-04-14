@@ -24,6 +24,8 @@ import Toggle from '../Toggle/Toggle';
 import { getTheme } from '../../redux/theme/themeSelectors';
 import { createMuiTheme } from '@material-ui/core/styles';
 
+import i18n from '../../i18n';
+
 export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const isLogin = useSelector(getIsLoggedIn);
@@ -41,8 +43,22 @@ export default function Header() {
     setIsModalOpen(!isModalOpen);
   };
 
+  const changeLanguage = language => {
+    console.log('ww');
+    i18n.changeLanguage(language);
+  };
+
   return (
     <HeaderWrap>
+      <button
+        style={{ zIndex: 500, position: 'absolute', left: 24 }}
+        onClick={() => changeLanguage('en')}
+      >
+        EN
+      </button>
+      <button style={{ zIndex: 500, position: 'absolute' }} onClick={() => changeLanguage('ru')}>
+        RU
+      </button>
       <Toggle />
       <HeaderStyle theme={customTheme} position="static">
         <Toolbar className={classes.toolBarStyles}>
