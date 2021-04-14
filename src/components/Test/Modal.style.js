@@ -7,21 +7,19 @@ import {
   Button,
   Box,
 } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 
 import styled from 'styled-components';
 
-export const StyledDialog = styled(Dialog)`
-  padding: 50px;
-`;
+export const StyledDialog = styled(Dialog)``;
 export const StyledBox = styled.div`
-  ${'' /* padding: 20px; */}
+  padding: 20px;
 `;
 
 export const StyledDialogTitle = styled.h2`
   ${'' /* font-size: 20px; */}
   text-align: center;
-  ${'' /* padding: 20px; */}
+  padding: 20px;
 `;
 
 export const StyledText = styled.p`
