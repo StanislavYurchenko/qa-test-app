@@ -31,8 +31,8 @@ export const fetchQuestions = path => {
   return axios.get(`/api${path}`).then(data => data.data.data);
 };
 
-export const sendAnswers = answers => {
-  return axios.post('/api/test-theory/result', answers).then(data => data.data.data);
+export const sendAnswers = (rout, answers) => {
+  return axios.post(`/api${rout}/result`, answers).then(data => data.data.data);
 };
 
 export const refreshAccessToken = ({ refreshToken }) => {
