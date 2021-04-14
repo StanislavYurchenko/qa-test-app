@@ -26,18 +26,6 @@ export const fetchTest = path => async (dispatch, getState) => {
   } catch (err) {
     dispatch(testActions.testFetchError(err.message));
   }
-<<<<<<< HEAD
-});
-
-export const sendAnswers = createAsyncThunk(
-  'test/sendAnswers',
-  async ({ rout, readyAnswers }, { rejectWithValue }) => {
-    try {
-      const res = await service.sendAnswers(rout, readyAnswers);
-      return res;
-    } catch (error) {
-      return error;
-=======
 };
 
 // export const sendAnswers = createAsyncThunk(
@@ -57,7 +45,6 @@ export const sendAnswers = ({ rout, readyAnswers }) => async (dispatch, getState
     const response = await checkNeedsToUpdate(dispatch, getState);
     if (!response) {
       return;
->>>>>>> d54fd97650bd2d0a4c244014af48ae750f9050c4
     }
 
     dispatch(testActions.sendAnswersRequest());

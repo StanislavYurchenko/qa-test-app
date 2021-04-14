@@ -21,20 +21,6 @@ const answers = createReducer([], {
   [testActions.testRefresh]: () => [],
 });
 
-<<<<<<< HEAD
-const result = createReducer(
-  { correct: 0, wrong: 0 },
-  {
-    [testActions.resetResults]: () => {
-      return { correct: 0, wrong: 0 };
-    },
-    [fetchTest.pending]: () => {
-      return { correct: 0, wrong: 0 };
-    },
-    [sendAnswers.fulfilled]: (_, { payload }) => payload,
-  },
-);
-=======
 const initialResult = { correct: 0, wrong: 0 };
 
 const result = createReducer(initialResult, {
@@ -42,7 +28,6 @@ const result = createReducer(initialResult, {
   [testActions.resetResults]: () => initialResult,
   [testActions.sendAnswersSuccess]: (_, { payload }) => payload,
 });
->>>>>>> d54fd97650bd2d0a4c244014af48ae750f9050c4
 
 const activeCard = createReducer(1, {
   [testActions.testFetchRequest]: () => 1,
