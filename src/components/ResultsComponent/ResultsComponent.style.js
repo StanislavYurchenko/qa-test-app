@@ -75,6 +75,7 @@ const useStyles = makeStyles({
     lineHeight: '1.21',
     letterSpacing: '0.02em',
     textTransform: 'inherit',
+    borderRadius: '0px',
 
     [`@media screen and (min-width: ${BREAKPOINTS.TABLET})`]: {
       marginBottom: '107px',

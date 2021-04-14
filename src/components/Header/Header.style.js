@@ -17,8 +17,8 @@ export const HeaderWrap = styled(Box)`
 
 export const HeaderStyle = styled(AppBar)`
   ${({ theme }) => `
-       background-color: ${theme.PAGE_BACKGROUND_COLOR};
-     border-bottom: 1px solid ${theme.HEADER_BORDER_COLOR};
+    background-color: ${theme.PAGE_BACKGROUND_COLOR};
+    border-bottom: 1px solid ${theme.HEADER_BORDER_COLOR};
   `}
   box-shadow: none;
   z-index: 11;
@@ -31,7 +31,7 @@ export const NavWrap = styled(Box)`
   text-align: center;
   transition: right 0.5s linear;
   @media screen and (max-width: ${BREAKPOINT.MOBILE_MAX}) {
-    top: 71px;
+    top: 7.1rem;
     right: ${props => (props.open ? 0 : '-100%')};
     position: absolute;
     width: 100vw;
@@ -41,8 +41,8 @@ export const NavWrap = styled(Box)`
 
 export const Logo = styled(Link)`
   display: block;
-  width: 129px;
-  height: 28px;
+  width: 12.9rem;
+  height: 2.8rem;
   margin-right: auto;
 `;
 
@@ -50,11 +50,12 @@ export const ButtonWrap = styled(Box)`
   ${({ theme }) => `
    border-left: 1px solid ${theme.HEADER_BORDER_COLOR};
   `}
+  border: ${props => props.border && 'none'};
   display: ${props => (props.toggle ? 'flex' : 'none')};
   align-items: center;
   justify-content: center;
-  min-width: 55px;
-  min-height: 70px;
+  min-width: 5.5rem;
+  min-height: 7rem;
 
   @media screen and (min-width: ${BREAKPOINT.TABLET}) {
     display: ${props => (props.toggle ? 'none' : 'flex')};
@@ -62,24 +63,24 @@ export const ButtonWrap = styled(Box)`
 `;
 
 export const ButtonStyles = styled(Button)`
-  width: 15px;
-  height: 15px;
-  padding: 0px;
-  min-width: 0px;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  min-width: 0;
 `;
 
 export const Span = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30px;
-  height: 30px;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
 
   font-family: Montserrat, sans-serif;
   font-weight: 600;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
   margin-right: 1rem;
 `;
 /* background-color: ${SECONDARY_TEXT_COLOUR}; */
@@ -103,9 +104,9 @@ export const UserName = styled.p`
 
 const useStyles = makeStyles(theme => ({
   toolBarStyles: {
-    minHeight: '70px',
+    minHeight: '7rem',
     justifyContent: 'space-between',
-    paddingLeft: '20px',
+    paddingLeft: '2rem',
     paddingRight: 0,
   },
 }));

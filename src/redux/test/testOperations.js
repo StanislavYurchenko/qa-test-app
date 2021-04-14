@@ -12,9 +12,9 @@ export const fetchTest = createAsyncThunk('test/fetchTest', async (path, rejectW
 
 export const sendAnswers = createAsyncThunk(
   'test/sendAnswers',
-  async (answers, { rejectWithValue }) => {
+  async ({ rout, readyAnswers }, { rejectWithValue }) => {
     try {
-      const res = await service.sendAnswers(answers);
+      const res = await service.sendAnswers(rout, readyAnswers);
       return res;
     } catch (error) {
       return error;
