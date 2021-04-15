@@ -42,12 +42,8 @@ const isLoggedIn = createReducer(false, {
 });
 
 const usersList = createReducer([], {
-  [authActions.getStudentsListSuccess]: (state, { payload }) => {
-    console.log(payload);
-    return { ...state, ...payload };
-  },
-
-  [authActions.getAdminsListSuccess]: (_, { payload }) => payload,
+  [authActions.getStudentsListSuccess]: (_, { payload }) => [...payload],
+  [authActions.getAdminsListSuccess]: (_, { payload }) => [...payload],
 });
 
 const loading = createReducer(false, {
@@ -80,7 +76,7 @@ const loading = createReducer(false, {
   [authActions.addAvatarError]: () => false,
 
   [authActions.getStudentsListRequest]: () => true,
-  [authActions.refreshTokenSuccess]: () => false,
+  [authActions.getStudentsListSuccess]: () => false,
   [authActions.getStudentsListError]: () => false,
 
   [authActions.getAdminsListRequest]: () => true,
