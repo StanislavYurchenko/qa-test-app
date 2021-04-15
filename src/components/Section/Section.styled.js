@@ -1,20 +1,17 @@
 import styled from 'styled-components';
 
 export const SectionStyle = styled.section`
-  ${({ theme }) => `
-    //  background-color: ${theme.PAGE_BACKGROUND_COLOR};
-     margin: 0 auto;
-     text-align: center;
-     padding: 40px 0 56px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 40px 0 56px;
 
-     @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     padding: 41px 2px 76px;
-     }
+  }
 
-     @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1280px) {
     padding: 40px 0 65px;
-     }
-  `}
+  }
 `;
 
 export const Title = styled.h2`

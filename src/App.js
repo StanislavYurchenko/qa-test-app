@@ -9,7 +9,6 @@ import Footer from './components/Footer';
 import { getCurrentUser } from './redux/auth/authOperations';
 import { loading } from './redux/auth/authSelectors';
 
-// import Toggle from './components/Toggle/Toggle';
 import PreLoader from './components/PreLoader';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import PublicRoute from 'components/PublicRoute/PublicRoute';

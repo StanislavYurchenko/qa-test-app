@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Link, LinkHref, Svg, Span } from './LinkItem.style.js';
 
-const LinkItem = ({ link, linkName, children, icon }) => {
+const LinkItem = ({ link, linkName, children }) => {
   return (
     <Link>
       <LinkHref href={link} target="_blank">

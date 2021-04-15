@@ -14,6 +14,7 @@ export const colorsLight = {
   LOGIN_BUTTON_BACKGROUND_COLOR: '#FAFAFA',
   PRIMARY_MATERIALS_TEXT_COLOR: '#000000',
   FORM_BACKGROUND_COLOR: '#FFFFFF',
+  TOGGLE_BACKGROUND_COLOR: '#c9c9d6',
 };
 
 export const colorsDark = {
@@ -32,6 +33,7 @@ export const colorsDark = {
   LOGIN_BUTTON_BACKGROUND_COLOR: '#A35151',
   PRIMARY_MATERIALS_TEXT_COLOR: '#000000',
   FORM_BACKGROUND_COLOR: '#708090',
+  TOGGLE_BACKGROUND_COLOR: '#F5F6FB',
 };
 
 const getColors = colors => {

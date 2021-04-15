@@ -7,11 +7,15 @@ import { ReactComponent as SunnyIcon } from '../../images/icons/sun-dark.svg';
 
 import { setThemeHandler, setNameTheme } from '../../redux/theme/themeOperations';
 import { getNameTheme } from '../../redux/theme/themeSelectors';
+import { getTheme } from '../../redux/theme/themeSelectors';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 const Toggle = () => {
+  const theme = useSelector(getTheme);
+  const customTheme = theme && createMuiTheme(theme);
+
   const dispatch = useDispatch();
   const nameTheme = useSelector(getNameTheme);
-  console.log('nameTheme', nameTheme);
 
   useEffect(() => {
     dispatch(setThemeHandler(nameTheme));
@@ -23,7 +27,7 @@ const Toggle = () => {
   };
 
   return (
-    <ToggleContainer lightTheme={nameTheme === 'light'} onClick={changeTheme}>
+    <ToggleContainer theme={customTheme} lightTheme={nameTheme === 'light'} onClick={changeTheme}>
       <SunnyIcon />
       <MoonIcon />
     </ToggleContainer>
