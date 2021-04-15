@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { getTheme } from '../../redux/theme/themeSelectors';
 import { createMuiTheme } from '@material-ui/core/styles';
-import { AppBlock, Avatar, UserName } from './UserAvatar.style.js';
+import { AvatarBlock, Avatar, UserName, Wrapper } from './UserAvatar.style.js';
 import { getUserAvatar, getUserName } from '../../redux/auth/authSelectors';
 
 export default function UserAvatar() {
@@ -12,9 +12,11 @@ export default function UserAvatar() {
   const userName = useSelector(getUserName);
 
   return (
-    <AppBlock theme={customTheme}>
-      {userAvatar && <Avatar src={userAvatar} alt="user avatar image" />}
+    <Wrapper>
+      <AvatarBlock theme={customTheme}>
+        {userAvatar && <Avatar src={userAvatar} alt="user avatar image" />}
+      </AvatarBlock>
       <UserName theme={customTheme}>{userName}</UserName>
-    </AppBlock>
+    </Wrapper>
   );
 }
