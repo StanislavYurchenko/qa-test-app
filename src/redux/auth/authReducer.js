@@ -41,6 +41,15 @@ const isLoggedIn = createReducer(false, {
   [authActions.refreshTokenError]: () => false,
 });
 
+const usersList = createReducer([], {
+  [authActions.getStudentsListSuccess]: (state, { payload }) => {
+    console.log(payload);
+    return { ...state, ...payload };
+  },
+
+  [authActions.getAdminsListSuccess]: (_, { payload }) => payload,
+});
+
 const loading = createReducer(false, {
   [authActions.regUserRequest]: () => true,
   [authActions.regUserSuccess]: () => false,
@@ -69,6 +78,14 @@ const loading = createReducer(false, {
   [authActions.addAvatarRequest]: () => true,
   [authActions.addAvatarSuccess]: () => false,
   [authActions.addAvatarError]: () => false,
+
+  [authActions.getStudentsListRequest]: () => true,
+  [authActions.refreshTokenSuccess]: () => false,
+  [authActions.getStudentsListError]: () => false,
+
+  [authActions.getAdminsListRequest]: () => true,
+  [authActions.getAdminsListSuccess]: () => false,
+  [authActions.getAdminsListError]: () => false,
 });
 
 const error = createReducer(false, {
@@ -103,6 +120,14 @@ const error = createReducer(false, {
   [authActions.addAvatarRequest]: () => false,
   [authActions.addAvatarSuccess]: () => false,
   [authActions.addAvatarError]: (_, { payload }) => payload,
+
+  [authActions.getStudentsListSuccess]: () => false,
+  [authActions.getStudentsListRequest]: () => false,
+  [authActions.getStudentsListError]: (_, { payload }) => payload,
+
+  [authActions.getAdminsListSuccess]: () => false,
+  [authActions.getAdminsListRequest]: () => false,
+  [authActions.getAdminsListError]: (_, { payload }) => payload,
 });
 
 const authUsersReducer = combineReducers({
@@ -111,6 +136,7 @@ const authUsersReducer = combineReducers({
   isLoggedIn,
   loading,
   error,
+  usersList,
 });
 
 export default authUsersReducer;

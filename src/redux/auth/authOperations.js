@@ -7,6 +7,8 @@ import {
   userToken,
   setUserAvatar,
   refreshAccessToken,
+  getStudentsList,
+  getAdminsList,
 } from '../../services/authApi';
 
 const registrationUser = ({ name, email, password }) => async dispatch => {
@@ -122,6 +124,39 @@ const getToken = refreshToken => async dispatch => {
   }
 };
 
+const getStudentsRequest = () => async (dispatch, getState) => {
+  try {
+    const response = await checkNeedsToUpdate(dispatch, getState);
+    if (!response) {
+      return;
+    }
+
+    dispatch(authActions.getStudentsListRequest());
+
+    const { data } = await getStudentsList();
+    console.log(data);
+    dispatch(authActions.getStudentsListSuccess(data));
+  } catch (err) {
+    dispatch(authActions.getStudentsListError(err.message));
+  }
+};
+
+const getAdminsRequest = () => async (dispatch, getState) => {
+  try {
+    const response = await checkNeedsToUpdate(dispatch, getState);
+    if (!response) {
+      return;
+    }
+
+    dispatch(authActions.getAdminsListRequest());
+
+    const { data } = await getAdminsList();
+    dispatch(authActions.getAdminsListSuccess(data));
+  } catch (err) {
+    dispatch(authActions.getAdminsListError(err.message));
+  }
+};
+
 const isNeedToUpdateToken = token => (Date.now() >= token.expires_on ? true : false);
 
 const checkNeedsToUpdate = async (dispatch, getState) => {
@@ -154,4 +189,6 @@ export {
   addAvatar,
   getToken,
   checkNeedsToUpdate,
+  getStudentsRequest,
+  getAdminsRequest,
 };
