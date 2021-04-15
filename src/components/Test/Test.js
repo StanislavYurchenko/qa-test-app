@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -10,11 +10,12 @@ import { transformAnswers } from '../../services/transformAnswers';
 
 import Card from './Card';
 import Modal from './Modal';
+import { Section, TopBox, Title, FinishButton, ButtonsBox, Button, ButtonSpan } from './Test.style';
+
 import { ReactComponent as PrevSvg } from '../../images/prev.svg';
 import { ReactComponent as NextSvg } from '../../images/next.svg';
-
-import s from './Test.module.css';
-// import styled from 'styled-components';
+import { getTheme } from '../../redux/theme/themeSelectors';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 export default function Test({ title }) {
   const [open, setOpen] = useState(false);
@@ -22,23 +23,21 @@ export default function Test({ title }) {
   const answers = useSelector(selectors.getAnswers);
   const questions = useSelector(selectors.getQuestions);
   const category = useSelector(selectors.getCategory);
-  // const result = useSelector(selectors.getResult);
   const activeCard = useSelector(selectors.getActiveCard);
   const dispatch = useDispatch();
-
   const location = useLocation();
   const history = useHistory();
+  const theme = useSelector(getTheme);
 
-  let firstRender = useRef(true);
+  const customTheme = theme && createMuiTheme(theme);
+
   let rout = '';
 
   if (category === categories.theory) rout = '/test-theory';
   else rout = '/test-tech';
 
   useEffect(() => {
-    firstRender = false;
-
-    if (!firstRender && location.pathname !== '/test' && location.pathname !== '/auth') {
+    if (location.pathname !== '/test' && location.pathname !== '/auth') {
       history.push('/test');
       setOpen(true);
     }
@@ -46,13 +45,6 @@ export default function Test({ title }) {
 
   useEffect(() => {
     if (questions.length !== 0) return;
-
-    if (category === categories.theory) {
-      dispatch(testActions.addCategory(categories.theory));
-    } else {
-      dispatch(testActions.addCategory(categories.tech));
-    }
-
     dispatch(fetchTest(rout));
   }, []);
 
@@ -80,7 +72,6 @@ export default function Test({ title }) {
   const handleAnswer = targerAnswer => {
     dispatch(testActions.addAnswer(targerAnswer));
   };
-
   const handleFinishTest = () => {
     const readyAnswers = transformAnswers(answers);
     if (questions.length === readyAnswers.length) {
@@ -93,48 +84,46 @@ export default function Test({ title }) {
 
   return (
     <>
-      <section className={s.section}>
+      <Section theme={customTheme}>
         <Modal
           open={open}
           onClose={closeModal}
           onCancel={handleClickCancel}
           onContinue={handleClickContinue}
+          theme={customTheme}
         />
-        <div className={s.above}>
-          <h2 className={s.title}>{title ? title : category}</h2>
-          <button className={s.aboveButton} type="button" onClick={handleFinishTest}>
-            Завершить тест
-          </button>
-        </div>
+        <TopBox theme={customTheme}>
+          <Title theme={customTheme}>{category}</Title>
+          <FinishButton onClick={handleFinishTest} theme={customTheme}>
+            Finish test
+          </FinishButton>
+        </TopBox>
+
         {questions.length && (
           <Card
             questions={questions}
             activeCard={activeCard}
             handleAnswer={handleAnswer}
             answered={answers}
+            theme={customTheme}
           />
         )}
-        <div className={s.buttons}>
-          <button
-            className={s.btn}
-            type="button"
-            onClick={handlePrev}
-            disabled={activeCard - 1 === 0}
-          >
-            <PrevSvg />
-            <span>Предыдущий вопрос</span>
-          </button>
-          <button
-            className={s.btn}
-            type="button"
+
+        <ButtonsBox theme={customTheme}>
+          <Button onClick={handlePrev} disabled={activeCard - 1 === 0} theme={customTheme}>
+            <PrevSvg theme={customTheme} />
+            <ButtonSpan theme={customTheme}>Previus question</ButtonSpan>
+          </Button>
+          <Button
             onClick={handleNext}
             disabled={activeCard + 1 > questions.length}
+            theme={customTheme}
           >
-            <span>Следующий вопрос</span>
-            <NextSvg />
-          </button>
-        </div>
-      </section>
+            <ButtonSpan theme={customTheme}>Next question</ButtonSpan>
+            <NextSvg theme={customTheme} />
+          </Button>
+        </ButtonsBox>
+      </Section>
     </>
   );
 }

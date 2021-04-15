@@ -9,9 +9,11 @@ import {
   List,
   StyledSpan,
   StyledArrowSvg,
+  Item,
 } from './MainPageComponents.style';
 
 import { useHistory } from 'react-router-dom';
+import categories from '../../utils/test-categories';
 
 import { useTranslation } from 'react-i18next';
 
@@ -32,11 +34,11 @@ function MainPageComponents() {
   const customTheme = theme && createMuiTheme(theme);
 
   const handleClickTech = () => {
-    dispatch(testActions.addCategory('[Техническое тестирования_]'));
+    dispatch(testActions.addCategory(categories.tech));
     history.push('/test');
   };
   const handleClickTheory = () => {
-    dispatch(testActions.addCategory('[Теория тестирования_]'));
+    dispatch(testActions.addCategory(categories.theory));
     history.push('/test');
   };
   const text = 'menuHome';
@@ -50,18 +52,18 @@ function MainPageComponents() {
         <SecondTitle theme={customTheme}>{t('author')}</SecondTitle>
         <Text theme={customTheme}>{t('authorPosition')}</Text>
         <List>
-          <li>
+          <Item>
             <Button onClick={handleClickTech} theme={customTheme}>
               {t('qaTechnicalTraining')}
               <StyledArrowSvg theme={customTheme} />
             </Button>
-          </li>
-          <li>
+          </Item>
+          <Item>
             <Button onClick={handleClickTheory} theme={customTheme} second>
               {t('testingTheory')}
               <StyledArrowSvg theme={customTheme} />
             </Button>
-          </li>
+          </Item>
         </List>
       </Section>
     </main>

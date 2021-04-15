@@ -103,6 +103,8 @@ export const Button = styled.button`
   justify-content: space-between;
   width: 280px;
   height: 212px;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: ${second ? '0px' : '20px'};
   padding-top: 60px;
   padding-right: 50px;
@@ -143,6 +145,8 @@ export const List = styled.ul`
     justify-content: center;
   }
 `;
+
+export const Item = styled.li``;
 
 export const StyledSpan = styled.span`
   display: block;

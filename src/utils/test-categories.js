@@ -1,1 +1,1 @@
-export default { theory: '[Теория тестирования_]', tech: '[Техническое тестирования_]' };
+export default { theory: '[Testing theory_]', tech: '[QA technical training_]' };

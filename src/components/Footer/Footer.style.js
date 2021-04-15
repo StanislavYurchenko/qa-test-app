@@ -10,6 +10,7 @@ export const StyledFooter = styled.footer`
   left: 0;
   bottom: 0;
   width: 100%;
+  z-index: 200;
   height: 56px;
   padding: 10px 18px;
 
