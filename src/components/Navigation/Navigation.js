@@ -8,10 +8,12 @@ import {
 import { useSelector } from 'react-redux';
 import { authSelectors } from 'redux/auth';
 import { getTheme } from '../../redux/theme/themeSelectors';
+import { ROLE } from '../../utils/constants';
 import { createMuiTheme } from '@material-ui/core/styles';
 
 function Navigation({ isModalOpen, onButtonClick }) {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const role = useSelector(authSelectors.getRole);
   const theme = useSelector(getTheme);
   const customTheme = theme && createMuiTheme(theme);
 
@@ -29,6 +31,13 @@ function Navigation({ isModalOpen, onButtonClick }) {
           {isLoggedIn && (
             <StyledNavLink to="/useful-info" onClick={onButtonClick} theme={customTheme}>
               Materials
+            </StyledNavLink>
+          )}
+        </StyledNavListItem>
+        <StyledNavListItem>
+          {isLoggedIn && role === ROLE.ADMIN && (
+            <StyledNavLink to="/admin" onClick={onButtonClick} theme={customTheme}>
+              AdminSettings
             </StyledNavLink>
           )}
         </StyledNavListItem>

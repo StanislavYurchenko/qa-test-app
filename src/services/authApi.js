@@ -42,3 +42,11 @@ export const refreshAccessToken = refreshToken => {
 export const setUserAvatar = file => {
   return axios.patch('/images', file);
 };
+
+export const getStudentsList = () => {
+  return axios.get('/users/all/student').then(data => data.data);
+};
+
+export const getAdminsList = () => {
+  return axios.get('/users/all/admin').then(data => data.data);
+};
