@@ -26,7 +26,7 @@ const contacts = [
     position: 'FullStack Developer (Scrum Master)',
     about:
       'Elena was a Scrum master on the project and was responsible for a page with the useful materials.',
-    hubLink: 'https://github.com/StanislavYurchenko',
+    hubLink: 'https://github.com/elenapanasyuk/',
     linLink: 'https://www.linkedin.com/in/elena-panasyuk-09431044/',
   },
   {
@@ -54,7 +54,8 @@ const contacts = [
     about:
       'On the project, Valentin developed a page of results and was engaged in building a diagram based on user responses',
     hubLink: 'https://github.com/valentinyak',
-    linLink: 'https://www.linkedin.com/',
+    linLink:
+      'https://www.linkedin.com/in/%D0%B2%D0%B0%D0%BB%D0%B5%D0%BD%D1%82%D0%B8%D0%BD-%D1%8F%D0%BA%D1%83%D0%B1%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9-b74ab020b/',
   },
   {
     photo: images.Volodymyr_Babych,
@@ -89,6 +90,8 @@ const contacts = [
     position: 'FullStack Developer (Team Lead)',
     about:
       'On the project, Stanislav was a team lead, initialized and deployed back-end and front-end, developed the page, that is not found and the ability to switch on the night mode, helped and coordinated other developers',
+    hubLink: 'https://github.com/StanislavYurchenko',
+    linLink: 'https://www.linkedin.com/in/stanislav-yurchenko/',
   },
 ];
 
