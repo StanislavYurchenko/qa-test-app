@@ -3,7 +3,14 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { MainContainer, Header1, Header2, StyledImage, useStyles } from './ResultsComponent.style';
+import {
+  MainContainer,
+  HeadersContainer,
+  Header1,
+  Header2,
+  StyledImage,
+  useStyles,
+} from './ResultsComponent.style';
 import Chart from '../Chart';
 import TestResult from '../TestResult';
 import resultIMG from '../../images/results.svg';
@@ -26,8 +33,10 @@ export default function ResultsComponent() {
 
   return (
     <MainContainer theme={customTheme}>
-      <Header1>Results</Header1>
-      <Header2>{testCategory}</Header2>
+      <HeadersContainer theme={customTheme}>
+        <Header1>Results</Header1>
+        <Header2>{testCategory}</Header2>
+      </HeadersContainer>
       <Chart />
       <StyledImage src={resultIMG} alt="cat result" />
       <TestResult />

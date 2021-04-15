@@ -30,7 +30,7 @@ export const FormСontainer = styled.div`
     margin: 3rem auto 0;
     padding: 3rem 2rem;
     box-shadow: 0px 4px 15px rgba(2, 23, 42, 0.1);
-    background-color: ${theme.SECONDARY_TEXT_COLOR};
+    background-color: ${theme.FORM_BACKGROUND_COLOR};
     @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
       width: 54rem;
       margin: 3rem auto 0;
