@@ -1,27 +1,20 @@
-import { func } from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import Container from '../Container';
-import Test from '../Test';
 import { authSelectors } from 'redux/auth';
-import { getQuestions, getAnswers } from '../../redux/test/testSelectors';
-import { transformAnswers } from '../../services/transformAnswers';
+import * as testSelectors from '../../redux/test/testSelectors';
 
 function PrivateRoute({ children, redirectTo, ...routeProps }) {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  const questions = useSelector(getQuestions);
-  const answers = useSelector(getAnswers);
-  const isRenderTest =
-    questions.length > 0 && questions.length !== transformAnswers(answers).length;
+  const category = useSelector(testSelectors.getCategory);
+  const { path } = routeProps;
+  let page;
 
-  const page = isRenderTest ? (
-    <Container>
-      <Test />
-    </Container>
-  ) : (
-    children
-  );
+  if (path === '/test') {
+    page = category ? children : <Redirect to="/" />;
+  } else {
+    page = children;
+  }
 
   return <Route {...routeProps}>{isLoggedIn ? page : <Redirect to={redirectTo} />}</Route>;
 }
