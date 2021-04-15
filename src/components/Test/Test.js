@@ -6,12 +6,13 @@ import { useTranslation } from 'react-i18next';
 import testActions from '../../redux/test/testActions';
 import { fetchTest, sendAnswers } from 'redux/test/testOperations';
 import * as selectors from '../../redux/test/testSelectors';
-import categories from '../../utils/test-categories';
+import generateTestCategories from '../../utils/test-categories';
 import { transformAnswers } from '../../services/transformAnswers';
 
 import Card from './Card';
 import Modal from './Modal';
 import { Section, TopBox, Title, FinishButton, ButtonsBox, Button, ButtonSpan } from './Test.style';
+import TestCategory from '../TestCategory/TestCategory';
 
 import { ReactComponent as PrevSvg } from '../../images/prev.svg';
 import { ReactComponent as NextSvg } from '../../images/next.svg';
@@ -29,11 +30,12 @@ export default function Test({ title }) {
   const location = useLocation();
   const history = useHistory();
   const theme = useSelector(getTheme);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const customTheme = theme && createMuiTheme(theme);
 
   let rout = '';
+  const categories = generateTestCategories();
 
   if (category === categories.theory) rout = '/test-theory';
   else rout = '/test-tech';
@@ -95,7 +97,9 @@ export default function Test({ title }) {
           theme={customTheme}
         />
         <TopBox theme={customTheme}>
-          <Title theme={customTheme}>{category}</Title>
+          <Title theme={customTheme}>
+            <TestCategory />
+          </Title>
           <FinishButton onClick={handleFinishTest} theme={customTheme}>
             {t('test__buttonFinishTest')}
           </FinishButton>

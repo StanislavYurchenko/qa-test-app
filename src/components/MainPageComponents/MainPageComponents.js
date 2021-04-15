@@ -13,7 +13,7 @@ import {
 } from './MainPageComponents.style';
 
 import { useHistory } from 'react-router-dom';
-import categories from '../../utils/test-categories';
+import generateTestCategories from '../../utils/test-categories';
 
 import { useTranslation } from 'react-i18next';
 
@@ -24,14 +24,14 @@ import { createMuiTheme } from '@material-ui/core/styles';
 function MainPageComponents() {
   const history = useHistory();
   const dispatch = useDispatch();
-
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
+  const theme = useSelector(getTheme);
+  const customTheme = theme && createMuiTheme(theme);
+  const categories = generateTestCategories();
 
   const logOut = () => {
     dispatch(logoutUser());
   };
-  const theme = useSelector(getTheme);
-  const customTheme = theme && createMuiTheme(theme);
 
   const handleClickTech = () => {
     dispatch(testActions.addCategory(categories.tech));
