@@ -5,7 +5,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 import PreLoader from '../PreLoader';
 import { registrationUser } from '../../redux/auth/authOperations';
-import { isSuccessfulReg, loading, error } from '../../redux/auth/authSelectors';
+import { loading } from '../../redux/auth/authSelectors';
 import { getTheme } from '../../redux/theme/themeSelectors';
 
 import {
@@ -18,8 +18,6 @@ import {
 const RegisterForm = ({ handleToggleButton }) => {
   const dispatch = useDispatch();
   const loadingAuth = useSelector(loading);
-  const successfulReg = useSelector(isSuccessfulReg);
-  const errorAuth = useSelector(error);
   const theme = useSelector(getTheme);
   const customTheme = theme && createMuiTheme(theme);
   const { handleSubmit, control, reset } = useForm();
@@ -123,10 +121,6 @@ const RegisterForm = ({ handleToggleButton }) => {
           </ActiveButton>
         </ButtonContainer>
       </form>
-      {successfulReg && (
-        <p>An email has been sent to your mail with confirmation of registration.</p>
-      )}
-      {!!errorAuth === true && <p>Invalid email or password! Try again!</p>}
     </div>
   );
 };

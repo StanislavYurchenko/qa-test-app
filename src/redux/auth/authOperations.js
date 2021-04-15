@@ -1,3 +1,8 @@
+import { error, success } from '@pnotify/core';
+import '@pnotify/core/dist/PNotify.css';
+import '@pnotify/core/dist/BrightTheme.css';
+import { defaults } from '@pnotify/core';
+
 import authActions from './authAction';
 import {
   registration,
@@ -9,14 +14,26 @@ import {
   refreshAccessToken,
 } from '../../services/authApi';
 
+defaults.width = '280px';
+
 const registrationUser = ({ name, email, password }) => async dispatch => {
   dispatch(authActions.regUserRequest());
 
   try {
     await registration({ name, email, password });
     dispatch(authActions.regUserSuccess());
+    success({
+      title: 'Successfully!',
+      text: 'An email has been sent to your mail with confirmation of registration.',
+      delay: 4000,
+    });
   } catch (err) {
     dispatch(authActions.regUserError(err.message));
+    error({
+      title: 'Ooops!',
+      text: 'Invalid email or password! Try again!',
+      delay: 2000,
+    });
   }
 };
 
@@ -30,6 +47,11 @@ const loginUser = ({ email, password }) => async dispatch => {
     dispatch(authActions.loginUserSuccess({ name, token, avatar, role }));
   } catch (err) {
     dispatch(authActions.loginUserError(err.message));
+    error({
+      title: 'Ooops!',
+      text: 'Invalid email or password! Try again!',
+      delay: 2000,
+    });
   }
 };
 
@@ -47,6 +69,11 @@ const logoutUser = () => async (dispatch, getState) => {
     dispatch(authActions.logoutUserSuccess());
   } catch (err) {
     dispatch(authActions.logoutUserError(err.message));
+    error({
+      title: 'Ooops!',
+      text: 'Something went wrong!(',
+      delay: 2000,
+    });
   }
 };
 
@@ -97,6 +124,11 @@ const addAvatar = file => async dispatch => {
     dispatch(authActions.addAvatarSuccess());
   } catch (err) {
     dispatch(authActions.addAvatarError(err.message));
+    error({
+      title: 'Ooops!',
+      text: 'Something went wrong!(',
+      delay: 2000,
+    });
   }
 };
 
