@@ -19,7 +19,7 @@ import {
 const ContactCard = ({ photo, name, position, about, hubLink, linLink }) => {
   const theme = useSelector(getTheme);
   const customTheme = theme && createMuiTheme(theme);
-  console.log(position);
+
   return (
     <StylesProvider injectFirst>
       <Overlay className="overlay">
