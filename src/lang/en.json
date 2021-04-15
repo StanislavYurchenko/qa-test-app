@@ -18,7 +18,7 @@
   "quote-next": "If the system compiles, that's good, if it boots, that's great!\"",
   "author": "Linus Torvalds",
   "authorPosition": "Linux kernel creator, hacker, 1969",
-  "qaTechnicalTraining": "QA technical training",
+  "qaTechnicalTraining": "[QA technical training_]",
   "testingTheory": "Testing theory",
 
   "test__titleStart": "Testing",
@@ -29,7 +29,7 @@
   "test__buttonNext": "Next question",
   "test__buttonPrev": "Previous question",
 
-  "results__description": "Testing theory",
+  "results__description": "[Testing theory_]",
   "results__correctPercent": "Correct",
   "results__title": "Results",
   "results__incorrectPercent": "Incorrect",
