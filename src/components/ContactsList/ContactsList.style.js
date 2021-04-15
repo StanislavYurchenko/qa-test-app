@@ -13,7 +13,7 @@ export const List = styled.ul`
 
 export const ListItem = styled.li`
   ${({ theme }) => `
-    background-color: ${theme.SECONDARY_TEXT_COLOR};
+    background-color: ${theme.FORM_BACKGROUND_COLOR};
   position: relative;
   border-radius: 0;
   margin: 0 auto;

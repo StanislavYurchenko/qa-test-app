@@ -9,9 +9,11 @@ import {
   List,
   StyledSpan,
   StyledArrowSvg,
+  Item,
 } from './MainPageComponents.style';
 
 import { useHistory } from 'react-router-dom';
+import categories from '../../utils/test-categories';
 
 import { useSelector } from 'react-redux';
 import { getTheme } from '../../redux/theme/themeSelectors';
@@ -24,11 +26,11 @@ function MainPageComponents() {
   const customTheme = theme && createMuiTheme(theme);
 
   const handleClickTech = () => {
-    dispatch(testActions.addCategory('[Техническое тестирования_]'));
+    dispatch(testActions.addCategory(categories.tech));
     history.push('/test');
   };
   const handleClickTheory = () => {
-    dispatch(testActions.addCategory('[Теория тестирования_]'));
+    dispatch(testActions.addCategory(categories.theory));
     history.push('/test');
   };
 
@@ -42,18 +44,18 @@ function MainPageComponents() {
         <SecondTitle theme={customTheme}>Linus Torvalds</SecondTitle>
         <Text theme={customTheme}>Linux kernel creator, hacker, 1969</Text>
         <List>
-          <li>
+          <Item>
             <Button onClick={handleClickTech} theme={customTheme}>
               QA technical training
               <StyledArrowSvg theme={customTheme} />
             </Button>
-          </li>
-          <li>
+          </Item>
+          <Item>
             <Button onClick={handleClickTheory} theme={customTheme} second>
               Testing theory
               <StyledArrowSvg theme={customTheme} />
             </Button>
-          </li>
+          </Item>
         </List>
       </Section>
     </main>

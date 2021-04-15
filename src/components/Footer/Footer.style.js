@@ -10,6 +10,7 @@ export const StyledFooter = styled.footer`
   left: 0;
   bottom: 0;
   width: 100%;
+  z-index: 200;
   height: 56px;
   padding: 10px 18px;
 
@@ -54,6 +55,19 @@ export const StyledVector = styled(Vector)`
 
 export const StyledHeart = styled(Heart)`
   vertical-align: sub;
+
+  animation-name: beat;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+
+  @keyframes beat {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.6);
+    }
+  }
 `;
 
 export const StyledLink = styled.a`

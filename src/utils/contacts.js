@@ -15,7 +15,7 @@ const contacts = [
     name: 'Andriy Krichkivskiy',
     position: 'FullStack Developer',
     about:
-      'On the project, Andriy developed a header, a logo that redirects to the start page and drawing an indicator of a logged in user',
+      'On the project, Andriy developed a header, a logo that redirects to the start page and drawing an indicator of a logged in user, and also introduced into the project the ability to select the language for displaying the page',
     hubLink: 'https://github.com/Andriy1982',
     linLink:
       'https://www.linkedin.com/in/%D0%B0%D0%BD%D0%B4%D1%80%D1%96%D0%B9-%D0%BA%D1%80%D0%B8%D1%87%D0%BA%D1%96%D0%B2%D1%81%D1%8C%D0%BA%D0%B8%D0%B9-b027171b2/',
@@ -26,7 +26,7 @@ const contacts = [
     position: 'FullStack Developer (Scrum Master)',
     about:
       'Elena was a Scrum master on the project and was responsible for a page with the useful materials.',
-    hubLink: 'https://github.com/StanislavYurchenko',
+    hubLink: 'https://github.com/elenapanasyuk/',
     linLink: 'https://www.linkedin.com/in/elena-panasyuk-09431044/',
   },
   {
@@ -43,7 +43,7 @@ const contacts = [
     name: 'Roman Voznyy',
     position: 'FullStack Developer',
     about:
-      'On the project, Roman was responsible for the development of the backend, the creation of documentation and the implementation of authentication via Google',
+      'On the project, Roman was responsible for the development of the backend, the creation of documentation and the implementation of authentication via Google, and developed the admin page for tests',
     hubLink: 'https://github.com/RomanVoznyy',
     linLink: 'https://www.linkedin.com/in/roman-voznyy/',
   },
@@ -54,7 +54,8 @@ const contacts = [
     about:
       'On the project, Valentin developed a page of results and was engaged in building a diagram based on user responses',
     hubLink: 'https://github.com/valentinyak',
-    linLink: 'https://www.linkedin.com/',
+    linLink:
+      'https://www.linkedin.com/in/%D0%B2%D0%B0%D0%BB%D0%B5%D0%BD%D1%82%D0%B8%D0%BD-%D1%8F%D0%BA%D1%83%D0%B1%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9-b74ab020b/',
   },
   {
     photo: images.Volodymyr_Babych,
@@ -76,7 +77,7 @@ const contacts = [
   },
   {
     photo: images.Grygoriy_Chernish,
-    name: 'Grygoriy Chernish ',
+    name: 'Grygoriy Chernish',
     position: 'FullStack Developer',
     about:
       'On the project, Grygoriy was responsible for creating site navigation, main page and  the lower part of the site(footer)',
@@ -89,6 +90,8 @@ const contacts = [
     position: 'FullStack Developer (Team Lead)',
     about:
       'On the project, Stanislav was a team lead, initialized and deployed back-end and front-end, developed the page, that is not found and the ability to switch on the night mode, helped and coordinated other developers',
+    hubLink: 'https://github.com/StanislavYurchenko',
+    linLink: 'https://www.linkedin.com/in/stanislav-yurchenko/',
   },
 ];
 

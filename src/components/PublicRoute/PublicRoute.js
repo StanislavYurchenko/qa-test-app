@@ -1,9 +1,8 @@
-import { func } from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import Container from '../Container';
-import Test from '../Test';
+import TestPage from '../../pages/TestPage';
 import { authSelectors } from 'redux/auth';
 import { getQuestions } from '../../redux/test/testSelectors';
 
@@ -15,7 +14,7 @@ function PublicRoute({ children, redirectTo, restricted, ...routeProps }) {
   const page =
     questions.length > 0 && isLoggedIn ? (
       <Container>
-        <Test />
+        <TestPage />
       </Container>
     ) : (
       children

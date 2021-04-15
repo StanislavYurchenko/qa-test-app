@@ -9,7 +9,6 @@ import Footer from './components/Footer';
 import { getCurrentUser } from './redux/auth/authOperations';
 import { loading } from './redux/auth/authSelectors';
 
-// import Toggle from './components/Toggle/Toggle';
 import PreLoader from './components/PreLoader';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import PublicRoute from 'components/PublicRoute/PublicRoute';
@@ -21,7 +20,7 @@ const ResultsPage = lazy(() => import('pages/ResultsPage' /* webpackChunkName: "
 const ContactsPage = lazy(() =>
   import('pages/ContactsPage' /* webpackChunkName: "ContactsPage" */),
 );
-const Test = lazy(() => import('./components/Test' /* webpackChunkName: "Test" */));
+const TestPage = lazy(() => import('./pages/TestPage' /* webpackChunkName: "TestPage" */));
 const MaterialsPage = lazy(() =>
   import('pages/MaterialsPage' /* webpackChunkName: "MaterialsPage" */),
 );
@@ -71,7 +70,7 @@ function App() {
 
               <PrivateRoute path="/test" redirectTo="/auth">
                 <Container>
-                  <Test />
+                  <TestPage />
                 </Container>
               </PrivateRoute>
 
