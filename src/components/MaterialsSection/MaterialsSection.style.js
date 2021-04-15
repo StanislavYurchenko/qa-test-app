@@ -7,7 +7,7 @@ export const SectionStyle = styled.section`
   // top: 70px;
   margin: 0 auto;
   text-align: left;
-  min-height: 100vh;
+  min-height: calc(100vh - (71px + 56px));
   padding: 40px 20px;
   background-image: url(${background.bg_mob});
   background-size: cover;
