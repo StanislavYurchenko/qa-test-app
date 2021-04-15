@@ -53,5 +53,13 @@
 
   "footer__rights": "All Rights Reserved",
   "footer__devMessageStart": "Developed with",
-  "footer__devMessageEnd": "by"
+  "footer__devMessageEnd": "by",
+
+  "Artur_Stakhov_name": "Артур Стахов",
+  "Artur_Stakhov_position": "FullStack Разработчик",
+  "Artur_Stakhov_about": "На проекте Артур отвечал за разработку бэкэнда, внедрял возможность смены аватара, создания прослойки авторизации и возможность включения ночного режима",
+
+  "Andriy_Krichkivskiy_name": "Андрей Кричкивский",
+  "Andriy_Krichkivskiy_position": "FullStack Разработчик",
+  "Andriy_Krichkivskiy_about": "В проекте Андрей разработал хедер, логотип, который перенаправляет на стартовую страницу, индикатор авторизованного пользователя, а также внедрял в проект возможность выбора языка отображения страницы"
 }

@@ -53,5 +53,13 @@
 
   "footer__rights": "All Rights Reserved",
   "footer__devMessageStart": "Developed with",
-  "footer__devMessageEnd": "by"
+  "footer__devMessageEnd": "by",
+
+  "Artur_Stakhov_name": "Artur_Stakhov",
+  "Artur_Stakhov_position": "FullStack Developer",
+  "Artur_Stakhov_about": "On the project, Artur was responsible for the development of the backend, introduced the ability to change the avatar, create an authorization layer and the ability to switch on the night mode",
+
+  "Andriy_Krichkivskiy_name": "Andriy Krichkivskiy",
+  "Andriy_Krichkivskiy_position": "FullStack Developer",
+  "Andriy_Krichkivskiy_about": "'On the project, Andriy developed a header, a logo that redirects to the start page and drawing an indicator of a logged in user, and also introduced into the project the ability to select the language for displaying the page"
 }
