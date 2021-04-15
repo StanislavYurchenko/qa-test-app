@@ -12,6 +12,7 @@ import {
 } from './MainPageComponents.style';
 
 import { useHistory } from 'react-router-dom';
+import categories from '../../utils/test-categories';
 
 import { useSelector } from 'react-redux';
 import { getTheme } from '../../redux/theme/themeSelectors';
@@ -24,11 +25,11 @@ function MainPageComponents() {
   const customTheme = theme && createMuiTheme(theme);
 
   const handleClickTech = () => {
-    dispatch(testActions.addCategory('[Техническое тестирования_]'));
+    dispatch(testActions.addCategory(categories.tech));
     history.push('/test');
   };
   const handleClickTheory = () => {
-    dispatch(testActions.addCategory('[Теория тестирования_]'));
+    dispatch(testActions.addCategory(categories.theory));
     history.push('/test');
   };
 
