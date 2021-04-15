@@ -16,6 +16,9 @@ const UserName = styled.p`
   font-family: Montserrat, sans-serif;
   font-weight: 500;
   font-size: 1.2rem;
+  max-width: 130px;
+  max-height: 40px;
+  overflow: hidden;
   @media screen and (min-width: ${BREAKPOINT.TABLET}) {
     display: block;
   } ;
