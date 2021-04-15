@@ -5,7 +5,7 @@ import { PAGE_BACKGROUND_COLOUR } from '../../themes/colors';
 
 export const StyledContainer = styled(Box)`
   box-sizing: border-box;
-  width: ${BREAKPOINT.MOBILE_CONTAINER};
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   min-height: calc(100vh - (71px + 56px));

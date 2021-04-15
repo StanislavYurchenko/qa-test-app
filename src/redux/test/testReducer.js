@@ -2,8 +2,8 @@ import { createReducer, combineReducers } from '@reduxjs/toolkit';
 import testActions from './testActions';
 
 const category = createReducer('', {
-  [testActions.addCategory]: (_, { payload }) => payload,
   [testActions.testRefresh]: () => '',
+  [testActions.addCategory]: (_, { payload }) => payload,
 });
 
 const questions = createReducer([], {
