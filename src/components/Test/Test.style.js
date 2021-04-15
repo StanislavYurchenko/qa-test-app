@@ -92,7 +92,7 @@ export const Button = styled.button`
   height: 34px;
   outline: none;
   border: none;
-  background-color: ${theme.SECONDARY_TEXT_COLOR};
+  background-color: ${theme.FORM_BACKGROUND_COLOR};
   box-shadow: 0px 4px 15px  ${theme.BOX_SHADOW_COLOR};
   transition: all 0.3s linear;
 

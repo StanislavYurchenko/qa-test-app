@@ -45,7 +45,7 @@ export const StyledButton = styled.button`
   letter-spacing: 0.02em;
   cursor: pointer;
   box-shadow: 0px 4px 15px ${theme.BOX_SHADOW_COLOR};
-  background-color: ${theme.SECONDARY_TEXT_COLOR};
+  background-color: ${theme.FORM_BACKGROUND_COLOR};
   color: ${theme.PRIMARY_TEXT_COLOR};
   transition: all 0.2s linear;
    
