@@ -32,7 +32,7 @@ export const NavWrap = styled(Box)`
   transition: right 0.5s linear;
   @media screen and (max-width: ${BREAKPOINT.MOBILE_MAX}) {
     top: 7.1rem;
-    right: ${props => (props.open ? 0 : '-100%')};
+    right: ${props => (props.open ? 0 : '-110%')};
     position: absolute;
     width: 100vw;
     height: 100vh;
