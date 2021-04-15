@@ -14,6 +14,7 @@ import {
   Logo,
   ButtonStyles,
   UserName,
+  ToggleLanguage,
 } from './Header.style';
 import { useStyles } from './Header.style';
 import { getIsLoggedIn, getUserName } from '../../redux/auth/authSelectors';
@@ -53,13 +54,16 @@ export default function Header() {
 
   return (
     <HeaderWrap>
-      <button
+      {/* <button
         style={{ zIndex: 500, position: 'absolute', right: 62, bottom: -32, width: 25, height: 25 }}
         onClick={() => toggleLanguage()}
       >
         {language}
-      </button>
+      </button> */}
       <Toggle />
+      <ToggleLanguage theme={customTheme} onClick={() => toggleLanguage()}>
+        <span>{language}</span>
+      </ToggleLanguage>
       <HeaderStyle theme={customTheme} position="static">
         <Toolbar className={classes.toolBarStyles}>
           <Logo to="/" exact="true">

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import testActions from '../../redux/test/testActions';
 import { fetchTest, sendAnswers } from 'redux/test/testOperations';
@@ -28,6 +29,7 @@ export default function Test({ title }) {
   const location = useLocation();
   const history = useHistory();
   const theme = useSelector(getTheme);
+  const { t, i18n } = useTranslation();
 
   const customTheme = theme && createMuiTheme(theme);
 
@@ -95,7 +97,7 @@ export default function Test({ title }) {
         <TopBox theme={customTheme}>
           <Title theme={customTheme}>{category}</Title>
           <FinishButton onClick={handleFinishTest} theme={customTheme}>
-            Finish test
+            {t('test__buttonFinishTest')}
           </FinishButton>
         </TopBox>
 
@@ -112,14 +114,14 @@ export default function Test({ title }) {
         <ButtonsBox theme={customTheme}>
           <Button onClick={handlePrev} disabled={activeCard - 1 === 0} theme={customTheme}>
             <PrevSvg theme={customTheme} />
-            <ButtonSpan theme={customTheme}>Previus question</ButtonSpan>
+            <ButtonSpan theme={customTheme}>{t('test__buttonPrev')}</ButtonSpan>
           </Button>
           <Button
             onClick={handleNext}
             disabled={activeCard + 1 > questions.length}
             theme={customTheme}
           >
-            <ButtonSpan theme={customTheme}>Next question</ButtonSpan>
+            <ButtonSpan theme={customTheme}>{t('test__buttonNext')}</ButtonSpan>
             <NextSvg theme={customTheme} />
           </Button>
         </ButtonsBox>

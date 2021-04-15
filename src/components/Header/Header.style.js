@@ -102,6 +102,31 @@ export const UserName = styled.p`
   } ;
 `;
 
+export const ToggleLanguage = styled.button`
+  ${({ theme }) => `
+  background-color: ${theme.TOGGLE_BACKGROUND_COLOR};
+  `};
+  position: absolute;
+  bottom: -55px;
+  right: 12px;
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  font-size: 1.4rem;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 4rem;
+  height: 2rem;
+  outline: none;
+  border: none;
+
+  & span {
+    font-family: Montserrat, sans-serif;
+  }
+`;
+
 const useStyles = makeStyles(theme => ({
   toolBarStyles: {
     minHeight: '7rem',
