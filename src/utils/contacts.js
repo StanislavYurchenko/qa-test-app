@@ -15,7 +15,7 @@ const contacts = [
     name: 'Andriy Krichkivskiy',
     position: 'FullStack Developer',
     about:
-      'On the project, Andriy developed a header, a logo that redirects to the start page and drawing an indicator of a logged in user',
+      'On the project, Andriy developed a header, a logo that redirects to the start page and drawing an indicator of a logged in user, and also introduced into the project the ability to select the language for displaying the page',
     hubLink: 'https://github.com/Andriy1982',
     linLink:
       'https://www.linkedin.com/in/%D0%B0%D0%BD%D0%B4%D1%80%D1%96%D0%B9-%D0%BA%D1%80%D0%B8%D1%87%D0%BA%D1%96%D0%B2%D1%81%D1%8C%D0%BA%D0%B8%D0%B9-b027171b2/',
@@ -43,7 +43,7 @@ const contacts = [
     name: 'Roman Voznyy',
     position: 'FullStack Developer',
     about:
-      'On the project, Roman was responsible for the development of the backend, the creation of documentation and the implementation of authentication via Google',
+      'On the project, Roman was responsible for the development of the backend, the creation of documentation and the implementation of authentication via Google, and developed the admin page for tests',
     hubLink: 'https://github.com/RomanVoznyy',
     linLink: 'https://www.linkedin.com/in/roman-voznyy/',
   },
@@ -77,7 +77,7 @@ const contacts = [
   },
   {
     photo: images.Grygoriy_Chernish,
-    name: 'Grygoriy Chernish ',
+    name: 'Grygoriy Chernish',
     position: 'FullStack Developer',
     about:
       'On the project, Grygoriy was responsible for creating site navigation, main page and  the lower part of the site(footer)',
