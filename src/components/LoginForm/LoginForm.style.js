@@ -8,6 +8,10 @@ export const useStyles = makeStyles(() => ({
     width: '100%',
     marginBottom: 20,
   },
+  resize: theme => ({
+    fontSize: 14,
+    color: theme.PRIMARY_TEXT_COLOR,
+  }),
 }));
 
 export const ButtonContainer = styled.div`
@@ -42,7 +46,7 @@ export const NotActiveButton = styled.button`
     border: 1px solid ${theme.LOGIN_BORDER_COLOR};
     border-radius: 0.4rem;
     color: ${theme.PRIMARY_TEXT_COLOR};
-    background-color: ${theme.SECONDARY_TEXT_COLOR};
+    background-color: ${theme.FORM_BACKGROUND_COLOR};
     font-size: 1rem;
     line-height: 1.2rem;
     font-weight: 700;

@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { getTheme } from '../../redux/theme/themeSelectors';
 
-import { Container, Oops, Icon, ErrorCode, Message, Bask, StyledLink } from './NotFound.style';
+import { Container, Oops, Icon, ErrorCode, Message, Back, StyledLink } from './NotFound.style';
 
 const NotFound = () => {
   const theme = useSelector(getTheme);
@@ -18,13 +18,12 @@ const NotFound = () => {
       <ErrorCode theme={customTheme}>
         ERROR code: <span>404</span>
       </ErrorCode>
-      <Bask theme={customTheme}>
-        <span>Bask to </span>
+      <Back theme={customTheme}>
+        <span>Back to </span>
         <StyledLink to="/" theme={customTheme}>
           home page
         </StyledLink>
-        .
-      </Bask>
+      </Back>
     </Container>
   );
 };

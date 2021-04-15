@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://qa-test-api-hakaton2021goit.herokuapp.com';
+axios.defaults.baseURL = 'https://qa-test-api-hakaton2021goit.herokuapp.com/';
 
 export const userToken = {
   set(token) {
@@ -24,7 +24,7 @@ export const logout = () => {
 };
 
 export const getUserInfo = () => {
-  return axios.get('/users/current').then(data => data);
+  return axios.get('/users/current').then(data => data.data);
 };
 
 export const fetchQuestions = path => {
@@ -35,8 +35,8 @@ export const sendAnswers = (rout, answers) => {
   return axios.post(`/api${rout}/result`, answers).then(data => data.data.data);
 };
 
-export const refreshAccessToken = ({ refreshToken }) => {
-  return axios.post('/auth/refresh-token', refreshToken).then(data => data);
+export const refreshAccessToken = refreshToken => {
+  return axios.post('/auth/refresh-token', { refreshToken }).then(data => data);
 };
 
 export const setUserAvatar = file => {

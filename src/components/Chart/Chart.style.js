@@ -59,4 +59,22 @@ const AnswersContainer = styled.div`
   }
 `;
 
-export { ChartContainer, PieContainer, AnswersContainer };
+const StyledSpan = styled.span`
+  ${({ theme }) => `
+    display: flex;
+
+    &:after {
+      content: '';
+      width: 1px;
+      height: 10px;
+      
+      background-color: ${theme.PAGE_BORDER_COLOR};
+
+      @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
+        height: 20px;
+        }
+      }
+   `}
+`;
+
+export { ChartContainer, PieContainer, AnswersContainer, StyledSpan };

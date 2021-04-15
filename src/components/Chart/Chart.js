@@ -3,7 +3,7 @@ import { connect, useSelector } from 'react-redux';
 import { createMuiTheme } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
-import { ChartContainer, PieContainer, AnswersContainer } from './Chart.style';
+import { ChartContainer, PieContainer, AnswersContainer, StyledSpan } from './Chart.style';
 import { getResult } from '../../redux/test/testSelectors';
 import { getTheme } from '../../redux/theme/themeSelectors';
 
@@ -74,6 +74,7 @@ function Chart({ correctAnswers, incorrectAnswers }) {
             <p>
               Correct answers - <span style={{ fontWeight: 'bold' }}>{`${correctAnswers}`}</span>
             </p>
+            <StyledSpan theme={customTheme} />
             <p>
               Total questions - <span style={{ fontWeight: 'bold' }}>{`${totalAnswers}`}</span>
             </p>
