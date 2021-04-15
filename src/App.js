@@ -13,6 +13,7 @@ import { loading } from './redux/auth/authSelectors';
 import PreLoader from './components/PreLoader';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import PublicRoute from 'components/PublicRoute/PublicRoute';
+import SuperPrivateRoute from 'components/SuperPrivateRoute/SuperPrivateRoute';
 
 const MainPage = lazy(() => import('pages/MainPage' /* webpackChunkName: "MainPage" */));
 const AuthPage = lazy(() => import('pages/AuthPage' /* webpackChunkName: "AuthPage" */));
@@ -27,6 +28,8 @@ const MaterialsPage = lazy(() =>
 const NotFoundPage = lazy(() =>
   import('pages/NotFoundPage' /* webpackChunkName: "NotFoundPage" */),
 );
+
+const AdminPage = lazy(() => import('pages/AdminPage' /* webpackChunkName: "AdminPage" */));
 
 function App() {
   const dispatch = useDispatch();
@@ -87,6 +90,10 @@ function App() {
               <PublicRoute path="/google">
                 <Google />
               </PublicRoute>
+
+              <SuperPrivateRoute path="/admin" redirectTo="/auth">
+                <AdminPage />
+              </SuperPrivateRoute>
 
               <PublicRoute>
                 <Container>
