@@ -24,8 +24,9 @@ const RegisterForm = ({ handleToggleButton }) => {
   const theme = useSelector(getTheme);
   const customTheme = theme && createMuiTheme(theme);
   const { handleSubmit, control, reset } = useForm();
-  const classes = useStyles();
+  // const classes = useStyles();
   const { t, i18n } = useTranslation();
+  const classes = useStyles(customTheme);
 
   const validation = (value, num, text, email) => {
     if (email) {
@@ -56,6 +57,11 @@ const RegisterForm = ({ handleToggleButton }) => {
           render={({ onChange, value }) => (
             <TextField
               className={classes.inputText}
+              InputProps={{
+                classes: {
+                  input: classes.resize,
+                },
+              }}
               onChange={onChange}
               value={value}
               label="Enter name"
@@ -79,6 +85,11 @@ const RegisterForm = ({ handleToggleButton }) => {
           render={({ onChange, value }) => (
             <TextField
               className={classes.inputText}
+              InputProps={{
+                classes: {
+                  input: classes.resize,
+                },
+              }}
               onChange={onChange}
               value={value}
               label="E-mail"
@@ -98,6 +109,11 @@ const RegisterForm = ({ handleToggleButton }) => {
           render={({ onChange, value }) => (
             <TextField
               className={classes.inputText}
+              InputProps={{
+                classes: {
+                  input: classes.resize,
+                },
+              }}
               type="password"
               onChange={onChange}
               value={value}
