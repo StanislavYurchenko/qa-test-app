@@ -48,6 +48,7 @@
 }
 
 .title {
+  margin-bottom: 10px;
   font-family: Montserrat, sans-serif;
   font-weight: 500;
   font-size: 20px;
@@ -106,4 +107,37 @@
 .catImage {
   margin: 0 auto;
   width: 120px;
+}
+
+.itemResult {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 50px repeat(2, 20%) 100px 100px;
+  column-gap: 10px;
+  padding: 2px;
+
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  color: rgb(0, 0, 0);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+  word-wrap: break-word;
+}
+
+.itemResult:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.itemResult.head {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.avatarka {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
 }

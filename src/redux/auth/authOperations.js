@@ -134,7 +134,6 @@ const getStudentsRequest = () => async (dispatch, getState) => {
     dispatch(authActions.getStudentsListRequest());
 
     const { data } = await getStudentsList();
-    console.log(data);
     dispatch(authActions.getStudentsListSuccess(data));
   } catch (err) {
     dispatch(authActions.getStudentsListError(err.message));
