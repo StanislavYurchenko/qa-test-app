@@ -1,8 +1,8 @@
-import { Route, Redirect } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Route, Redirect, useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import testActions from '../../redux/test/testActions';
+import { useEffect } from 'react';
 
-import Container from '../Container';
-import TestPage from '../../pages/TestPage';
 import { authSelectors } from 'redux/auth';
 import { getQuestions } from '../../redux/test/testSelectors';
 
@@ -10,15 +10,14 @@ function PublicRoute({ children, redirectTo, restricted, ...routeProps }) {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const path = redirectTo?.current?.pathname;
   const questions = useSelector(getQuestions);
+  const dispatch = useDispatch();
+  const prevLocation = location.pathname;
 
-  const page =
-    questions.length > 0 && isLoggedIn ? (
-      <Container>
-        <TestPage />
-      </Container>
-    ) : (
-      children
-    );
+  useEffect(() => {
+    dispatch(testActions.setPath(prevLocation));
+  }, []);
+
+  const page = questions.length > 0 && isLoggedIn ? <Redirect to="/test" /> : children;
 
   return (
     <Route {...routeProps}>
