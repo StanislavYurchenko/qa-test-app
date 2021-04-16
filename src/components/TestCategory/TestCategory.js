@@ -5,8 +5,8 @@ export default function TestCategory() {
   const { t } = useTranslation();
   const category = useSelector(state => state.test.category);
 
-  const testTheory = `${t('testingTheory')}`;
-  const testTechnic = `${t('qaTechnicalTraining')}`;
+  const testTheory = `[${t('testingTheory')}_]`;
+  const testTechnic = `[${t('qaTechnicalTraining')}_]`;
 
   return (
     <span>

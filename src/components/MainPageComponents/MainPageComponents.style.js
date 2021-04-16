@@ -9,12 +9,7 @@ export const Section = styled.section`
   background-color: ${theme.PAGE_BACKGROUND_COLOR};
 
   @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
-    padding-top: 80px;
-    padding-bottom: 110px;
-  }
-  @media screen and (min-width: ${BREAKPOINTS.DESKTOP}) {
-    padding-top: 114px;
-    padding-bottom: 114px;
+    padding-top: 60px;
   }
   `}
 `;
@@ -63,7 +58,6 @@ export const Title = styled.h1`
 export const SecondTitle = styled.h2`
   ${({ theme }) => `
   margin-bottom: 5px;
-
   color: ${theme.PRIMARY_TEXT_COLOR};
   font-weight: 500;
   font-size: 12px;
@@ -123,12 +117,12 @@ export const Button = styled.button`
 
   @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
     width: 400px;
-    padding-right: 80px;
-    padding-left: 80px;
     padding-bottom: 40px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: ${second ? '0px' : '30px'};
+    padding-left: ${second ? '80px' : '50px'};
+    padding-right: ${second ? '80px' : '50px'};
     font-size: ${second ? '30px' : '32px'};
     line-height: 1.22;
   }
