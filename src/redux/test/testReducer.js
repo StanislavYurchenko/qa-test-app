@@ -9,12 +9,15 @@ const category = createReducer('', {
 const questions = createReducer([], {
   [testActions.testFetchRequest]: () => [],
   [testActions.testFetchSuccess]: (_, { payload }) => payload,
+  [testActions.addCategory]: () => [],
 
   [testActions.sendAnswersRequest]: () => [],
   [testActions.testRefresh]: () => [],
 });
 
 const answers = createReducer([], {
+  [testActions.addCategory]: () => [],
+
   [testActions.testFetchRequest]: () => [],
   [testActions.addAnswer]: (state, { payload }) => ({ ...state, ...payload }),
   [testActions.resetAnswers]: () => [],
@@ -56,6 +59,10 @@ const error = createReducer(false, {
   [testActions.sendAnswersError]: (_, { payload }) => payload,
 });
 
+const path = createReducer('', {
+  [testActions.setPath]: (_, { payload }) => payload,
+});
+
 const testReducer = combineReducers({
   category,
   questions,
@@ -64,6 +71,7 @@ const testReducer = combineReducers({
   loading,
   error,
   activeCard,
+  path,
 });
 
 export default testReducer;

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import testActions from '../../redux/test/testActions';
@@ -21,14 +21,15 @@ export default function Test({ title }) {
   const [open, setOpen] = useState(false);
 
   const answers = useSelector(selectors.getAnswers);
-  const questions = useSelector(selectors.getQuestions);
   const category = useSelector(selectors.getCategory);
+  const questions = useSelector(selectors.getQuestions);
+  const getSetPath = useSelector(selectors.getPath);
   const activeCard = useSelector(selectors.getActiveCard);
-  const dispatch = useDispatch();
-  const location = useLocation();
-  const history = useHistory();
-  const theme = useSelector(getTheme);
 
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const theme = useSelector(getTheme);
   const customTheme = theme && createMuiTheme(theme);
 
   let rout = '';
@@ -37,11 +38,15 @@ export default function Test({ title }) {
   else rout = '/test-tech';
 
   useEffect(() => {
-    if (location.pathname !== '/test' && location.pathname !== '/auth') {
-      history.push('/test');
+    if (
+      getSetPath !== '/test' &&
+      getSetPath !== '/auth' &&
+      getSetPath !== '/google' &&
+      transformAnswers(answers).length > 0
+    ) {
       setOpen(true);
     }
-  });
+  }, []);
 
   useEffect(() => {
     if (questions.length !== 0) return;
