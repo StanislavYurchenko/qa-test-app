@@ -6,7 +6,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 import PreLoader from '../PreLoader';
 import { loginUser } from '../../redux/auth/authOperations';
-import { loading, error } from '../../redux/auth/authSelectors';
+import { loading } from '../../redux/auth/authSelectors';
 import { getTheme } from '../../redux/theme/themeSelectors';
 
 import { useStyles, ButtonContainer, ActiveButton, NotActiveButton } from './LoginForm.style';
@@ -14,7 +14,6 @@ import { useStyles, ButtonContainer, ActiveButton, NotActiveButton } from './Log
 const LoginForm = ({ handleToggleButton }) => {
   const dispatch = useDispatch();
   const loadingAuth = useSelector(loading);
-  const errorAuth = useSelector(error);
   const theme = useSelector(getTheme);
   const customTheme = theme && createMuiTheme(theme);
   const { handleSubmit, control, reset } = useForm();
@@ -105,7 +104,6 @@ const LoginForm = ({ handleToggleButton }) => {
           </NotActiveButton>
         </ButtonContainer>
       </form>
-      {!!errorAuth && <p>Invalid email or password! Try again!</p>}
     </div>
   );
 };
