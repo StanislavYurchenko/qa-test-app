@@ -41,7 +41,7 @@ export const StyledButton = styled.button`
   height: 40px;
   outline: none;
   border: none;
-  font-size: 20px;
+  font-size: 16px;
   letter-spacing: 0.02em;
   cursor: pointer;
   box-shadow: 0px 4px 15px ${theme.BOX_SHADOW_COLOR};
