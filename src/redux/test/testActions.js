@@ -15,6 +15,8 @@ const sendAnswersRequest = createAction('test/sendAnswersRequest');
 const sendAnswersSuccess = createAction('test/sendAnswersSuccess');
 const sendAnswersError = createAction('test/sendAnswersError');
 
+const setPath = createAction('test/setPath');
+
 export default {
   addAnswer,
   resetAnswers,
@@ -28,4 +30,5 @@ export default {
   sendAnswersRequest,
   sendAnswersSuccess,
   sendAnswersError,
+  setPath,
 };

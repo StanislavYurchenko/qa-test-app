@@ -5,6 +5,7 @@ import BREAKPOINTS from '../../utils/breakpoints';
 export const Section = styled.section`
   padding: 45px 0 20px;
   margin: 0 auto;
+  max-width: 652px;
 
   @media screen and (min-width: ${BREAKPOINTS.DESKTOP}) {
     max-width: 820px;
@@ -16,10 +17,6 @@ export const TopBox = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-
-  @media screen and (min-width: ${BREAKPOINTS.DESKTOP}) {
-    max-width: 820px;
-  } ;
 `;
 
 export const Title = styled.h2`
