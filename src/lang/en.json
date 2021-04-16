@@ -2,6 +2,7 @@
   "header__menuHome": "Home",
   "header__menuMaterials": "Materials",
   "header__menuContacts": "Contacts",
+  "header__admin": "AdminSettings",
 
   "login__descriptionStart": "We will help you find weak points in knowledge so that you can strengthen it. We will show you what is relevant to know for a",
   "login__descriptionAccent": "QA Engineer",
@@ -18,8 +19,8 @@
   "quote-next": "If the system compiles, that's good, if it boots, that's great!\"",
   "author": "Linus Torvalds",
   "authorPosition": "Linux kernel creator, hacker, 1969",
-  "qaTechnicalTraining": "[QA technical training_]",
-  "testingTheory": "[Testing theory_]",
+  "qaTechnicalTraining": "QA technical training",
+  "testingTheory": "Testing theory",
 
   "test__titleStart": "Testing",
   "test__titleEnd": "theory",

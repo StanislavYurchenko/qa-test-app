@@ -19,8 +19,8 @@ export const Wrapper = styled.div`
     flex-direction: row;
     justify-content: space-between;
     width: 103rem;
-    padding-top: 10rem;
-    padding-bottom: 10rem;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
   } ;
 `;
 

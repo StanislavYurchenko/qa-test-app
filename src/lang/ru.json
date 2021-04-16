@@ -2,6 +2,7 @@
   "header__menuHome": "Главная",
   "header__menuMaterials": "Полезные материалы",
   "header__menuContacts": "Контакты",
+  "header__admin": "Настройки админа",
 
   "login__descriptionAccent": "QA Engineer",
   "login__descriptionEnd": "и постараемся сделать процесс познания более разнообразным",

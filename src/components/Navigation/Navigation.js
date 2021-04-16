@@ -39,7 +39,7 @@ function Navigation({ isModalOpen, onButtonClick }) {
         {isLoggedIn && role === ROLE.ADMIN && (
           <StyledNavListItem>
             <StyledNavLink to="/admin" onClick={onButtonClick} theme={customTheme}>
-              AdminSettings
+              {t('header__admin')}
             </StyledNavLink>
           </StyledNavListItem>
         )}
