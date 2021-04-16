@@ -1,1 +1,5 @@
-export default { theory: '[Testing theory_]', tech: '[QA technical training_]' };
+import i18n from '../i18n';
+
+export default function generateTestCategories() {
+  return { theory: i18n.t('testingTheory'), tech: i18n.t('qaTechnicalTraining') };
+}

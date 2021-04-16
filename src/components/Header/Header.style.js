@@ -32,7 +32,7 @@ export const NavWrap = styled(Box)`
   transition: right 0.5s linear;
   @media screen and (max-width: ${BREAKPOINT.MOBILE_MAX}) {
     top: 7.1rem;
-    right: ${props => (props.open ? 0 : '-100%')};
+    right: ${props => (props.open ? 0 : '-110%')};
     position: absolute;
     width: 100vw;
     height: 100vh;
@@ -76,15 +76,12 @@ export const Span = styled.span`
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-
   font-family: Montserrat, sans-serif;
   font-weight: 600;
   font-size: 1.2rem;
   line-height: 1.6rem;
   margin-right: 1rem;
 `;
-/* background-color: ${SECONDARY_TEXT_COLOUR}; */
-/* color: ${DARK_GREY_TEXT_COLOUR}; */
 
 export const UserName = styled.p`
   ${({ theme }) => `
@@ -100,6 +97,31 @@ export const UserName = styled.p`
   @media screen and (min-width: ${BREAKPOINT.TABLET}) {
     display: block;
   } ;
+`;
+
+export const ToggleLanguage = styled.button`
+  ${({ theme }) => `
+  background-color: ${theme.TOGGLE_BACKGROUND_COLOR};
+  `};
+  position: absolute;
+  bottom: -55px;
+  right: 12px;
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  font-size: 1.4rem;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 4rem;
+  height: 2rem;
+  outline: none;
+  border: none;
+
+  & span {
+    font-family: Montserrat, sans-serif;
+  }
 `;
 
 const useStyles = makeStyles(theme => ({

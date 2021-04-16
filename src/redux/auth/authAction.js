@@ -28,6 +28,14 @@ const refreshTokenRequest = createAction('auth/refreshTokenRequest');
 const refreshTokenSuccess = createAction('auth/refreshTokenSuccess');
 const refreshTokenError = createAction('auth/refreshTokenError');
 
+const getStudentsListRequest = createAction('auth/getStudentsListRequest');
+const getStudentsListSuccess = createAction('auth/getStudentsListSuccess');
+const getStudentsListError = createAction('auth/getStudentsListError');
+
+const getAdminsListRequest = createAction('auth/getAdminsListRequest');
+const getAdminsListSuccess = createAction('auth/getAdminsListSuccess');
+const getAdminsListError = createAction('auth/getAdminsListError');
+
 export default {
   regUserRequest,
   regUserSuccess,
@@ -50,4 +58,10 @@ export default {
   refreshTokenRequest,
   refreshTokenSuccess,
   refreshTokenError,
+  getStudentsListRequest,
+  getStudentsListSuccess,
+  getStudentsListError,
+  getAdminsListRequest,
+  getAdminsListSuccess,
+  getAdminsListError,
 };
