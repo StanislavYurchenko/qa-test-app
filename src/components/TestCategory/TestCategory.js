@@ -10,7 +10,9 @@ export default function TestCategory() {
 
   return (
     <span>
-      {category === '[QA technical training_]' || category === 'Техническая подготовка QA'
+      {category === '[QA technical training_]' ||
+      category === 'Техническая подготовка QA' ||
+      category === 'QA technical training'
         ? testTechnic
         : testTheory}
     </span>
