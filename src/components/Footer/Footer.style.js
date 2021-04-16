@@ -44,18 +44,8 @@ export const StyledVector = styled(Vector)`
   vertical-align: sub;
 `;
 
-// const beat = keyframes`
-//     0% {
-//       transform: scale(1);
-//     }
-//     50% {
-//       transform: scale(0.6);
-//     }
-//   `;
-
 export const StyledHeart = styled(Heart)`
   vertical-align: sub;
-
   animation-name: beat;
   animation-duration: 1.5s;
   animation-iteration-count: infinite;
@@ -72,9 +62,8 @@ export const StyledHeart = styled(Heart)`
 
 export const StyledLink = styled.a`
   font-size: 10px;
-  // letter-spacing: 0.03em;
   color: #fff;
-  opacity: 0.4;
+  /* opacity: 0.4; */
   font-weight: 400;
   text-decoration: revert;
   @media screen and (min-width: 768px) {
