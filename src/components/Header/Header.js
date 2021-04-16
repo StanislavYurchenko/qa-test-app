@@ -50,6 +50,12 @@ export default function Header() {
 
   return (
     <HeaderWrap>
+      {/* <button
+        style={{ zIndex: 500, position: 'absolute', right: 62, bottom: -32, width: 25, height: 25 }}
+        onClick={() => toggleLanguage()}
+      >
+        {language}
+      </button> */}
       <Toggle />
       <ToggleLanguage theme={customTheme} onClick={() => toggleLanguage()}>
         <span>{language}</span>
