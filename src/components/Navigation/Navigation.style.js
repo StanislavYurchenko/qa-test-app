@@ -66,6 +66,7 @@ export const StyledNav = styled.nav`
     width: 100%;
   }
   @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
+    margin-left: 20px;
     margin-right: 30px;
   }
   @media screen and (min-width: ${BREAKPOINTS.DESKTOP}) {
@@ -81,5 +82,6 @@ export const StyledNavList = styled.ul`
   @media screen and (min-width: ${BREAKPOINTS.TABLET}) {
     display: flex;
     flex-direction: row;
+    align-items: center;
   }
 `;
