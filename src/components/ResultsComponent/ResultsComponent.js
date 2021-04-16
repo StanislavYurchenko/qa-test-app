@@ -12,6 +12,7 @@ import {
   StyledImage,
   useStyles,
 } from './ResultsComponent.style';
+import TestCategory from '../TestCategory/TestCategory';
 import Chart from '../Chart';
 import TestResult from '../TestResult';
 import resultIMG from '../../images/results.svg';
@@ -22,10 +23,9 @@ export default function ResultsComponent() {
   const theme = useSelector(getTheme);
   const customTheme = theme && createMuiTheme(theme);
   const classes = useStyles(customTheme);
-  const testCategory = useSelector(state => state.test.category);
   const dispatch = useDispatch();
   const history = useHistory();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const handleButtonClick = () => {
     dispatch(testActions.resetAnswers());
@@ -37,7 +37,9 @@ export default function ResultsComponent() {
     <MainContainer theme={customTheme}>
       <HeadersContainer theme={customTheme}>
         <Header1>{t('results__title')}</Header1>
-        <Header2>{testCategory}</Header2>
+        <Header2>
+          <TestCategory />
+        </Header2>
       </HeadersContainer>
       <Chart />
       <StyledImage src={resultIMG} alt="cat result" />
