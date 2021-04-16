@@ -1,16 +1,34 @@
 import { connect } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+
 import { ResultContainer, HeadingParagraph, DescriptionParagraph } from './TestResult.style';
 import { getResult } from '../../redux/test/testSelectors';
 
 function TestResult({ correctAnswers, incorrectAnswers }) {
+  const { t } = useTranslation();
   const totalAnswers = correctAnswers + incorrectAnswers;
 
   const RESULTS = [
-    { heading: 'Perfect!', description: 'You know material very well!' },
-    { heading: 'Not bad!', description: 'But you still need to learn some materials.' },
-    { heading: 'Satisfactorily.', description: 'You still need to learn some materials.' },
-    { heading: 'Bad.', description: 'You need to repeat all material!' },
-    { heading: 'Very bad!', description: 'You need to repeat all material!' },
+    {
+      heading: `${t('results__resultTitlePerfect')}`,
+      description: `${t('results__resultDescriptionPerfect')}`,
+    },
+    {
+      heading: `${t('results__resultTitleNotBad')}`,
+      description: `${t('results__resultDescriptionNotBad')}`,
+    },
+    {
+      heading: `${t('results__resultTitleSatisfactorily')}`,
+      description: `${t('results__resultDescriptionSatisfactorily')}`,
+    },
+    {
+      heading: `${t('results__resultTitleBad')}`,
+      description: `${t('results__resultDescriptionBad')}`,
+    },
+    {
+      heading: `${t('results__resultTitleVeryBad')}`,
+      description: `${t('results__resultDescriptionVeryBad')}`,
+    },
   ];
 
   function calculateTestResult(correct, total) {

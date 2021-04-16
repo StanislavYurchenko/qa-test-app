@@ -1,12 +1,22 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Toolbar from '@material-ui/core/Toolbar';
 import Navigation from 'components/Navigation';
 import { ReactComponent as LogoSvg } from '../../images/header_icons/logo.svg';
 import { ReactComponent as OpenMenuSvg } from '../../images/header_icons/openMenu.svg';
 import { ReactComponent as CloseMenuSvg } from '../../images/header_icons/closeMenu.svg';
 import { ReactComponent as LogOut } from '../../images/header_icons/signOut.svg';
-import { HeaderStyle, NavWrap, HeaderWrap, ButtonWrap, Logo, ButtonStyles } from './Header.style';
+import {
+  HeaderStyle,
+  NavWrap,
+  HeaderWrap,
+  ButtonWrap,
+  Logo,
+  ButtonStyles,
+  UserName,
+  ToggleLanguage,
+} from './Header.style';
+// import { HeaderStyle, NavWrap, HeaderWrap, ButtonWrap, Logo, ButtonStyles } from './Header.style';
 import { useStyles } from './Header.style';
 import { getIsLoggedIn, getUserName } from '../../redux/auth/authSelectors';
 import { logoutUser } from '../../redux/auth/authOperations';
@@ -16,8 +26,11 @@ import Toggle from '../Toggle/Toggle';
 import { getTheme } from '../../redux/theme/themeSelectors';
 import { createMuiTheme } from '@material-ui/core/styles';
 
+import i18n from '../../i18n';
+
 export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [language, setLanguage] = useState('en');
   const isLogin = useSelector(getIsLoggedIn);
   const theme = useSelector(getTheme);
   const customTheme = theme && createMuiTheme(theme);
@@ -29,9 +42,26 @@ export default function Header() {
     setIsModalOpen(!isModalOpen);
   };
 
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'ru' : 'en');
+  };
+
+  useEffect(() => {
+    i18n.changeLanguage(language);
+  }, [language]);
+
   return (
     <HeaderWrap>
+      {/* <button
+        style={{ zIndex: 500, position: 'absolute', right: 62, bottom: -32, width: 25, height: 25 }}
+        onClick={() => toggleLanguage()}
+      >
+        {language}
+      </button> */}
       <Toggle />
+      <ToggleLanguage theme={customTheme} onClick={() => toggleLanguage()}>
+        <span>{language}</span>
+      </ToggleLanguage>
       <HeaderStyle theme={customTheme} position="static">
         <Toolbar className={classes.toolBarStyles}>
           <Logo to="/" exact="true">
@@ -39,22 +69,22 @@ export default function Header() {
               width="129"
               height="28"
               viewBox="0 0 129 28"
-              fill="none"
+              fill={theme.SECONDARY_TEXT_COLOR}
               xmlns="http://www.w3.org/2000/svg"
             >
               <g clipPath="url(#clip0)">
-                <path d="M129 0H0V28H129V0Z" stroke={theme.LOGO_COLOR} />
+                <path d="M129 0H0V28H129V0Z" stroke={theme.PRIMARY_TEXT_COLOR} />
                 <path
                   fillRule="evenodd"
                   clipRule="evenodd"
                   d="M60.9111 22.3H65.5181V20.224H63.5631V8.45999H65.5181V6.38599H60.9111V22.3ZM70.4821 19H73.2361V9.34399H77.0441V7.09999H66.6741V9.34399H70.4821V19ZM86.8701 14.461C86.8894 13.5848 86.6754 12.7193 86.2501 11.953C85.8506 11.2496 85.2574 10.6758 84.5411 10.3C83.7769 9.91565 82.9325 9.71765 82.077 9.72217C81.2216 9.72668 80.3793 9.9336 79.6191 10.326C78.8924 10.7121 78.2865 11.2914 77.8681 12C77.4391 12.7342 77.2185 13.5716 77.2301 14.422C77.2161 15.2765 77.4397 16.1182 77.8761 16.853C78.3156 17.575 78.9527 18.1559 79.7121 18.527C80.5639 18.9413 81.5021 19.147 82.4491 19.127C83.1484 19.1747 83.8496 19.0668 84.5021 18.8111C85.1547 18.5553 85.7425 18.1581 86.2231 17.648L84.8121 16.118C84.5182 16.409 84.1686 16.6375 83.7841 16.79C83.3784 16.938 82.9489 17.0099 82.5171 17.002C81.9017 17.0242 81.2949 16.8517 80.7831 16.509C80.3262 16.1922 80.0094 15.711 79.8991 15.166H86.8181C86.8521 14.724 86.8691 14.486 86.8691 14.452L86.8701 14.461ZM82.1271 11.724C82.6736 11.7074 83.2073 11.8917 83.6271 12.242C84.0394 12.5955 84.3059 13.0893 84.3751 13.628H79.8661C79.9313 13.0858 80.1983 12.588 80.6141 12.234C81.0407 11.8875 81.5779 11.7064 82.1271 11.724ZM92.2271 19.136C93.0161 19.153 93.8017 19.0291 94.5471 18.77C95.1299 18.5745 95.6454 18.2181 96.0341 17.742C96.3708 17.3101 96.5506 16.7766 96.5441 16.229C96.5781 15.659 96.3891 15.0982 96.0171 14.665C95.6805 14.3004 95.2518 14.0334 94.7761 13.892C94.1727 13.7221 93.5596 13.5885 92.9401 13.492C92.4439 13.4296 91.9545 13.3215 91.4781 13.169C91.3451 13.1356 91.2273 13.0581 91.1439 12.9491C91.0606 12.8401 91.0166 12.7061 91.0191 12.569C91.0252 12.4373 91.0683 12.31 91.1434 12.2017C91.2186 12.0935 91.3229 12.0086 91.4441 11.957C91.8432 11.7745 92.2811 11.6928 92.7191 11.719C93.6418 11.7115 94.5503 11.9459 95.3541 12.399L96.2381 10.512C95.7422 10.2343 95.2057 10.0365 94.6481 9.92599C94.0145 9.78492 93.3673 9.7135 92.7181 9.71299C91.9452 9.69615 91.1758 9.82296 90.4491 10.087C89.8727 10.2898 89.3657 10.6522 88.9871 11.132C88.6545 11.5754 88.4786 12.1167 88.4871 12.671C88.4483 13.2539 88.6405 13.8287 89.0221 14.271C89.3681 14.6383 89.8048 14.908 90.2881 15.053C90.8959 15.2263 91.5151 15.357 92.1411 15.444C92.6204 15.4902 93.0933 15.5871 93.5521 15.733C93.6802 15.7621 93.7948 15.8331 93.8779 15.9347C93.9611 16.0363 94.0079 16.1627 94.0111 16.294C94.0111 16.8493 93.4501 17.127 92.3281 17.127C91.7528 17.1243 91.1806 17.0415 90.6281 16.881C90.1068 16.7413 89.6085 16.5264 89.1491 16.243L88.2651 18.143C88.8011 18.473 89.387 18.7138 90.0001 18.856C90.7276 19.0435 91.4759 19.1379 92.2271 19.137V19.136ZM103.872 16.688C103.564 16.9194 103.186 17.0393 102.801 17.028C102.647 17.0379 102.492 17.015 102.347 16.9609C102.202 16.9068 102.069 16.8226 101.959 16.714C101.747 16.4668 101.639 16.1464 101.659 15.821V12.1H103.937V10.06H101.66V7.83099H99.0081V10.058H97.6001V12.1H99.0111V15.857C98.9793 16.3038 99.042 16.7523 99.1952 17.1733C99.3484 17.5942 99.5886 17.9781 99.9001 18.3C100.603 18.8932 101.507 19.1917 102.425 19.133C102.83 19.1348 103.233 19.086 103.625 18.988C103.971 18.9076 104.297 18.7605 104.586 18.555L103.872 16.688ZM105.826 20.53H114.326V19H105.826V20.53ZM120.24 22.3V6.38599H115.65V8.45999H117.588V20.224H115.65V22.3H120.24Z"
-                  fill={theme.LOGO_COLOR}
+                  fill={theme.PRIMARY_TEXT_COLOR}
                 />
                 <path
                   fillRule="evenodd"
                   clipRule="evenodd"
                   d="M0 0H46.281L53.995 14.56L46.281 28H0V0Z"
-                  fill={theme.LOGO_COLOR}
+                  fill={theme.PRIMARY_TEXT_COLOR}
                 />
                 <path
                   fillRule="evenodd"

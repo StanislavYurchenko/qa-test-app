@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { createMuiTheme } from '@material-ui/core/styles';
 
 import AuthForm from '../../components/AuthForm';
@@ -12,17 +13,18 @@ const BACK_URL = 'https://qa-test-api-hakaton2021goit.herokuapp.com/auth/google'
 const AuthPage = () => {
   const theme = useSelector(getTheme);
   const customTheme = theme && createMuiTheme(theme);
+  const { t, i18n } = useTranslation();
 
   return (
     <Wrapper>
       <AuthText />
       <FormСontainer theme={customTheme}>
-        <Text theme={customTheme}>You can use your Google Account to authorize:</Text>
+        <Text theme={customTheme}>{t('login__loginGoogleDescription')}</Text>
         <GoogleButton href={BACK_URL} theme={customTheme}>
           <GoogleSvg />
           Google
         </GoogleButton>
-        <Text theme={customTheme}>Or login to our app using e-mail and password:</Text>
+        <Text theme={customTheme}>{t('login__loginEmailDescription')}</Text>
         <AuthForm />
       </FormСontainer>
     </Wrapper>

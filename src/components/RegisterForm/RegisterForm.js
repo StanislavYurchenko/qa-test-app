@@ -1,11 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { TextField } from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core/styles';
 
 import PreLoader from '../PreLoader';
 import { registrationUser } from '../../redux/auth/authOperations';
-import { isSuccessfulReg, loading, error } from '../../redux/auth/authSelectors';
+import { loading } from '../../redux/auth/authSelectors';
 import { getTheme } from '../../redux/theme/themeSelectors';
 
 import {
@@ -18,11 +19,11 @@ import {
 const RegisterForm = ({ handleToggleButton }) => {
   const dispatch = useDispatch();
   const loadingAuth = useSelector(loading);
-  const successfulReg = useSelector(isSuccessfulReg);
-  const errorAuth = useSelector(error);
   const theme = useSelector(getTheme);
   const customTheme = theme && createMuiTheme(theme);
   const { handleSubmit, control, reset } = useForm();
+  // const classes = useStyles();
+  const { t, i18n } = useTranslation();
   const classes = useStyles(customTheme);
 
   const validation = (value, num, text, email) => {
@@ -131,17 +132,13 @@ const RegisterForm = ({ handleToggleButton }) => {
 
         <ButtonContainer>
           <NotActiveButton type="button" onClick={handleToggleButton} theme={customTheme}>
-            SIGN IN
+            {t('login__loginSignIn')}
           </NotActiveButton>
           <ActiveButton type="submit" variant="contained" theme={customTheme}>
-            {loadingAuth ? <PreLoader sizePreloader="16px" /> : 'SIGN UP'}
+            {loadingAuth ? <PreLoader sizePreloader="16px" /> : t('login__loginSignUp')}
           </ActiveButton>
         </ButtonContainer>
       </form>
-      {successfulReg && (
-        <p>An email has been sent to your mail with confirmation of registration.</p>
-      )}
-      {!!errorAuth === true && <p>Invalid email or password! Try again!</p>}
     </div>
   );
 };

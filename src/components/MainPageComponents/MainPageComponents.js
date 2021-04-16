@@ -13,7 +13,9 @@ import {
 } from './MainPageComponents.style';
 
 import { useHistory } from 'react-router-dom';
-import categories from '../../utils/test-categories';
+import generateTestCategories from '../../utils/test-categories';
+
+import { useTranslation } from 'react-i18next';
 
 import { useSelector } from 'react-redux';
 import { getTheme } from '../../redux/theme/themeSelectors';
@@ -22,8 +24,14 @@ import { createMuiTheme } from '@material-ui/core/styles';
 function MainPageComponents() {
   const history = useHistory();
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const theme = useSelector(getTheme);
   const customTheme = theme && createMuiTheme(theme);
+  const categories = generateTestCategories();
+
+  const logOut = () => {
+    dispatch(logoutUser());
+  };
 
   const handleClickTech = () => {
     dispatch(testActions.addCategory(categories.tech));
@@ -33,26 +41,26 @@ function MainPageComponents() {
     dispatch(testActions.addCategory(categories.theory));
     history.push('/test');
   };
-
+  const text = 'menuHome';
   return (
     <main>
       <Section theme={customTheme}>
         <Title theme={customTheme}>
-          <StyledSpan>“Regression testing. What is it?</StyledSpan> If the system compiles, that's
-          good, if it boots, that's great!”
+          <StyledSpan>{t('quote')}</StyledSpan>
+          {t('quote-next')}
         </Title>
-        <SecondTitle theme={customTheme}>Linus Torvalds</SecondTitle>
-        <Text theme={customTheme}>Linux kernel creator, hacker, 1969</Text>
+        <SecondTitle theme={customTheme}>{t('author')}</SecondTitle>
+        <Text theme={customTheme}>{t('authorPosition')}</Text>
         <List>
           <Item>
             <Button onClick={handleClickTech} theme={customTheme}>
-              QA technical training
+              {t('qaTechnicalTraining')}
               <StyledArrowSvg theme={customTheme} />
             </Button>
           </Item>
           <Item>
             <Button onClick={handleClickTheory} theme={customTheme} second>
-              Testing theory
+              {t('testingTheory')}
               <StyledArrowSvg theme={customTheme} />
             </Button>
           </Item>
