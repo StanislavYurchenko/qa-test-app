@@ -38,7 +38,7 @@ export const Title = styled.h2`
   @media screen and (min-width: ${BREAKPOINTS.DESKTOP}) {
     width: 210px;
     font-size: 22px;
-    line-height: 27px;
+    line-height: 25px;
   } ;
   `}
 `;
