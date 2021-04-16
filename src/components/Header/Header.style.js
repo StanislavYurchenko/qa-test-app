@@ -76,15 +76,12 @@ export const Span = styled.span`
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-
   font-family: Montserrat, sans-serif;
   font-weight: 600;
   font-size: 1.2rem;
   line-height: 1.6rem;
   margin-right: 1rem;
 `;
-/* background-color: ${SECONDARY_TEXT_COLOUR}; */
-/* color: ${DARK_GREY_TEXT_COLOUR}; */
 
 export const UserName = styled.p`
   ${({ theme }) => `

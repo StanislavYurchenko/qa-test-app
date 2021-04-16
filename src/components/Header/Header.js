@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import Toolbar from '@material-ui/core/Toolbar';
 import Navigation from 'components/Navigation';
-import { ReactComponent as LogoSvg } from '../../images/header_icons/logo.svg';
 import { ReactComponent as OpenMenuSvg } from '../../images/header_icons/openMenu.svg';
 import { ReactComponent as CloseMenuSvg } from '../../images/header_icons/closeMenu.svg';
 import { ReactComponent as LogOut } from '../../images/header_icons/signOut.svg';
@@ -16,7 +15,6 @@ import {
   UserName,
   ToggleLanguage,
 } from './Header.style';
-// import { HeaderStyle, NavWrap, HeaderWrap, ButtonWrap, Logo, ButtonStyles } from './Header.style';
 import { useStyles } from './Header.style';
 import { getIsLoggedIn, getUserName } from '../../redux/auth/authSelectors';
 import { logoutUser } from '../../redux/auth/authOperations';
@@ -52,12 +50,6 @@ export default function Header() {
 
   return (
     <HeaderWrap>
-      {/* <button
-        style={{ zIndex: 500, position: 'absolute', right: 62, bottom: -32, width: 25, height: 25 }}
-        onClick={() => toggleLanguage()}
-      >
-        {language}
-      </button> */}
       <Toggle />
       <ToggleLanguage theme={customTheme} onClick={() => toggleLanguage()}>
         <span>{language}</span>
@@ -99,8 +91,6 @@ export default function Header() {
                 </clipPath>
               </defs>
             </svg>
-
-            {/* <LogoSvg /> */}
           </Logo>
           <NavWrap theme={customTheme} open={isModalOpen}>
             <Navigation isModalOpen={isModalOpen} onButtonClick={onButtonClick} />
@@ -117,7 +107,6 @@ export default function Header() {
               <UserAvatar />
             </>
           )}
-
           {isLogin && (
             <ButtonWrap theme={customTheme}>
               <ButtonStyles onClick={e => dispatch(logoutUser())}>
