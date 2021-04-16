@@ -1,16 +1,18 @@
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import testActions from '../../redux/test/testActions';
 import { fetchTest, sendAnswers } from 'redux/test/testOperations';
 import * as selectors from '../../redux/test/testSelectors';
-import categories from '../../utils/test-categories';
+import generateTestCategories from '../../utils/test-categories';
 import { transformAnswers } from '../../services/transformAnswers';
 
 import Card from './Card';
 import Modal from './Modal';
 import { Section, TopBox, Title, FinishButton, ButtonsBox, Button, ButtonSpan } from './Test.style';
+import TestCategory from '../TestCategory/TestCategory';
 
 import { ReactComponent as PrevSvg } from '../../images/prev.svg';
 import { ReactComponent as NextSvg } from '../../images/next.svg';
@@ -28,11 +30,13 @@ export default function Test({ title }) {
 
   const dispatch = useDispatch();
   const history = useHistory();
+  const { t } = useTranslation();
 
   const theme = useSelector(getTheme);
   const customTheme = theme && createMuiTheme(theme);
 
   let rout = '';
+  const categories = generateTestCategories();
 
   if (category === categories.theory) rout = '/test-theory';
   else rout = '/test-tech';
@@ -98,9 +102,11 @@ export default function Test({ title }) {
           theme={customTheme}
         />
         <TopBox theme={customTheme}>
-          <Title theme={customTheme}>{category}</Title>
+          <Title theme={customTheme}>
+            <TestCategory />
+          </Title>
           <FinishButton onClick={handleFinishTest} theme={customTheme}>
-            Finish test
+            {t('test__buttonFinishTest')}
           </FinishButton>
         </TopBox>
 
@@ -117,14 +123,14 @@ export default function Test({ title }) {
         <ButtonsBox theme={customTheme}>
           <Button onClick={handlePrev} disabled={activeCard - 1 === 0} theme={customTheme}>
             <PrevSvg theme={customTheme} />
-            <ButtonSpan theme={customTheme}>Previus question</ButtonSpan>
+            <ButtonSpan theme={customTheme}>{t('test__buttonPrev')}</ButtonSpan>
           </Button>
           <Button
             onClick={handleNext}
             disabled={activeCard + 1 > questions.length}
             theme={customTheme}
           >
-            <ButtonSpan theme={customTheme}>Next question</ButtonSpan>
+            <ButtonSpan theme={customTheme}>{t('test__buttonNext')}</ButtonSpan>
             <NextSvg theme={customTheme} />
           </Button>
         </ButtonsBox>

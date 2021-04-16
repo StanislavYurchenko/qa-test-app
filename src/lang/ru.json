@@ -1,61 +1,105 @@
 {
-  "header": {
-    "menuHome": "Главная",
-    "menuMaterials": "Полезные материалы",
-    "menuContacts": "Контакты"
-  },
-  "login": {
-    "descriptionStart": "Мы поможем найти слабые места в знаниях, чтобы вы смогли их усилить. Покажем что актуально знать для",
-    "descriptionAccent": "QA Engineer",
-    "descriptionEnd": "и постараемся сделать процесс познания более разнообразным",
-    "loginGoogleDescription": "Для авторизации можете использовать Googlt Account:",
-    "loginEmailDescription": "Или войдите в приложение используя e-mail и пароль:",
-    "loginName": "Имя",
-    "loginEmail": "Почта",
-    "loginPassword": "Пароль",
-    "loginSignIn": "Войти",
-    "loginSignUp": "Регистрация"
-  },
-  "main": {
-    "quote": "\"Регрессионное тестирование. Что это? Если система компилируется, то это хорошо, если загружается, то это просто здорово!\"",
-    "author": "Линус Торвальдс",
-    "authorPosition": "Финский программист, хакер, 1969 г.",
-    "qaTechnicalTraining": "Техническая подготовка QA",
-    "testingTheory": "Теория тестирования"
-  },
-  "test": {
-    "titleStart": "Теория",
-    "titleEnd": "тестирования",
-    "buttonFinishTest": "Завершить тест",
-    "question": "Вопрос",
-    "buttonNext": "Следующий вопрос",
-    "buttonPrev": "Предыдущий вопрос"
-  },
-  "results": {
-    "title": "Результаты",
-    "description": "Теория тестирования",
-    "correctPercent": "Верно ",
-    "incorrectPercent": "Неверно ",
-    "totalAnswers": "Верных ответов",
-    "totalQuestions": "Всего вопросов",
-    "resultTitleGood": "",
-    "resultDescriptionGood": "",
-    "resultTitleNormal": "Неплохой результат!",
-    "resultDescriptionNormal": "Но тебе еще нужно доучить материалы.",
-    "resultTitleBed": "",
-    "resultDescriptionBed": "",
-    "button": "Пройти еще раз"
-  },
-  "info": {
-    "titleLiterature": "Полезная литература ",
-    "titleResources": "Полезные ресурсы"
-  },
-  "team": {
-    "title": "Наша команда"
-  },
-  "footer": {
-    "rights": "All Rights Reserved",
-    "devMessageStart": "Developed with",
-    "devMessageEnd": "by"
-  }
+  "header__menuHome": "Главная",
+  "header__menuMaterials": "Полезные материалы",
+  "header__menuContacts": "Контакты",
+
+  "login__descriptionAccent": "QA Engineer",
+  "login__descriptionEnd": "и постараемся сделать процесс познания более разнообразным",
+  "login__descriptionStart": "Мы поможем найти слабые места в знаниях, чтобы вы смогли их усилить. Покажем что актуально знать для",
+  "login__loginGoogleDescription": "Для авторизации можете использовать Googlt Account:",
+  "login__loginEmailDescription": "Или войдите в приложение используя e-mail и пароль:",
+  "login__loginName": "Имя",
+  "login__loginEmail": "Почта",
+  "login__loginPassword": "Пароль",
+  "login__loginSignIn": "Войти",
+  "login__loginSignUp": "Регистрация",
+
+  "quote": "\"Регрессионное тестирование. Что это?",
+  "quote-next": "Если система компилируется, то это хорошо, если загружается, то это просто здорово!\"",
+  "author": "Линус Торвальдс",
+  "authorPosition": "Финский программист, хакер, 1969 г.",
+  "qaTechnicalTraining": "Техническая подготовка QA",
+  "testingTheory": "Теория тестирования",
+
+  "test__titleStart": "Теория",
+  "test__titleEnd": "тестирования",
+  "test__buttonFinishTest": "Завершить тест",
+  "test__question": "Вопрос",
+  "test__testingTheory": "Testing theory",
+  "test__buttonNext": "Следующий вопрос",
+  "test__buttonPrev": "Предыдущий вопрос",
+
+  "results__title": "Результаты",
+  "results__correctPercent": "Верно",
+  "results__incorrectPercent": "Неверно",
+  "results__totalAnswers": "Верных ответов - ",
+  "results__totalQuestions": "Всего вопросов - ",
+  "results__resultTitlePerfect": "Отлично!",
+  "results__resultDescriptionPerfect": "Вы очень хорошо знаете материал!",
+  "results__resultTitleNotBad": "Не плохо!",
+  "results__resultDescriptionNotBad": "Но Вам еще нужно изучить некоторые материалы.",
+  "results__resultTitleSatisfactorily": "Удовлетворительно.",
+  "results__resultDescriptionSatisfactorily": "Вам еще нужно изучить некоторые материалы.",
+  "results__resultTitleBad": "Плохо:(",
+  "results__resultDescriptionBad": "Вам нужно повторить весь материал!",
+  "results__resultTitleVeryBad": "Очень плохо!",
+  "results__resultDescriptionVeryBad": "Вам нужно повторить весь материал!",
+  "results__button": "Пройти еще раз",
+
+  "info__titleLiterature": "Полезная литература ",
+  "info__titleResources": "Полезные ресурсы",
+  "info__resourcesTest": "Тестирование dot.com Савин.",
+  "info__resourcesMental": "Психбольница в руках пациентов.",
+  "info__resourcesScram": "Scrum. Дж. Сазерленд.",
+
+  "modal__title": "Внимание",
+  "modal__description": "Если вы нажмете выход, весь прогресс будет потерян",
+  "modal__exit": "Выход",
+  "modal__continue": "Продолжить",
+
+  "team__title": "Наша команда",
+
+  "footer__rights": "All Rights Reserved",
+  "footer__devMessageStart": "Developed with",
+  "footer__devMessageEnd": "by",
+
+  "Artur_Stakhov_name": "Артур Стахов",
+  "Artur_Stakhov_position": "FullStack Разработчик",
+  "Artur_Stakhov_about": "На проекте Артур отвечал за разработку бэкэнда, внедрял возможность смены аватара, создания прослойки авторизации и возможность включения ночного режима",
+
+  "Andriy_Krichkivskiy_name": "Андрей Кричкивский",
+  "Andriy_Krichkivskiy_position": "FullStack Разработчик",
+  "Andriy_Krichkivskiy_about": "В проекте Андрей разработал хедер, логотип, который перенаправляет на стартовую страницу, индикатор авторизованного пользователя, а также внедрял в проект возможность выбора языка отображения страницы",
+
+  "Elena_Panasyuk_name": "Елена Панасюк",
+  "Elena_Panasyuk_position": "FullStack Разработчик (Скрам Мастер)",
+  "Elena_Panasyuk_about": "Елена была скрам-мастером проекта и вела разработку страницы с полезными материалами",
+
+  "Inna_Tishchenk_name": "Инна Тищенко",
+  "Inna_Tishchenk_position": "FullStack Разработчик",
+  "Inna_Tishchenk_about": "На проекте Инна разработала страницу, которая отрисует информацию о разработчиках, разрабатывала и отвечала за возможность перехода в приложении на ночной режим",
+
+  "Roman Voznyy_name": "Роман Возный",
+  "Roman Voznyy_position": "FullStack Разработчик",
+  "Roman Voznyy_about": "В проекте Роман отвечал за разработку бэкэнда, создание документации, внедрение аутентификации через Google, а так же админ страницы для тестов",
+
+  "Valentin_Yakubovskiy_name": "Валентин Якубовский",
+  "Valentin_Yakubovskiy_position": "FullStack Разработчик",
+  "Valentin_Yakubovskiy_about": "На проекте Валентин разрабатывал страницу результатов и занимался построением диаграммы на основе ответов пользователей",
+
+  "Volodymyr_Babych_name": "Владимир Бабич",
+  "Volodymyr_Babych_position": "FullStack Разработчик",
+  "Volodymyr_Babych_about": "На проекте Владимир разрабатывал страницу тестов, которая отрисовывает вопросы и на ней есть возможность перейти к следующему / предыдущему вопросу",
+
+  "Yulia_Labutkina_name": "Юлия Лабуткина",
+  "Yulia_Labutkina_position": "FullStack Разработчик",
+  "Yulia_Labutkina_about": "На проекте Юлия разрабатывала страницу логинизации / регистрации, форму для ввода данных пользователя",
+
+  "Grygoriy_Chernish_name": "Григорий Черныш",
+  "Grygoriy_Chernish_position": "FullStack Разработчик",
+  "Grygoriy_Chernish_about": "На проекте Григорий отвечал за создание навигации по сайту, главной страницы и нижней части сайта (футера)",
+
+  "Yurchenko_Stanislav_name": "Станислав Юрченко",
+  "Yurchenko_Stanislav_position": "FullStack Разработчик (Тимлид)",
+  "Yurchenko_Stanislav_about": "На проекте Станислав был тимлидом, инициализировал и развернул back-end и front-end, разработал страницу, которая не надена, и возможность включения ночного режима, помогал и координировал других разработчиков"
 }

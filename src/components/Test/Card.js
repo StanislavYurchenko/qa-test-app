@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 // import Radio from '@material-ui/core/Radio';
 import { createMuiTheme } from '@material-ui/core/styles';
 
@@ -17,6 +18,7 @@ export default function Card({ questions, activeCard, handleAnswer, answered }) 
   const { question, answers, questionId } = questions[activeCard - 1];
   const theme = useSelector(getTheme);
   const customTheme = theme && createMuiTheme(theme);
+  const { t, i18n } = useTranslation();
 
   const handleChange = e => {
     handleAnswer({ [questionId]: e.target.value });
@@ -25,7 +27,7 @@ export default function Card({ questions, activeCard, handleAnswer, answered }) 
   return (
     <CardBox theme={customTheme}>
       <Counter theme={customTheme}>
-        Question <Page theme={customTheme}>{activeCard}</Page> / {questions.length}
+        {t('test__question')} <Page theme={customTheme}>{activeCard}</Page> / {questions.length}
       </Counter>
       <Question theme={customTheme}>{question}</Question>
       <StyledRG

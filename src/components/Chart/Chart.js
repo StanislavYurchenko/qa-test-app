@@ -2,6 +2,7 @@ import { Pie } from 'react-chartjs-2';
 import { connect, useSelector } from 'react-redux';
 import { createMuiTheme } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 import { ChartContainer, PieContainer, AnswersContainer, StyledSpan } from './Chart.style';
 import { getResult } from '../../redux/test/testSelectors';
@@ -10,6 +11,7 @@ import { getTheme } from '../../redux/theme/themeSelectors';
 function Chart({ correctAnswers, incorrectAnswers }) {
   const theme = useSelector(getTheme);
   const customTheme = theme && createMuiTheme(theme);
+  const { t } = useTranslation();
   const totalAnswers = correctAnswers + incorrectAnswers;
 
   const generateChartData = (theme, correct, incorrect) => {
@@ -17,8 +19,8 @@ function Chart({ correctAnswers, incorrectAnswers }) {
 
     return {
       labels: [
-        `${Math.round((correct / total) * 100)}% Correct`,
-        `${Math.round((incorrect / total) * 100)}% Incorrect`,
+        `${Math.round((correct / total) * 100)}% ${t('results__correctPercent')}`,
+        `${Math.round((incorrect / total) * 100)}% ${t('results__incorrectPercent')}`,
       ],
       datasets: [
         {
@@ -72,11 +74,13 @@ function Chart({ correctAnswers, incorrectAnswers }) {
           </PieContainer>
           <AnswersContainer>
             <p>
-              Correct answers - <span style={{ fontWeight: 'bold' }}>{`${correctAnswers}`}</span>
+              {t('results__totalAnswers')}
+              <span style={{ fontWeight: 'bold' }}>{`${correctAnswers}`}</span>
             </p>
             <StyledSpan theme={customTheme} />
             <p>
-              Total questions - <span style={{ fontWeight: 'bold' }}>{`${totalAnswers}`}</span>
+              {t('results__totalQuestions')}
+              <span style={{ fontWeight: 'bold' }}>{`${totalAnswers}`}</span>
             </p>
           </AnswersContainer>
         </ChartContainer>

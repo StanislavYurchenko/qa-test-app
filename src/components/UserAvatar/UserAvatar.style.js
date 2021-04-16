@@ -1,35 +1,39 @@
 import styled from 'styled-components';
 import BREAKPOINT from '../../utils/breakpoints';
 
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 19px;
+`;
+
 const UserName = styled.p`
   ${({ theme }) => `
    color: ${theme.PRIMARY_TEXT_COLOR};
   `}
   display: none;
-  position: absolute;
-  top: 38px;
-  left: 50%;
-  transform: translateX(-50%);
   font-family: Montserrat, sans-serif;
   font-weight: 500;
   font-size: 1.2rem;
+  max-width: 130px;
+  max-height: 40px;
+  overflow: hidden;
   @media screen and (min-width: ${BREAKPOINT.TABLET}) {
     display: block;
   } ;
 `;
 
-const AppBlock = styled.div`
+const AvatarBlock = styled.div`
   ${({ theme }) => `
    border-color: ${theme.PRIMARY_TEXT_COLOR};
   `}
-  position:relative;
-  left: -4px;
   width: 40px;
   height: 40px;
   border: 2px solid;
   border-radius: 50%;
   background-color: transparent;
-  margin-right: 1rem;
+  margin-right: 19px;
 `;
 
 const Avatar = styled.img`
@@ -38,4 +42,4 @@ const Avatar = styled.img`
   object-fit: cover;
   border-radius: 50%;
 `;
-export { AppBlock, Avatar, UserName };
+export { AvatarBlock, Avatar, UserName, Wrapper };

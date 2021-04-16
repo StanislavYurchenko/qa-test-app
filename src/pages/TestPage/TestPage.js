@@ -1,7 +1,7 @@
-// import { error } from '@pnotify/core';
-// import '@pnotify/core/dist/PNotify.css';
-// import '@pnotify/core/dist/BrightTheme.css';
-// import { defaults } from '@pnotify/core';
+import { error } from '@pnotify/core';
+import '@pnotify/core/dist/PNotify.css';
+import '@pnotify/core/dist/BrightTheme.css';
+import { defaults } from '@pnotify/core';
 
 import Test from '../../components/Test';
 import PreLoader from '../../components/PreLoader';
@@ -14,12 +14,12 @@ export default function TestPage() {
 
   return (
     <>
-      {/* {err &&
+      {err &&
         error({
           title: 'Ooops!',
           text: err.message,
           delay: 2000,
-        })} */}
+        })}
       {isLoading && <PreLoader sizePreloader="200px" />}
       {!isLoading && !err && <Test />}
     </>

@@ -1,62 +1,105 @@
 {
-  "header": {
-    "menuHome": "Home",
-    "menuMaterials": "Materials",
-    "menuContacts": "Contacts"
-  },
-  "login": {
-    "descriptionStart": "We will help you find weak points in knowledge so that you can strengthen it. We will show you what is relevant to know for a",
-    "descriptionAccent": "QA Engineer",
-    "descriptionEnd": "and will try to make the learning process more diverse",
-    "loginGoogleDescription": "You can use your Google Account to authorize:",
-    "loginEmailDescription": "Or login to our app using e-mail and password:",
-    "loginName": "Name",
-    "loginEmail": "E-mail",
-    "loginPassword": "Password",
-    "loginSignIn": "SIGN IN",
-    "loginSignUp": "SIGN UP"
-  },
-  "main": {
-    "quote": "\"Regression testing. What is it? If the system compiles, that's good, if it boots, that's great!\"",
-    "author": "Linus Torvalds",
-    "authorPosition": "Linux kernel creator, hacker, 1969",
-    "qaTechnicalTraining": "QA technical training",
-    "testingTheory": "Testing theory"
-  },
-  "test": {
-    "titleStart": "Testing",
-    "titleEnd": "theory",
-    "buttonFinishTest": "Finish test",
-    "question": "Question",
-    "testingTheory": "Testing theory",
-    "buttonNext": "Next question",
-    "buttonPrev": "Previous question"
-  },
-  "results": {
-    "title": "Results",
-    "description": "Testing theory",
-    "correctPercent": "Correct",
-    "incorrectPercent": "Incorrect",
-    "totalAnswers": "Correct answers",
-    "totalQuestions": "Total questions",
-    "resultTitleGood": "",
-    "resultDescriptionGood": "",
-    "resultTitleNormal": "Not bad!",
-    "resultDescriptionNormal": "But you still need to learn some materials.",
-    "resultTitleBed": "",
-    "resultDescriptionBed": "",
-    "button": "Try again"
-  },
-  "info": {
-    "titleLiterature": "Useful literature",
-    "titleResources": "Useful resources"
-  },
-  "team": {
-    "title": "Our team"
-  },
-  "footer": {
-    "rights": "All Rights Reserved",
-    "devMessageStart": "Developed with",
-    "devMessageEnd": "by"
-  }
+  "header__menuHome": "Home",
+  "header__menuMaterials": "Materials",
+  "header__menuContacts": "Contacts",
+
+  "login__descriptionStart": "We will help you find weak points in knowledge so that you can strengthen it. We will show you what is relevant to know for a",
+  "login__descriptionAccent": "QA Engineer",
+  "login__descriptionEnd": "and will try to make the learning process more diverse",
+  "login__loginGoogleDescription": "You can use your Google Account to authorize:",
+  "login__loginEmailDescription": "Or login to our app using e-mail and password:",
+  "login__loginName": "Name",
+  "login__loginEmail": "E-mail",
+  "login__loginPassword": "Password",
+  "login__loginSignIn": "SIGN IN",
+  "login__loginSignUp": "SIGN UP",
+
+  "quote": "\"Regression testing. What is it?",
+  "quote-next": "If the system compiles, that's good, if it boots, that's great!\"",
+  "author": "Linus Torvalds",
+  "authorPosition": "Linux kernel creator, hacker, 1969",
+  "qaTechnicalTraining": "[QA technical training_]",
+  "testingTheory": "[Testing theory_]",
+
+  "test__titleStart": "Testing",
+  "test__titleEnd": "theory",
+  "test__buttonFinishTest": "Finish test",
+  "test__question": "Question",
+  "test__testingTheory": "Testing theory",
+  "test__buttonNext": "Next question",
+  "test__buttonPrev": "Previous question",
+
+  "results__title": "Results",
+  "results__correctPercent": "Correct",
+  "results__incorrectPercent": "Incorrect",
+  "results__totalAnswers": "Correct answers - ",
+  "results__totalQuestions": "Total questions - ",
+  "results__resultTitlePerfect": "Perfect!",
+  "results__resultDescriptionPerfect": "You know material very well!",
+  "results__resultTitleNotBad": "Not bad!",
+  "results__resultDescriptionNotBad": "But you still need to learn some materials.",
+  "results__resultTitleSatisfactorily": "Satisfactorily.",
+  "results__resultDescriptionSatisfactorily": "You still need to learn some materials.",
+  "results__resultTitleBad": "Bad:(",
+  "results__resultDescriptionBad": "You need to repeat all material!",
+  "results__resultTitleVeryBad": "Very bad!",
+  "results__resultDescriptionVeryBad": "You need to repeat all material!",
+  "results__button": "Try again",
+
+  "info__titleLiterature": "Useful literature",
+  "info__titleResources": "Useful resources",
+  "info__resourcesTest": "Testing dot.com Savin.",
+  "info__resourcesMental": "A mental hospital in the hands of patients.",
+  "info__resourcesScram": "Scrum. J. Sutherland.",
+
+  "modal__title": "Warning",
+  "modal__description": "If you press exit, all progress will be lost",
+  "modal__exit": "Exit",
+  "modal__continue": "Continue",
+
+  "team__title": "Our team",
+
+  "footer__rights": "All Rights Reserved",
+  "footer__devMessageStart": "Developed with",
+  "footer__devMessageEnd": "by",
+
+  "Artur_Stakhov_name": "Artur Stakhov",
+  "Artur_Stakhov_position": "FullStack Developer",
+  "Artur_Stakhov_about": "On the project, Artur was responsible for the development of the backend, introduced the ability to change the avatar, create an authorization layer and the ability to switch on the night mode",
+
+  "Andriy_Krichkivskiy_name": "Andriy Krichkivskiy",
+  "Andriy_Krichkivskiy_position": "FullStack Developer",
+  "Andriy_Krichkivskiy_about": "On the project, Andriy developed a header, a logo that redirects to the start page and drawing an indicator of a logged in user, and also introduced into the project the ability to select the language for displaying the page",
+
+  "Elena_Panasyuk_name": "Elena Panasyuk",
+  "Elena_Panasyuk_position": "FullStack Developer (Scrum Master)",
+  "Elena_Panasyuk_about": "Elena was a Scrum master on the project and was responsible for a page with the useful materials",
+
+  "Inna_Tishchenk_name": "Inna Tishchenko",
+  "Inna_Tishchenk_position": "'FullStack Developer",
+  "Inna_Tishchenk_about": "On the project, Inna developed a page that draws information about the developers, develop and was responsible for the ability to switch to night mode",
+
+  "Roman Voznyy_name": "Roman Voznyy",
+  "Roman Voznyy_position": "FullStack Developer",
+  "Roman Voznyy_about": "On the project, Roman was responsible for the development of the backend, the creation of documentation and the implementation of authentication via Google, and developed the admin page for tests",
+
+  "Valentin_Yakubovskiy_name": "Valentin Yakubovskiy",
+  "Valentin_Yakubovskiy_position": "FullStack Developer",
+  "Valentin_Yakubovskiy_about": "On the project, Valentin developed a page of results and was engaged in building a diagram based on user responses",
+
+  "Volodymyr_Babych_name": "Volodymyr Babych",
+  "Volodymyr_Babych_position": "FullStack Developer",
+  "Volodymyr_Babych_about": "On the project, Volodymyr developed a test page that draws questions and on it there is the ability to switch to the next / previous question",
+
+  "Yulia_Labutkina_name": "Yulia Labutkina",
+  "Yulia_Labutkina_position": "FullStack Developer",
+  "Yulia_Labutkina_about": "On the project, Yulia developed a login / registration page, a form for entering user data",
+
+  "Grygoriy_Chernish_name": "Grygoriy Chernish",
+  "Grygoriy_Chernish_position": "FullStack Developer",
+  "Grygoriy_Chernish_about": "On the project, Grygoriy was responsible for creating site navigation, main page and  the lower part of the site(footer)",
+
+  "Yurchenko_Stanislav_name": "Yurchenko Stanislav",
+  "Yurchenko_Stanislav_position": "FullStack Developer (Team Lead)",
+  "Yurchenko_Stanislav_about": "On the project, Stanislav was a team lead, initialized and deployed back-end and front-end, developed the page, that is not found and the ability to switch on the night mode, helped and coordinated other developers"
 }
