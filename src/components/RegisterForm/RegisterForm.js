@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { TextField } from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core/styles';
 
@@ -21,6 +22,8 @@ const RegisterForm = ({ handleToggleButton }) => {
   const theme = useSelector(getTheme);
   const customTheme = theme && createMuiTheme(theme);
   const { handleSubmit, control, reset } = useForm();
+  // const classes = useStyles();
+  const { t, i18n } = useTranslation();
   const classes = useStyles(customTheme);
 
   const validation = (value, num, text, email) => {
@@ -129,10 +132,10 @@ const RegisterForm = ({ handleToggleButton }) => {
 
         <ButtonContainer>
           <NotActiveButton type="button" onClick={handleToggleButton} theme={customTheme}>
-            SIGN IN
+            {t('login__loginSignIn')}
           </NotActiveButton>
           <ActiveButton type="submit" variant="contained" theme={customTheme}>
-            {loadingAuth ? <PreLoader sizePreloader="16px" /> : 'SIGN UP'}
+            {loadingAuth ? <PreLoader sizePreloader="16px" /> : t('login__loginSignUp')}
           </ActiveButton>
         </ButtonContainer>
       </form>

@@ -2,6 +2,7 @@ import Button from '@material-ui/core/Button';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import {
   MainContainer,
@@ -11,6 +12,7 @@ import {
   StyledImage,
   useStyles,
 } from './ResultsComponent.style';
+import TestCategory from '../TestCategory/TestCategory';
 import Chart from '../Chart';
 import TestResult from '../TestResult';
 import resultIMG from '../../images/results.svg';
@@ -21,9 +23,9 @@ export default function ResultsComponent() {
   const theme = useSelector(getTheme);
   const customTheme = theme && createMuiTheme(theme);
   const classes = useStyles(customTheme);
-  const testCategory = useSelector(state => state.test.category);
   const dispatch = useDispatch();
   const history = useHistory();
+  const { t } = useTranslation();
 
   const handleButtonClick = () => {
     dispatch(testActions.resetAnswers());
@@ -34,14 +36,16 @@ export default function ResultsComponent() {
   return (
     <MainContainer theme={customTheme}>
       <HeadersContainer theme={customTheme}>
-        <Header1>Results</Header1>
-        <Header2>{testCategory}</Header2>
+        <Header1>{t('results__title')}</Header1>
+        <Header2>
+          <TestCategory />
+        </Header2>
       </HeadersContainer>
       <Chart />
       <StyledImage src={resultIMG} alt="cat result" />
       <TestResult />
       <Button className={classes.tryAgain} onClick={handleButtonClick}>
-        Try again
+        {t('results__button')}
       </Button>
     </MainContainer>
   );

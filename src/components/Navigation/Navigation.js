@@ -6,6 +6,7 @@ import {
   StyledNavLink,
 } from '../Navigation/Navigation.style';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { authSelectors } from 'redux/auth';
 import { getTheme } from '../../redux/theme/themeSelectors';
 import { ROLE } from '../../utils/constants';
@@ -16,6 +17,7 @@ function Navigation({ isModalOpen, onButtonClick }) {
   const role = useSelector(authSelectors.getRole);
   const theme = useSelector(getTheme);
   const customTheme = theme && createMuiTheme(theme);
+  const { t, i18n } = useTranslation();
 
   return (
     <StyledNav mobile={isModalOpen}>
@@ -23,14 +25,14 @@ function Navigation({ isModalOpen, onButtonClick }) {
         <StyledNavListItem>
           {isLoggedIn && (
             <StyledNavLink to="/" exact onClick={onButtonClick} theme={customTheme}>
-              Home
+              {t('header__menuHome')}
             </StyledNavLink>
           )}
         </StyledNavListItem>
         <StyledNavListItem>
           {isLoggedIn && (
             <StyledNavLink to="/useful-info" onClick={onButtonClick} theme={customTheme}>
-              Materials
+              {t('header__menuMaterials')}
             </StyledNavLink>
           )}
         </StyledNavListItem>
@@ -43,7 +45,7 @@ function Navigation({ isModalOpen, onButtonClick }) {
         </StyledNavListItem>
         <StyledNavListItem lastitem="true">
           <StyledNavLink to="/contacts" onClick={onButtonClick} theme={customTheme}>
-            Contacts
+            {t('header__menuContacts')}
           </StyledNavLink>
         </StyledNavListItem>
       </StyledNavList>
