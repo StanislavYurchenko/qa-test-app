@@ -22,27 +22,27 @@ function Navigation({ isModalOpen, onButtonClick }) {
   return (
     <StyledNav mobile={isModalOpen}>
       <StyledNavList>
-        <StyledNavListItem>
-          {isLoggedIn && (
-            <StyledNavLink to="/" exact onClick={onButtonClick} theme={customTheme}>
-              {t('header__menuHome')}
-            </StyledNavLink>
-          )}
-        </StyledNavListItem>
-        <StyledNavListItem>
-          {isLoggedIn && (
-            <StyledNavLink to="/useful-info" onClick={onButtonClick} theme={customTheme}>
-              {t('header__menuMaterials')}
-            </StyledNavLink>
-          )}
-        </StyledNavListItem>
-        <StyledNavListItem>
-          {isLoggedIn && role === ROLE.ADMIN && (
+        {isLoggedIn && (
+          <>
+            <StyledNavListItem>
+              <StyledNavLink to="/" exact onClick={onButtonClick} theme={customTheme}>
+                {t('header__menuHome')}
+              </StyledNavLink>
+            </StyledNavListItem>
+            <StyledNavListItem>
+              <StyledNavLink to="/useful-info" onClick={onButtonClick} theme={customTheme}>
+                {t('header__menuMaterials')}
+              </StyledNavLink>
+            </StyledNavListItem>
+          </>
+        )}
+        {isLoggedIn && role === ROLE.ADMIN && (
+          <StyledNavListItem>
             <StyledNavLink to="/admin" onClick={onButtonClick} theme={customTheme}>
               AdminSettings
             </StyledNavLink>
-          )}
-        </StyledNavListItem>
+          </StyledNavListItem>
+        )}
         <StyledNavListItem lastitem="true">
           <StyledNavLink to="/contacts" onClick={onButtonClick} theme={customTheme}>
             {t('header__menuContacts')}
